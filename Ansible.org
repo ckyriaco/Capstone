@@ -1,0 +1,17 @@
+* Ansible
+** [[https://docs.ansible.com/ansible/latest/collections/index_module.html][Built in modules for ansible]]  
+Ex. ~$ ansible localhost -m find -a "paths=Downloads file_type=file"
+- This command uses the find module to look through the files in the download folder and provide information on them.  
+** Playbooks
+- Begin with --- always
+- Then give a - name: for the play file and hosts that will use this.
+- To see more detail on installation, ad -v after the ansible-playbook xxx.yml
+*** first.yml
+- Only is looking at localhost
+- Tasks: Test the reachability with a ping and install stress if not there
+*** files.yml
+- Only is looking at localhost
+- Tasks: Standard test of reachability and using the find module locate the files in the Challenges folder
+
+** SSH for remote systems:
+- Simple way to have remote systems reachable through ssh is taking the public key of your local host and to place it in the authorized keys folder of the remote host that will be managed from the local control node (your localhost). 
