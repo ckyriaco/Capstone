@@ -18,4 +18,4 @@ Functionality list to reach our main goal:
 
 Audit_Process
 
-[Audit_Process_1.png](Diagrams/Audit_Process_1.png)
+[](Diagrams/Audit_Process_1.png)
