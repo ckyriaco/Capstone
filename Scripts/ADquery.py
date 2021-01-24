@@ -38,10 +38,10 @@ class ADquery:
             x = aduser.ADUser.from_cn(i)
             print(i, x.get_last_login())
 
-"""
-Get a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
-The generated list is designed to be passed into get_login_past_N_days special purpose function.
-"""
+
+#Get a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
+#The generated list is designed to be passed into get_login_past_N_days special purpose function.
+
     def get_last_user_login_list(self, dn, objCat):
         con = pyad.adcontainer.ADContainer.from_dn(dn)
         array = np.array([])
