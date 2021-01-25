@@ -32,6 +32,27 @@ class ADquery:
         else:
             raise ValueError("The Common Name cannot be null!")
 
+#Return the current object's list of unused users
+    def get_unused_users(self):
+        array = np.array([])
+        for i in self.unusedUsers:
+            array = np.append(array, i)
+        return array                
+            
+#Return the current object's list of unused computers
+    def get_unused_computers(self):
+        array = np.array([])
+        for i in self.unusedComputers:
+            array = np.append(array, i)
+        return array
+
+#Return the current object's list of users that haven't set their password in N days
+    def get_pwdLastSetNDays(self):
+        array = np.array([])
+        for i in self.pwdLastSetNDays:
+            array = np.append(array, i)
+        return array
+    
 #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
         for i in array:
