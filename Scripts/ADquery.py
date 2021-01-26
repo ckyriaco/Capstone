@@ -14,6 +14,7 @@ class ADquery:
     unusedUsers = np.array([])
     unusedComputers = np.array([])
     pwdLastSetNDays = np.array([])
+    admin_list = np.array([])
 
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
@@ -37,8 +38,8 @@ class ADquery:
         array = np.array([])
         for i in self.unusedUsers:
             array = np.append(array, i)
-        return array                
-            
+        return array
+
 #Return the current object's list of unused computers
     def get_unused_computers(self):
         array = np.array([])
@@ -52,8 +53,15 @@ class ADquery:
         for i in self.pwdLastSetNDays:
             array = np.append(array, i)
         return array
-    
-#Finds the last time a list of users each last logged on to their accounts.
+
+    #Return the list of admin for every admin type
+    def get_admin_list(self):
+        array = np.array([])
+        for i in self.admin_list:
+            array = np.append(array, i)
+        return array
+
+    #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
         for i in array:
             x = aduser.ADUser.from_cn(i)
@@ -132,6 +140,23 @@ class ADquery:
                 if (diff >= N):
                     self.pwdLastSetNDays = np.append(self.pwdLastSetNDays, c)
 
+#Retrieve all admin of specified admin types
+    def get_All_Admin(self, Admin_Types):
+        for i in Admin_Types:
+            user = aduser.ADUser.from_cn("Domain Admins")
+            l = user.get_attribute("member")
+            addition = ("{}: ").format(i)
+            for x in l:
+                addition += ("{},").format(x)
+            self.admin_list = np.append(self.admin_list, addition)
+
+#Return a report of the admin users of each admin type
+    def admin_report(self):
+        message = "Admin Report:\n"
+        for i in self.admin_list:
+            message += ("{}\n").format(str(i))
+        return message
+
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
         message ="Unused Users: "
@@ -162,7 +187,7 @@ class ADquery:
             print(i, ", ")
         print("\nUnused Computer Count: ", self.unusedComputerCount)
         print("\nPWD Unchanged Past Day Limit: ")
-        for i in self.pwdLastSetNDays:
+        for i in self.unusedComputers:
             print(("{}, ").format(str(i)))
 
 # ------------------------------------------------End of Class ADquery ---------------------------------------------------------------------------------------------
