@@ -64,4 +64,5 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 4. Results of each audit type were designed to be stored in text files that were named accordingly.
 
 ***Executable Prototype***
+
 ![Prototype](Photos_Gifs/pyad_proof_of_concept_2.gif)
