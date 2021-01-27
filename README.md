@@ -1,14 +1,42 @@
 # Capstone
-Active Directory Auditing for Cybersecurity Maturity Model Certification (CMMC) Compliance
+**Active Directory Auditing for Cybersecurity Maturity Model Certification (CMMC) Compliance**
 
-Main Goal:
+
+**Cybersecurity Maturity Model Certification (CMMC):**
+
+A certification that checks for an Federal Agency or contracted organization for aduit readiness with Cybersecurity:
+- *Policies*
+- *Standards*
+- *Controls*
+- *Procedures*
+- *Metrics*
+  
+
+***CMMC Levels of compliance:***
+
+CMMC Level 1: This is essentially addressing FAR 52.204-21 cybersecurity principles.
+
+CMMC Level 2: This builds on CMMC Level 1 and addresses a little over half of NIST 800-171 controls.
+
+***CMMC Level 3: This builds on CMMC Level 2 and addresses all NIST 800-171 and a few extras. (Our Focus)***
+
+CMMC Levels 4 & 5: CMMC Levels 4 & 5 build off CMMC Level 3 and include controls from a range of frameworks:
+- CERT RMM v1.2
+- NIST SP 800-53
+- NIST SP 800-172
+- ISO 27002
+- CIS CSC 7.1
+- Unattributed “CMMC” references that are not attributed to existing frameworks.
+
+
+
+**Main Goal:**
 
 The goal of this project is to create an auditing system that allows authorized security admin at the Applied Research Associates (ARA) 
 to audit their active directory servers to ensure CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
-that ARA prefers.
+that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
 
-
-Functionality list to reach our main goal:
+***Functionality list to reach our main goal:***
 1. Using AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
 3. Produce a list of users who have not changed their password in N days.
@@ -17,7 +45,7 @@ Functionality list to reach our main goal:
 6. For all accounts, the “password expire” flag is set.  More specifically, which accounts do not have this set?
 7. Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port.  As much detail about the process as can be found should be reported.  Install sysinternals on the remote computer if needed.  Using psexec is OK.  This is probably the top priority.
 
-Audit Process (End-Goal)
+**Audit Process (End-Goal)**
 
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural python script, then executes the python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
@@ -26,8 +54,8 @@ Audit Process (End-Goal)
 
 ![](Diagrams/Audit_Process_1.png)
 
-Mock setup for prototype/proof of concept
-*Used a system of virtual machines orchestrated in Oracle VirtualBox.
+**Mock setup for prototype/proof of concept**
+***Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both an Windows Enterprise Server 2019 and Windows 10 Pro instance.
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
 3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
