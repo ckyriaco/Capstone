@@ -41,8 +41,6 @@ def last_set_pwd(CN, containers, objectCategories, N):
     print(f.read())
     f.close()
 
-#Use ADquery to identify all admin of the specified admin types of interest
-    
 def get_admin(CN, adminTypes):
     AD = ad.ADquery(CN)
     AD.get_All_Admin(adminTypes)
@@ -62,11 +60,6 @@ def main():
     containerComputers = os.getenv('CONTAINER_COMPUTERS')
     usersObjectCategory = os.getenv('OBJECT_CATEGORY_USERS')
     computersObjectCategory = os.getenv('OBJECT_CATEGORY_COMPUTERS')
-    adminType1 = os.getenv('ADMIN_TYPE1')
-    adminType2 = os.getenv('ADMIN_TYPE2')
-    adminType3 = os.getenv('ADMIN_TYPE3')
-    adminType4 = os.getenv('ADMIN_TYPE4')
-    adminTypes = np.array([adminType1, adminType2, adminType3, adminType4])
     containers = np.array([containerUsers, containerComputers])
     containers2 = np.array([containerUsers])
     objectCategories = np.array([usersObjectCategory, computersObjectCategory])
@@ -74,13 +67,11 @@ def main():
     types = np.array(["User", "Computer"])
     N = os.getenv('DAYS_UNUSED')
     N2 = os.getenv('DAYS_LS')
+    adminArray = os.getenv('ADMIN_ARRAY').split(',')
     logon_info(CN, containers, objectCategories, types, N)
     last_set_pwd(CN, containers2, objectCategories2, N2)
-    get_admin(CN, adminTypes)
+    get_admin(CN, adminArray)
 
 
 if __name__ == "__main__":
     main()
-
-
-
