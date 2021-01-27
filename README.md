@@ -55,6 +55,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 ![](Diagrams/Audit_Process_1.png)
 
 **Mock setup for prototype/proof of concept**
+
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both an Windows Enterprise Server 2019 and Windows 10 Pro instance.
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
