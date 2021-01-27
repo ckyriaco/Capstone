@@ -1,6 +1,6 @@
 #Applied Research Associates
 #This script utilizes the ADquery class to audit a variety of users, computers and groups for cmmc compliance
-import ADquery as ad
+import ADaudit as ad
 import os
 import numpy as np
 
@@ -9,7 +9,7 @@ import numpy as np
 #Use ADquery class to audit active directory for users that have not logged on in N days.
 
 def logon_info(CN, containers, objectCategories, types, N):
-    AD = ad.ADquery(CN)
+    AD = ad.ADaudit(CN)
     count = 0
     list = np.array([])
     N = int(N)
@@ -28,7 +28,7 @@ def logon_info(CN, containers, objectCategories, types, N):
 #Use ADquery to locate users that have not changed their password in N days.
 
 def last_set_pwd(CN, containers, objectCategories, N):
-    AD = ad.ADquery(CN)
+    AD = ad.ADaudit(CN)
     count = 0
     N = int(N)
     while(count < len(containers)):
@@ -41,8 +41,9 @@ def last_set_pwd(CN, containers, objectCategories, N):
     print(f.read())
     f.close()
 
+#Use ADquery to
 def get_admin(CN, adminTypes):
-    AD = ad.ADquery(CN)
+    AD = ad.ADaudit(CN)
     AD.get_All_Admin(adminTypes)
     doc = AD.admin_report()
     f = open("Admin_Report.txt", "w")

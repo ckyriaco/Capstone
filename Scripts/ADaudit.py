@@ -6,7 +6,7 @@ import numpy as np
 import pyad.pyadutils
 from datetime import datetime
 
-class ADquery:
+class ADaudit:
     CN = ""
     user = ""
     unusedComputerCount = 0
