@@ -1,6 +1,10 @@
 #Applied Research Associates
 #This class is designed to allow administrators to query information that are vital for cmmc compliance audits of active directory instances.
 #Must already be joined to the active directory server's domain to use this class!
+#Can set a default domain manually using pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword").
+#Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Systems on the end-unit is more secure.
+#Can connect to a specific other domain temporarilty instead of the default using user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))
+#Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested. 
 
 from pyad import *
 import numpy as np
