@@ -3,8 +3,9 @@ Active Directory Auditing for Cybersecurity Maturity Model Certification (CMMC) 
 
 Main Goal:
 
-The goal of this project is to create an auditing system that allows authorized Security Admin at the Applied Research Associates (ARA) 
-to audit their active directory servers to ensure CMMC compliance.
+The goal of this project is to create an auditing system that allows authorized security admin at the Applied Research Associates (ARA) 
+to audit their active directory servers to ensure CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
+that ARA prefers.
 
 
 Functionality list to reach our main goal:
