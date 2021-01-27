@@ -1,5 +1,6 @@
 #Applied Research Associates
 #This class is designed to allow administrators to query information that are vital for cmmc compliance audits of active directory instances.
+#Must already be joined to the active directory server's domain to use this class!
 
 from pyad import *
 import numpy as np
