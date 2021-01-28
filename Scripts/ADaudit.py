@@ -157,14 +157,14 @@ class ADaudit:
 
 #Return a report of the admin users of each admin type
     def admin_report(self):
-        message = "Admin Report:\n"
+        message = "\nAdmin Report:\n"
         for i in self.admin_list:
             message += ("{}\n").format(str(i))
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
-        message ="Unused Users: "
+        message ="\nUnused Users: "
         for i in self.unusedUsers:
             message += ("{}, ").format(str(i))
         message += ("\nUnused User Count: {}").format(self.unusedUserCount)
@@ -176,7 +176,7 @@ class ADaudit:
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
-        message = "PWD Unchanged Past Day Limit: "
+        message = "\nPWD Unchanged Past Day Limit: "
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
         return message
