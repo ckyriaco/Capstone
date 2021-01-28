@@ -1,7 +1,7 @@
 # Capstone
 ## **Active Directory Auditing for Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/) Compliance**
 
-_______________________________________________________________________________________________________________________________________________________________________________
+_________________________________________________________________________________________________________________________________________________________________________________
 
 ### **Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/):**
 
@@ -25,7 +25,7 @@ CMMC Levels 4 & 5: CMMC Levels 4 & 5 build off CMMC Level 3 and include controls
 - CIS CSC 7.1
 - Unattributed “CMMC” references that are not attributed to existing frameworks.
 
-
+_________________________________________________________________________________________________________________________________________________________________________________
 
 ### **Main Goal:**
 
@@ -42,6 +42,8 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 6. For all accounts, the “password expire” flag is set.  More specifically, which accounts do not have this set?
 7. Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port.  As much detail about the process as can be found should be reported.  Install sysinternals on the remote computer if needed.  Using psexec is OK.  This is probably the top priority.
 
+_________________________________________________________________________________________________________________________________________________________________________________
+
 ### **Audit Process (End-Goal)**
 
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural python script, then executes the python script.
@@ -51,6 +53,8 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 
 ![](Diagrams/Audit_Process_1.png)
 
+________________________________________________________________________________________________________________________________________________________________________________
+
 ### **Mock setup for prototype/proof of concept**
 
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
@@ -58,6 +62,8 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
 3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
 4. Results of each audit type were designed to be stored in text files that were named accordingly.
+
+_________________________________________________________________________________________________________________________________________________________________________________
 
 ### ***Executable Prototype***
 
