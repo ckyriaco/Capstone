@@ -102,3 +102,13 @@ ________________________________________________________________________________
 ![](Photos_Gifs/Dave_Fuller.PNG)
 
 ## Dave Fuller - Team Memeber ##
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+# Special Thank You To: #
+
+## - Chris Prather ## ### (Applied Research Aassociates) ###
+
+## - Dr. Kenneth Ingham ## ### (Applied Research Associates) ###
+
+## - Prof. John McLaughlin ## ### (George Mason University) ###
