@@ -7,4 +7,17 @@ The CMMC maps controls and processes from various cybersecurity standards and be
 CMMC adds an additional verification component to existing cybersecurity regulations, specifically DFARS 252.204-7012.
 CMMC is designed to be low cost and easy to implement for small businesses with weaker security maturity levels.
 CMMC assessments will be conducted by Third Party Assessment Organizations that are authorized to issue CMMC certificates specifically to Defense Industrial Base companies at their corresponding security maturity level.
+
+CMMC Framework Certification Levels 
+Level 1:
+Companies must use antivirus software and ensure that employees change passwords regularly to protect Federal Contract Information (FCI)
+Level 2:
+Companies must document measures taken to protect Controlled Unclassified Information (CUI) in accordance with  NIST 800-171 r2 requirements 
+Level 3:
+Companies must have an implemented management plan to protect Controlled Unclassified Information (CUI) in accordance with  NIST 800-171 r2 requirements as well as some additional protection standards.
+Level 4: 
+ Companies must have review processes in place to measure the effectiveness of their cyber hygene practices as well as processes in place to deal with advanced persistent threats(APTs) that continually undergo tactical, technical and procedural changes.
+Level 5: 
+Companies must have standardized their cyber hygene processes organization-wide and have implemented more advanced and sophisticated processes to combat advanced persistent threats(APTs) 
 **WORK IN PROGRESS**
+
