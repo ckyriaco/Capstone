@@ -54,8 +54,14 @@ def get_admin(CN, adminTypes):
     #f = open("Admin_Report.txt", "r")
     f = open("Audit_Report.txt", "a")
     f.write(doc)
-    f = open("Audit_Report.txt", "r")
-    print(f.read())
+    f.close()
+
+def service_account_audit(CN, DN):
+    AD = ad.ADaudit(CN)
+    AD.set_serve_manager_status(DN)
+    doc = AD.get_serv_man_not_set()
+    f = open("Audit_Report.txt", "a")
+    f.write(doc)
     f.close()
 
 
@@ -75,10 +81,13 @@ def main():
     N = os.getenv('DAYS_UNUSED')
     N2 = os.getenv('DAYS_LS')
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
+    con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
     logon_info(CN, containers, objectCategories, types, N)
     last_set_pwd(CN, containers2, objectCategories2, N2)
     get_admin(CN, adminArray)
-
+    service_account_audit(CN, con_serv)
+    f = open("Audit_Report.txt", "r")
+    print(f.read())
 
 if __name__ == "__main__":
     main()

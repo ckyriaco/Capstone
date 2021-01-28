@@ -20,6 +20,7 @@ class ADaudit:
     unusedComputers = np.array([])
     pwdLastSetNDays = np.array([])
     admin_list = np.array([])
+    serv_man_not_set = np.array([])
 
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
@@ -66,11 +67,26 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    def get_serv_man_not_set(self):
+        message = "Service Accounts without manager set:\n"
+        for i in self.serv_man_not_set:
+            message += ("\n{}").format(str(i))
+        return message
+
     #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
         for i in array:
             x = aduser.ADUser.from_cn(i)
             print(i, x.get_last_login())
+
+    def set_serve_manager_status(self, dn):
+        con = pyad.adcontainer.ADContainer.from_dn(dn)
+        notSet = []
+        for i in con.get_children():
+            manager = i.get_attribute("manager")
+            CN = i.get_attribute("CN")
+            if manager == notSet:
+                self.serv_man_not_set = np.append(self.serv_man_not_set, CN)
 
 
 #Get a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
@@ -196,3 +212,20 @@ class ADaudit:
             print(("{}, ").format(str(i)))
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
