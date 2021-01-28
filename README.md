@@ -5,14 +5,10 @@ ________________________________________________________________________________
 
 **Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/):**
 
-A certification that checks for an Federal Agency or contracted organization for aduit readiness with Cybersecurity:
-- *Policies*
-- *Standards*
-- *Controls*
-- *Procedures*
-- *Metrics*
-  
+***Primary Goal: Safeguard controlled unclassified information (CUI) across the DoD supply chain.***
 
+- CUI: Any information or data created or possessed by the government or another entity on the government’s behalf.
+  
 ***CMMC Levels of compliance:***
 
 CMMC Level 1: This is essentially addressing FAR 52.204-21 cybersecurity principles.
