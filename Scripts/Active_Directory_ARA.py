@@ -17,12 +17,14 @@ def logon_info(CN, containers, objectCategories, types, N):
         list = AD.get_last_user_login_list(containers[count], objectCategories[count])
         AD.get_login_past_N_days(N, list, types[count])
         count += 1
-    AD.toString()
+    #AD.toString()
     doc = AD.get_unused_report()
-    f = open(("Logon_in_{}_days.txt").format(N), "w")
+    #f = open(("Logon_in_{}_days.txt").format(N), "w")
+    #f.write(doc)
+    #f = open(("Logon_in_{}_days.txt").format(N), "r")
+    f = open("Audit_Report.txt", "w")
     f.write(doc)
-    f = open(("Logon_in_{}_days.txt").format(N), "r")
-    print(f.read())
+    #print(f.read())
     f.close()
 
 #Use ADquery to locate users that have not changed their password in N days.
@@ -35,10 +37,12 @@ def last_set_pwd(CN, containers, objectCategories, N):
         AD.get_pwd_last_login_N_days(containers[count], objectCategories[count], N)
         count += 1
     doc = AD.get_pwd_report()
-    f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "w")
+    #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "w")
+    #f.write(doc)
+    #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "r")
+    #print(f.read())
+    f = open("Audit_Report.txt", "a")
     f.write(doc)
-    f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "r")
-    print(f.read())
     f.close()
 
 #Use ADquery to
@@ -46,9 +50,11 @@ def get_admin(CN, adminTypes):
     AD = ad.ADaudit(CN)
     AD.get_All_Admin(adminTypes)
     doc = AD.admin_report()
-    f = open("Admin_Report.txt", "w")
+    #f = open("Admin_Report.txt", "w")
+    #f = open("Admin_Report.txt", "r")
+    f = open("Audit_Report.txt", "a")
     f.write(doc)
-    f = open("Admin_Report.txt", "r")
+    f = open("Audit_Report.txt", "r")
     print(f.read())
     f.close()
 
