@@ -1,0 +1,10 @@
+CMMC Official Link:
+Cybersecurity Maturity Model Certification (CMMC) (osd.mil)
+https://www.acq.osd.mil/cmmc/
+
+The Cybersecurity Maturity Model Certification or CMMC is a framework developed by the Office of the Under Secretary of Defense for Acquisition & Sustainment (OUSD(A&S)), DoD stakeholders, University  Affiliated Research Centers and Federally Funded Research and Development Centers and industry. 
+The CMMC maps controls and processes from various cybersecurity standards and best practices to best fit the range of security maturity levels from basic to advanced. Regardless of the level of security maturity, the CMMC mapped controls and processes will protect against a specific group of cyber threats.
+CMMC adds an additional verification component to existing cybersecurity regulations, specifically DFARS 252.204-7012.
+CMMC is designed to be low cost and easy to implement for small businesses with weaker security maturity levels.
+CMMC assessments will be conducted by Third Party Assessment Organizations that are authorized to issue CMMC certificates specifically to Defense Industrial Base companies at their corresponding security maturity level.
+**WORK IN PROGRESS**

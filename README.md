@@ -5,14 +5,10 @@ ________________________________________________________________________________
 
 **Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/):**
 
-A certification that checks for an Federal Agency or contracted organization for aduit readiness with Cybersecurity:
-- *Policies*
-- *Standards*
-- *Controls*
-- *Procedures*
-- *Metrics*
-  
+***Primary Goal: Safeguard controlled unclassified information (CUI) across the DoD supply chain.***
 
+- CUI: Any information or data created or possessed by the government or another entity on the government’s behalf.
+  
 ***CMMC Levels of compliance:***
 
 CMMC Level 1: This is essentially addressing FAR 52.204-21 cybersecurity principles.
@@ -62,3 +58,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
 3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
 4. Results of each audit type were designed to be stored in text files that were named accordingly.
+
+***Executable Prototype***
+
+![Prototype](Photos_Gifs/pyad_proof_of_concept_2.gif)
