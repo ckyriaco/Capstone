@@ -70,3 +70,15 @@ ________________________________________________________________________________
 ![](Photos_Gifs/PC_to_AD.png)
 
 ![Prototype](Photos_Gifs/pyad_proof_of_concept_2.gif)
+
+_________________________________________________________________________________________________________________________________________________________________________________
+
+# Capstone Team Memebers #
+
+![](Photos_Gifs/Christopher_Kyriacou.png)
+
+## Christopher Kyriacou - Team Leader ##
+
+![](Photos_Gifs/Saffee_Ghafoori.png)
+
+## Saffeeullah Ghafoori - Deputy Team Leader ##
