@@ -45,7 +45,7 @@ def last_set_pwd(CN, containers, objectCategories, N):
     f.write(doc)
     f.close()
 
-#Use ADquery to
+#Use ADquery to get all the admin of each admin type in the AD server.
 def get_admin(CN, adminTypes):
     AD = ad.ADaudit(CN)
     AD.get_All_Admin(adminTypes)
@@ -56,10 +56,11 @@ def get_admin(CN, adminTypes):
     f.write(doc)
     f.close()
 
+#Use ADquery to get all the service accounts that don't have the manager attribute set.
 def service_account_audit(CN, DN):
     AD = ad.ADaudit(CN)
     AD.set_serve_manager_status(DN)
-    doc = AD.get_serv_man_not_set()
+    doc = AD.get_serv_man_not_set_report()
     f = open("Audit_Report.txt", "a")
     f.write(doc)
     f.close()

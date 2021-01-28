@@ -67,11 +67,12 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    #Return the list of service accounts without the manager field set.
     def get_serv_man_not_set(self):
-        message = "Service Accounts without manager set:\n"
+        array = np.array([])
         for i in self.serv_man_not_set:
-            message += ("\n{}").format(str(i))
-        return message
+            array = np.append(array, i)
+        return array
 
     #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
@@ -79,6 +80,7 @@ class ADaudit:
             x = aduser.ADUser.from_cn(i)
             print(i, x.get_last_login())
 
+#Discover all service accounts that do not have a manager attribute set.
     def set_serve_manager_status(self, dn):
         con = pyad.adcontainer.ADContainer.from_dn(dn)
         notSet = []
@@ -195,6 +197,13 @@ class ADaudit:
         message = "\nPWD Unchanged Past Day Limit: "
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
+        return message
+
+#Report of the service accounts that do not have a manager attribute set.
+    def get_serv_man_not_set_report(self):
+        message = "Service Accounts without manager set:\n"
+        for i in self.serv_man_not_set:
+            message += ("\n{}").format(str(i))
         return message
 
 #Print an overall message on information found by querying through Active Directory.
