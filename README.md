@@ -75,25 +75,7 @@ ________________________________________________________________________________
 
 # Capstone Team Memebers #
 
-## Christopher Kyriacou - Team Leader ##
-
-![](Photos_Gifs/Christopher_Kyriacou.PNG)
-
-## Saffeeullah Ghafoori - Deputy Team Leader ##
-
-![](Photos_Gifs/Saffee_Ghafoori.PNG)
-
-## Nathan Chong - Team Member ##
-
-![](Photos_Gifs/Nathan_Chong.PNG)
-
-## Jamie Sutton - Team Member ##
-
-![](Photos_Gifs/Jamie_Sutton.PNG)
-
-## Dave Fuller - Team Memeber ##
-
-![](Photos_Gifs/Dave_Fuller.PNG)
+![](Photos_Gifs/Alpha_4.PNG)
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
