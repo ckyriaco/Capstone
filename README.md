@@ -55,7 +55,7 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
-### **Mock setup for prototype/proof of concept**
+### **Mock Setup for Prototype/Proof of Concept**
 
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both an Windows Enterprise Server 2019 and Windows 10 Pro instance.
@@ -67,4 +67,22 @@ ________________________________________________________________________________
 
 ### ***Executable Prototype***
 
+![](Photos_Gifs/PC_to_AD.png)
+
 ![Prototype](Photos_Gifs/pyad_proof_of_concept_2.gif)
+
+_________________________________________________________________________________________________________________________________________________________________________________
+
+# Capstone Team Memebers #
+
+![](Photos_Gifs/Alpha_4.PNG)
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+# Special Thank You To: #
+
+## - Chris Prather (Applied Research Aassociates) ##
+
+## - Dr. Kenneth Ingham (Applied Research Associates) ##
+
+## - Prof. John McLaughlin (George Mason University) ##
