@@ -1,0 +1,84 @@
+Markdown format needed
+Below probably has a lot of missing info (line numbers may not be relevant/variable)
+
+ADaudit.py Documentation
+
+Line 1 
+Imported pyad, numpy, pyadutil and datetime
+
+Line 6
+Class ADaudit created 
+Tracks number of unused computers and unused user count  
+Variables:
+unusedComputerCount - a count of the unused computers
+unusedUserCount - a count of the unused users
+unusedUsers - an array of the unused users
+unusedComputers - an array of the unused computers
+
+Line 12
+constructor 
+Objects are created here 
+With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user
+CN - Common Name - tracks user and pyad connection to active directory
+Profile is retrieved using Common Name
+Makes sure that connection is actually happening 
+
+Line 19 
+Method for Setter Method for setCN
+No getter needed in python
+All set methods are required 
+
+Line 26
+Method for Get last login users 
+Find when they last logged in 
+Can feed array as parameter
+
+Line 32 
+Get last user login list 
+Takes in a distinguished name list 
+Looks at the distinguished name that it last looked at 
+Object category is the group of specific users that you want to query about 
+makes sure that have actually logged on before 
+
+Line 58
+After get specific category, look at the specific login 
+And look at the number of past login days 
+Good for reuse capability 
+Getting list of which users and/or computers that have not logged in in N days 
+
+Line 80 
+get report method
+To string method  prints out all info 
+List of Unused users, computers
+counts for Unused users, computers
+
+End of class so far
+
+Active_Directory_ARA.py Documentation
+
+Script 
+
+Line 1
+Import ADaudit class 
+So can use functions from that class
+Imported os to gather variables from bash script 
+
+Line 7
+Takes info from ADquery class
+Generates report based on users that have not logged in N number of days
+
+Line 25
+Import os variables plug into arrays based on variable types 
+
+Line 37 
+Get number of days since last login 
+
+Ad_driver.sh Documentation
+
+Stores OS variables
+Executes active_directory_ARA.py
+
+Later activities
+In bash directory made bash file executable 
+So it can be simply run through Gitbash
+(Bash terminal of choice)
