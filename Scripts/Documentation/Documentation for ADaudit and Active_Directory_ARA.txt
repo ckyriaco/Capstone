@@ -1,8 +1,11 @@
-Markdown format needed
+Updated:
+1:49 PM 1/29/2021
+
+Markdown format needed/Line numbers may be variable or not needed?
 
 ADaudit.py Documentation
 The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance. 
-The user? must already be joined to the active directory server's domain to use this class.
+The administrator? must already be joined to the active directory server's domain to use this class.
 A default domain can be set or a temporary external domain can also be set.
 
 Line 9
@@ -15,25 +18,38 @@ unusedComputerCount - a count of the unused computers
 unusedUserCount - a count of the unused users
 unusedUsers - an array of the unused users
 unusedComputers - an array of the unused computers
-pwdLastSetDays - an array of the number of days since a password was last set?
-admin_list - an array of the admins? 
-serv_man_not_set - an array - an array of server configurations?
+pwdLastSetDays - an array of users who haven't set their password in N days
+admin_list - an array of the admin for every admin type
+serv_man_not_set - an array of service accounts without the manager field set
 
 Line 28
 The constructor initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
-
-**************WORK IN PROGRESS*********************************************
-
-Objects are created here 
 With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user
-CN - Common Name - tracks user and pyad connection to active directory
-Profile is retrieved using Common Name
-Makes sure that connection is actually happening 
 
-Line 19 
-Method for Setter Method for setCN
+Line 37
+CN, or Common Name is a variable that tracks user and pyad connection to active directory
+A user profile is retrieved using Common Name
+Makes sure that connection is actually happening
+set_CN setter method allows you to set a new common name and initialize a different user. 
 No getter needed in python
 All set methods are required 
+
+Line 45
+get_unused_users method returns the current object's list of unused users
+
+Line 52
+get_unused_computers method returns the current object's list of unused computers
+
+Line 59
+get_pwdLastSetNDays method returns the current object's list of users that haven't set their password in N days
+
+Line 66
+get_admin_list method returns a list of admin for every admin type
+
+Line 73
+get_serv_man_not_set returns a list of service accounts without the manager field set
+
+***********work in progress*****************
 
 Line 26
 Method for Get last login users 
