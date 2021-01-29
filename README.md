@@ -77,6 +77,11 @@ ________________________________________________________________________________
 
 ![](Photos_Gifs/Alpha_4.PNG)
 
+## Roles ##
+### - Team Leader | Lead Developer: Chris Kyriacou ###
+### - Deputy Team Leader | Developer: Safeeullah Ghafoori ###
+### - Research | Developer | Documentation: Nathan Chong, Jamie Sutton, Dave Fuller ###
+
 ________________________________________________________________________________________________________________________________________________________________________________
 
 # Special Thank You To: #
