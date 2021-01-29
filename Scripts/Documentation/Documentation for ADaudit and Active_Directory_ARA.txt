@@ -1,22 +1,29 @@
 Markdown format needed
-Below probably has a lot of missing info (line numbers may not be relevant/variable)
 
 ADaudit.py Documentation
+The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance. 
+The user? must already be joined to the active directory server's domain to use this class.
+A default domain can be set or a temporary external domain can also be set.
 
-Line 1 
+Line 9
 Imported pyad, numpy, pyadutil and datetime
 
-Line 6
-Class ADaudit created 
-Tracks number of unused computers and unused user count  
-Variables:
+Line 17
+Class ADaudit created - Tracks number of unused computers and unused user count  
+Variables created:
 unusedComputerCount - a count of the unused computers
 unusedUserCount - a count of the unused users
 unusedUsers - an array of the unused users
 unusedComputers - an array of the unused computers
+pwdLastSetDays - an array of the number of days since a password was last set?
+admin_list - an array of the admins? 
+serv_man_not_set - an array - an array of server configurations?
 
-Line 12
-constructor 
+Line 28
+The constructor initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
+
+**************WORK IN PROGRESS*********************************************
+
 Objects are created here 
 With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user
 CN - Common Name - tracks user and pyad connection to active directory
