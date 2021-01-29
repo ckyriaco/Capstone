@@ -3,7 +3,7 @@
 import ADaudit as ad
 import os
 import numpy as np
-
+import Port_Scanner as ps
 
 
 #Use ADquery class to audit active directory for users that have not logged on in N days.
@@ -90,6 +90,10 @@ def service_account_audit(CN, DN):
     f.write(doc)
     f.close()
 
+def port_status(CN, server_ip, file):
+    P = ps.Port_Scanner(CN, server_ip)
+    P.port_status(file)
+
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
 
@@ -112,6 +116,16 @@ def main():
     last_set_pwd(CN, containers2, objectCategories2, N2)
     get_admin(CN, adminArray)
     service_account_audit(CN, con_serv)
+    file = os.getenv('FILE_NAME')
+    ip = os.getenv('SERVER_IP')
+    port_status(CN, ip, file)
+    f = open(file, "r")
+    doc = f.read()
+    print(doc)
+    f.close()
+    f = open("Audit_Report.txt", "a")
+    f.write(doc)
+    f.close()
     f = open("Audit_Report.txt", "r")
     print(f.read())
 

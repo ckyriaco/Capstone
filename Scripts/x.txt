@@ -1,17 +1,43 @@
+Host: 192.168.1.101 -> 192.168.1.101
+53 is open
+Port: 53 => service name: domain
 
-Unused Users: Administrator Days Unused: 7, Christopher Kyriacou Days Unused: 7, 
-Unused User Count: 2
-Unused Computers: CLIENT Days Unused: 14, DESKTOP-A67G0P2 Days Unused: 14, 
-Unused Computer Count: 2
-PWD Unchanged Past Day Limit: Administrator, Christopher Kyriacou, Guest, krbtgt, 
-Admin Report:
-Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
-Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
-Key Admins: 
-Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
-Service Accounts without manager set:
+80 is open
+Port: 80 => service name: http
 
-Updates
+88 is open
+Port: 88 => service name: kerberos
+
+135 is open
+Port: 135 => service name: epmap
+
+139 is open
+Port: 139 => service name: netbios-ssn
+
+389 is open
+Port: 389 => service name: ldap
+
+443 is open
+Port: 443 => service name: https
+
+445 is open
+Port: 445 => service name: microsoft-ds
+
+464 is open
+Port: 464 => service name: kpasswd
+Host: 192.168.1.120 -> CLIENT
+80 is open
+Port: 80 => service name: http
+
+135 is open
+Port: 135 => service name: epmap
+
+139 is open
+Port: 139 => service name: netbios-ssn
+
+445 is open
+Port: 445 => service name: microsoft-ds
+Host: 192.168.0.3 -> DESKTOP-A67G0P2
 Host: 192.168.1.101 -> 192.168.1.101
 53 is open
 Port: 53 => service name: domain
