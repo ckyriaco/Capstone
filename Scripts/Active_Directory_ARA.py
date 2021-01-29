@@ -121,7 +121,6 @@ def main():
     port_status(CN, ip, file)
     f = open(file, "r")
     doc = f.read()
-    print(doc)
     f.close()
     f = open("Audit_Report.txt", "a")
     f.write(doc)
