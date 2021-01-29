@@ -1,14 +1,14 @@
 
-Unused Users: Administrator Days Unused: 6, Christopher Kyriacou Days Unused: 6, 
+Unused Users: Administrator Days Unused: 7, Christopher Kyriacou Days Unused: 7, 
 Unused User Count: 2
-Unused Computers: CLIENT Days Unused: 13, DESKTOP-A67G0P2 Days Unused: 13, 
+Unused Computers: CLIENT Days Unused: 14, DESKTOP-A67G0P2 Days Unused: 14, 
 Unused Computer Count: 2
 PWD Unchanged Past Day Limit: Administrator, Christopher Kyriacou, Guest, krbtgt, 
 Admin Report:
 Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
-Enterprise Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
-Key Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
-Schema Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
+Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
+Key Admins: 
+Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 Service Accounts without manager set:
 
 Updates

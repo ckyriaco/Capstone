@@ -10,6 +10,9 @@ from pyad import *
 import numpy as np
 import pyad.pyadutils
 from datetime import datetime
+from warnings import simplefilter
+
+simplefilter(action='ignore', category=FutureWarning)
 
 class ADaudit:
     CN = ""
@@ -76,102 +79,123 @@ class ADaudit:
 
     #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
+        emptyArray = np.array([])
+        if(array == emptyArray or array == ""):
+            raise ValueError("The array cannot be empty!")
         for i in array:
             x = aduser.ADUser.from_cn(i)
             print(i, x.get_last_login())
 
 #Discover all service accounts that do not have a manager attribute set.
     def set_serve_manager_status(self, dn):
-        con = pyad.adcontainer.ADContainer.from_dn(dn)
-        notSet = []
-        for i in con.get_children():
-            manager = i.get_attribute("manager")
-            CN = i.get_attribute("CN")
-            if manager == notSet:
-                self.serv_man_not_set = np.append(self.serv_man_not_set, CN)
+        if(dn == ""):
+            raise ValueError("The distinguished name cannot be null!")
+        else:
+            con = pyad.adcontainer.ADContainer.from_dn(dn)
+            notSet = []
+            for i in con.get_children():
+                manager = i.get_attribute("manager")
+                CN = i.get_attribute("CN")
+                if manager == notSet:
+                    self.serv_man_not_set = np.append(self.serv_man_not_set, CN)
 
 
 #Get a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
 #The generated list is designed to be passed into get_login_past_N_days special purpose function.
 
     def get_last_user_login_list(self, dn, objCat):
-        con = pyad.adcontainer.ADContainer.from_dn(dn)
-        array = np.array([])
-        for obj in con.get_children():
-            c = obj.get_attribute("CN")
-            d = obj.get_attribute("objectCategory")
-            c = str(c[0])
-            d = str(d[0])
-            if (d == objCat):
-                array = np.append(array, c)
-        array2 = np.array([])
-        for i in array:
+        if(dn == "" or objCat == ""):
+            raise ValueError("The distinguished name and object category cannot be null!")
+        else:
+            con = pyad.adcontainer.ADContainer.from_dn(dn)
+            array = np.array([])
+            for obj in con.get_children():
+                c = obj.get_attribute("CN")
+                d = obj.get_attribute("objectCategory")
+                c = str(c[0])
+                d = str(d[0])
+                if (d == objCat):
+                    array = np.append(array, c)
+            array2 = np.array([])
+            for i in array:
 
-            u = aduser.ADUser.from_cn(i)
-            e = u.get_attribute("CN")
-            e = str(e[0])
+                u = aduser.ADUser.from_cn(i)
+                e = u.get_attribute("CN")
+                e = str(e[0])
 
-            b = u.get_allowed_attributes()
-            if ('logonCount' in b):
-                v = u.get_attribute("logonCount")
-                g = v[0]
-                if (v[0] > 0):
-                    str(i)
-                    array2 = np.append(array2, e)
-        return array2
+                b = u.get_allowed_attributes()
+                if ('logonCount' in b):
+                    v = u.get_attribute("logonCount")
+                    g = v[0]
+                    if (v[0] > 0):
+                        str(i)
+                        array2 = np.append(array2, e)
+            return array2
 
 #Find the users, within a provided list, that have not logged on in N days.
     def get_login_past_N_days(self, N, array, type):
-        now = datetime.now()
-        dt = now.strftime("%Y-%m-%d %H:%M:%S")
-        currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
-        array2 = np.array([])
-        for i in array:
-            x = aduser.ADUser.from_cn(i)
-            z = x.get_last_login()
-            z = str(z)
-            y = datetime.strptime(z, "%Y-%m-%d %H:%M:%S")
-            diff = abs((currentDate - y).days)
-            if(diff >= N):
-                array2 = np.append(array2, [i, diff])
-                if(type == "Computer"):
-                    self.unusedComputerCount += 1
-                    self.unusedComputers = np.append(self.unusedComputers, "{} Days Unused: {}".format(i, diff))
-                elif(type == "User"):
-                    self.unusedUserCount += 1
-                    self.unusedUsers = np.append(self.unusedUsers, "{} Days Unused: {}".format(i, diff))
-                else:
-                    raise ValueError("The value must be Computer or User!")
-
-#Find out when all users of a specific object category, within a container under a specific distinguished name type, last set their #password.
-    def get_pwd_last_login_N_days(self, dn, objectCategory, N):
-        container = adcontainer.ADContainer.from_dn(dn)
-        for obj in container.get_children():
+        Allowed_Types = np.array(["Computer", "User"])
+        emptyArray = np.array([])
+        if(array == emptyArray or type not in Allowed_Types):
+            raise ValueError("The array cannot be empty and the type must be either 'Computer' or 'User'")
+        else:
             now = datetime.now()
             dt = now.strftime("%Y-%m-%d %H:%M:%S")
             currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
-            c = obj.get_attribute("CN")
-            d = obj.get_attribute("objectCategory")
-            c = str(c[0])
-            d = str(d[0])
-            e = aduser.ADUser.from_cn(c)
-            if (d == objectCategory):
-                f = e.get_password_last_set()
-                f = str(f)
-                y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
+            array2 = np.array([])
+            for i in array:
+                x = aduser.ADUser.from_cn(i)
+                z = x.get_last_login()
+                z = str(z)
+                y = datetime.strptime(z, "%Y-%m-%d %H:%M:%S")
                 diff = abs((currentDate - y).days)
-                if (diff >= N):
-                    self.pwdLastSetNDays = np.append(self.pwdLastSetNDays, c)
+                if(diff >= N):
+                    array2 = np.append(array2, [i, diff])
+                    if(type == "Computer"):
+                        self.unusedComputerCount += 1
+                        self.unusedComputers = np.append(self.unusedComputers, "{} Days Unused: {}".format(i, diff))
+                    elif(type == "User"):
+                        self.unusedUserCount += 1
+                        self.unusedUsers = np.append(self.unusedUsers, "{} Days Unused: {}".format(i, diff))
+
+
+#Find out when all users of a specific object category, within a container under a specific distinguished name type, last set their #password.
+    def get_pwd_last_login_N_days(self, dn, objectCategory, N):
+        if(dn == "" or objectCategory == "" or N == "" or N < 1):
+            raise ValueError("The distinguished, object category and number of days cannot be null!"
+                             "\nThe number of days cannot be less than one!")
+        else:
+            container = adcontainer.ADContainer.from_dn(dn)
+            for obj in container.get_children():
+                now = datetime.now()
+                dt = now.strftime("%Y-%m-%d %H:%M:%S")
+                currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
+                c = obj.get_attribute("CN")
+                d = obj.get_attribute("objectCategory")
+                c = str(c[0])
+                d = str(d[0])
+                e = aduser.ADUser.from_cn(c)
+                if (d == objectCategory):
+                    f = e.get_password_last_set()
+                    f = str(f)
+                    y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
+                    diff = abs((currentDate - y).days)
+                    if (diff >= N):
+                        self.pwdLastSetNDays = np.append(self.pwdLastSetNDays, c)
 
 #Retrieve all admin of specified admin types
     def get_All_Admin(self, Admin_Types):
-        for i in Admin_Types:
-            user = aduser.ADUser.from_cn("Domain Admins")
-            l = user.get_attribute("member")
-            addition = ("{}: ").format(i)
-            for x in l:
-                addition += ("{},").format(x)
-            self.admin_list = np.append(self.admin_list, addition)
+        emptyArray = np.array([])
+        if(Admin_Types == emptyArray):
+            raise ValueError("The Admin_Types array cannot be empty!")
+        else:
+            for i in Admin_Types:
+                user = aduser.ADUser.from_cn(i)
+                l = user.get_attribute("member")
+                addition = ("{}: ").format(i)
+                for x in l:
+                    addition += ("{},").format(x)
+                self.admin_list = np.append(self.admin_list, addition)
 
 #Return a report of the admin users of each admin type
     def admin_report(self):

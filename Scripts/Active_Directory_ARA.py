@@ -9,14 +9,22 @@ import numpy as np
 #Use ADquery class to audit active directory for users that have not logged on in N days.
 
 def logon_info(CN, containers, objectCategories, types, N):
-    AD = ad.ADaudit(CN)
+    AD = ""
+    try:
+        AD = ad.ADaudit(CN)
+    except ValueError as Valer:
+        print("An Error has occurred: ", Valer)
     count = 0
     list = np.array([])
     N = int(N)
     while(count < len(containers)):
-        list = AD.get_last_user_login_list(containers[count], objectCategories[count])
-        AD.get_login_past_N_days(N, list, types[count])
-        count += 1
+        try:
+            list = AD.get_last_user_login_list(containers[count], objectCategories[count])
+            AD.get_login_past_N_days(N, list, types[count])
+        except ValueError as Valer:
+            print("An Error has occurred: ", Valer)
+        else:
+            count += 1
     #AD.toString()
     doc = AD.get_unused_report()
     #f = open(("Logon_in_{}_days.txt").format(N), "w")
@@ -30,12 +38,20 @@ def logon_info(CN, containers, objectCategories, types, N):
 #Use ADquery to locate users that have not changed their password in N days.
 
 def last_set_pwd(CN, containers, objectCategories, N):
-    AD = ad.ADaudit(CN)
+    AD = ""
+    try:
+        AD = ad.ADaudit(CN)
+    except ValueError as Valer:
+        print("An Error has occured: ", Valer)
     count = 0
     N = int(N)
     while(count < len(containers)):
-        AD.get_pwd_last_login_N_days(containers[count], objectCategories[count], N)
-        count += 1
+        try:
+            AD.get_pwd_last_login_N_days(containers[count], objectCategories[count], N)
+        except ValueError as Valer:
+            print("An Error has occurred: ", Valer)
+        else:
+            count += 1
     doc = AD.get_pwd_report()
     #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "w")
     #f.write(doc)
@@ -47,8 +63,13 @@ def last_set_pwd(CN, containers, objectCategories, N):
 
 #Use ADquery to get all the admin of each admin type in the AD server.
 def get_admin(CN, adminTypes):
-    AD = ad.ADaudit(CN)
-    AD.get_All_Admin(adminTypes)
+    AD = ""
+    try:
+        AD = ad.ADaudit(CN)
+        AD.get_All_Admin(adminTypes)
+    except ValueError as Valer:
+        print("An Error has occured: ", Valer)
+
     doc = AD.admin_report()
     #f = open("Admin_Report.txt", "w")
     #f = open("Admin_Report.txt", "r")
@@ -58,8 +79,12 @@ def get_admin(CN, adminTypes):
 
 #Use ADquery to get all the service accounts that don't have the manager attribute set.
 def service_account_audit(CN, DN):
-    AD = ad.ADaudit(CN)
-    AD.set_serve_manager_status(DN)
+    AD = ""
+    try:
+        AD = ad.ADaudit(CN)
+        AD.set_serve_manager_status(DN)
+    except ValueError as Valer:
+        print("An Error has occured: ", Valer)
     doc = AD.get_serv_man_not_set_report()
     f = open("Audit_Report.txt", "a")
     f.write(doc)
