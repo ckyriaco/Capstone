@@ -1,0 +1,163 @@
+CMMC Level 3 Compliance
+
+There are 58 practices at Level 3, which in addition to Level 1 and Level 2's 17 and 55 respective practices brings the total to 130. grouped into 17 domains.
+	- Domain AC: Access Control
+		(Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems))
+		(Limit information system access to the types of transactions and functions that authorized users are permitted to execute)
+		(Verify and control/limit connections to and use of external information systems)
+		(Control information posted or processed on publicly accessible information systems)
+		(Provide privacy and security notices consistent with applicable CUI rules)
+		(Limit use of portable storage devices on external systems)
+		(Employ the principle of least privilege, including for specific security functions and privileged accounts)
+		(Use non-privileged accounts or roles when accessing nonsecurity functions)
+		(Limit unsuccessful logon attempts)
+		(Use session lock with pattern-hiding displays to prevent access and viewing of data after a period of inactivity)
+		(Authorize wireless access prior to allowing such connections)
+		(Monitor and control remote access sessions)
+		(Route remote access via managed access control points)
+		(Control the flow of CUI in accordance with approved authorizations)
+		(Separate the duties of individuals to reduce the risk of malevolent activity without collusion)
+		(Prevent non-privileged users from executing privileged functions and capture the execution of such functions in audit logs)
+		(Terminate (automatically) a user session after a defined condition)
+		(Protect wireless access using authentication and encryption)
+		(Control connection of mobile devices)
+		(Employ cryptographic mechanisms to protect the confidentiality of remote access sessions)
+		(Authorize remote execution of privileged commands and remote access to security-relevant information)
+		(Encrypt CUI on mobile devices and mobile computing platforms)
+		
+	- Domain AM: Asset Management
+		(Document the CMMC practices to implement the Asset Management Policy)
+		(Establish, maintain, and resource a plan that includes Asset Management)
+		(Define procedures for the handling of CUI data)
+		
+	- Domain AU: Audit and Accountability 
+		(Ensure that the actions of individual system users can be uniquely traced to those users so they can be held accountable for their actions)
+		(Create and retain system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity)
+		(Provide a system capability that compares and synchronizes internal system clocks with an authoritative source to generate time stamps for audit records)
+		(Review audit logs)
+		(Review and update logged events)
+		(Alert in the event of an audit loggin process failure)
+		(Collect audit information (e.g., logs) into one or more central repositories)
+		(Protect audit information and audit logging tools from unauthorized access, modification, and deletion)
+		(Limit management of audit logging functionality to a subset of privileged users)
+		(Correlate audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity)
+		(Provide audit record education and report generation to support on-demand analysis and reporting)
+	
+	- Domain AT: Awareness and Training 
+		(Ensure that managers, systems administrators, and users of organizational systems are made aware of the security risks associated with their activities and of the applicable policies, standards, and procedures related to the security of those systems)
+		(Ensure that personnel are trained to carry out their assigned information security-related duties and responsibilities)
+		(Provide security awareness training on recognizing and reporting potential indicators of insider threat)
+		
+	- Domain CM: Configuration Management 
+		(Establish and maintain baseline configurations and inventories of organizational systems (including hardware, software, firmware, and documentation) throughout the respective system development life cycles)
+		(Employ the principle of least functionality by configuring organizational systems to provide only essential capabilities)
+		(Control and monitor user-installed software)
+		Establish and enforce security configuration settings for information technology products employed in organizational systems)
+		(Track, review, approve or disapprove, and log changes to organizational systems)
+		(Analyze the security impact of changes prior to implementation)
+		(Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems)
+		(Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services)
+		(Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software)
+		
+	- Domain IA: Identification and Authentication 
+		(Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts)
+		(Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts)
+		(Prevent reuse of identifiers for a defined period)
+		(Disable identifiers after a defined period of inactivity)
+	
+	- Domain IR: Incident Response 
+		(Identify information system users, processes acting on behalf of users, or devices.)
+		(Authenticate (or verify) the identities of those users, processes, or devices, as a prerequisite to allowing access to organizational information systems)
+		(Enforce a minimum password complexity and change of characters when new passwords are created)
+		(Prohibit password reuse for a specified number of generations)
+		(Allow temporary password use for system logons with an immediate change to a permanent password)
+		(Store and transmit only cryptographically-protected passwords)
+		(Obscure feedback of authentication information)
+		(Track, document, and report incidents to designated officials and/or authorities both internal and external to the organization)
+		(Test the organizational incident response capability)
+	
+	- Domain MA: Maintenance 
+		(Perform maintenance on organizational systems)
+		(Provide controls on the tools, techniques, mechanisms, and personnel used to conduct system maintenance)
+		(Require multifactor authentication to establish nonlocal maintenance sessions via external network connections and terminate such connections when nonlocal maintenance is complete)
+		(Supervise the maintenance activities of maintenance personnel without required access authorization)
+		(Ensure equipment removed for off-site maintenance is sanitized of any CUI)
+		(Check media containing diagnostic and test programs for malicious code before the media are used in organizational systems)
+	
+	- Domain MP: Media Protection
+		(Sanitize or destroy information system media containing Federal Contract Information before disposal or release for reuse)
+		(Protect (i.e., physically control and securely store) system media containing CUI, both paper and digital)
+		(Limit access to CUI on system media to authorized users)
+		(Control the use of removable media on system components)
+		(Mark media with necessary CUI markings and distribution limitations)
+		(Prohibit the use of portable storage devices when such devices have no identifiable owner)
+		(Control access to media containing CUI and maintain accountability for media during transport outside of controlled areas)
+		(Implement cryptographic mechanisms to protect the confidentiality of CUI stored on digital media during transport unless otherwise protected by alternative physical safeguards)
+
+	- Domain PS: Personnel Security 
+		(Screen individuals prior to authorizing access to organizational systems containing CUI)
+		(Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers)
+
+	- Domain PE: Physical Protection
+		(Limit physical access to organizational information systems, equipment, and the respective operating environments to authorized individuals)
+		(Escort visitors and monitor visitor activity)
+		(Maintain audit logs of physical access)
+		(Control and manage physical access devices)
+		(Protect and monitor the physical facility and support infrastructure for organizational systems)
+		(Enforce safeguarding measures for CUI at alternate work sites)
+	
+	- Domain RE: Recovery 
+		(Regularly perform and test data backups)
+		(Protect the confidentiality of backup CUI at storage locations)
+		(Regularly perform complete, comprehensive, and resilient data backups as organizationally defined)
+		
+	- Domain RM: Risk Management 
+		(Periodically assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI)
+		(Scan for vulnerabilities in organizational systems and applications periodically and when new vulnerabilities affecting those systems and applications are identified)
+		(Remediate vulnerabilities in accordance with risk assessments)
+		(Periodically perform risk assessments to identify and prioritize risks according to the defined risk categories, risk sources, and risk measurement criteria)
+		(Develop and implement risk mitigation plans)
+		(Manage non-vendor-supported products (e.g., end of life) separately and restrict as necessary to reduce risk)
+		
+	- Domain CA: Security Assessment 
+		(Develop, document, and periodically update system security plans that describe system boundaries, system environments of operation, how security requirements are implemented, and the relationships with or connections to other systems)
+		(Periodically assess the security controls in organizational systems to determine if the controls are effective in their application)
+		(Develop and implement plans of action designed to correct deficiencies and reduce or eliminate vulnerabilities in organizational systems)
+		(Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls)
+		(Employ a security assessment of enterprise software that has been developed internally, for internal use, and that has been organizationally defined as an area of risk)
+  
+	- Domain SA: Situational Awareness 
+		(Receive and respond to cyber threat intelligence from information sharing forums and sources and communicate to stakeholders)
+		
+	- Domain SC: Systems and Communications Protection 
+		(Monitor, control, and protect organizational communications (i.e., information transmitted or received by organizational information systems) at the external boundaries and key internal boundaries of the information systems)
+		(Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks)
+		(Prohibit remote activation of collaborative computing devices and provide indication of devices in use to users present at the device)
+		(Use encrypted sessions for the management of network devices)
+		(Employ FIPS-validated cryptography when used to protect the confidentiality of CUI)
+		(Employ architectural designs, software development techniques, and systems engineering principles that promote effective information security within organizational systems)
+		(Separate user functionality from system management functionality)
+		(Prevent unauthorized and unintended information transfer via shared system resources)
+		(Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception))
+		(Prevent remote devices from simultaneously establishing non-remote connections with organizational systems and communicating via some other connection to resources in external networks (i.e., split tunneling))
+		(Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards)
+		(Terminate network connections associated with communications sessions at the end of the sessions or after a defined period of inactivity)
+		(Establish and manage cryptographic keys for cryptography employed in organizational systems)
+		(Control and monitor the use of mobile code)
+		(Control and monitor the use of Voice over Internet Protocol (VoIP) technologies)
+		(Protect the authenticity of communications sessions)
+		(Protect the confidentiality of CUI at rest)
+		(Implement Domain Name System (DNS) filtering services)
+		(Implement a policy restricting the publication of CUI on externally owned, publicly accessible websites (e.g., forums, LinkedIn, Facebook, Twitter))
+		
+	- Domain SI: System and Information Integrity 
+		(Identify, report, and correct information and information system flaws in a timely manner)
+		(Provide protection from malicious code at appropriate locations within organizational information systems)
+		(Update malicious code protection mechanisms when new releases are available)
+		(Perform periodic scans of the information system and real-time scans of files from external sources as files are downloaded, opened, or executed)
+		(Monitor system security alerts and advisories and take action in response)
+		(Monitor organizational systems, including inbound and outbound communications traffic, to detect attacks and indicators of potential attacks)
+		(Identify unauthorized use of organizational systems)
+		(Employ spam protection mechanisms at information system access entry and exit points)
+		(Implement email forgery protections)
+		(Utilize sandboxing to detect or block potentially malicious email)
