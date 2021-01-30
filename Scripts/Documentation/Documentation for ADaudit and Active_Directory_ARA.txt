@@ -1,9 +1,12 @@
-Updated:
-1:49 PM 1/29/2021
+***********work in progress*****************
+Last Updated:
+11:13 AM 1/30/2021
 
 Markdown format needed/Line numbers may be variable or not needed?
-
+TBH at this point I'm just mostly just copying Chris's documentation to understand the code
+---------------------------------------------------------------------------------------------------------
 ADaudit.py Documentation
+
 The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance. 
 The administrator? must already be joined to the active directory server's domain to use this class.
 A default domain can be set or a temporary external domain can also be set.
@@ -49,34 +52,56 @@ get_admin_list method returns a list of admin for every admin type
 Line 73
 get_serv_man_not_set returns a list of service accounts without the manager field set
 
-***********work in progress*****************
-
-Line 26
+Line 80
 Method for Get last login users 
 Find when they last logged in 
 Can feed array as parameter
 
-Line 32 
-Get last user login list 
+Line 89
+Method set_serve_manager_status discovers all service accounts that do not have a manager attribute set
+
+Line 103
+Method get_last_user_login_list 
 Takes in a distinguished name list 
 Looks at the distinguished name that it last looked at 
 Object category is the group of specific users that you want to query about 
 makes sure that have actually logged on before 
 
-Line 58
+Line 135
+Method get_login_past_N_days finds the users within a provided list, that have not logged in N days 
+
+Line 162
+Method get_pwd_last_login_N_days finds out when the users within the same distinguished name type, container and object category last set their password. 
 After get specific category, look at the specific login 
-And look at the number of past login days 
-Good for reuse capability 
-Getting list of which users and/or computers that have not logged in in N days 
 
-Line 80 
-get report method
-To string method  prints out all info 
-List of Unused users, computers
-counts for Unused users, computers
+Line 186
+Method get_All_Admin retrieves all administrators of specified administrator types
 
-End of class so far
+Line 200 
+Method admin_report returns a report of the administrator users of each administrator type
 
+Line 207 
+Method get_unused_report returns a report of the users and computers that have not logged in 
+
+Line 219 
+Method get_pwd_report returns a report on the users that have not changed their password in N days
+
+Line 228
+Method get_serv_man_not_set_report returns a report of the service accounts that do not have a manager attribute set
+
+Line 233
+Method toString prints an overall message on information found by querying through Active Directory
+To string method  prints out all info:
+List of Unused users
+Count for Unused users
+List of Unused computers
+Count for Unused computers
+Limit for the number of days allowed passwords must be changed??("PWD Unchanged Past Day Limit")
+
+End of class so ADaudit
+
+----------------------------------------------------------------------------------------
+$$$
 Active_Directory_ARA.py Documentation
 
 Script 
@@ -101,6 +126,12 @@ Ad_driver.sh Documentation
 Stores OS variables
 Executes active_directory_ARA.py
 
+----------------------------------------------------------------------------------
+Port Scanner.py Documentation
+
+Line 1
+Import the queue package, numpy and pyad?
+--------------------------------------------------------------------------
 Later activities
 In bash directory made bash file executable 
 So it can be simply run through Gitbash
