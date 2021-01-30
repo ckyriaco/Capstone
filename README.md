@@ -60,7 +60,7 @@ ________________________________________________________________________________
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both an Windows Enterprise Server 2019 and Windows 10 Pro instance.
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
-3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
+3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
 4. Results of each audit type were designed to be stored in text files that were named accordingly.
 
 _________________________________________________________________________________________________________________________________________________________________________________
