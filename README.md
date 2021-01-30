@@ -86,7 +86,7 @@ ________________________________________________________________________________
 
 # Special Thank You To: #
 
-## - Chris Prather (Applied Research Aassociates) ##
+## - Chris Prather (Applied Research Associates) ##
 
 ## - Dr. Kenneth Ingham (Applied Research Associates) ##
 
