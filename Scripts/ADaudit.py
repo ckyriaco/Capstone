@@ -225,9 +225,9 @@ class ADaudit:
 
 #Report of the service accounts that do not have a manager attribute set.
     def get_serv_man_not_set_report(self):
-        message = "Service Accounts without manager set:\n"
+        message = "Service Accounts without manager set: "
         for i in self.serv_man_not_set:
-            message += ("\n{}").format(str(i))
+            message += ("{}, ").format(str(i))
         return message
 
 #Print an overall message on information found by querying through Active Directory.

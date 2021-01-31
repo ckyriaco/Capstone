@@ -1,7 +1,7 @@
 
-Unused Users: Administrator Days Unused: 8, Christopher Kyriacou Days Unused: 8, 
+Unused Users: Administrator Days Unused: 9, Christopher Kyriacou Days Unused: 9, 
 Unused User Count: 2
-Unused Computers: CLIENT Days Unused: 15, DESKTOP-A67G0P2 Days Unused: 16, 
+Unused Computers: CLIENT Days Unused: 16, DESKTOP-A67G0P2 Days Unused: 16, 
 Unused Computer Count: 2
 PWD Unchanged Past Day Limit: Administrator, Christopher Kyriacou, Guest, krbtgt, 
 Admin Report:
@@ -9,10 +9,11 @@ Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator
 Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 Key Admins: 
 Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
-Service Accounts without manager set:
+Service Accounts without manager set: Updates, 
 
-Updates
-192.168.1.101
+Port Status:
+
+KTG.local -> IPv4: 192.168.1.101
 
 53 is open
 Port: 53 => service name: domain
@@ -41,7 +42,7 @@ Port: 445 => service name: microsoft-ds
 464 is open
 Port: 464 => service name: kpasswd
 
-CLIENT
+CLIENT -> IPv4: 192.168.1.120
 
 80 is open
 Port: 80 => service name: http
@@ -55,4 +56,4 @@ Port: 139 => service name: netbios-ssn
 445 is open
 Port: 445 => service name: microsoft-ds
 
-DESKTOP-A67G0P2
+DESKTOP-A67G0P2 -> IPv4: 192.168.0.3

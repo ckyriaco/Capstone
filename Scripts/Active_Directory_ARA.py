@@ -90,8 +90,8 @@ def service_account_audit(CN, DN):
     f.write(doc)
     f.close()
 
-def port_status(CN, server_ip, file):
-    P = ps.Port_Scanner(CN, server_ip)
+def port_status(CN, server_ip, file, server_name):
+    P = ps.Port_Scanner(CN, server_ip, server_name)
     P.port_status(file)
 
 
@@ -118,7 +118,8 @@ def main():
     service_account_audit(CN, con_serv)
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
-    port_status(CN, ip, file)
+    server_name = os.getenv('SERVER_NAME')
+    port_status(CN, ip, file, server_name)
     f = open(file, "r")
     doc = f.read()
     f.close()

@@ -15,11 +15,12 @@ class Port_Scanner:
     Port_Messages = np.array([])
     dn_hosts = np.array([])
     server_ip = ""
+    server_Domain_name = ""
 
 
-    def __init__(self, CN, server_ip):
+    def __init__(self, CN, server_ip, server_Domain_name):
         if(CN == ""):
-            raise ValueError("The Domain name cannot be null!")
+            raise ValueError("The common name cannot be null!")
         else:
             self.CN = CN
 
@@ -28,6 +29,11 @@ class Port_Scanner:
         else:
             self.server_ip = server_ip
             self.dn_hosts = np.append(self.dn_hosts, self.server_ip)
+
+        if(server_Domain_name == ""):
+            raise ValueError("The Domain name cannot be null!")
+        else:
+            self.server_Domain_name = server_Domain_name
 
 
 
@@ -58,7 +64,7 @@ class Port_Scanner:
         for i in hosts.get_children():
             n = i.get_attribute("CN")
             self.dn_hosts = np.append(self.dn_hosts, str(n[0]))
-            print(n[0])
+
 
     def port_status(self, file):
         f = open(file, "w")
@@ -105,7 +111,10 @@ class Port_Scanner:
 
         counter = 0
         for i in array:
-            message = ("\n{}\n").format(self.dn_hosts[counter])
+            if(counter == 0):
+                message = ("\n\nPort Status:\n\n{} -> IPv4: {}\n").format(self.server_Domain_name, i)
+            else:
+                message = ("\n{} -> IPv4: {}\n").format(self.dn_hosts[counter], i)
             f = open(file, "a")
             f.write(message)
             f.close()

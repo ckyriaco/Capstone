@@ -1,5 +1,8 @@
 
-192.168.1.101
+
+Port Status:
+
+KTG.local -> IPv4: 192.168.1.101
 
 53 is open
 Port: 53 => service name: domain
@@ -28,7 +31,7 @@ Port: 445 => service name: microsoft-ds
 464 is open
 Port: 464 => service name: kpasswd
 
-CLIENT
+CLIENT -> IPv4: 192.168.1.120
 
 80 is open
 Port: 80 => service name: http
@@ -42,4 +45,4 @@ Port: 139 => service name: netbios-ssn
 445 is open
 Port: 445 => service name: microsoft-ds
 
-DESKTOP-A67G0P2
+DESKTOP-A67G0P2 -> IPv4: 192.168.0.3
