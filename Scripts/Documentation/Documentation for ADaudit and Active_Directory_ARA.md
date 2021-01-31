@@ -1,11 +1,11 @@
-***********work in progress*****************
+***work in progress***
 Last Updated:
-11:13 AM 1/30/2021
+Jan 31
 
-Markdown format needed/Line numbers may be variable or not needed?
-TBH at this point I'm just mostly just copying Chris's documentation to understand the code
----------------------------------------------------------------------------------------------------------
-ADaudit.py Documentation
+***Line numbers may be variable or not needed?***
+**TBH at this point I'm just mostly just copying Chris's documentation to understand the code**
+
+## ADaudit.py Documentation
 
 The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance. 
 The administrator? must already be joined to the active directory server's domain to use this class.
@@ -100,11 +100,11 @@ Limit for the number of days allowed passwords must be changed??("PWD Unchanged 
 
 End of class so ADaudit
 
-----------------------------------------------------------------------------------------
-$$$
-Active_Directory_ARA.py Documentation
+$$$--left off here
 
-Script 
+## Active_Directory_ARA.py Documentation
+
+**Script** 
 
 Line 1
 Import ADaudit class 
@@ -126,13 +126,12 @@ Ad_driver.sh Documentation
 Stores OS variables
 Executes active_directory_ARA.py
 
-----------------------------------------------------------------------------------
-Port Scanner.py Documentation
+## Port Scanner.py Documentation
 
 Line 1
 Import the queue package, numpy and pyad?
---------------------------------------------------------------------------
-Later activities
+
+**Later activities**
 In bash directory made bash file executable 
 So it can be simply run through Gitbash
 (Bash terminal of choice)
