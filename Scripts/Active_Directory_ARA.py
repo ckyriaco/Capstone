@@ -92,8 +92,11 @@ def service_account_audit(CN, DN):
 
 #Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
 def port_status(CN, server_ip, file, server_name, container):
-    P = ps.Port_Scanner(CN, server_ip, server_name, container)
-    P.port_status(file)
+    try:
+        P = ps.Port_Scanner(CN, server_ip, server_name, container)
+        P.port_status(file)
+    except ValueError as Valer:
+        print("An Error has occured: ", Valer)
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
