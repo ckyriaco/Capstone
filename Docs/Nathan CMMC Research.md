@@ -10,31 +10,26 @@ CMMC assessments will be conducted by Third Party Assessment Organizations that 
 [CMMC Official Link](https://www.acq.osd.mil/cmmc/)
 
 # CMMC Framework Certification Levels 
-**Level 1:**
-Companies must use antivirus software and ensure that employees change passwords regularly to protect Federal Contract Information (FCI)
-**Level 2:**
-Companies must document measures taken to protect Controlled Unclassified Information (CUI) in accordance with  NIST 800-171 r2 requirements 
-**Level 3:**
-Companies must have an implemented management plan to protect Controlled Unclassified Information (CUI) in accordance with NIST 800-171 r2 requirements as well as some additional protection standards.
-**Level 4:**
-Companies must have review processes in place to measure the effectiveness of their cyber hygene practices as well as processes in place to deal with advanced persistent threats(APTs) that continually undergo tactical, technical and procedural changes.
-**Level 5:**
-Companies must have standardized their cyber hygene processes organization-wide and have implemented more advanced and sophisticated processes to combat advanced persistent threats(APTs) 
+* **Level 1:** Companies must use antivirus software and ensure that employees change passwords regularly to protect Federal Contract Information (FCI)
+* **Level 2:** Companies must document measures taken to protect Controlled Unclassified Information (CUI) in accordance with  NIST 800-171 r2 requirements 
+* **Level 3:** Companies must have an implemented management plan to protect Controlled Unclassified Information (CUI) in accordance with NIST 800-171 r2 requirements as well as some additional protection standards.
+* **Level 4:** Companies must have review processes in place to measure the effectiveness of their cyber hygene practices as well as processes in place to deal with advanced persistent threats(APTs) that continually undergo tactical, technical and procedural changes.
+* **Level 5:** Companies must have standardized their cyber hygene processes organization-wide and have implemented more advanced and sophisticated processes to combat advanced persistent threats(APTs) 
 
 **Source:**
 [The Cybersecurity Maturity Model Certification explained: What defense contractors need to know](https://www.csoonline.com/article/3535797/the-cybersecurity-maturity-model-certification-explained-what-defense-contractors-need-to-know.html)
 
 # History of CMMC and why it is being implemented
-DoD faces data breaches
-NIST requirements created 
-slow adoption
-CMMC mandated to protect Controlled Unclassified Information on contractor systems
-Only DoD suppliers that only provide commercial off-the-shelf products are excluded from the audit
+* DoD faces data breaches
+* NIST requirements created 
+* slow adoption
+* CMMC mandated to protect Controlled Unclassified Information on contractor systems
+* Only DoD suppliers that only provide commercial off-the-shelf products are excluded from the audit
 
 # Notes on NIST 800-171 Compliance
-Need a system security plan and a plan of action
-Configure environment for compliance
-Build budget for compliance and perhaps outsource
+* Need a system security plan and a plan of action
+* Configure environment for compliance
+* Build budget for compliance and perhaps outsource
 
 
 **Sources:**
