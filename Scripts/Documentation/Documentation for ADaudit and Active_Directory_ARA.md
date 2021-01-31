@@ -1,36 +1,31 @@
-***work in progress***
 Last Updated:
 Jan 31
 
-***Line numbers may be variable or not needed?***
-**TBH at this point I'm just mostly just copying Chris's documentation to understand the code**
-
 ## ADaudit.py Documentation
 
-The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance. 
-The administrator? must already be joined to the active directory server's domain to use this class.
-A default domain can be set or a temporary external domain can also be set.
+_The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance._
+_The administrator? must already be joined to the active directory server's domain to use this class._
+_A default domain can be set or a temporary external domain can also be set._
 
-Line 9
-Imported pyad, numpy, pyadutil and datetime
+### Import
+Import pyad, numpy, pyadutil and datetime
 
-Line 17
-Class ADaudit created - Tracks number of unused computers and unused user count  
-Variables created:
-unusedComputerCount - a count of the unused computers
-unusedUserCount - a count of the unused users
-unusedUsers - an array of the unused users
-unusedComputers - an array of the unused computers
-pwdLastSetDays - an array of users who haven't set their password in N days
-admin_list - an array of the admin for every admin type
-serv_man_not_set - an array of service accounts without the manager field set
+### Class ADaudit created - 
+Tracks number of unused computers and unused user count  
+**Variables created:**
+_unusedComputerCount_ -a count of the unused computers
+_unusedUserCount_ -a count of the unused users
+_unusedUsers_ - an array of the unused users
+_unusedComputers_ - an array of the unused computers
+_pwdLastSetDays_ - an array of users who haven't set their password in N days
+_admin list_ - an array of the admin for every admin type
+_serv man not set_ - an array of service accounts without the manager field set
 
-Line 28
-The constructor initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
+### The constructor 
+initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
 With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user
 
-Line 37
-CN, or Common Name is a variable that tracks user and pyad connection to active directory
+**CN, or Common Name** is a variable that tracks user and pyad connection to active directory
 A user profile is retrieved using Common Name
 Makes sure that connection is actually happening
 set_CN setter method allows you to set a new common name and initialize a different user. 
@@ -38,7 +33,8 @@ No getter needed in python
 All set methods are required 
 
 Line 45
-get_unused_users method returns the current object's list of unused users
+### get_unused_users method 
+returns the current object's list of unused users
 
 Line 52
 get_unused_computers method returns the current object's list of unused computers
@@ -99,8 +95,6 @@ Count for Unused computers
 Limit for the number of days allowed passwords must be changed??("PWD Unchanged Past Day Limit")
 
 End of class so ADaudit
-
-$$$--left off here
 
 ## Active_Directory_ARA.py Documentation
 

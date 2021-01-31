@@ -7,11 +7,11 @@ CMMC adds an additional verification component to existing cybersecurity regulat
 CMMC is designed to be low cost and easy to implement for small businesses with weaker security maturity levels.
 CMMC assessments will be conducted by Third Party Assessment Organizations that are authorized to issue CMMC certificates specifically to Defense Industrial Base companies at their corresponding security maturity level.
 
-## CMMC Official Link:
+**CMMC Official Link:**
 Cybersecurity Maturity Model Certification (CMMC) (osd.mil)
 https://www.acq.osd.mil/cmmc/
 
-## CMMC Framework Certification Levels 
+# CMMC Framework Certification Levels 
 **Level 1:**
 Companies must use antivirus software and ensure that employees change passwords regularly to protect Federal Contract Information (FCI)
 **Level 2:**
@@ -26,14 +26,14 @@ Companies must have standardized their cyber hygene processes organization-wide 
 **Source:**
 https://www.csoonline.com/article/3535797/the-cybersecurity-maturity-model-certification-explained-what-defense-contractors-need-to-know.html
 
-## History of CMMC and why it is being implemented
+# History of CMMC and why it is being implemented
 DoD faces data breaches
 NIST requirements created 
 slow adoption
 CMMC mandated to protect Controlled Unclassified Information on contractor systems
 Only DoD suppliers that only provide commercial off-the-shelf products are excluded from the audit
 
-## Notes on NIST 800-171 Compliance
+# Notes on NIST 800-171 Compliance
 Need a system security plan and a plan of action
 Configure environment for compliance
 Build budget for compliance and perhaps outsource

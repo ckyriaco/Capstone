@@ -1,4 +1,4 @@
-## meeting start 2:00pm
+**meeting start 2:00pm**
 we have some more ques
 next meeting with ingham is next thursday 
 invite ingham to github 
@@ -33,4 +33,4 @@ what we will need to include in our presentations (examples? prototype?)
 documentation review how well does it explain the code?
 dave is attending in-person
 classes every other week? (need to check)
-# meeting adjourned 2:29pm
+**meeting adjourned 2:29pm**
