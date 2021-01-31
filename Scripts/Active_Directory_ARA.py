@@ -90,8 +90,9 @@ def service_account_audit(CN, DN):
     f.write(doc)
     f.close()
 
-def port_status(CN, server_ip, file, server_name):
-    P = ps.Port_Scanner(CN, server_ip, server_name)
+#Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
+def port_status(CN, server_ip, file, server_name, container):
+    P = ps.Port_Scanner(CN, server_ip, server_name, container)
     P.port_status(file)
 
 
@@ -119,7 +120,7 @@ def main():
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')
-    port_status(CN, ip, file, server_name)
+    port_status(CN, ip, file, server_name, containerComputers)
     f = open(file, "r")
     doc = f.read()
     f.close()

@@ -17,9 +17,10 @@ class Port_Scanner:
     dn_hosts = np.array([])
     server_ip = ""
     server_Domain_name = ""
+    computerDN = ""
 
 #Initializes a Port_Scanner object that will be used to discover futher detail on port activity throughout a specified domain.
-    def __init__(self, CN, server_ip, server_Domain_name):
+    def __init__(self, CN, server_ip, server_Domain_name, computerDN):
         if(CN == ""):
             raise ValueError("The common name cannot be null!")
         else:
@@ -35,6 +36,11 @@ class Port_Scanner:
             raise ValueError("The Domain name cannot be null!")
         else:
             self.server_Domain_name = server_Domain_name
+
+        if (computerDN == ""):
+            raise ValueError("The distinguished name for the computer container cannot be null!")
+        else:
+            self.computerDN = computerDN
 
 
 #This ensures that the ip address is of a valid format.
@@ -62,10 +68,13 @@ class Port_Scanner:
 
 #This uses pyad to identify the computers that are within the domain. 
     def get_hosts(self):
-        hosts = adcontainer.ADContainer.from_dn('CN=Computers, DC=KTG, DC=local')
-        for i in hosts.get_children():
-            n = i.get_attribute("CN")
-            self.dn_hosts = np.append(self.dn_hosts, str(n[0]))
+        if(self.computerDN == ""):
+            self.dn_hosts = np.append(self.dn_hosts, "No Hosts")
+        else:
+            hosts = adcontainer.ADContainer.from_dn(self.computerDN)
+            for i in hosts.get_children():
+                n = i.get_attribute("CN")
+                self.dn_hosts = np.append(self.dn_hosts, str(n[0]))
 
 #This method looks through the server and the computers connected to the server domain to identify all processes operating on open ports.
     def port_status(self, file):
