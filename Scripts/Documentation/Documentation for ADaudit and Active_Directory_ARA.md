@@ -1,6 +1,3 @@
-Last Updated:
-Jan 31
-
 ## ADaudit.py Documentation
 
 _The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance._
