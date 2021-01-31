@@ -1,3 +1,4 @@
+#This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain. 
 from queue import Queue
 import numpy as np
 from pyad import *
@@ -17,7 +18,7 @@ class Port_Scanner:
     server_ip = ""
     server_Domain_name = ""
 
-
+#Initializes a Port_Scanner object that will be used to discover futher detail on port activity throughout a specified domain.
     def __init__(self, CN, server_ip, server_Domain_name):
         if(CN == ""):
             raise ValueError("The common name cannot be null!")
@@ -36,7 +37,7 @@ class Port_Scanner:
             self.server_Domain_name = server_Domain_name
 
 
-
+#This ensures that the ip address is of a valid format.
     def check_ip(self, ip):
         # Python program to validate an Ip address
 
@@ -59,13 +60,14 @@ class Port_Scanner:
         else:
             return False
 
+#This uses pyad to identify the computers that are within the domain. 
     def get_hosts(self):
         hosts = adcontainer.ADContainer.from_dn('CN=Computers, DC=KTG, DC=local')
         for i in hosts.get_children():
             n = i.get_attribute("CN")
             self.dn_hosts = np.append(self.dn_hosts, str(n[0]))
 
-
+#This method looks through the server and the computers connected to the server domain to identify all processes operating on open ports.
     def port_status(self, file):
         f = open(file, "w")
         f.write("")
