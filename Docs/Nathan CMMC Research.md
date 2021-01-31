@@ -7,9 +7,7 @@ CMMC adds an additional verification component to existing cybersecurity regulat
 CMMC is designed to be low cost and easy to implement for small businesses with weaker security maturity levels.
 CMMC assessments will be conducted by Third Party Assessment Organizations that are authorized to issue CMMC certificates specifically to Defense Industrial Base companies at their corresponding security maturity level.
 
-**CMMC Official Link:**
-Cybersecurity Maturity Model Certification (CMMC) (osd.mil)
-https://www.acq.osd.mil/cmmc/
+[CMMC Official Link](https://www.acq.osd.mil/cmmc/)
 
 # CMMC Framework Certification Levels 
 **Level 1:**
@@ -24,7 +22,7 @@ Companies must have review processes in place to measure the effectiveness of th
 Companies must have standardized their cyber hygene processes organization-wide and have implemented more advanced and sophisticated processes to combat advanced persistent threats(APTs) 
 
 **Source:**
-https://www.csoonline.com/article/3535797/the-cybersecurity-maturity-model-certification-explained-what-defense-contractors-need-to-know.html
+[The Cybersecurity Maturity Model Certification explained: What defense contractors need to know](https://www.csoonline.com/article/3535797/the-cybersecurity-maturity-model-certification-explained-what-defense-contractors-need-to-know.html)
 
 # History of CMMC and why it is being implemented
 DoD faces data breaches
@@ -40,6 +38,6 @@ Build budget for compliance and perhaps outsource
 
 
 **Sources:**
-https://www.ntiva.com/blog/comprehensive-guide-to-cmmc-for-dod-contractors
-https://info.summit7systems.com/blog/cmmc
+[CMMC: A Comprehensive Guide For DoD Contractors](https://www.ntiva.com/blog/comprehensive-guide-to-cmmc-for-dod-contractors)
+[What is the Cybersecurity Maturity Model Certification (CMMC)?](https://info.summit7systems.com/blog/cmmc)
 
