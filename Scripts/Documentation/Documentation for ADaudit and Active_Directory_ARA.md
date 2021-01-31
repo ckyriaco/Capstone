@@ -13,13 +13,13 @@ Import pyad, numpy, pyadutil and datetime
 ### Class ADaudit created - 
 Tracks number of unused computers and unused user count  
 **Variables created:**
-_unusedComputerCount_ -a count of the unused computers
-_unusedUserCount_ -a count of the unused users
-_unusedUsers_ - an array of the unused users
-_unusedComputers_ - an array of the unused computers
-_pwdLastSetDays_ - an array of users who haven't set their password in N days
-_admin list_ - an array of the admin for every admin type
-_serv man not set_ - an array of service accounts without the manager field set
+* _unusedComputerCount_ -a count of the unused computers
+* _unusedUserCount_ -a count of the unused users
+* _unusedUsers_ - an array of the unused users
+* _unusedComputers_ - an array of the unused computers
+* _pwdLastSetDays_ - an array of users who haven't set their password in N days
+* _admin list_ - an array of the admin for every admin type
+* _serv man not set_ - an array of service accounts without the manager field set
 
 ### The constructor 
 initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
