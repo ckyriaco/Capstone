@@ -58,46 +58,63 @@ class Port_Scanner:
         for i in hosts.get_children():
             n = i.get_attribute("CN")
             self.dn_hosts = np.append(self.dn_hosts, str(n[0]))
+            print(n[0])
 
     def port_status(self, file):
+        f = open(file, "w")
+        f.write("")
         socket.setdefaulttimeout(0.25)
         print_lock = threading.Lock()
         self.get_hosts()
+        #for i in self.dn_hosts:
+        #target = i
+        array = np.array([])
         for i in self.dn_hosts:
             target = i
             t_IP = socket.gethostbyname(target)
-            message = ('\nHost: {} -> {}').format(t_IP, i)
-            #message = ("\n{} ({}):\n").format(t_IP, i)
+            array = np.append(array, t_IP)
+        #message = ('\nHost: {} -> {}').format(t_IP, i)
+        #message = ("\n{} ({}):\n").format(t_IP, i)
+        #f = open(file, "a")
+        #f.write(message)
+        #f.close()
+        message = ""
+        def portscan(port, target, file, message):
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                con = s.connect((target, port))
+                #print(i)
+                with print_lock:
+                    #print(target)
+                    #print(port, 'is open')
+                    message += ("\n{} is open\n").format(port)
+                    protocolname = 'tcp'
+                    #print("Port: %s => service name: %s" % (port, socket.getservbyport(port, protocolname)))
+                    message += ("Port: {} => service name: {}\n").format(port, socket.getservbyport(port, protocolname))
+                    f = open(file, "a")
+                    f.write(message)
+                    f.close()
+                con.close()
+            except:
+                pass
+
+            #f = open(file, "a")
+            #f.write(message)
+            #f.close()
+
+
+        counter = 0
+        for i in array:
+            message = ("\n{}\n").format(self.dn_hosts[counter])
             f = open(file, "a")
             f.write(message)
             f.close()
-            message = ""
-            def portscan(port, target, i, file, message):
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                try:
-                    con = s.connect((t_IP, port))
-                    with print_lock:
-                        #print(port, 'is open')
-                        message += ("\n{} is open\n").format(port)
-                        protocolname = 'tcp'
-                        #print("Port: %s => service name: %s" % (port, socket.getservbyport(port, protocolname)))
-                        message += ("Port: {} => service name: {}\n").format(port, socket.getservbyport(port, protocolname))
-                        f = open(file, "a")
-                        f.write(message)
-                        f.close()
-                    con.close()
-                except:
-                    pass
-
-                #f = open(file, "a")
-                #f.write(message)
-                #f.close()
-
-
+            counter += 1
             def threader():
+                message = ""
                 while True:
                     worker = q.get()
-                    portscan(worker, target, i, file, message)
+                    portscan(worker, i, file, message)
                     q.task_done()
 
             q = Queue()
@@ -112,6 +129,8 @@ class Port_Scanner:
                 q.put(worker)
 
             q.join()
+
             #print('Time taken:', time.time() - startTime)
+
 
 
