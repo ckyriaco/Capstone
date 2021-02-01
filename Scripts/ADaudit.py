@@ -208,11 +208,11 @@ class ADaudit:
     def get_unused_report(self):
         message ="\n\nUnused Users:"
         for i in self.unusedUsers:
-            message += ("\n{}, ").format(str(i))
+            message += ("\n{}").format(str(i))
         message += ("\nUnused User Count: {}").format(self.unusedUserCount)
-        message += "\n\nUnused Computers:\n"
+        message += "\n\nUnused Computers:"
         for i in self.unusedComputers:
-            message += ("{}, ").format(str(i))
+            message += ("\n{}").format(str(i))
         message += ("\nUnused Computer Count: {}").format(self.unusedComputerCount)
         return message
 

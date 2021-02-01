@@ -1,12 +1,13 @@
 
 
 Unused Users:
-Administrator Days Unused: 10, 
-Christopher Kyriacou Days Unused: 10, 
+Administrator Days Unused: 10
+Christopher Kyriacou Days Unused: 10
 Unused User Count: 2
 
 Unused Computers:
-CLIENT Days Unused: 17, DESKTOP-A67G0P2 Days Unused: 17, 
+CLIENT Days Unused: 17
+DESKTOP-A67G0P2 Days Unused: 17
 Unused Computer Count: 2
 
 PWD Unchanged Past Day Limit:
