@@ -11,13 +11,13 @@ ________________________________________________________________________________
   
 ***CMMC Levels of compliance:***
 
-CMMC Level 1: This is essentially addressing FAR 52.204-21 cybersecurity principles.
+CMMC Level 1: Addressing FAR 52.204-21 cybersecurity principles.
 
-CMMC Level 2: This builds on CMMC Level 1 and addresses a little over half of NIST 800-171 controls.
+CMMC Level 2: Builds on CMMC Level 1 and addresses a little over half of NIST 800-171 controls.
 
-***CMMC Level 3: This builds on CMMC Level 2 and addresses all NIST 800-171 and a few extras. (Our Focus)***
+***CMMC Level 3: Builds on CMMC Level 2 and addresses all NIST 800-171 and a few extras. (Our Focus)***
 
-CMMC Levels 4 & 5: CMMC Levels 4 & 5 build off CMMC Level 3 and include controls from a range of frameworks:
+CMMC Levels 4 & 5: Build off CMMC Level 3 and include controls from a range of frameworks:
 - CERT RMM v1.2
 - NIST SP 800-53
 - NIST SP 800-172
@@ -29,12 +29,12 @@ ________________________________________________________________________________
 
 ### **Main Goal:**
 
-The goal of this project is to create an auditing system that allows authorized security admin at the Applied Research Associates (ARA) 
-to audit their active directory servers to ensure CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
+The goal of this project is to create an auditing system that allows authorized security admin, at the Applied Research Associates (ARA), 
+to audit their active directory servers for CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
 that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
 
 ***Functionality list to reach our main goal:***
-1. Using AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
+1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
 3. Produce a list of users who have not changed their password in N days.
 4. Produce a list of users in a given AD section (i.e., restrict.ara.com) who have administrative privileges
@@ -44,12 +44,12 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### **Audit Process (End-Goal)**
+### **Audit Process (Proposed End-Goal)**
 
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural python script, then executes the python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
-3. The python script attempts to retrieves all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. If the audit succeeded, it will be indicated if the Domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an Admin to take a look into the error. 
+3. The python script attempts to retrieve all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
+4. If the audit succeeds, it will be indicated if the Domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an Admin to take a look into the error. 
 
 ![](Diagrams/Audit_Process_1.png)
 
@@ -58,10 +58,10 @@ ________________________________________________________________________________
 ### **Mock Setup for Prototype/Proof of Concept**
 
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
-1. Created both an Windows Enterprise Server 2019 and Windows 10 Pro instance.
-2. Once both instances were up and running, The Windows 10 Pro instance was used to join the active directory domain (A .local domain was used for this prototype).
-3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. Results of each audit type were designed to be stored in text files that were named accordingly.
+1. Created both a Windows Enterprise Server 2019 and Windows 10 Pro instance.
+2. Once both instances were up and running, The Windows 10 Pro instance was used to join the Active Directory Domain (A .local Domain was used for this prototype).
+3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class and the [Active_Directory_ARA.py](Scripts/Active_Directory_ARA.py) procedural script were used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
+4. All the results of each audit type were designed to be stored in a text file named [Audit_Report.txt](Scripts/Audit_Report.txt) for future use by the Domain Admin.
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
@@ -84,10 +84,10 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
-# Special Thank You To: #
+## Special Thank You To: ##
 
-## - Chris Prather (Applied Research Associates) ##
+### - Chris Prather (Applied Research Associates) ###
 
-## - Dr. Kenneth Ingham (Applied Research Associates) ##
+### - Dr. Kenneth Ingham (Applied Research Associates) ###
 
-## - Prof. John McLaughlin (George Mason University) ##
+### - Prof. John McLaughlin (George Mason University) ###
