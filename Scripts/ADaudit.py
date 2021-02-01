@@ -199,18 +199,18 @@ class ADaudit:
 
 #Return a report of the admin users of each admin type
     def admin_report(self):
-        message = "\nAdmin Report:\n"
+        message = "\n\nAdmin Report:\n"
         for i in self.admin_list:
             message += ("{}\n").format(str(i))
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
-        message ="\nUnused Users: "
+        message ="\n\nUnused Users:"
         for i in self.unusedUsers:
-            message += ("{}, ").format(str(i))
+            message += ("\n{}, ").format(str(i))
         message += ("\nUnused User Count: {}").format(self.unusedUserCount)
-        message += "\nUnused Computers: "
+        message += "\n\nUnused Computers:\n"
         for i in self.unusedComputers:
             message += ("{}, ").format(str(i))
         message += ("\nUnused Computer Count: {}").format(self.unusedComputerCount)
@@ -218,14 +218,14 @@ class ADaudit:
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
-        message = "\nPWD Unchanged Past Day Limit: "
+        message = "\n\nPWD Unchanged Past Day Limit:\n"
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
         return message
 
 #Report of the service accounts that do not have a manager attribute set.
     def get_serv_man_not_set_report(self):
-        message = "Service Accounts without manager set: "
+        message = "\n\nService Accounts without manager set:\n"
         for i in self.serv_man_not_set:
             message += ("{}, ").format(str(i))
         return message
@@ -245,20 +245,5 @@ class ADaudit:
             print(("{}, ").format(str(i)))
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
