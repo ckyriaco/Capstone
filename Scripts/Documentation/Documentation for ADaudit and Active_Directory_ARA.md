@@ -117,11 +117,6 @@ Ad_driver.sh Documentation
 Stores OS variables
 Executes active_directory_ARA.py
 
-## Port Scanner.py Documentation
-
-Line 1
-Import the queue package, numpy and pyad?
-
 **Later activities**
 In bash directory made bash file executable 
 So it can be simply run through Gitbash
