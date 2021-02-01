@@ -14,12 +14,12 @@
 - [ ] Documentation Session for new code. 
 
 
-### Saffee ###
+### Saffee Ghafoori###
 
 - [ ] Look at the [Audit_Report.txt](Scripts/Audit_report.txt) file and decide how the text file should be formatted to display the results of the audit. Relay these changes to Christopher Kyriacou so he can make ajustments in the code. 
 - [ ] Convert previous and new documentation on classes in markdown with Nathan.
 
-### Nathan ###
+### Nathan Chong###
 
 - [ ] Look at the current prototype and create a diagram that describes how we get from point the initialization of the python scripts to the audit report. Use the [Audit_Process_1.png](Diagrams/Audit_Process_1.png) for the desired end goal as a reference.
 - [ ] Document previous and new documentation on classes in markdown with Saffee. 
