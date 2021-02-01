@@ -8,7 +8,7 @@ Import Queue, numpy, pyad / pyadutils, re, socket, threading, time, simplefilter
 Line 12 
 set simplefilter action to 'ignore' and set category to 'FutureWarning'
 
-#### Class Port_Scanner created
+### Class Port_Scanner created
 Tracks the processes connecting to ports on the domain server as well as any computers connected to the domain.
 
 **Variables created:**
