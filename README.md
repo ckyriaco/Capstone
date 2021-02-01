@@ -1,9 +1,9 @@
 # Capstone
-## **[Active Directory](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) Auditing for Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/) Compliance** ##
+## **[Active Directory](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) Auditing for Cybersecurity Maturity Model Certification [(CMMC)](https://cybersecurity.att.com/blogs/security-essentials/what-is-cmmc-compliance) Compliance** ##
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### **Cybersecurity Maturity Model Certification [(CMMC)](https://www.cmmc-compliance.com/):**
+### **Cybersecurity Maturity Model Certification [(CMMC)](https://cybersecurity.att.com/blogs/security-essentials/what-is-cmmc-compliance):**
 
 ***Primary Goal: Safeguard controlled unclassified information (CUI) across the DoD supply chain.***
 
