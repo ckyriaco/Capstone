@@ -86,8 +86,8 @@ ________________________________________________________________________________
 
 ## Special Thank You To: ##
 
-### - Chris Prather (Applied Research Associates) ###
+### - Chris Prather (Applied Research Associates, Inc.) ###
 
-### - Dr. Kenneth Ingham (Applied Research Associates) ###
+### - Dr. Kenneth Ingham (Applied Research Associates, Inc.) ###
 
 ### - Prof. John McLaughlin (George Mason University) ###
