@@ -32,7 +32,7 @@ Initializes a Port_Scanner object which will be used to discover further detail 
 ### check_ip method 
 * Method that validates the given IP address is in proper format.
 
-_regex_ - expression which defines a valid IP address that will be used for a search pattern
+* _regex_ - expression which defines a valid IP address that will be used for a search pattern
 
 * Pass the regex variable into a search method to validate the given IP address
 
@@ -44,7 +44,7 @@ Method that uses the pyad package to identify computers that are within the AD d
 * Goes through all the hosts within the domain (including server itself / all computers connected to it), identifies which ports are open and the processes running in it
 * Writes over old status report txt file
 
-_file_ - txt file report of the full Audit report
+* _file_ - txt file report of the full Audit report
 
 ### portscan method
 * Method executed within the port_status method 
