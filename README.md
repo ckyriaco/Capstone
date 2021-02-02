@@ -57,6 +57,8 @@ ________________________________________________________________________________
 
 ### **Mock Setup for Prototype/Proof of Concept**
 
+![](Diagrams/Prototype process diagram.png)
+
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both a Windows Enterprise Server 2019 and Windows 10 Pro instance.
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the Active Directory Domain (A .local Domain was used for this prototype).
