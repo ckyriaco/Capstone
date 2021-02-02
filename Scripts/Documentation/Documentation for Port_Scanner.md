@@ -5,8 +5,7 @@ _This class is designed to discover what processes are connecting to what ports 
 ### Import
 Import Queue, numpy, pyad / pyadutils, re (Regular Expressions package), socket, threading, time, simplefilter
 
-Line 12 
-set simplefilter action to 'ignore' and set category to 'FutureWarning'
+* A filter is set to catch warnings to allow code to continue
 
 ### Class Port_Scanner created
 Tracks the processes connecting to ports on the domain server as well as any computers connected to the domain.
@@ -22,38 +21,40 @@ Tracks the processes connecting to ports on the domain server as well as any com
 ### Constructor 
 Initializes a Port_Scanner object which will be used to discover further detail on port activity throughout a specified domain.
 
-Lines 24 - 27
-Validates that the Common Name is not null
+* Validates that the Common Name is not null
 
-Lines 29 - 33
-Validates that the IP address is in IPv4 format
+* Validates that the IP address is in IPv4 format
 
-Lines 35 - 38
-Validates that the given domain name is not null
+* Validates that the given domain name is not null
 
-Lines 40 - 43 
-Validates that the distinguished name for the computer container isn't null
+* Validates that the distinguished name for the computer container isn't null
 
 ### check_ip method 
-Method that validates the given IP address is in proper format.
+* Method that validates the given IP address is in proper format.
 
 _regex_ - expression which defines a valid IP address that will be used for a search pattern
 
-Lines 63 - 67 
-Pass the regex variable into a search method to validate the given IP address
+* Pass the regex variable into a search method to validate the given IP address
 
 ### get_hosts method
 Method that uses the pyad package to identify computers that are within the AD domain.
-* 
 
 ### port_status method
-Method that looks through the AD server and the computers connected to the server domain to identify all processes operating on open ports.
+* Method that looks through the AD server and the computers connected to the server domain to identify all processes operating on open ports.
+* Goes through all the hosts within the domain (including server itself / all computers connected to it), identifies which ports are open and the processes running in it
+* Writes over old status report txt file
 
-_file_ - 
+_file_ - txt file report of the full Audit report
 
 ### portscan method
-Method executed within the port_status method 
+* Method executed within the port_status method 
+* Collects what information is running from which port, and appending file that is passed in with new content 
+* Once function is done, able to retrieve information to txt file, and able to append it 
 
+### threader method
+* Takes in inputs for ports for every IP until there are no more ports left
+* For a specific target port, puts IP address of specific client and passes in port itself 
+* Utilizes daemon mode, allows for running through OS 
 
 
 
