@@ -51,7 +51,7 @@ ________________________________________________________________________________
 3. The python script attempts to retrieve all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
 4. If the audit succeeds, it will be indicated if the Domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an Admin to take a look into the error. 
 
-![](Diagrams/Desired_Process_HD.png)
+![](Diagrams/Desired_Process_HD.PNG)
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
