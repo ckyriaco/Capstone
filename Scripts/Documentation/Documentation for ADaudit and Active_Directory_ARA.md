@@ -84,13 +84,13 @@ Tracks number of unused computers and unused user count
 ### toString method 
 * Prints an overall message on information found by querying through Active Directory
 * To string method  prints out all info:  
-* * List of Unused users
-* * Count for Unused users
-* * List of Unused computers
-* * Count for Unused computers
-* * Limit for the number of days allowed passwords must be changed??("PWD Unchanged Past Day Limit")
+    * List of Unused users
+    * Count for Unused users
+    * List of Unused computers
+    * Count for Unused computers
+    * Limit for the number of days allowed passwords must be changed??("PWD Unchanged Past Day Limit")
 
-_End of class so ADaudit_
+_End of class ADaudit_
 
 ## Active_Directory_ARA.py Documentation
 
