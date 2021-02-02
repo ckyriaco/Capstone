@@ -3,7 +3,7 @@
 _This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain._
 
 ### Import
-Import Queue, numpy, pyad / pyadutils, re, socket, threading, time, simplefilter
+Import Queue, numpy, pyad / pyadutils, re (Regular Expressions package), socket, threading, time, simplefilter
 
 Line 12 
 set simplefilter action to 'ignore' and set category to 'FutureWarning'
@@ -35,3 +35,26 @@ Lines 40 - 43
 Validates that the distinguished name for the computer container isn't null
 
 ### check_ip method 
+Method that validates the given IP address is in proper format.
+
+_regex_ - expression which defines a valid IP address that will be used for a search pattern
+
+Lines 63 - 67 
+Pass the regex variable into a search method to validate the given IP address
+
+### get_hosts method
+Method that uses the pyad package to identify computers that are within the AD domain.
+* 
+
+### port_status method
+Method that looks through the AD server and the computers connected to the server domain to identify all processes operating on open ports.
+
+_file_ - 
+
+### portscan method
+Method executed within the port_status method 
+
+
+
+
+
