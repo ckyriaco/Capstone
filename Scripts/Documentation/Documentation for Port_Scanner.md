@@ -36,12 +36,12 @@ _This class is designed to discover what processes are connecting to what ports 
 * This method looks through the AD server and the computers connected to the server domain to identify all processes operating on open ports.
 * Goes through all the hosts within the domain (including server itself / all computers connected to it), identifies which ports are open and the processes running in it
 * Writes over old status report txt file
-* _file_ - txt file report of the full Audit report
+* _file_ - txt file report of the full audit
 
 ### portscan method
 * This method executes within the port_status method 
 * Collects what information is running from which port, and appending file that is passed in with new content 
-* Once function is done, able to retrieve information to txt file, and able to append it 
+* Once function is done, able to retrieve information to txt file and append to it 
 
 ### threader method
 * Takes in inputs for ports for every IP until there are no more ports left
