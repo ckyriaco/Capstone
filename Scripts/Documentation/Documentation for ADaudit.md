@@ -5,7 +5,7 @@ _The administrator must already be joined to the active directory server's domai
 _A default domain or an temporary external domain can also be set._
 
 ### Import packages
-Import 
+Import    
 * pyad 
 * numpy 
 * pyadutil 
