@@ -27,17 +27,13 @@ _The Active Directory ARA script utilizes the ADquery class to audit a variety o
 * Takes in os variables from a bash file and passes them into the appropriate functions to audit Active Directory instance within the current admin user's domain
 
 ### MISC Documentation (unsorted)
-
-## Import os variables plug into arrays based on variable types 
-
-## Get number of days since last login 
-
-**_POSSIBLE MISSING FILE??_**
-## Ad_driver.sh Documentation
-* Stores OS variables
-* Executes active_directory_ARA.py
-
-**Later activities**
-* In bash directory made bash file executable 
-* So it can be simply run through Gitbash
-* (Bash terminal of choice)
+* Import os variables plug into arrays based on variable types 
+* Get number of days since last login 
+* POSSIBLE MISSING FILE?: Ad_driver.sh 
+    * Documentation
+        * Stores OS variables
+        * Executes active_directory_ARA.py
+* Later activities
+    * In bash directory made bash file executable 
+    * So it can be simply run through Gitbash
+    * (Bash terminal of choice)
