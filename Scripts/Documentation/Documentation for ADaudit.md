@@ -15,7 +15,7 @@ _A default domain or an temporary external domain can also be set._
 * This filter is set to catch warnings to allow code to continue.
 
 ### Class ADaudit created 
-Tracks the number of unused computers and the unused user count.  
+* Tracks the number of unused computers and the unused user count.  
 **Variables created:**
 * _CN_ - The Common Name identifier
     * **CN, or Common Name** is a variable that tracks user and pyad connection to Active Directory and helps the administrator make sure that the connection is actually happening.   
