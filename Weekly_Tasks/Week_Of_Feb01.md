@@ -34,7 +34,7 @@
 
 ### Christopher Kyriacou ###
 
-- [ ] Work on adding additional functionality to the audit code.
+- [X] Work on adding additional functionality to the audit code.
 - [ ] Reform Audit_Report.txt to look better.
 - [X] Add comments to all new code changes.
 - [X] Create presentation 1 for next week. 
