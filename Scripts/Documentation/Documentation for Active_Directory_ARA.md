@@ -6,10 +6,10 @@ _This script is designed to utilize the ADquery class to audit a variety of user
 * ADaudit class
     * Allows functions from ADaudit class to be used
 * os
-    * Allows OS to gather variables from bash script 
+    * Allows OS to gather variables from bash script
+    * Imports os variables to plug into arrays based on variable types  
 * numpy
 * port scanner
-* Import os variables to plug into arrays based on variable types 
 
 ### login_info method
 * This method uses the ADquery class to retrieve info and audit active directory for users that have not logged on in N days.
@@ -28,4 +28,4 @@ _This script is designed to utilize the ADquery class to audit a variety of user
 * This method uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
 
 ### main method
-* The main method takes in os variables from a bash file and passes them into the appropriate functions to audit an Active Directory instance within the current admin user's domain
+* The main method takes in os variables from a bash file and passes them into the appropriate functions to audit an Active Directory instance within the current admin user's domain.
