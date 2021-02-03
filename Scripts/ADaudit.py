@@ -218,7 +218,7 @@ class ADaudit:
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
-        message = "\n\nPWD Unchanged Past Day Limit:\n"
+        message = "\n\nUsers with passwords unchanged past the day limit:\n"
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
         return message
