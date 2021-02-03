@@ -12,7 +12,7 @@ _A default domain or an temporary external domain can also be set._
 * simplefilter from warnings
 
 ### Initialize simplefilter
-    * This filter is set to catch warnings to allow code to continue.
+* This filter is set to catch warnings to allow code to continue.
 
 ### Class ADaudit created - 
 Tracks the number of unused computers and the unused user count.  
