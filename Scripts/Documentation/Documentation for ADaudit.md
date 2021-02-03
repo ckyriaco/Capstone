@@ -2,10 +2,15 @@
 
 _The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance._
 _The administrator must already be joined to the active directory server's domain to use this class._
-_A default domain can be set or a temporary external domain can also be set._
+_A default domain or an temporary external domain can also be set._
 
-### Import
-Import pyad, numpy, pyadutil, datetime, and warnings
+### Import packages
+Import 
+* pyad 
+* numpy 
+* pyadutil 
+* datetime
+* warnings
 
 ### Initialize simplefilter
 * Handles warnings/futureWarning
