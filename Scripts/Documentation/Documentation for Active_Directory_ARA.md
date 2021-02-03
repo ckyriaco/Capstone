@@ -1,15 +1,18 @@
 ## Active_Directory_ARA.py Documentation
 
-_The Active Directory ARA script utilizes the ADquery class to audit a variety of users, computers and groups for CMMC compliance_
+_The Active_Directory_ARA script utilizes the ADquery class to audit a variety of users, computers and groups for CMMC compliance_
 
-### Import ADaudit class, os, numpy and port scanner
-* Allows functions from ADaudit class to be used
-* Imported OS to gather variables from bash script 
+### Import packages
+* ADaudit class
+    * Allows functions from ADaudit class to be used
+* os
+    * Imported OS to gather variables from bash script 
+* numpy
+* port scanner
 
 ### login_info method
-* Takes info from ADquery class
+* Uses ADquery class to retrieve info and audit active directory for users that have not logged on in N days.
 * Generates report based on users that have not logged in N number of days
-* Uses ADquery class to audit active directory for users that have not logged on in N days.
 
 ### last_set_pwd method 
 * Uses ADquery to locate users that have not changed their password in N days.
