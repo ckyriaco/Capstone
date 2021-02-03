@@ -1,15 +1,15 @@
 ## ADaudit.py Documentation
 
-_The ADaudit class allows administrators to query information to test active directory instances for CMMC compliance._
-_The administrator must already be joined to the active directory server's domain to use this class._
+_The ADaudit class allows administrators to query information to test Active Directory instances for CMMC compliance._
+_The administrator must already be joined to the Active Directory server's domain to use this class._
 _A default domain or an temporary external domain can also be set._
 
 ### Import packages
 * pyad 
-* numpy 
-* pyadutil 
-* datetime
-* warnings
+* numpy as np
+* pyadutils from pyad
+* datetime from datetime
+* simplefilter from warnings 
 
 ### Initialize simplefilter
 * Handles warnings/futureWarning
@@ -17,22 +17,22 @@ _A default domain or an temporary external domain can also be set._
 ### Class ADaudit created - 
 Tracks number of unused computers and unused user count  
 **Variables created:**
-* _CN_ -common name identifier
-    * **CN, or Common Name** is a variable that tracks user and pyad connection to active directory
+* _CN_ - The Common Name identifier
+    * **CN, or Common Name** is a variable that tracks user and pyad connection to Active Directory
     * Makes sure that connection is actually happening
-* _user_ -user object
+* _user_ - The user object
     * A user profile is retrieved using Common Name
-* _unusedComputerCount_ -a count of the unused computers
-* _unusedUserCount_ -a count of the unused users
-* _unusedUsers_ - an array of the unused users
-* _unusedComputers_ - an array of the unused computers
-* _pwdLastSetDays_ - an array of users who haven't set their password in N days
-* _admin list_ - an array of the admin for every admin type
-* _serv man not set_ - an array of service accounts without the manager field set
+* _unusedComputerCount_ - A count of the unused computers
+* _unusedUserCount_ - A count of the unused users
+* _unusedUsers_ - An array of the unused users
+* _unusedComputers_ - An array of the unused computers
+* _pwdLastSetDays_ - An array of users who haven't set their password in N days
+* _admin list_ - An array of the admin for every admin type
+* _serv man not set_ - An array of service accounts without the manager field set
 
-### The constructor 
-* Initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account by a passed common name. 
-* With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user
+### The Constructor 
+* Initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account via a passed Common Name. 
+* With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user.
 
 ### set_CN setter method 
 * Allows you to set a new common name and initialize a different user. 
