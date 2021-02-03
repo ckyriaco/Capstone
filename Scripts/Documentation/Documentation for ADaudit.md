@@ -14,7 +14,7 @@ _A default domain or an temporary external domain can also be set._
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
 
-### Class ADaudit created - 
+### Class ADaudit created 
 Tracks the number of unused computers and the unused user count.  
 **Variables created:**
 * _CN_ - The Common Name identifier
