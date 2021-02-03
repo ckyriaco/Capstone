@@ -30,11 +30,11 @@
 
 ### Jamie Sutton ### 
 
--  [ ] Perform a deep analysis of NIST 800-171 and document findings thoroughly in markdown.
+- [ ] Perform a deep analysis of NIST 800-171 and document findings thoroughly in markdown.
 
 ### Christopher Kyriacou ###
 
 - [X] Work on adding additional functionality to the audit code.
-- [ ] Reform Audit_Report.txt to look better.
+- [X] Reform Audit_Report.txt to look better.
 - [X] Add comments to all new code changes.
 - [X] Create presentation 1 for next week. 
