@@ -1,4 +1,4 @@
-# Meeting 1 notes
+# Meeting 2 notes
 * made class available in Batch file 
 * made batch file executable; when coding and passing credentials / attributes that could be sensitive, need to pass it from OS; batch file allows you to pass it from OS
 * so far have a class that shows last login in N days (2 days in first example) *
