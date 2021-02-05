@@ -1,8 +1,8 @@
 # Prototype Status #
 
-## Checklist: [5/7] ##
+## Checklist: [6/7] ##
 
-- [ ] Using AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in. 
+- [X] Using AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in. 
 - [X] List the users and computers in AD who have not logged in in N days. 
 - [X] Produce a list of users who have not changed their password in N days. 
 - [X] Produce a list of users in a given AD section (i.e., restrict.ara.com) who have administrative privileges. 
