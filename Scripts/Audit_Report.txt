@@ -1,13 +1,13 @@
 
 
 Unused Users:
-Administrator Days Unused: 12
-Christopher Kyriacou Days Unused: 12
+Administrator Days Unused: 14
+Christopher Kyriacou Days Unused: 14
 Unused User Count: 2
 
 Unused Computers:
-CLIENT Days Unused: 19
-DESKTOP-A67G0P2 Days Unused: 20
+CLIENT Days Unused: 21
+DESKTOP-A67G0P2 Days Unused: 22
 Unused Computer Count: 2
 
 Users with passwords unchanged past the day limit:
@@ -19,9 +19,38 @@ Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 Key Admins: 
 Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 
+Administrator Christopher Kyriacou last logon: 2021-01-22 00:35:02
+Administrator Administrator last logon: 2021-01-22 00:15:05
+
 
 Service Accounts without manager set:
 Updates, 
+
+Distinguished Name Report:
+Distinguished Name Status:
+CLIENT: Distinguished Name Set: Yes | DN = ['CN=CLIENT,CN=Computers,DC=KTG,DC=local']
+DESKTOP-A67G0P2: Distinguished Name Set: Yes | DN = ['CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local']
+
+
+
+Users that need their username changed:
+Users that need to change username:
+ARA Personnel, 
+Cert Publishers, 
+DHCP Users, 
+Domain Computers, 
+Domain Controllers, 
+Domain Guests, 
+Domain Users, 
+Group Policy Creator Owners, 
+Key Admins, 
+Protected Users, 
+Schema Admins, 
+Service Accounts that need their names changed:
+Updates, 
+Computers that need their names changed:
+DESKTOP-A67G0P2, 
+
 
 Port Status:
 

@@ -11,6 +11,7 @@ import numpy as np
 import pyad.pyadutils
 from datetime import datetime
 from warnings import simplefilter
+import re
 
 simplefilter(action='ignore', category=FutureWarning)
 
@@ -24,7 +25,17 @@ class ADaudit:
     pwdLastSetNDays = np.array([])
     admin_list = np.array([])
     serv_man_not_set = np.array([])
-
+    admin_last_logon = np.array([])
+    dn_status = np.array([])
+    dn_set = np.array([])
+    dn_not_set = np.array([])
+    validUsernames = np.array([])
+    invalidUsernames = np.array([])
+    usersNeedUserNameCorr = np.array([])
+    servAccUserNameNeedChange = np.array([])
+    computerNameValid = np.array([])
+    computerNameInValid = np.array([])
+    computerNeedNameChange = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -77,6 +88,30 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    def get_admin_last_logon(self):
+        array = np.array([])
+        for i in self.admin_last_logon:
+            array = np.append(array, i)
+        return array
+
+    def get_dn_status(self):
+        array = np.array([])
+        for i in self.dn_status:
+            array = np.append(array, i)
+        return array
+
+    def get_dn_set(self):
+        array = np.array([])
+        for i in self.dn_set:
+            array = np.append(array, i)
+        return array
+
+    def get_dn_not_set(self):
+        array = np.array([])
+        for i in self.dn_not_set:
+            array = np.append(array, i)
+        return array
+
     #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
         emptyArray = np.array([])
@@ -98,6 +133,7 @@ class ADaudit:
                 CN = i.get_attribute("CN")
                 if manager == notSet:
                     self.serv_man_not_set = np.append(self.serv_man_not_set, CN)
+
 
 
 #Get a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
@@ -197,11 +233,174 @@ class ADaudit:
                     addition += ("{},").format(x)
                 self.admin_list = np.append(self.admin_list, addition)
 
+    def get_All_Admin_CN(self, Admin_Types):
+        emptyArray = np.array([])
+        if (Admin_Types == emptyArray):
+            raise ValueError("The Admin_Types array cannot be empty!")
+        else:
+
+            for i in Admin_Types:
+                user = aduser.ADUser.from_cn(i)
+                l = user.get_attribute("member")
+                for x in l:
+                    c = aduser.ADUser.from_dn(x)
+                    c = c.get_attribute("CN")
+                    if (c[0] not in emptyArray):
+                        emptyArray = np.append(emptyArray, c)
+        return emptyArray
+
+    def get_admin_last_logon_info(self, Admin_Types):
+        emptyArray = np.array([])
+        if(Admin_Types == emptyArray):
+            raise ValueError("The admin types cannot be null!")
+        else:
+            admin = self.get_All_Admin_CN(Admin_Types)
+            report = np.array([])
+            for i in admin:
+                user = aduser.ADUser.from_cn(str(i))
+                logon = user.get_last_login()
+                message = ("Administrator {} last logon: {}").format(i, logon)
+                self.admin_last_logon = np.append(self.admin_last_logon, message)
+
+
+    def distinguished_name_set(self, dn):
+        if(dn == ""):
+            raise ValueError("The distinguished name cannot be null!")
+        else:
+            con = adcontainer.ADContainer.from_dn(dn)
+            for i in con.get_children():
+                cn = i.get_attribute("CN")
+                print(cn[0])
+                user = aduser.ADUser.from_cn(cn[0])
+                c = user.get_allowed_attributes()
+                message = ""
+                if ("distinguishedName" in c):
+                    message = ("{}: Distinguished Name Set: {} | DN = {}").format(cn[0], "Yes", user.get_attribute("distinguishedName"))
+                    self.dn_status = np.append(self.dn_status, message)
+                    self.dn_set = np.append(self.dn_set, cn[0])
+                else:
+                    message = ("{}: Distinguished Name Set: {}").format(cn[0], "No")
+                    self.dn_status = np.append(self.dn_status, message)
+                    self.dn_not_set = np.append(self.dn_not_set, cn[0])
+
+    def check_username(self, container):
+        con = adcontainer.ADContainer.from_dn(container)
+        for i in con.get_children():
+            cn = i.get_attribute("CN")
+            user = aduser.ADUser.from_cn(cn[0])
+            samAccount = user.get_attribute("samaccountname")
+            names = cn[0].split(" ")
+            if(len(names) == 3):
+                fname = names[0]
+                mname = names[1]
+                lname = names[2]
+                init = fname[0].lower()
+                init2 = init
+                init2 += mname[0].lower()
+                init3 = init
+                init3 += fname[1]
+                init3 += mname[0]
+                regex = "[" + init + "-" + init3 + "]+[a-zA-Z]"
+            elif(len(names) == 1):
+                fname = names[0]
+                init = fname
+                regex = "[" + init + "]+[a-zA-Z]"
+            else:
+                fname = names[0]
+                lname = names[1]
+                init = fname[0].lower()
+                init2 = init
+                init2 += lname[0].lower()
+                regex = "[" + init + "-" + init2 + "]+[a-zA-Z]"
+
+
+            if (re.search(regex, samAccount[0])):
+                self.validUsernames = np.append(self.validUsernames, samAccount)
+
+
+            else:
+                self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
+                self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
+
+    def check_computer_name(self, container):
+        con = adcontainer.ADContainer.from_dn(container)
+        cn = ""
+        for i in con.get_children():
+            cn = i.get_attribute("CN")
+            user = aduser.ADUser.from_cn(cn[0])
+
+        # Python program to validate an Ip address
+
+        # Make a regular expression
+        # for validating an Ip-address
+        # regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
+        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
+        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
+        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$'''
+
+        regex = "[a-zA-Z]+-pc"
+        regex3 = "[a-zA-Z]+-lap"
+        regex2 = "[a-zA-Z]+-+[a-zA-Z]+-pc"
+        regex4 = "[a-zA-Z]+-+[a-zA-Z]+-lap"
+        # Define a function for
+        # validate an Ip address
+
+        # pass the regular expression
+        # and the string in search() method
+
+        if (re.search(regex, cn[0]) or re.search(regex2, cn[0]) or re.search(regex3, cn[0]) or re.search(regex4, cn[0])):
+            self.computerNameValid = np.append(self.computerNameValid, cn[0])
+
+        else:
+            self.computerNameInValid = np.append(self.computerNameInValid, cn[0])
+            self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
+
+    def check_service_account_name(self, container, OU):
+
+        regex = OU + "+-+[a-zA-Z]"
+        con = adcontainer.ADContainer.from_dn(container)
+        for i in con.get_children():
+            cn = i.get_attribute("CN")
+            user = aduser.ADUser.from_cn(cn[0])
+            if (re.search(regex, cn[0])):
+                self.validUsernames = np.append(self.invalidUsernames, cn[0])
+
+            else:
+                self.invalidUsernames = np.append(self.invalidUsernames, cn[0])
+                self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
+
+
+    def username_change_needed_report(self):
+        message = "\n\nUsers that need their username changed:\n"
+        message += "Users that need to change username:\n"
+        for i in self.usersNeedUserNameCorr:
+            message += ("{}, \n").format(str(i))
+        message += "Service Accounts that need their names changed:\n"
+        for i in self.servAccUserNameNeedChange:
+            message += ("{}, \n").format(str(i))
+        message += "Computers that need their names changed:\n"
+        for i in self.computerNeedNameChange:
+            message += ("{}, \n").format(str(i))
+        return message
+
+    def distinguished_name_report(self):
+        message = "\n\nDistinguished Name Report:\n"
+        message += "Distinguished Name Status:\n"
+        for i in self.dn_status:
+            message += ("{}\n").format(str(i))
+        message += "\n"
+        return message
+
+
 #Return a report of the admin users of each admin type
     def admin_report(self):
         message = "\n\nAdmin Report:\n"
         for i in self.admin_list:
             message += ("{}\n").format(str(i))
+        message += "\n"
+        for i in self.admin_last_logon:
+            message += ("{}\n").format(str(i))
+
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.

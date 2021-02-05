@@ -8,7 +8,7 @@ import Port_Scanner as ps
 
 #Use ADquery class to audit active directory for users that have not logged on in N days.
 
-def logon_info(CN, containers, objectCategories, types, N):
+def logon_info(CN, containers, objectCategories, types, N, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
@@ -30,14 +30,41 @@ def logon_info(CN, containers, objectCategories, types, N):
     #f = open(("Logon_in_{}_days.txt").format(N), "w")
     #f.write(doc)
     #f = open(("Logon_in_{}_days.txt").format(N), "r")
-    f = open("Audit_Report.txt", "w")
+    f = open(file, "w")
     f.write(doc)
     #print(f.read())
     f.close()
 
 #Use ADquery to locate users that have not changed their password in N days.
 
-def last_set_pwd(CN, containers, objectCategories, N):
+def get_dn_status(CN, container, file):
+    AD = ""
+    for i in container:
+        try:
+            AD = ad.ADaudit(CN)
+            AD.distinguished_name_set(i)
+        except ValueError as Valer:
+            print("An Error has occured: ", Valer)
+    doc = AD.distinguished_name_report()
+    f = open(file, "a")
+    f.write(doc)
+    f.close()
+
+def check_usernames(CN, container1, container2, container3, OU2, file):
+    AD = ""
+    try:
+        AD = ad.ADaudit(CN)
+        AD.check_username(container1)
+        AD.check_service_account_name(container2, OU2)
+        AD.check_computer_name(container3)
+    except ValueError as Valer:
+        print("An Error has occured: ", Valer)
+
+    doc = AD.username_change_needed_report()
+    f = open(file, "a")
+    f.write(doc)
+    f.close()
+def last_set_pwd(CN, containers, objectCategories, N, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
@@ -57,28 +84,29 @@ def last_set_pwd(CN, containers, objectCategories, N):
     #f.write(doc)
     #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "r")
     #print(f.read())
-    f = open("Audit_Report.txt", "a")
+    f = open(file, "a")
     f.write(doc)
     f.close()
 
 #Use ADquery to get all the admin of each admin type in the AD server.
-def get_admin(CN, adminTypes):
+def get_admin(CN, adminTypes, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
         AD.get_All_Admin(adminTypes)
+        AD.get_admin_last_logon_info(adminTypes)
     except ValueError as Valer:
         print("An Error has occured: ", Valer)
 
     doc = AD.admin_report()
     #f = open("Admin_Report.txt", "w")
     #f = open("Admin_Report.txt", "r")
-    f = open("Audit_Report.txt", "a")
+    f = open(file, "a")
     f.write(doc)
     f.close()
 
 #Use ADquery to get all the service accounts that don't have the manager attribute set.
-def service_account_audit(CN, DN):
+def service_account_audit(CN, DN, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
@@ -86,7 +114,7 @@ def service_account_audit(CN, DN):
     except ValueError as Valer:
         print("An Error has occured: ", Valer)
     doc = AD.get_serv_man_not_set_report()
-    f = open("Audit_Report.txt", "a")
+    f = open(file, "a")
     f.write(doc)
     f.close()
 
@@ -102,6 +130,7 @@ def port_status(CN, server_ip, file, server_name, container):
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
 
 def main():
+    file_final = os.getenv('FILE_FINAL')
     CN = os.getenv('AD_USER')
     containerUsers = os.getenv('CONTAINER_USERS')
     containerComputers = os.getenv('CONTAINER_COMPUTERS')
@@ -109,6 +138,7 @@ def main():
     computersObjectCategory = os.getenv('OBJECT_CATEGORY_COMPUTERS')
     containers = np.array([containerUsers, containerComputers])
     containers2 = np.array([containerUsers])
+    container3 = np.array([containerComputers])
     objectCategories = np.array([usersObjectCategory, computersObjectCategory])
     objectCategories2 = np.array([usersObjectCategory])
     types = np.array(["User", "Computer"])
@@ -116,22 +146,26 @@ def main():
     N2 = os.getenv('DAYS_LS')
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
-    logon_info(CN, containers, objectCategories, types, N)
-    last_set_pwd(CN, containers2, objectCategories2, N2)
-    get_admin(CN, adminArray)
-    service_account_audit(CN, con_serv)
+    logon_info(CN, containers, objectCategories, types, N, file_final)
+    last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
+    get_admin(CN, adminArray, file_final)
+    service_account_audit(CN, con_serv, file_final)
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')
     port_status(CN, ip, file, server_name, containerComputers)
+    get_dn_status(CN, container3, file_final)
+    OU = os.getenv("OU_SERV")
+    check_usernames(CN, containerUsers, con_serv, containerComputers, OU, file_final)
     f = open(file, "r")
     doc = f.read()
     f.close()
-    f = open("Audit_Report.txt", "a")
+    f = open(file_final, "a")
     f.write(doc)
     f.close()
-    f = open("Audit_Report.txt", "r")
+    f = open(file_final, "r")
     print(f.read())
+    f.close()
 
 if __name__ == "__main__":
     main()
