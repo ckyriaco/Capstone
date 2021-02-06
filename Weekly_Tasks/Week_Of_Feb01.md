@@ -26,7 +26,7 @@
 
 ### Dave Fuller ###
 
-- [ ] Perform a deep analysis of each stage of the CMMC Certification and document each stage thoroughly in markdown.
+- [X] Perform a deep analysis of each stage of the CMMC Certification and document each stage thoroughly in markdown.
 
 ### Jamie Sutton ### 
 
