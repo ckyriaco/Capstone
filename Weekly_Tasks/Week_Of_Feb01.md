@@ -30,7 +30,7 @@
 
 ### Jamie Sutton ### 
 
-- [ ] Perform a deep analysis of NIST 800-171 and document findings thoroughly in markdown.
+- [X] Perform a deep analysis of NIST 800-171 and document findings thoroughly in markdown.
 
 ### Christopher Kyriacou ###
 
