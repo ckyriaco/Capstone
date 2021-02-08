@@ -93,4 +93,4 @@ ________________________________________________________________________________
 
 ### - Dr. Kenneth Ingham ([Applied Research Associates, Inc.](https://www.ara.com/)) ###
 
-### - Prof. John McLaughlin (George Mason University) ###
+### - Prof. John McLaughlin ([George Mason University](https://www2.gmu.edu/)) ###
