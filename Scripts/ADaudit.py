@@ -8,7 +8,7 @@
 
 from pyad import *
 import numpy as np
-import pyad.pyadutils
+import pyad.pyadutils as py
 from datetime import datetime
 from warnings import simplefilter
 import re
@@ -36,6 +36,7 @@ class ADaudit:
     computerNameValid = np.array([])
     computerNameInValid = np.array([])
     computerNeedNameChange = np.array([])
+    pwd_exp_flag_false = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -52,6 +53,12 @@ class ADaudit:
             self.user = aduser.ADUser.from_cn(CN)
         else:
             raise ValueError("The Common Name cannot be null!")
+
+    def get_pwd_exp_flag_false(self):
+        array = np.array([])
+        for i in self.pwd_exp_flag_false:
+            array = np.append(array, i)
+        return array
 
 #Return the current object's list of unused users
     def get_unused_users(self):
@@ -283,6 +290,20 @@ class ADaudit:
                     self.dn_status = np.append(self.dn_status, message)
                     self.dn_not_set = np.append(self.dn_not_set, cn[0])
 
+    def check_pwd_expire(self, con, cat):
+        container = adcontainer.ADContainer.from_dn(con)
+        for i in container.get_children():
+            cn = i.get_attribute("CN")
+            user = aduser.ADUser.from_cn(cn[0])
+            a = user.get_attribute("objectCategory")
+            if (a[0] == cat):
+                account_control = user.get_user_account_control_settings()
+                message = str(account_control)
+                c = "'DONT_EXPIRE_PASSWD': True"
+                d = c in message
+                if (d == False):
+                    self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
+
     def check_username(self, container):
         con = adcontainer.ADContainer.from_dn(container)
         for i in con.get_children():
@@ -329,31 +350,24 @@ class ADaudit:
             cn = i.get_attribute("CN")
             user = aduser.ADUser.from_cn(cn[0])
 
-        # Python program to validate an Ip address
 
-        # Make a regular expression
-        # for validating an Ip-address
-        # regex = '''^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
-        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
-        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)\.(
-        # 25[0-5]|2[0-4][0-9]|[0-1]?[0-9][0-9]?)$'''
 
-        regex = "[a-zA-Z]+-pc"
-        regex3 = "[a-zA-Z]+-lap"
-        regex2 = "[a-zA-Z]+-+[a-zA-Z]+-pc"
-        regex4 = "[a-zA-Z]+-+[a-zA-Z]+-lap"
-        # Define a function for
-        # validate an Ip address
+            regex = "[a-zA-Z]+-+pc"
+            regex3 = "[a-zA-Z]+-+lap"
+            regex2 = "[a-zA-Z]+-+[a-zA-Z]+-+pc"
+            regex4 = "[a-zA-Z]+-+[a-zA-Z]+-+lap"
+            # Define a function for
+            # validate an Ip address
 
-        # pass the regular expression
-        # and the string in search() method
+            # pass the regular expression
+            # and the string in search() method
 
-        if (re.search(regex, cn[0]) or re.search(regex2, cn[0]) or re.search(regex3, cn[0]) or re.search(regex4, cn[0])):
-            self.computerNameValid = np.append(self.computerNameValid, cn[0])
+            if (re.search(regex, cn[0]) or re.search(regex2, cn[0]) or re.search(regex3, cn[0]) or re.search(regex4, cn[0])):
+                self.computerNameValid = np.append(self.computerNameValid, cn[0])
 
-        else:
-            self.computerNameInValid = np.append(self.computerNameInValid, cn[0])
-            self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
+            else:
+                self.computerNameInValid = np.append(self.computerNameInValid, cn[0])
+                self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
 
     def check_service_account_name(self, container, OU):
 
@@ -420,6 +434,9 @@ class ADaudit:
         message = "\n\nUsers with passwords unchanged past the day limit:\n"
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
+        message += "\n\nUsers with password expire flag as false:\n"
+        for i in self.pwd_exp_flag_false:
+            message += ("{}, ").format(str(i))
         return message
 
 #Report of the service accounts that do not have a manager attribute set.
@@ -444,5 +461,17 @@ class ADaudit:
             print(("{}, ").format(str(i)))
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 
 

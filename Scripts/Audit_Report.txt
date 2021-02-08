@@ -1,17 +1,20 @@
 
 
 Unused Users:
-Administrator Days Unused: 14
-Christopher Kyriacou Days Unused: 14
+Administrator Days Unused: 17
+Christopher Kyriacou Days Unused: 17
 Unused User Count: 2
 
 Unused Computers:
-CLIENT Days Unused: 21
-DESKTOP-A67G0P2 Days Unused: 22
+CLIENT Days Unused: 24
+DESKTOP-A67G0P2 Days Unused: 24
 Unused Computer Count: 2
 
 Users with passwords unchanged past the day limit:
 Administrator, Christopher Kyriacou, Guest, krbtgt, 
+
+Users with password expire flag as false:
+Christopher Kyriacou, krbtgt, 
 
 Admin Report:
 Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
@@ -49,6 +52,7 @@ Schema Admins,
 Service Accounts that need their names changed:
 Updates, 
 Computers that need their names changed:
+CLIENT, 
 DESKTOP-A67G0P2, 
 
 

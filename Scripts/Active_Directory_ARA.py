@@ -72,9 +72,10 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
         print("An Error has occured: ", Valer)
     count = 0
     N = int(N)
-    while(count < len(containers)):
+    for i in containers:
         try:
-            AD.get_pwd_last_login_N_days(containers[count], objectCategories[count], N)
+            AD.get_pwd_last_login_N_days(i, objectCategories[count], N)
+            AD.check_pwd_expire(i, objectCategories[count])
         except ValueError as Valer:
             print("An Error has occurred: ", Valer)
         else:
