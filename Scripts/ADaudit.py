@@ -299,7 +299,7 @@ class ADaudit:
             if (a[0] == cat):
                 account_control = user.get_user_account_control_settings()
                 message = str(account_control)
-                c = "'DONT_EXPIRE_PASSWD': True"
+                c = "'DONT_EXPIRE_PASSWD': False"
                 d = c in message
                 if (d == False):
                     self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
@@ -434,7 +434,7 @@ class ADaudit:
         message = "\n\nUsers with passwords unchanged past the day limit:\n"
         for i in self.pwdLastSetNDays:
             message += ("{}, ").format(str(i))
-        message += "\n\nUsers with password expire flag as false:\n"
+        message += "\n\nUsers with password's that don't expire:\n"
         for i in self.pwd_exp_flag_false:
             message += ("{}, ").format(str(i))
         return message
