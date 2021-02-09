@@ -38,7 +38,7 @@ https://www.acq.osd.mil/cmmc/docs/CMMC_AG_Lvl3_20201208_editable.pdf
 
  A CMMC Level 1 audit will cover 15% of the NIST 800-171 CUI controls.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![CMMC_Lvl1](Photos_Gifs/CMMC_Lvl1_Req.png)
 
 https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
