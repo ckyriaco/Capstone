@@ -22,7 +22,7 @@ NIST SP 800-171 helps organizations gather information and make assessments of t
 
 *awareness” (p.1).* 
 
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf
+[NIST SP 800-171A] (https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf)
 
 
 
