@@ -52,7 +52,7 @@ https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
 There are 131 controls that make up CMMC Level 3, which encompasses the CMMC Level 1 & 2 controls. A CMMC Level 3 audit will cover 100% of the NIST 800-171 CUI controls and an additional 21 controls from various sources.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+![CMMC_Lvl3](Photos_Gifs/CMMC_Lvl3_Req.PNG)
 
 https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
@@ -60,6 +60,6 @@ https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
  
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg)
+![CMMC_Coverage](Photos_Gifs/CMMC_Coverage.PNG)
 
 https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
