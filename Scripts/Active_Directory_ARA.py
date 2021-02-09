@@ -25,14 +25,9 @@ def logon_info(CN, containers, objectCategories, types, N, file):
             print("An Error has occurred: ", Valer)
         else:
             count += 1
-    #AD.toString()
     doc = AD.get_unused_report()
-    #f = open(("Logon_in_{}_days.txt").format(N), "w")
-    #f.write(doc)
-    #f = open(("Logon_in_{}_days.txt").format(N), "r")
     f = open(file, "w")
     f.write(doc)
-    #print(f.read())
     f.close()
 
 #Use ADquery to locate users that have not changed their password in N days.
@@ -50,6 +45,8 @@ def get_dn_status(CN, container, file):
     f.write(doc)
     f.close()
 
+#Uses ADaudit to check the usernames of different types against the ARA naming scheme rules
+
 def check_usernames(CN, container1, container2, container3, OU2, file):
     AD = ""
     try:
@@ -64,6 +61,8 @@ def check_usernames(CN, container1, container2, container3, OU2, file):
     f = open(file, "a")
     f.write(doc)
     f.close()
+
+#This checks to see that the passwords have been reset at the N required days and that the passwords do expire for all users.
 def last_set_pwd(CN, containers, objectCategories, N, file):
     AD = ""
     try:
@@ -81,10 +80,6 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
         else:
             count += 1
     doc = AD.get_pwd_report()
-    #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "w")
-    #f.write(doc)
-    #f = open(("PWD_Last_Set_Past_{}_days.txt").format(N), "r")
-    #print(f.read())
     f = open(file, "a")
     f.write(doc)
     f.close()
@@ -100,8 +95,6 @@ def get_admin(CN, adminTypes, file):
         print("An Error has occured: ", Valer)
 
     doc = AD.admin_report()
-    #f = open("Admin_Report.txt", "w")
-    #f = open("Admin_Report.txt", "r")
     f = open(file, "a")
     f.write(doc)
     f.close()
