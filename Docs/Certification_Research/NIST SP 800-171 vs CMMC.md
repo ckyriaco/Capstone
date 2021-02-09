@@ -40,7 +40,7 @@ Levels 1 through 3 of CMMC are taken partially from SP 800-171.
 
 ![CMMC_Lvl1](Photos_Gifs/CMMC_Lvl1_Req.PNG)
 
-https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
+[CMMC Level 1](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
  
 
