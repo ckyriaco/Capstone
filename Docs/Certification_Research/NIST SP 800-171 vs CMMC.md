@@ -46,7 +46,7 @@ https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
 There are 72 controls that make up CMMC Level 2, which encompasses the CMMC Level 1 controls. A CMMC Level 2 audit will cover 65% of the NIST 800-171 CUI controls.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+![CMMC_Lvl2](Photos_Gifs/CMMC_Lvl2_Req.PNG)
 
 https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
 
