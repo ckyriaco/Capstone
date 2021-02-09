@@ -95,24 +95,28 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    #Return the list of admin last logon information.
     def get_admin_last_logon(self):
         array = np.array([])
         for i in self.admin_last_logon:
             array = np.append(array, i)
         return array
 
+    #Return the list of users/computers and their dn status
     def get_dn_status(self):
         array = np.array([])
         for i in self.dn_status:
             array = np.append(array, i)
         return array
 
+    #Returns those with a dn set
     def get_dn_set(self):
         array = np.array([])
         for i in self.dn_set:
             array = np.append(array, i)
         return array
 
+    #Return those without a dn set
     def get_dn_not_set(self):
         array = np.array([])
         for i in self.dn_not_set:
@@ -240,6 +244,7 @@ class ADaudit:
                     addition += ("{},").format(x)
                 self.admin_list = np.append(self.admin_list, addition)
 
+#Get all the cn's of all admin users
     def get_All_Admin_CN(self, Admin_Types):
         emptyArray = np.array([])
         if (Admin_Types == emptyArray):
@@ -256,6 +261,7 @@ class ADaudit:
                         emptyArray = np.append(emptyArray, c)
         return emptyArray
 
+#Get the last logon time for all admin of the given types.
     def get_admin_last_logon_info(self, Admin_Types):
         emptyArray = np.array([])
         if(Admin_Types == emptyArray):
@@ -269,7 +275,7 @@ class ADaudit:
                 message = ("Administrator {} last logon: {}").format(i, logon)
                 self.admin_last_logon = np.append(self.admin_last_logon, message)
 
-
+#Check that a dn name is set
     def distinguished_name_set(self, dn):
         if(dn == ""):
             raise ValueError("The distinguished name cannot be null!")
@@ -290,6 +296,7 @@ class ADaudit:
                     self.dn_status = np.append(self.dn_status, message)
                     self.dn_not_set = np.append(self.dn_not_set, cn[0])
 
+#Check that the DONT_EXPIRE_PASSWD flag is set to false
     def check_pwd_expire(self, con, cat):
         container = adcontainer.ADContainer.from_dn(con)
         for i in container.get_children():
@@ -304,6 +311,7 @@ class ADaudit:
                 if (d == False):
                     self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
 
+#This checks the usernames of the users with the container, and ensures they are valid
     def check_username(self, container):
         con = adcontainer.ADContainer.from_dn(container)
         for i in con.get_children():
@@ -343,6 +351,7 @@ class ADaudit:
                 self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
                 self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
 
+#This checks that the computer name is of a valid naming scheme for ARA standards
     def check_computer_name(self, container):
         con = adcontainer.ADContainer.from_dn(container)
         cn = ""
@@ -369,6 +378,7 @@ class ADaudit:
                 self.computerNameInValid = np.append(self.computerNameInValid, cn[0])
                 self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
 
+#This checks the service accounts against the proper ARA naming scheme
     def check_service_account_name(self, container, OU):
 
         regex = OU + "+-+[a-zA-Z]"
@@ -383,7 +393,7 @@ class ADaudit:
                 self.invalidUsernames = np.append(self.invalidUsernames, cn[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
 
-
+#Report of usersnames that need to be changed
     def username_change_needed_report(self):
         message = "\n\nUsers that need their username changed:\n"
         message += "Users that need to change username:\n"
@@ -397,6 +407,7 @@ class ADaudit:
             message += ("{}, \n").format(str(i))
         return message
 
+#This generates a report of all distinguished name statuses and displays them for the admin.
     def distinguished_name_report(self):
         message = "\n\nDistinguished Name Report:\n"
         message += "Distinguished Name Status:\n"
