@@ -22,7 +22,7 @@ NIST SP 800-171 helps organizations gather information and make assessments of t
 
 *awareness” (p.1).* 
 
-[NIST SP 800-171A] (https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf)
+[NIST SP 800-171A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf)
 
 
 
@@ -32,7 +32,7 @@ Where NIST SP 800-171 consists of guidance and recommendations for voluntary com
 
 Levels 1 through 3 of CMMC are taken partially from SP 800-171.
 
-https://www.acq.osd.mil/cmmc/docs/CMMC_AG_Lvl3_20201208_editable.pdf 
+[CMMC Publication](https://www.acq.osd.mil/cmmc/docs/CMMC_AG_Lvl3_20201208_editable.pdf) 
 
  
 
