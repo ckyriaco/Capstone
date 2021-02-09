@@ -46,13 +46,13 @@ Levels 1 through 3 of CMMC are taken partially from SP 800-171.
 
 There are 72 controls that make up CMMC Level 2, which encompasses the CMMC Level 1 controls. A CMMC Level 2 audit will cover 65% of the NIST 800-171 CUI controls.
 
-![CMMC_Lvl2](Photos_Gifs/CMMC_Lvl2_Req.png)
+![CMMC_Lvl2](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl2_Req.png)
 
 [CMMC Level 2](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
 There are 131 controls that make up CMMC Level 3, which encompasses the CMMC Level 1 & 2 controls. A CMMC Level 3 audit will cover 100% of the NIST 800-171 CUI controls and an additional 21 controls from various sources.
 
-![CMMC_Lvl3](Photos_Gifs/CMMC_Lvl3_Req.png)
+![CMMC_Lvl3](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl3_Req.png)
 
 [CMMC Level 3](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
@@ -60,6 +60,6 @@ There are 131 controls that make up CMMC Level 3, which encompasses the CMMC Lev
 
  
 
-![CMMC_Coverage](Photos_Gifs/CMMC_Coverage.png)
+![CMMC_Coverage](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Coverage.png)
 
 [CMMC Coverage](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
