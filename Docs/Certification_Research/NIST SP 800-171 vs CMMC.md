@@ -38,8 +38,7 @@ Levels 1 through 3 of CMMC are taken partially from SP 800-171.
 
  A CMMC Level 1 audit will cover 15% of the NIST 800-171 CUI controls.
 
-![CMMC_Lvl1](ckyriaco/Capstone/Photos_Gifs/CMMC_Lvl1_Req.png)
-
+![CMMC_Lvl1](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl1_Req.png)
 [CMMC Level 1](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
  
