@@ -1,6 +1,6 @@
 ## Active Directory Vulnerabilities 
 
-* #### Weak Domain password policy
+* #### Weak domain password policy
    * Passwords in AD must be enforced with long and complex passwords, following criteria such as:
       * Minimum password length: 14
       * Enforce password history: 24
@@ -11,10 +11,14 @@
       * No antivirus will be pushed into their machine
       * No GPO settings or policies will be applied to their system
       * Allows them having Administrative rights on their system
+    * Can be resolved by ensuring that normal domain users do not have the privilege of adding other computers to the domain
 * #### AD Buffer Overflow Vulnerability 
    * The LDAP service in AD, ADAM, AD LDS, and Active Directory Services allows remote attackers to cause a denial of service (memory consumption and service outage) via a crafted query - Memory Consumption Vulnerability
 * #### Not isolating DCs and other critical systems
-   * Can resolve by placing DAs and services with privileged access to DAs in Control Zone
+   * Can be resolved by placing DAs and services with privileged access to DAs in Control Zone
 * #### Service accounts being members of Domain Admins
    * A service account designates a specific user account with specific set of privileges to run a specific service / application without requiring full admin privileges. If these accounts are assigned extra privileges and / or memberships such as being added to the "Domain Admins" group, there runs a risk that if the service account gets compromised, attackers could have full control over the AD domain, as these service accounts usually have passwords set to never expire, so passwords are rarely if ever changed.
-
+* #### Service accounts that are vulnerable to Kerberoasting
+  * Kerberoasting is a pervasive attack technique that targets AD service account credentials. It is a post-exploitation attack that extracts service account credential hashes from AD for offline cracking. It is effective because the attacker doesn't require domain administrator credentials to successfully attack and can extract service account credential hashes without sending packets to the target.
+  * Can defend against this attack by setting trap accounts in the AD environment known as "honey accounts" that act as dummy service accounts which when compromised trigger an alert if they are used to login or generate a service ticket request
+  * Can utilize monitoring tools for telltale signs of Kerberoasting attacks
