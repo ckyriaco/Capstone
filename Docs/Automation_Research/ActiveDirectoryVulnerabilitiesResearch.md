@@ -14,8 +14,7 @@
     * Can be resolved by ensuring that normal domain users do not have the privilege of adding other computers to the domain
 * #### AD Buffer Overflow Vulnerability 
    * The LDAP service in AD, ADAM, AD LDS, and Active Directory Services allows remote attackers to cause a denial of service (memory consumption and service outage) via a crafted query - Memory Consumption Vulnerability
-* #### Not isolating DCs and other critical systems
-   * Can be resolved by placing DAs and services with privileged access to DAs in Control Zone
+   * Can be resolved via Microsoft update
 * #### Service accounts being members of Domain Admins
    * A service account designates a specific user account with specific set of privileges to run a specific service / application without requiring full admin privileges. If these accounts are assigned extra privileges and / or memberships such as being added to the "Domain Admins" group, there runs a risk that if the service account gets compromised, attackers could have full control over the AD domain, as these service accounts usually have passwords set to never expire, so passwords are rarely if ever changed.
 * #### Service accounts that are vulnerable to Kerberoasting
