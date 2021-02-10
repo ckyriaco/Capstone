@@ -83,7 +83,7 @@ ________________________________________________________________________________
 
 # Capstone Team Members #
 
-![](Photos_Gifs/Alpha_4.PNG)
+![](Photos_Gifs/Alpha_Team_4.PNG)
 
 ## Roles ##
 ### - Team Leader | Lead Developer: Chris Kyriacou ###
