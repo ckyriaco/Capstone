@@ -1,20 +1,20 @@
 
 
 Unused Users:
-Administrator Days Unused: 18
-Christopher Kyriacou Days Unused: 18
+Administrator Days Unused: 20
+Christopher Kyriacou Days Unused: 20
 Unused User Count: 2
 
 Unused Computers:
-CLIENT Days Unused: 25
-DESKTOP-A67G0P2 Days Unused: 25
+CLIENT Days Unused: 27
+DESKTOP-A67G0P2 Days Unused: 27
 Unused Computer Count: 2
 
 Users with passwords unchanged past the day limit:
-Administrator, Christopher Kyriacou, Guest, krbtgt, 
+Administrator, Christopher Kyriacou, Guest, Jamie Sutton, krbtgt, 
 
 Users with password's that don't expire:
-Administrator, Guest, 
+Administrator, Guest, Jamie Sutton, 
 
 Admin Report:
 Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
@@ -38,17 +38,6 @@ DESKTOP-A67G0P2: Distinguished Name Set: Yes | DN = ['CN=DESKTOP-A67G0P2,CN=Comp
 
 Users that need their username changed:
 Users that need to change username:
-ARA Personnel, 
-Cert Publishers, 
-DHCP Users, 
-Domain Computers, 
-Domain Controllers, 
-Domain Guests, 
-Domain Users, 
-Group Policy Creator Owners, 
-Key Admins, 
-Protected Users, 
-Schema Admins, 
 Service Accounts that need their names changed:
 Updates, 
 Computers that need their names changed:

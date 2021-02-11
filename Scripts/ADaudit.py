@@ -37,6 +37,8 @@ class ADaudit:
     computerNameInValid = np.array([])
     computerNeedNameChange = np.array([])
     pwd_exp_flag_false = np.array([])
+    userNamesToBeApproved = np.array([])
+    approvedUsernamesForChange = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -54,6 +56,22 @@ class ADaudit:
         else:
             raise ValueError("The Common Name cannot be null!")
 
+    def set_approvedUserNamesForChange(self, array):
+        self.approvedUsernamesForChange = array
+
+    def get_validUsernames(self):
+        array = np.array([])
+        for i in self.validUsernames:
+            array = np.append(array, i)
+        return array
+
+    def get_invalidUsernames(self):
+        array = np.array([])
+        for i in self.invalidUsernames:
+            array = np.append(array, i)
+        return array
+
+#Returns the users that have accounts that do not expire.
     def get_pwd_exp_flag_false(self):
         array = np.array([])
         for i in self.pwd_exp_flag_false:
@@ -78,6 +96,12 @@ class ADaudit:
     def get_pwdLastSetNDays(self):
         array = np.array([])
         for i in self.pwdLastSetNDays:
+            array = np.append(array, i)
+        return array
+
+    def get_userNamesToBeApproved(self):
+        array = np.array([])
+        for i in self.userNamesToBeApproved:
             array = np.append(array, i)
         return array
 
@@ -123,10 +147,18 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    def get_usersNeedUserNameCorr(self):
+        array = np.array([])
+        for i in self.usersNeedUserNameCorr:
+            array = np.append(array, i)
+        return array
+
+
+
     #Finds the last time a list of users each last logged on to their accounts.
     def get_last_login_users(self, array):
         emptyArray = np.array([])
-        if(array == emptyArray or array == ""):
+        if(len(array) == 0 or array == ""):
             raise ValueError("The array cannot be empty!")
         for i in array:
             x = aduser.ADUser.from_cn(i)
@@ -182,8 +214,7 @@ class ADaudit:
 #Find the users, within a provided list, that have not logged on in N days.
     def get_login_past_N_days(self, N, array, type):
         Allowed_Types = np.array(["Computer", "User"])
-        emptyArray = np.array([])
-        if(array == emptyArray or type not in Allowed_Types):
+        if(len(array) == 0 or type not in Allowed_Types):
             raise ValueError("The array cannot be empty and the type must be either 'Computer' or 'User'")
         else:
             now = datetime.now()
@@ -232,8 +263,7 @@ class ADaudit:
 
 #Retrieve all admin of specified admin types
     def get_All_Admin(self, Admin_Types):
-        emptyArray = np.array([])
-        if(Admin_Types == emptyArray):
+        if(len(Admin_Types) == 0):
             raise ValueError("The Admin_Types array cannot be empty!")
         else:
             for i in Admin_Types:
@@ -246,8 +276,8 @@ class ADaudit:
 
 #Get all the cn's of all admin users
     def get_All_Admin_CN(self, Admin_Types):
-        emptyArray = np.array([])
-        if (Admin_Types == emptyArray):
+        array = np.array([])
+        if (len(Admin_Types) == 0):
             raise ValueError("The Admin_Types array cannot be empty!")
         else:
 
@@ -257,14 +287,13 @@ class ADaudit:
                 for x in l:
                     c = aduser.ADUser.from_dn(x)
                     c = c.get_attribute("CN")
-                    if (c[0] not in emptyArray):
-                        emptyArray = np.append(emptyArray, c)
-        return emptyArray
+                    if (c[0] not in array):
+                        array = np.append(array, c)
+        return array
 
 #Get the last logon time for all admin of the given types.
     def get_admin_last_logon_info(self, Admin_Types):
-        emptyArray = np.array([])
-        if(Admin_Types == emptyArray):
+        if(len(Admin_Types) == 0):
             raise ValueError("The admin types cannot be null!")
         else:
             admin = self.get_All_Admin_CN(Admin_Types)
@@ -312,44 +341,47 @@ class ADaudit:
                     self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
 
 #This checks the usernames of the users with the container, and ensures they are valid
-    def check_username(self, container):
+    def check_username(self, container, objCategory):
         con = adcontainer.ADContainer.from_dn(container)
         for i in con.get_children():
             cn = i.get_attribute("CN")
             user = aduser.ADUser.from_cn(cn[0])
+            objCat = user.get_attribute("objectCategory")
+            objCat = objCat[0]
             samAccount = user.get_attribute("samaccountname")
             names = cn[0].split(" ")
-            if(len(names) == 3):
-                fname = names[0]
-                mname = names[1]
-                lname = names[2]
-                init = fname[0].lower()
-                init2 = init
-                init2 += mname[0].lower()
-                init3 = init
-                init3 += fname[1]
-                init3 += mname[0]
-                regex = "[" + init + "-" + init3 + "]+[a-zA-Z]"
-            elif(len(names) == 1):
-                fname = names[0]
-                init = fname
-                regex = "[" + init + "]+[a-zA-Z]"
-            else:
-                fname = names[0]
-                lname = names[1]
-                init = fname[0].lower()
-                init2 = init
-                init2 += lname[0].lower()
-                regex = "[" + init + "-" + init2 + "]+[a-zA-Z]"
+            if(objCat == objCategory):
+                if(len(names) == 3):
+                    fname = names[0]
+                    mname = names[1]
+                    lname = names[2].lower()
+                    init = fname[0].lower()
+                    init2 = init
+                    init2 += mname[0].lower()
+                    init3 = init
+                    init3 += fname[1]
+                    init3 += mname[0]
+                    regex = "[" + init + "-" + init3 + "]+"+lname
+                elif(len(names) == 1):
+                    fname = names[0]
+                    init = fname
+                    regex = "[" + init + "]+[a-zA-Z]"
+                else:
+                    fname = names[0]
+                    lname = names[1].lower()
+                    init = fname[0].lower()
+                    init2 = init
+                    init2 += lname[0].lower()
+                    regex = "[" + init + "-" + init2 + "]+"+lname
 
 
-            if (re.search(regex, samAccount[0])):
-                self.validUsernames = np.append(self.validUsernames, samAccount)
+                if (re.search(regex, samAccount[0])):
+                    self.validUsernames = np.append(self.validUsernames, samAccount)
 
 
-            else:
-                self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
-                self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
+                else:
+                    self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
+                    self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
 
 #This checks that the computer name is of a valid naming scheme for ARA standards
     def check_computer_name(self, container):
@@ -393,7 +425,90 @@ class ADaudit:
                 self.invalidUsernames = np.append(self.invalidUsernames, cn[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
 
-#Report of usersnames that need to be changed
+    def findMatch(self, samAccount, container):
+        con = adcontainer.ADContainer.from_dn(container)
+        valid = True
+        for i in con.get_children():
+            cn = i.get_attribute("CN")
+            user = aduser.ADUser.from_cn(cn[0])
+            sam = user.get_attribute("samaccountname")
+            sam = sam[0]
+            if (sam == samAccount):
+                valid = False
+                break
+
+        return valid
+
+    def autoChangeUserName(self, invalid, container):
+        con = adcontainer.ADContainer.from_dn(container)
+        array = np.array([])
+        newsam = ""
+        for i in invalid:
+            names = i.split(" ")
+            if (len(names) == 3):
+                fname = names[0].lower()
+                mname = names[1].lower()
+                lname = names[2].lower()
+                init = fname[0].lower()
+                init2 = init
+                init2 += mname[0].lower()
+                init3 = init
+                init3 += fname[1].lower()
+                init3 += mname[0]
+                newsam = init + lname
+                found = self.findMatch(newsam, container)
+                input = i + "-" + newsam
+                if (found == False):
+                    newsam = init2 + lname
+                    found = self.findMatch(newsam, container)
+                    if (found == False):
+                        newsam = init3 + lname
+                        input = i + "-" + newsam
+                        array = np.append(array, input)
+                    else:
+                        input = i + "-" + newsam
+                        array = np.append(array, input)
+                else:
+                    array = np.append(array, input)
+            elif (len(names) == 1):
+                fname = names[0]
+                init = fname
+                newsam = init
+                input = i + "-" + newsam
+                array = np.append(array, input)
+            else:
+                fname = names[0].lower()
+                lname = names[1].lower()
+                init = fname[0].lower()
+                init2 = init
+                init2 += lname[0].lower()
+                newsam = init + lname
+                print(newsam)
+                found = self.findMatch(newsam, container)
+                input = i + "-" + newsam
+                if (found == False):
+                    newsam = init2 + lname
+                    input = i + "-" + newsam
+                    array = np.append(array, input)
+                else:
+                    array = np.append(array, input)
+
+        self.userNamesToBeApproved = array
+
+    def changeUsernames(self):
+        if(self.approvedUsernamesForChange.size > 0):
+            for i in self.approvedUsernamesForChange:
+                names = i.split("-")
+                sam = names[1]
+                user = aduser.ADUser.from_cn(names[0])
+                pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
+                print(user.get_attribute("samaccountname"), " has been set!")
+                self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == names[0]))
+        else:
+            print("No names to be changed!")
+
+
+    #Report of usersnames that need to be changed
     def username_change_needed_report(self):
         message = "\n\nUsers that need their username changed:\n"
         message += "Users that need to change username:\n"
@@ -474,15 +589,8 @@ class ADaudit:
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
 
 
+#obj = adobject.ADObject.from_cn("Christopher Kyriacou")
 
-
-
-
-
-
-
-
-
-
-
-
+#user = aduser.ADUser.from_cn("Jamie Sutton")
+#admin = aduser.ADUser.from_cn("Christopher Kyriacou")
+#pyad.adobject.ADObject.update_attribute(user, "samaccountname", "suttonJ")
