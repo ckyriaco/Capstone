@@ -4,46 +4,14 @@ import ADaudit as ad
 import os
 import numpy as np
 import Port_Scanner as ps
+import Active_Directory_Audit as audit
 
 
 #Use ADquery class to audit active directory for users that have not logged on in N days.
 
-def logon_info(CN, containers, objectCategories, types, N, file):
-    AD = ""
-    try:
-        AD = ad.ADaudit(CN)
-    except ValueError as Valer:
-        print("An Error has occurred: ", Valer)
-    count = 0
-    list = np.array([])
-    N = int(N)
-    while(count < len(containers)):
-        try:
-            list = AD.get_last_user_login_list(containers[count], objectCategories[count])
-            AD.get_login_past_N_days(N, list, types[count])
-        except ValueError as Valer:
-            print("An Error has occurred: ", Valer)
-        else:
-            count += 1
-    doc = AD.get_unused_report()
-    f = open(file, "w")
-    f.write(doc)
-    f.close()
 
 #Use ADquery to locate users that have not changed their password in N days.
 
-def get_dn_status(CN, container, file):
-    AD = ""
-    for i in container:
-        try:
-            AD = ad.ADaudit(CN)
-            AD.distinguished_name_set(i)
-        except ValueError as Valer:
-            print("An Error has occured: ", Valer)
-    doc = AD.distinguished_name_report()
-    f = open(file, "a")
-    f.write(doc)
-    f.close()
 
 #Uses ADaudit to check the usernames of different types against the ARA naming scheme rules
 
@@ -51,7 +19,7 @@ def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
-        userAudit(AD, container1, container2, container3, OU2, objCat)
+        audit.userAudit(AD, container1, container2, container3, OU2, objCat)
         userRemediate(AD, container1)
         servRemediate(AD, container2, OU2)
         computerRemediate(AD, container3)
@@ -63,35 +31,36 @@ def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
     f.write(doc)
     f.close()
 
-def userAudit(AD, container1, container2, container3, OU2, objCat):
-    AD.check_username(container1, objCat)
-    AD.check_service_account_name(container2, OU2)
-    AD.check_computer_name(container3)
 
 def servRemediate(AD, container2, OU):
     a = AD.get_servAccUserNameNeedChange()
 
     if(a.size == 0):
         print("No usernames to remediate")
-        return 2
+
     else:
-        action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
-        if (action == 1):
-            array = AD.get_servAccUserNameNeedChange()
-            for i in array:
-                print(i, "\n")
-            action = int(input("Press 1 to remediate or 2 to move forward"))
-            if (action == 1):
-                AD.autoChangeServiceAccountName(array, container2, OU)
-                array3 = AD.get_serviceAccountNamesToBeApproved()
-                array4 = np.array([])
-                for i in array3:
-                    print(i)
-                    action = int(input("Press 1 to add for remediation and 2 to skip"))
+        try:
+            action = ""
+            while(action != 1 and action != 2):
+                action = int(input("Press 1 to view invalid serverAccounts or 2 to continue with audit"))
+                if (action == 1):
+                    array = AD.get_servAccUserNameNeedChange()
+                    for i in array:
+                        print(i, "\n")
+                    action = int(input("Press 1 to remediate or 2 to move forward"))
                     if (action == 1):
-                        array4 = np.append(array4, i)
-                AD.set_approvedServiceAccountNamesForChange(array4)
-                AD.changeServiceAccountNames()
+                        AD.autoChangeServiceAccountName(array, container2, OU)
+                        array3 = AD.get_serviceAccountNamesToBeApproved()
+                        array4 = np.array([])
+                        for i in array3:
+                            print(i)
+                            action = int(input("Press 1 to add for remediation and 2 to skip"))
+                            if (action == 1):
+                                array4 = np.append(array4, i)
+                        AD.set_approvedServiceAccountNamesForChange(array4)
+                        AD.changeServiceAccountNames()
+        except ValueError as Valer:
+            print("An Error has occurred", Valer)
 
 
 def userRemediate(AD, container1):
@@ -99,51 +68,59 @@ def userRemediate(AD, container1):
 
     if(a.size == 0):
         print("No usernames to remediate")
-        return 2
-    else:
-        action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
-        if (action == 1):
-            array = AD.get_usersNeedUserNameCorr()
-            for i in array:
-                print(i, "\n")
-            action = int(input("Press 1 to remediate or 2 to move forward"))
-            if (action == 1):
-                AD.autoChangeUserName(array, container1)
-                array3 = AD.get_userNamesToBeApproved()
-                array4 = np.array([])
-                for i in array3:
-                    action = int(input("Press 1 to add for remediation and 2 to skip"))
-                    if (action == 1):
-                        array4 = np.append(array4, i)
-                AD.set_approvedUserNamesForChange(array4)
-                AD.changeUsernames()
 
+    else:
+        try:
+            action = ""
+            while(action != 1 and action != 2):
+                action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
+                if (action == 1):
+                    array = AD.get_usersNeedUserNameCorr()
+                    for i in array:
+                        print(i, "\n")
+                    action = int(input("Press 1 to remediate or 2 to move forward"))
+                    if (action == 1):
+                        AD.autoChangeUserName(array, container1)
+                        array3 = AD.get_userNamesToBeApproved()
+                        array4 = np.array([])
+                        for i in array3:
+                            action = int(input("Press 1 to add for remediation and 2 to skip"))
+                            if (action == 1):
+                                array4 = np.append(array4, i)
+                        AD.set_approvedUserNamesForChange(array4)
+                        AD.changeUsernames()
+        except ValueError as Valer:
+            print("An error has occurred", Valer)
 
 def computerRemediate(AD, container3):
     a = AD.get_computerNeedNameChange()
 
     if (a.size == 0):
         print("No computer names to remediate")
-        return 2
-    else:
-        action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
-        if (action == 1):
-            array = AD.get_computerNeedNameChange()
-            for i in array:
-                print(i, "\n")
-            action = int(input("Press 1 to remediate or 2 to move forward"))
-            if (action == 1):
-                AD.autoChangeComputerName(array, container3)
-                array3 = AD.get_computerNamesToBeApproved()
-                array4 = np.array([])
-                for i in array3:
-                    print(i)
-                    action = int(input("Press 1 to add for remediation and 2 to skip"))
-                    if (action == 1):
-                        array4 = np.append(array4, i)
-                AD.set_approvedComputerNamesForChange(array4)
-                AD.changeComputernames()
 
+    else:
+        try:
+            action = ""
+            while(action != 1 and action != 2):
+                action = int(input("Press 1 to view invalid Computer Accounts or 2 to continue with audit"))
+                if (action == 1):
+                    array = AD.get_computerNeedNameChange()
+                    for i in array:
+                        print(i, "\n")
+                    action = int(input("Press 1 to remediate or 2 to move forward"))
+                    if (action == 1):
+                        AD.autoChangeComputerName(array, container3)
+                        array3 = AD.get_computerNamesToBeApproved()
+                        array4 = np.array([])
+                        for i in array3:
+                            print(i)
+                            action = int(input("Press 1 to add for remediation and 2 to skip"))
+                            if (action == 1):
+                                array4 = np.append(array4, i)
+                        AD.set_approvedComputerNamesForChange(array4)
+                        AD.changeComputernames()
+        except ValueError as Valer:
+            print("An error has occurred", Valer)
 
 #This checks to see that the passwords have been reset at the N required days and that the passwords do expire for all users.
 def last_set_pwd(CN, containers, objectCategories, N, file):
@@ -158,6 +135,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
         try:
             AD.get_pwd_last_login_N_days(i, objectCategories[count], N)
             AD.check_pwd_expire(i, objectCategories[count])
+            PWD_EXP_Remediate(AD)
         except ValueError as Valer:
             print("An Error has occurred: ", Valer)
         else:
@@ -167,20 +145,24 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
     f.write(doc)
     f.close()
 
-#Use ADquery to get all the admin of each admin type in the AD server.
-def get_admin(CN, adminTypes, file):
-    AD = ""
-    try:
-        AD = ad.ADaudit(CN)
-        AD.get_All_Admin(adminTypes)
-        AD.get_admin_last_logon_info(adminTypes)
-    except ValueError as Valer:
-        print("An Error has occured: ", Valer)
 
-    doc = AD.admin_report()
-    f = open(file, "a")
-    f.write(doc)
-    f.close()
+def PWD_EXP_Remediate(AD):
+    if(AD.get_pwd_exp_flag_false().size == 0):
+        print("No users with passwords that don't expire")
+    else:
+        answer = ""
+        try:
+            while(answer != 1 and answer != 2):
+                for i in AD.get_pwd_exp_flag_false():
+                    print(i, "\n")
+                answer = int(input("Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no."))
+                if(answer == 1):
+                    AD.set_exp_flag()
+        except ValueError as Valer:
+            print("An Error has occured", Valer)
+
+#Use ADquery to get all the admin of each admin type in the AD server.
+
 
 #Use ADquery to get all the service accounts that don't have the manager attribute set.
 def service_account_audit(CN, DN, file):
@@ -196,12 +178,6 @@ def service_account_audit(CN, DN, file):
     f.close()
 
 #Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
-def port_status(CN, server_ip, file, server_name, container):
-    try:
-        P = ps.Port_Scanner(CN, server_ip, server_name, container)
-        P.port_status(file)
-    except ValueError as Valer:
-        print("An Error has occured: ", Valer)
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
@@ -223,15 +199,15 @@ def main():
     N2 = os.getenv('DAYS_LS')
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
-    logon_info(CN, containers, objectCategories, types, N, file_final)
+    audit.logon_info(CN, containers, objectCategories, types, N, file_final)
     last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
-    get_admin(CN, adminArray, file_final)
+    audit.get_admin(CN, adminArray, file_final)
     service_account_audit(CN, con_serv, file_final)
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')
-    port_status(CN, ip, file, server_name, containerComputers)
-    get_dn_status(CN, container3, file_final)
+    audit.port_status(CN, ip, file, server_name, containerComputers)
+    audit.get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
     f = open(file, "r")

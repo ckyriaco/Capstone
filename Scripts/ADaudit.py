@@ -75,6 +75,12 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+    def get_pwd_exp_flag_false(self):
+        array = np.array([])
+        for i in self.pwd_exp_flag_false:
+            array = np.append(array, i)
+        return array
+
     def get_computerNeedNameChange(self):
         array = np.array([])
         for i in self.computerNeedNameChange:
@@ -373,6 +379,14 @@ class ADaudit:
                 d = c in message
                 if (d == False):
                     self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
+
+    def set_exp_flag(self):
+        for i in self.pwd_exp_flag_false:
+            user = aduser.ADUser.from_cn(i)
+            user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", False)
+            print("New password policy successfully set.")
+            self.pwd_exp_flag_false = np.delete(self.pwd_exp_flag_false, np.where(self.pwd_exp_flag_false == i))
+
 
 #This checks the usernames of the users with the container, and ensures they are valid
     def check_username(self, container, objCategory):
@@ -714,15 +728,15 @@ class ADaudit:
 
 
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
-
-#user = aduser.ADUser.from_cn("Jamie Sutton")
+#user = aduser.ADUser.from_cn("Christopher Kyriacou")
+#print(user.get_last_login())
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
 #pyad.adobject.ADObject.update_attribute(user, "samaccountname", "suttonJ")
-
+#user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", True)
+#print(user.get_user_account_control_settings())
 #ad = adcomputer.ADComputer.from_cn("DESKTOP-A67G0P2")
 #ad.update_attribute("samaccountname", "DESKTOP-A67G0P2$")
 #print(ad.get_attribute("samaccountname"))
-
 #ad = adcomputer.ADComputer.from_cn("CLIENT")
 #ad.update_attribute("samaccountname", "CLIENT")
 #print(ad.get_attribute("samaccountname"))
