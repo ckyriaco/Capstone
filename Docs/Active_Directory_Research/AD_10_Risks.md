@@ -20,4 +20,4 @@
 - 10. Not Implementing Least Privilege Policy Models: Users should only have the absolute minimum permissions required for their job. If they have more than they require, it causes an unnecessary risk.
   - Solution: Consistently track changes to privileges to ensure that the right users have the right levels of access to the right data.
 
-## - For more information: [Top 10 Risks to Active Directory Servers](https://www.lepide.com/blog/top-10-risks-to-active-directory-security/)##
+## - For more information: [Top 10 Risks to Active Directory Servers](https://www.lepide.com/blog/top-10-risks-to-active-directory-security/)
