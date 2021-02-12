@@ -52,7 +52,9 @@ def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
     try:
         AD = ad.ADaudit(CN)
         userAudit(AD, container1, container2, container3, OU2, objCat)
-        action = userRemediate(AD, container1)
+        userRemediate(AD, container1)
+        servRemediate(AD, container2, OU2)
+        computerRemediate(AD, container3)
     except ValueError as Valer:
         print("An Error has occured: ", Valer)
 
@@ -65,6 +67,32 @@ def userAudit(AD, container1, container2, container3, OU2, objCat):
     AD.check_username(container1, objCat)
     AD.check_service_account_name(container2, OU2)
     AD.check_computer_name(container3)
+
+def servRemediate(AD, container2, OU):
+    a = AD.get_servAccUserNameNeedChange()
+
+    if(a.size == 0):
+        print("No usernames to remediate")
+        return 2
+    else:
+        action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
+        if (action == 1):
+            array = AD.get_servAccUserNameNeedChange()
+            for i in array:
+                print(i, "\n")
+            action = int(input("Press 1 to remediate or 2 to move forward"))
+            if (action == 1):
+                AD.autoChangeServiceAccountName(array, container2, OU)
+                array3 = AD.get_serviceAccountNamesToBeApproved()
+                array4 = np.array([])
+                for i in array3:
+                    print(i)
+                    action = int(input("Press 1 to add for remediation and 2 to skip"))
+                    if (action == 1):
+                        array4 = np.append(array4, i)
+                AD.set_approvedServiceAccountNamesForChange(array4)
+                AD.changeServiceAccountNames()
+
 
 def userRemediate(AD, container1):
     a = AD.get_usersNeedUserNameCorr()
@@ -89,7 +117,32 @@ def userRemediate(AD, container1):
                         array4 = np.append(array4, i)
                 AD.set_approvedUserNamesForChange(array4)
                 AD.changeUsernames()
-        return action
+
+
+def computerRemediate(AD, container3):
+    a = AD.get_computerNeedNameChange()
+
+    if (a.size == 0):
+        print("No computer names to remediate")
+        return 2
+    else:
+        action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
+        if (action == 1):
+            array = AD.get_computerNeedNameChange()
+            for i in array:
+                print(i, "\n")
+            action = int(input("Press 1 to remediate or 2 to move forward"))
+            if (action == 1):
+                AD.autoChangeComputerName(array, container3)
+                array3 = AD.get_computerNamesToBeApproved()
+                array4 = np.array([])
+                for i in array3:
+                    print(i)
+                    action = int(input("Press 1 to add for remediation and 2 to skip"))
+                    if (action == 1):
+                        array4 = np.append(array4, i)
+                AD.set_approvedComputerNamesForChange(array4)
+                AD.changeComputernames()
 
 
 #This checks to see that the passwords have been reset at the N required days and that the passwords do expire for all users.

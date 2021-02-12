@@ -39,6 +39,10 @@ class ADaudit:
     pwd_exp_flag_false = np.array([])
     userNamesToBeApproved = np.array([])
     approvedUsernamesForChange = np.array([])
+    computerNamesToBeApproved = np.array([])
+    approvedComputernamesForChange = np.array([])
+    serviceAccountNamesToBeApproved = np.array([])
+    approvedServiceAccountNamesForChange = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -59,9 +63,27 @@ class ADaudit:
     def set_approvedUserNamesForChange(self, array):
         self.approvedUsernamesForChange = array
 
+    def set_approvedComputerNamesForChange(self, array):
+        self.approvedComputernamesForChange = array
+
+    def set_approvedServiceAccountNamesForChange(self, array):
+        self.approvedServiceAccountNamesForChange = array
+
     def get_validUsernames(self):
         array = np.array([])
         for i in self.validUsernames:
+            array = np.append(array, i)
+        return array
+
+    def get_computerNeedNameChange(self):
+        array = np.array([])
+        for i in self.computerNeedNameChange:
+            array = np.append(array, i)
+        return array
+
+    def get_servAccUserNameNeedChange(self):
+        array = np.array([])
+        for i in self.servAccUserNameNeedChange:
             array = np.append(array, i)
         return array
 
@@ -102,6 +124,18 @@ class ADaudit:
     def get_userNamesToBeApproved(self):
         array = np.array([])
         for i in self.userNamesToBeApproved:
+            array = np.append(array, i)
+        return array
+
+    def get_computerNamesToBeApproved(self):
+        array = np.array([])
+        for i in self.computerNamesToBeApproved:
+            array = np.append(array, i)
+        return array
+
+    def get_serviceAccountNamesToBeApproved(self):
+        array = np.array([])
+        for i in self.serviceAccountNamesToBeApproved:
             array = np.append(array, i)
         return array
 
@@ -386,28 +420,29 @@ class ADaudit:
 #This checks that the computer name is of a valid naming scheme for ARA standards
     def check_computer_name(self, container):
         con = adcontainer.ADContainer.from_dn(container)
-        cn = ""
+        sam = ""
         for i in con.get_children():
-            cn = i.get_attribute("CN")
+            cn = i.get_attribute("cn")
             user = aduser.ADUser.from_cn(cn[0])
+            sam = user.get_attribute("samaccountname")
 
 
 
             regex = "[a-zA-Z]+-+pc"
-            regex3 = "[a-zA-Z]+-+lap"
-            regex2 = "[a-zA-Z]+-+[a-zA-Z]+-+pc"
-            regex4 = "[a-zA-Z]+-+[a-zA-Z]+-+lap"
+            regex3 = "[a-zA-Z0-9]+-+lap"
+            regex2 = "[a-zA-Z0-9]+-+[a-zA-Z0-9]+-+pc"
+            regex4 = "[a-zA-Z0-9]+-+[a-zA-Z0-9]+-+lap"
             # Define a function for
             # validate an Ip address
 
             # pass the regular expression
             # and the string in search() method
 
-            if (re.search(regex, cn[0]) or re.search(regex2, cn[0]) or re.search(regex3, cn[0]) or re.search(regex4, cn[0])):
-                self.computerNameValid = np.append(self.computerNameValid, cn[0])
+            if (re.search(regex, sam[0]) or re.search(regex2, sam[0]) or re.search(regex3, sam[0]) or re.search(regex4, sam[0])):
+                self.computerNameValid = np.append(self.computerNameValid, sam[0])
 
             else:
-                self.computerNameInValid = np.append(self.computerNameInValid, cn[0])
+                self.computerNameInValid = np.append(self.computerNameInValid, sam[0])
                 self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
 
 #This checks the service accounts against the proper ARA naming scheme
@@ -418,12 +453,37 @@ class ADaudit:
         for i in con.get_children():
             cn = i.get_attribute("CN")
             user = aduser.ADUser.from_cn(cn[0])
-            if (re.search(regex, cn[0])):
-                self.validUsernames = np.append(self.invalidUsernames, cn[0])
+            sam = user.get_attribute("samaccountname")
+            if (re.search(regex, sam[0])):
+                self.validUsernames = np.append(self.invalidUsernames, sam[0])
 
             else:
-                self.invalidUsernames = np.append(self.invalidUsernames, cn[0])
+                self.invalidUsernames = np.append(self.invalidUsernames, sam[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
+
+    def autoChangeServiceAccountName(self, invalid, container, OU):
+        con = adcontainer.ADContainer.from_dn(container)
+        newSam = ""
+        for i in invalid:
+            user = aduser.ADUser.from_cn(i)
+            sam = user.get_attribute("samaccountname")
+            newSam += str(OU) + "-" + str(sam[0])
+            valid = self.findMatch(newSam, container)
+            if(valid == True):
+                input = i + "_" + newSam
+                self.serviceAccountNamesToBeApproved = np.append(self.serviceAccountNamesToBeApproved, input)
+
+    def changeServiceAccountNames(self):
+        if(len(self.approvedServiceAccountNamesForChange) > 0):
+            for i in self.approvedServiceAccountNamesForChange:
+                names = i.split("_")
+                sam = names[1]
+                user = aduser.ADUser.from_cn(names[0])
+                pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
+                print(user.get_attribute("samaccountname"), " has been set!")
+                self.servAccUserNameNeedChange = np.delete(self.servAccUserNameNeedChange, np.where(self.servAccUserNameNeedChange == names[0]))
+        else:
+            print("No names to be changed!")
 
     def findMatch(self, samAccount, container):
         con = adcontainer.ADContainer.from_dn(container)
@@ -438,6 +498,7 @@ class ADaudit:
                 break
 
         return valid
+
 
     def autoChangeUserName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
@@ -506,6 +567,69 @@ class ADaudit:
                 self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == names[0]))
         else:
             print("No names to be changed!")
+
+    def changeComputernames(self):
+        if(self.approvedComputernamesForChange.size > 0):
+            for i in self.approvedComputernamesForChange:
+                names = i.split("_")
+                newName = names[1]
+                user = aduser.ADUser.from_cn(names[0])
+                pyad.adobject.ADObject.update_attribute(user, "samaccountname", newName)
+                print(user.get_attribute("samaccountname"), " has been set!")
+                self.computerNeedNameChange = np.delete(self.computerNeedNameChange, np.where(self.computerNeedNameChange == names[0]))
+        else:
+            print("No names to be changed!")
+
+    def autoChangeComputerName(self, invalid, container):
+        con = adcontainer.ADContainer.from_dn(container)
+        newName = ""
+        input = ""
+        for i in invalid:
+            computer = adcomputer.ADComputer.from_cn(i)
+            name = i.split("-")
+            desc = computer.get_attribute("description")
+            desc = desc[0]
+            if(len(name) == 2):
+                if("laptop" in desc):
+                    newName = name[0].lower() + "-" + name[1].lower() + "-lap"
+                    valid = self.findMatch(newName, container)
+                    if(valid == True):
+                        input = str(i) + "_" + newName
+                        self.computerNamesToBeApproved = np.append(self.computerNamesToBeApproved, input)
+                    else:
+                        raise ValueError("The pc already exists in the system!")
+                elif("pc" in desc):
+                    newName = name[0].lower() + "-" + name[1].lower() + "-pc"
+                    valid = self.findMatch(newName, container)
+                    if (valid == True):
+                        input = str(i) + "_" + newName
+                        self.computerNamesToBeApproved = np.append(self.computerNamesToBeApproved, input)
+                    else:
+                        raise ValueError("The pc already exists in the system!")
+                else:
+                    raise ValueError("Must be a laptop or pc!")
+            elif(len(name) == 1):
+                if ("laptop" in desc):
+                    newName = name[0].lower() + "-lap"
+                    valid = self.findMatch(newName, container)
+                    if (valid == True):
+                        input = str(i) + "_" + newName
+                        self.computerNamesToBeApproved = np.append(self.computerNamesToBeApproved, input)
+                    else:
+                        raise ValueError("The pc already exists in the system!")
+                elif ("pc" in desc):
+                    newName = name[0].lower() + "-pc"
+                    valid = self.findMatch(newName, container)
+                    if (valid == True):
+                        input = str(i) + "_" + newName
+                        self.computerNamesToBeApproved = np.append(self.computerNamesToBeApproved, input)
+                    else:
+                        raise ValueError("The pc already exists in the system!")
+                else:
+                    raise ValueError("Must be a laptop or pc!")
+            else:
+                raise ValueError("The name is too long!")
+
 
 
     #Report of usersnames that need to be changed
@@ -594,3 +718,11 @@ class ADaudit:
 #user = aduser.ADUser.from_cn("Jamie Sutton")
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
 #pyad.adobject.ADObject.update_attribute(user, "samaccountname", "suttonJ")
+
+#ad = adcomputer.ADComputer.from_cn("DESKTOP-A67G0P2")
+#ad.update_attribute("samaccountname", "DESKTOP-A67G0P2$")
+#print(ad.get_attribute("samaccountname"))
+
+#ad = adcomputer.ADComputer.from_cn("CLIENT")
+#ad.update_attribute("samaccountname", "CLIENT")
+#print(ad.get_attribute("samaccountname"))
