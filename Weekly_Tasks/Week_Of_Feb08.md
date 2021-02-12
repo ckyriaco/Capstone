@@ -8,12 +8,12 @@
 
 - [ ] For each vulnerability, research if there is or isn't a known prevention method. If there is, specify what the standard prevention is.
 
-- [ ] Project Schedule file
+- [X] Project Schedule file
 
 ### Christopher Kyriacou ###
 
-- [ ] Finish Project Overview
+- [X] Finish Project Overview
 
-- [ ] Present Project Overview
+- [X] Present Project Overview
 
-- [ ] Work on imporving prototype
+- [X] Work on imporving prototype
