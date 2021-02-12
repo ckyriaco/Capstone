@@ -1,5 +1,11 @@
 ## Active Directory Common Vulnerabilities
-* System Vulnerablilities
+* System Vulnerablility Risks
+    * _General solutions:_ 
+        * Don't set passwords with Group Policy Objects
+        * Don't nest user groups so it is easier to determine access rights 
+        * Back up Active Directory and have a method for Recovery
+        * Utilize Monitoring Solutions to spot signs of breach or compromise
+        * Keep track of all changes to Active Directory
     * Related to Kerberos Authentication
         * Kerberoasting attacks on service accounts (weak passwords)
         * AS-REP roasting attacks on accounts that do not require Kerboros pre-authentication
@@ -8,14 +14,19 @@
     * Brute Force Attacks
     * Passwords are stored using reversible encryption
     * Policies for creating domain passwords are weak
-    * **Having unused domain accounts**
+    * **Having unused domain accounts** 
+        * _Solution:_ Clean up inacitve User Accounts in Active Directory
     * **Having privileged accounts with unchanged passwords for a year or more** (Vulnerable to brute force attack)
     * Storing user credentials in Group Policy folders accessible to all authenticated users
-* Insider Threats
+* Insider Threat Risks
+    * _General Solution:_ Monitor local administrators and use Principle of Least Privilege
     * Phishing attacks
     * Social engineering
     * Spear-phishing
-* Excessive Permissions
+* Excessive Permissions Risks
+    * _General Solutions:_ 
+        * Manage User Permissions in Active Directory Domain Groups 
+        * Have a Stringent Password Policy
     * Giving users permission to add computers to domain
     * Giving users unnecessarily high privileges with the AdminCount attribute
     * Having an excessively high number of users in certain privileged groups like Domain Admins

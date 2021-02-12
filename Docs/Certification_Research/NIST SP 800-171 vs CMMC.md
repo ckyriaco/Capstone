@@ -22,7 +22,7 @@ NIST SP 800-171 helps organizations gather information and make assessments of t
 
 *awareness” (p.1).* 
 
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf
+[NIST SP 800-171A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171A.pdf)
 
 
 
@@ -32,34 +32,34 @@ Where NIST SP 800-171 consists of guidance and recommendations for voluntary com
 
 Levels 1 through 3 of CMMC are taken partially from SP 800-171.
 
-https://www.acq.osd.mil/cmmc/docs/CMMC_AG_Lvl3_20201208_editable.pdf 
+[CMMC Publication](https://www.acq.osd.mil/cmmc/docs/CMMC_AG_Lvl3_20201208_editable.pdf) 
 
  
 
  A CMMC Level 1 audit will cover 15% of the NIST 800-171 CUI controls.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![CMMC_Lvl1](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl1_Req.png)
 
-https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
+[CMMC Level 1](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
  
 
 There are 72 controls that make up CMMC Level 2, which encompasses the CMMC Level 1 controls. A CMMC Level 2 audit will cover 65% of the NIST 800-171 CUI controls.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image004.jpg)
+![CMMC_Lvl2](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl2_Req.png)
 
-https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
+[CMMC Level 2](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
 There are 131 controls that make up CMMC Level 3, which encompasses the CMMC Level 1 & 2 controls. A CMMC Level 3 audit will cover 100% of the NIST 800-171 CUI controls and an additional 21 controls from various sources.
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image006.jpg)
+![CMMC_Lvl3](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Lvl3_Req.png)
 
-https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
-
- 
+[CMMC Level 3](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)
 
  
 
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image008.jpg)
+ 
 
-https://www.complianceforge.com/blog/nist-800171-vs-cmmc/
+![CMMC_Coverage](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/CMMC_Coverage.png)
+
+[CMMC Coverage](https://www.complianceforge.com/blog/nist-800171-vs-cmmc/)

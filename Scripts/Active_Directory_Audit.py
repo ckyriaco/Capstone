@@ -47,13 +47,11 @@ def get_dn_status(CN, container, file):
 
 #Uses ADaudit to check the usernames of different types against the ARA naming scheme rules
 
-def check_usernames(CN, container1, container2, container3, OU2, file):
+def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
-        AD.check_username(container1)
-        AD.check_service_account_name(container2, OU2)
-        AD.check_computer_name(container3)
+        userAudit(AD, container1, container2, container3, OU2, objCat)
     except ValueError as Valer:
         print("An Error has occured: ", Valer)
 
@@ -61,6 +59,13 @@ def check_usernames(CN, container1, container2, container3, OU2, file):
     f = open(file, "a")
     f.write(doc)
     f.close()
+
+def userAudit(AD, container1, container2, container3, OU2, objCat):
+    AD.check_username(container1, objCat)
+    AD.check_service_account_name(container2, OU2)
+    AD.check_computer_name(container3)
+
+
 
 #This checks to see that the passwords have been reset at the N required days and that the passwords do expire for all users.
 def last_set_pwd(CN, containers, objectCategories, N, file):
@@ -150,7 +155,7 @@ def main():
     port_status(CN, ip, file, server_name, containerComputers)
     get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
-    check_usernames(CN, containerUsers, con_serv, containerComputers, OU, file_final)
+    check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
     f = open(file, "r")
     doc = f.read()
     f.close()

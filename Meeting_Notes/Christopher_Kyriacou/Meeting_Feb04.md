@@ -17,3 +17,4 @@
     - Since each computer object in AD must be unique, it is important to follow good naming convention when creating computer accounts. Computer names should be prefixed with the name of the top-level OU (or Division name) at the minimum. This prevents a computer with the same name from being joined to the domain and causing a collision. We also recommend using either "pc" or "lap" as a suffix to distinguish between a desktop PC and a laptop. 
     - A good overall convention is:  division abbreviation - user initials - pc/lap. For example, my laptop is named hq-nflap. hq-nf-lap, corp-nflap, or corp-nf-lap are all also acceptable. Keeping good naming convention can ease management of co
 
+
