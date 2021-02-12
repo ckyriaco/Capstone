@@ -43,6 +43,8 @@ def servRemediate(AD, container2, OU):
             action = ""
             while(action != 1 and action != 2):
                 action = int(input("Press 1 to view invalid serverAccounts or 2 to continue with audit"))
+                if (action != 1 and action != 2):
+                    print("You must select 1 for remediate and 2 to skip!")
                 if (action == 1):
                     array = AD.get_servAccUserNameNeedChange()
                     for i in array:
@@ -74,6 +76,8 @@ def userRemediate(AD, container1):
             action = ""
             while(action != 1 and action != 2):
                 action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
+                if (action != 1 and action != 2):
+                    print("You must select 1 for remediate and 2 to skip!")
                 if (action == 1):
                     array = AD.get_usersNeedUserNameCorr()
                     for i in array:
@@ -103,6 +107,8 @@ def computerRemediate(AD, container3):
             action = ""
             while(action != 1 and action != 2):
                 action = int(input("Press 1 to view invalid Computer Accounts or 2 to continue with audit"))
+                if (action != 1 and action != 2):
+                    print("You must select 1 for remediate and 2 to skip!")
                 if (action == 1):
                     array = AD.get_computerNeedNameChange()
                     for i in array:
@@ -135,6 +141,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
         try:
             AD.get_pwd_last_login_N_days(i, objectCategories[count], N)
             AD.check_pwd_expire(i, objectCategories[count])
+            Force_Password_Change(AD)
             PWD_EXP_Remediate(AD)
         except ValueError as Valer:
             print("An Error has occurred: ", Valer)
@@ -144,6 +151,22 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
     f = open(file, "a")
     f.write(doc)
     f.close()
+
+def Force_Password_Change(AD):
+    if(AD.get_pwdLastSetNDays().size == 0):
+        print("No accounts need a forced password change")
+
+    else:
+        action = ""
+        try:
+            while(action != 1 and action != 2):
+                action = int(input("Would you like to force all users that haven't changed their password in time to change it? 1 for yes and 2 for no."))
+                if(action !=1 and action != 2):
+                    print("You must select 1 for remediate and 2 to skip!")
+                if (action == 1):
+                    AD.force_pwd_change()
+        except ValueError as Valer:
+            print("An Error has occurred ", Valer)
 
 
 def PWD_EXP_Remediate(AD):
@@ -165,17 +188,7 @@ def PWD_EXP_Remediate(AD):
 
 
 #Use ADquery to get all the service accounts that don't have the manager attribute set.
-def service_account_audit(CN, DN, file):
-    AD = ""
-    try:
-        AD = ad.ADaudit(CN)
-        AD.set_serve_manager_status(DN)
-    except ValueError as Valer:
-        print("An Error has occured: ", Valer)
-    doc = AD.get_serv_man_not_set_report()
-    f = open(file, "a")
-    f.write(doc)
-    f.close()
+
 
 #Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
 
@@ -202,7 +215,7 @@ def main():
     audit.logon_info(CN, containers, objectCategories, types, N, file_final)
     last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
     audit.get_admin(CN, adminArray, file_final)
-    service_account_audit(CN, con_serv, file_final)
+    audit.service_account_audit(CN, con_serv, file_final)
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')

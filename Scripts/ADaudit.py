@@ -43,6 +43,7 @@ class ADaudit:
     approvedComputernamesForChange = np.array([])
     serviceAccountNamesToBeApproved = np.array([])
     approvedServiceAccountNamesForChange = np.array([])
+    approvedServiceAccountManagChange = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -69,17 +70,15 @@ class ADaudit:
     def set_approvedServiceAccountNamesForChange(self, array):
         self.approvedServiceAccountNamesForChange = array
 
+    def set_approvedServiceAccountManagChange(self, array):
+        self.approvedServiceAccountManagChange = array
+
     def get_validUsernames(self):
         array = np.array([])
         for i in self.validUsernames:
             array = np.append(array, i)
         return array
 
-    def get_pwd_exp_flag_false(self):
-        array = np.array([])
-        for i in self.pwd_exp_flag_false:
-            array = np.append(array, i)
-        return array
 
     def get_computerNeedNameChange(self):
         array = np.array([])
@@ -594,6 +593,16 @@ class ADaudit:
         else:
             print("No names to be changed!")
 
+    def force_pwd_change(self):
+        if(self.pwdLastSetNDays.size > 0):
+            for i in self.pwdLastSetNDays:
+                user = aduser.ADUser.from_cn(i)
+                user.force_pwd_change_on_login()
+                print("The Password change has been forced for ", i, "\n")
+                self.pwdLastSetNDays = np.delete(self.pwdLastSetNDays, np.where(self.pwdLastSetNDays == i))
+
+
+
     def autoChangeComputerName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
         newName = ""
@@ -643,7 +652,6 @@ class ADaudit:
                     raise ValueError("Must be a laptop or pc!")
             else:
                 raise ValueError("The name is too long!")
-
 
 
     #Report of usersnames that need to be changed
@@ -728,7 +736,8 @@ class ADaudit:
 
 
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
-#user = aduser.ADUser.from_cn("Christopher Kyriacou")
+#user = aduser.ADUser.from_cn("Christopher M Kyriacou")
+#print(user)
 #print(user.get_last_login())
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
 #pyad.adobject.ADObject.update_attribute(user, "samaccountname", "suttonJ")
@@ -740,3 +749,12 @@ class ADaudit:
 #ad = adcomputer.ADComputer.from_cn("CLIENT")
 #ad.update_attribute("samaccountname", "CLIENT")
 #print(ad.get_attribute("samaccountname"))
+
+#user = aduser.ADUser.from_cn("Updates")
+#user.update_attribute("samaccountname", "Updates")
+#print(user.get_attribute("manager"))
+user2 = aduser.ADUser.from_cn("Jamie Sutton")
+user2.force_pwd_change_on_login()
+#user.update_attribute("manager", "Christopher M Kyriacou")
+#obj = pyad.adobject.ADObject.from_cn("Updates")
+#obj.set_managedby(obj)
