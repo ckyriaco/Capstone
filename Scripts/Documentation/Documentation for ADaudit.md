@@ -46,15 +46,30 @@ _A default domain or an temporary external domain can also be set._
 * _computerNamesToBeApproved_ - An array of computers with names that still need to be approved
 * _approvedComputernamesForChange_ - An array of computers with changed names that have been approved
 * _serviceAccountNamesToBeApproved_ - An array of service account users with usernames that still need to be approved
-* _approvedServiceAccountNamesForChange_ An array of service account users with changed usernames that have been approved 
+* _approvedServiceAccountNamesForChange_ - An array of service account users with changed usernames that have been approved 
 
-### The Constructor 
+### _init_ Constructor 
 * Initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account via a passed Common Name. 
 * With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user.
 
 ### set_CN setter method 
 * This method allows the administrator to set a new Common Name and initialize a different user. 
 * All set methods are required.
+
+### get_validUsernames method
+* This method returns the current object's list of users with valid usernames.
+
+### get_computerNeedNameChange method 
+* This method returns the current object's list of computers with names that need to be reset.
+
+### get_servAccUserNameNeedChange method
+* This method returns the current object's list of service account users with usernames that need to be reset.
+
+### get_invalidUsernames method
+* This method returns the current object's list of users with usernames that need to be reset.
+
+### get_pwd_exp_flag_false method 
+* This method returns the current object's list of users with passwords that do not expire.
 
 ### get_unused_users method 
 * This method returns the current object's list of unused users.
@@ -65,11 +80,22 @@ _A default domain or an temporary external domain can also be set._
 ### get_pwdLastSetNDays method 
 * This method returns the current object's list of users that haven't set their password in N days.
 
+### get_userNamesToBeApproved method
+* This method returns the current object's list of users with changed usernames that still need to be approved.
+
+### get_computerNamesToBeApproved method
+* This method returns the current object's list of computers with changed names that still need to be approved.
+ 
+### get_serviceAccountNamesToBeApproved method 
+* This method returns the current object's list of service account users with changed usernames that still need to be approved.
+
 ### get_admin_list method 
 * This method returns a list of admin for every admin type.
 
 ### get_serv_man_not_set method
 * This method returns a list of service accounts without the manager field set.
+
+### IN PROGRESS (~Line 149 ADaudit)
 
 ### get_last_login_users method 
 * This method finds when users last logged in and can feed an array as a parameter.
