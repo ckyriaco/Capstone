@@ -1,3 +1,4 @@
+
 #Applied Research Associates
 #This script utilizes the ADquery class to audit a variety of users, computers and groups for cmmc compliance
 import ADaudit as ad

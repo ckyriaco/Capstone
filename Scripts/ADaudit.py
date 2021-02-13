@@ -60,48 +60,38 @@ class ADaudit:
             self.user = aduser.ADUser.from_cn(CN)
         else:
             raise ValueError("The Common Name cannot be null!")
-#Sets the approved usernames to be changed
+
     def set_approvedUserNamesForChange(self, array):
         self.approvedUsernamesForChange = array
-#Sets the approved computer names to be changed
+
     def set_approvedComputerNamesForChange(self, array):
         self.approvedComputernamesForChange = array
-        
-#Sets the approved Service Account Names to be changed
+
     def set_approvedServiceAccountNamesForChange(self, array):
         self.approvedServiceAccountNamesForChange = array
 
-<<<<<<< HEAD
     def set_approvedServiceAccountManagChange(self, array):
         self.approvedServiceAccountManagChange = array
 
-=======
-#get all valid usernames        
->>>>>>> 5094a462c92aded8e811a3d76d519fd113472295
     def get_validUsernames(self):
         array = np.array([])
         for i in self.validUsernames:
             array = np.append(array, i)
         return array
-<<<<<<< HEAD
 
 
-=======
-#get all computer names that need to be changed
->>>>>>> 5094a462c92aded8e811a3d76d519fd113472295
     def get_computerNeedNameChange(self):
         array = np.array([])
         for i in self.computerNeedNameChange:
             array = np.append(array, i)
         return array
-#get all service account names that need to be changed
+
     def get_servAccUserNameNeedChange(self):
         array = np.array([])
         for i in self.servAccUserNameNeedChange:
             array = np.append(array, i)
         return array
 
-#get the invalid usernames
     def get_invalidUsernames(self):
         array = np.array([])
         for i in self.invalidUsernames:
@@ -136,21 +126,18 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
-#get the usernames that are on standby for approval
     def get_userNamesToBeApproved(self):
         array = np.array([])
         for i in self.userNamesToBeApproved:
             array = np.append(array, i)
         return array
-    
-#get the computer names that are on standby for approval
+
     def get_computerNamesToBeApproved(self):
         array = np.array([])
         for i in self.computerNamesToBeApproved:
             array = np.append(array, i)
         return array
 
-#get the service account names that are on standby for approval
     def get_serviceAccountNamesToBeApproved(self):
         array = np.array([])
         for i in self.serviceAccountNamesToBeApproved:
@@ -199,7 +186,6 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
-    #Return the users, service accounts, computer names, etc. that need their names correct
     def get_usersNeedUserNameCorr(self):
         array = np.array([])
         for i in self.usersNeedUserNameCorr:
@@ -488,7 +474,6 @@ class ADaudit:
                 self.invalidUsernames = np.append(self.invalidUsernames, sam[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
 
-#Generate service account that will be approved later for change
     def autoChangeServiceAccountName(self, invalid, container, OU):
         con = adcontainer.ADContainer.from_dn(container)
         newSam = ""
@@ -500,8 +485,7 @@ class ADaudit:
             if(valid == True):
                 input = i + "_" + newSam
                 self.serviceAccountNamesToBeApproved = np.append(self.serviceAccountNamesToBeApproved, input)
-                
-#Change service account names to the approved new names
+
     def changeServiceAccountNames(self):
         if(len(self.approvedServiceAccountNamesForChange) > 0):
             for i in self.approvedServiceAccountNamesForChange:
@@ -514,7 +498,6 @@ class ADaudit:
         else:
             print("No names to be changed!")
 
-#Find out if a propsed samAccount name is already in use.
     def findMatch(self, samAccount, container):
         con = adcontainer.ADContainer.from_dn(container)
         valid = True
@@ -529,7 +512,7 @@ class ADaudit:
 
         return valid
 
-#Set usernames to proposed names that will be approved at later time.
+
     def autoChangeUserName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
         array = np.array([])
@@ -586,7 +569,6 @@ class ADaudit:
 
         self.userNamesToBeApproved = array
 
-#Change usernames to their newly approved username
     def changeUsernames(self):
         if(self.approvedUsernamesForChange.size > 0):
             for i in self.approvedUsernamesForChange:
@@ -599,7 +581,6 @@ class ADaudit:
         else:
             print("No names to be changed!")
 
-#Change computer names to their newly approved names
     def changeComputernames(self):
         if(self.approvedComputernamesForChange.size > 0):
             for i in self.approvedComputernamesForChange:
@@ -612,7 +593,6 @@ class ADaudit:
         else:
             print("No names to be changed!")
 
-<<<<<<< HEAD
     def force_pwd_change(self):
         if(self.pwdLastSetNDays.size > 0):
             for i in self.pwdLastSetNDays:
@@ -623,9 +603,6 @@ class ADaudit:
 
 
 
-=======
-#generate proposed new computer names that need to be approved
->>>>>>> 5094a462c92aded8e811a3d76d519fd113472295
     def autoChangeComputerName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
         newName = ""
@@ -756,8 +733,6 @@ class ADaudit:
             print(("{}, ").format(str(i)))
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
-
-
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
 #user = aduser.ADUser.from_cn("Christopher M Kyriacou")
 #print(user)
@@ -772,15 +747,12 @@ class ADaudit:
 #ad = adcomputer.ADComputer.from_cn("CLIENT")
 #ad.update_attribute("samaccountname", "CLIENT")
 #print(ad.get_attribute("samaccountname"))
-<<<<<<< HEAD
 
 #user = aduser.ADUser.from_cn("Updates")
 #user.update_attribute("samaccountname", "Updates")
 #print(user.get_attribute("manager"))
-user2 = aduser.ADUser.from_cn("Jamie Sutton")
-user2.force_pwd_change_on_login()
+#user2 = aduser.ADUser.from_cn("Jamie Sutton")
+#user2.force_pwd_change_on_login()
 #user.update_attribute("manager", "Christopher M Kyriacou")
 #obj = pyad.adobject.ADObject.from_cn("Updates")
 #obj.set_managedby(obj)
-=======
->>>>>>> 5094a462c92aded8e811a3d76d519fd113472295
