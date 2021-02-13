@@ -34,3 +34,4 @@
 * #### Service accounts vulnerable to AS-REP roasting
   * This vulnerability is similar to Kerberoasting, but here the attack abuses user accounts that do not require Kerberos pre-authentication, specifically affecting domain users with the DONT_REQ_PREAUTH flag set. Without this preauthentication, hackers can easily request a piece of encrypted information for these accounts and efficiently crack the material offline, revealing the user's password.
   * Can be resolved by ensuring DONT_REQ_PREAUTH is not set for the AD builds with the option available.
+#### [For more information](https://www.infosecmatter.com/top-16-active-directory-vulnerabilities/)
