@@ -95,7 +95,20 @@ _A default domain or an temporary external domain can also be set._
 ### get_serv_man_not_set method
 * This method returns a list of service accounts without the manager field set.
 
-### IN PROGRESS (~Line 149 ADaudit)
+### get_admin_last_logon method 
+* This method returns a list of last login information for each admin.
+
+### get_dn_status method
+* This method returns a list of users/computers and their distinguished name status.
+
+
+
+
+
+
+
+
+
 
 ### get_last_login_users method 
 * This method finds when users last logged in and can feed an array as a parameter.
