@@ -1,6 +1,7 @@
 ## Active Directory Vulnerabilities 
 
 * #### Weak domain password policy
+   * Organizations run the risk of having accounts compromised if they do not enforce a complex domain password policy.
    * Passwords in AD must be enforced with long and complex passwords, following criteria such as:
       * Minimum password length: 14
       * Enforce password history: 24
