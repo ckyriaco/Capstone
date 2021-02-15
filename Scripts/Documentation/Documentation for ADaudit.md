@@ -101,14 +101,14 @@ _A default domain or an temporary external domain can also be set._
 ### get_dn_status method
 * This method returns a list of users/computers and their distinguished name status.
 
+### get_dn_set method 
+* This method returns a list of users with a distinguished name set
 
+### get_dn_not_set method 
+* This method returns a list of users without a distinguished name set
 
-
-
-
-
-
-
+### get_usersNeedUserNameCorr method 
+* This method returns a list of users who have usernames that need to be reset
 
 ### get_last_login_users method 
 * This method finds when users last logged in and can feed an array as a parameter.
@@ -131,6 +131,52 @@ _A default domain or an temporary external domain can also be set._
 ### get_All_Admin method
 * This method retrieves all administrators of specified administrator types.
  
+### get_All_Admin_CN method 
+* This method returns a list of the Common Names(CNs) of all admin users
+
+### get_admin_last_logon_info method 
+* This method returns a list of last logon times for all admin users of a given type.
+
+### distinguished_name_set method 
+* This method checks that a distinguished name is set.
+
+### check_pwd_expire method 
+* This method checks that the DONT_EXPIRE_PASSWD flag is set to false.
+
+### set_exp_flag method 
+* This method sets the DONT_EXPIRE_PASSWD flag to false.
+
+### check_username method 
+* This method checks the usernames of the users with the container, and ensures they are valid.
+
+### check_computer_name method 
+* This method checks that the computer name is of a valid naming scheme for ARA standards.
+
+### check_service_account_name method 
+* This method checks the service accounts against the proper ARA naming scheme.
+
+### autoChangeServiceAccountName method
+* This method automatically sets the service account name to a valid name and submits the name to be approved.
+
+### changeServiceAccountNames method 
+* This method changes the service account name.
+
+### findMatch method
+* This method validates an account name by matching it with a Common Name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### admin_report method
 * This method returns a report of the administrator users of each administrator type.
  
