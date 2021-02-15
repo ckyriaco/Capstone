@@ -13,7 +13,6 @@
 ### Dave Fuller ###
 
 - [ ] Research common vulnerabilities within Active Directory
-- [ ] Documentation assigned to you by Nathan.
 - [ ] For each vulnerability, research if there is or isn't a known prevention method. If there is, specify what the standard prevention is.
 - [ ] Research possible report generation styles for our prototype under the direction of Saffee.
 
@@ -28,7 +27,6 @@
 
 ### Jamie Sutton ### 
 
-- [ ] Documentation assigned to you by Nathan
 - [ ] Research possible report generation styles for our prototype under the direction of Saffee. 
 
 ### Saffe Ghafoori ###
