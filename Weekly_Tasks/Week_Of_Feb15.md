@@ -16,7 +16,7 @@
 - [ ] Research common vulnerabilities within Active Directory
 - [ ] For each vulnerability, research if there is or isn't a known prevention method. If there is, specify what the standard prevention is.
 - [ ] Research possible report generation styles for our prototype under the direction of Saffee.
-- [ ] Do documentation assigned to you by Nathan
+- [ ] Do documentation assigned to you by Nathan (Nathan: Please document Active_Directory_Audit.py)
 
 ### Christopher Kyriacou ###
 
@@ -25,16 +25,16 @@
 
 ### Nathan Chong ###
 
-- [ ] Work on adding documentation on new code
+- [ ] Work on adding documentation on new code (Nathan: I will be documenting ADaudit.py)
 - [ ] Assign documentation of code
 - [ ] Work on report style research assigned to you by Saffee.
 
 ### Jamie Sutton ### 
 
 - [ ] Research possible report generation styles for our prototype under the direction of Saffee. 
-- [ ] Document code assigned to you by nathan.
+- [ ] Document code assigned to you by nathan. (Nathan: Please document Active_Directory_Remediation.py)
 
 ### Saffe Ghafoori ###
  
 - [ ] Research possible report generation styles that may you feel may be a good choice for displaying the results of our findings. Find out which ones you deem are worth a look and delignate the research between you, Nathan, Dave and Jamie. Everyone must list out the pros and cons of using each.
-- [ ] Document code to you assigned to you by nathan. 
+- [ ] Document code to you assigned to you by nathan. (Nathan: Please document Naming_Convention.py and any further changes (if any) to Port_Scanner.py)
