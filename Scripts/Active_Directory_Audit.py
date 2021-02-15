@@ -4,16 +4,21 @@ import ADaudit as ad
 import os
 import numpy as np
 import Port_Scanner as ps
+from tkinter import *
+from tkinter import messagebox
 
+window = Tk()
+window.eval('tk::PlaceWindow %s center' % window.winfo_toplevel())
+window.withdraw()
 
-#Use ADquery class to audit active directory for users that have not logged on in N days.
+#Use ADaudit class to audit active directory for users that have not logged on in N days.
 
 def logon_info(CN, containers, objectCategories, types, N, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
     except ValueError as Valer:
-        print("An Error has occurred: ", Valer)
+        messagebox.showwarning("An Error has occurred: ", Valer)
     count = 0
     list = np.array([])
     N = int(N)
@@ -22,7 +27,7 @@ def logon_info(CN, containers, objectCategories, types, N, file):
             list = AD.get_last_user_login_list(containers[count], objectCategories[count])
             AD.get_login_past_N_days(N, list, types[count])
         except ValueError as Valer:
-            print("An Error has occurred: ", Valer)
+            messagebox.showwarning("An Error has occurred: ", Valer)
         else:
             count += 1
     doc = AD.get_unused_report()
@@ -30,7 +35,7 @@ def logon_info(CN, containers, objectCategories, types, N, file):
     f.write(doc)
     f.close()
 
-#Use ADquery to locate users that have not changed their password in N days.
+#Use ADaudit to locate users that have not changed their password in N days.
 
 def get_dn_status(CN, container, file):
     AD = ""
@@ -39,7 +44,7 @@ def get_dn_status(CN, container, file):
             AD = ad.ADaudit(CN)
             AD.distinguished_name_set(i)
         except ValueError as Valer:
-            print("An Error has occured: ", Valer)
+            messagebox.showwarning("An Error has occured: ", Valer)
     doc = AD.distinguished_name_report()
     f = open(file, "a")
     f.write(doc)
@@ -53,7 +58,7 @@ def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
         AD = ad.ADaudit(CN)
         userAudit(AD, container1, container2, container3, OU2, objCat)
     except ValueError as Valer:
-        print("An Error has occured: ", Valer)
+        messagebox.showwarning("An Error has occured: ", Valer)
 
     doc = AD.username_change_needed_report()
     f = open(file, "a")
@@ -73,7 +78,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
     try:
         AD = ad.ADaudit(CN)
     except ValueError as Valer:
-        print("An Error has occured: ", Valer)
+        messagebox.showwarning("An Error has occured: ", Valer)
     count = 0
     N = int(N)
     for i in containers:
@@ -81,7 +86,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
             AD.get_pwd_last_login_N_days(i, objectCategories[count], N)
             AD.check_pwd_expire(i, objectCategories[count])
         except ValueError as Valer:
-            print("An Error has occurred: ", Valer)
+            messagebox.showwarning("An Error has occurred: ", Valer)
         else:
             count += 1
     doc = AD.get_pwd_report()
@@ -89,7 +94,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
     f.write(doc)
     f.close()
 
-#Use ADquery to get all the admin of each admin type in the AD server.
+#Use ADaudit to get all the admin of each admin type in the AD server.
 def get_admin(CN, adminTypes, file):
     AD = ""
     try:
@@ -97,21 +102,21 @@ def get_admin(CN, adminTypes, file):
         AD.get_All_Admin(adminTypes)
         AD.get_admin_last_logon_info(adminTypes)
     except ValueError as Valer:
-        print("An Error has occured: ", Valer)
+        messagebox.showwarning("An Error has occured: ", Valer)
 
     doc = AD.admin_report()
     f = open(file, "a")
     f.write(doc)
     f.close()
 
-#Use ADquery to get all the service accounts that don't have the manager attribute set.
+#Use ADaudit to get all the service accounts that don't have the manager attribute set.
 def service_account_audit(CN, DN, file):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
         AD.set_serve_manager_status(DN)
     except ValueError as Valer:
-        print("An Error has occured: ", Valer)
+        messagebox.showwarning("An Error has occured: ", Valer)
     doc = AD.get_serv_man_not_set_report()
     f = open(file, "a")
     f.write(doc)
@@ -123,7 +128,7 @@ def port_status(CN, server_ip, file, server_name, container):
         P = ps.Port_Scanner(CN, server_ip, server_name, container)
         P.port_status(file)
     except ValueError as Valer:
-        print("An Error has occured: ", Valer)
+        messagebox.showwarning("An Error has occured: ", Valer)
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain

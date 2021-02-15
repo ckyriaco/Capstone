@@ -61,37 +61,41 @@ class ADaudit:
         else:
             raise ValueError("The Common Name cannot be null!")
 
+#Set approved usernames for change
     def set_approvedUserNamesForChange(self, array):
         self.approvedUsernamesForChange = array
 
+    # Set approved computer names for change
     def set_approvedComputerNamesForChange(self, array):
         self.approvedComputernamesForChange = array
 
+    # Set approved service account names for change
     def set_approvedServiceAccountNamesForChange(self, array):
         self.approvedServiceAccountNamesForChange = array
 
-    def set_approvedServiceAccountManagChange(self, array):
-        self.approvedServiceAccountManagChange = array
 
+#Returns the array of valid usernames
     def get_validUsernames(self):
         array = np.array([])
         for i in self.validUsernames:
             array = np.append(array, i)
         return array
 
-
+#Returns array of users that have a computer names that need to be changed
     def get_computerNeedNameChange(self):
         array = np.array([])
         for i in self.computerNeedNameChange:
             array = np.append(array, i)
         return array
 
+#Returns array of service accounts that need their usernames changed
     def get_servAccUserNameNeedChange(self):
         array = np.array([])
         for i in self.servAccUserNameNeedChange:
             array = np.append(array, i)
         return array
 
+#Returns array of invalid usernames
     def get_invalidUsernames(self):
         array = np.array([])
         for i in self.invalidUsernames:
@@ -126,18 +130,21 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+#Returns array of usernames that need approval
     def get_userNamesToBeApproved(self):
         array = np.array([])
         for i in self.userNamesToBeApproved:
             array = np.append(array, i)
         return array
 
+#Returns array of computer names that need approval
     def get_computerNamesToBeApproved(self):
         array = np.array([])
         for i in self.computerNamesToBeApproved:
             array = np.append(array, i)
         return array
 
+#Returns an array of service account names that need approval
     def get_serviceAccountNamesToBeApproved(self):
         array = np.array([])
         for i in self.serviceAccountNamesToBeApproved:
@@ -186,6 +193,7 @@ class ADaudit:
             array = np.append(array, i)
         return array
 
+#Returns array of usernames that need correction for users, computers, service accounts, etc.
     def get_usersNeedUserNameCorr(self):
         array = np.array([])
         for i in self.usersNeedUserNameCorr:
@@ -379,6 +387,7 @@ class ADaudit:
                 if (d == False):
                     self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
 
+#Sets the don't expire password flag to false
     def set_exp_flag(self):
         for i in self.pwd_exp_flag_false:
             user = aduser.ADUser.from_cn(i)
@@ -474,6 +483,7 @@ class ADaudit:
                 self.invalidUsernames = np.append(self.invalidUsernames, sam[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
 
+#Creates recommended usernames for service accounts
     def autoChangeServiceAccountName(self, invalid, container, OU):
         con = adcontainer.ADContainer.from_dn(container)
         newSam = ""
@@ -486,6 +496,7 @@ class ADaudit:
                 input = i + "_" + newSam
                 self.serviceAccountNamesToBeApproved = np.append(self.serviceAccountNamesToBeApproved, input)
 
+#Sets approved names for service accounts
     def changeServiceAccountNames(self):
         if(len(self.approvedServiceAccountNamesForChange) > 0):
             for i in self.approvedServiceAccountNamesForChange:
@@ -494,10 +505,12 @@ class ADaudit:
                 user = aduser.ADUser.from_cn(names[0])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
                 print(user.get_attribute("samaccountname"), " has been set!")
+                user.rename(str(sam))
                 self.servAccUserNameNeedChange = np.delete(self.servAccUserNameNeedChange, np.where(self.servAccUserNameNeedChange == names[0]))
         else:
             print("No names to be changed!")
 
+#Finds out if a samAccount name is already in use.
     def findMatch(self, samAccount, container):
         con = adcontainer.ADContainer.from_dn(container)
         valid = True
@@ -512,7 +525,7 @@ class ADaudit:
 
         return valid
 
-
+#Sets suggested usernames for accounts that need to be changed.
     def autoChangeUserName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
         array = np.array([])
@@ -569,6 +582,7 @@ class ADaudit:
 
         self.userNamesToBeApproved = array
 
+#Sets newly approved usernames
     def changeUsernames(self):
         if(self.approvedUsernamesForChange.size > 0):
             for i in self.approvedUsernamesForChange:
@@ -576,11 +590,13 @@ class ADaudit:
                 sam = names[1]
                 user = aduser.ADUser.from_cn(names[0])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
+                user.rename(str(sam))
                 print(user.get_attribute("samaccountname"), " has been set!")
                 self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == names[0]))
         else:
             print("No names to be changed!")
 
+#Sets newly approved computernames
     def changeComputernames(self):
         if(self.approvedComputernamesForChange.size > 0):
             for i in self.approvedComputernamesForChange:
@@ -589,6 +605,7 @@ class ADaudit:
                 user = aduser.ADUser.from_cn(names[0])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", newName)
                 print(user.get_attribute("samaccountname"), " has been set!")
+                user.rename(newName)
                 self.computerNeedNameChange = np.delete(self.computerNeedNameChange, np.where(self.computerNeedNameChange == names[0]))
         else:
             print("No names to be changed!")
@@ -602,7 +619,7 @@ class ADaudit:
                 self.pwdLastSetNDays = np.delete(self.pwdLastSetNDays, np.where(self.pwdLastSetNDays == i))
 
 
-
+#Creates suggestion for computer names
     def autoChangeComputerName(self, invalid, container):
         con = adcontainer.ADContainer.from_dn(container)
         newName = ""
@@ -734,7 +751,7 @@ class ADaudit:
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
-#user = aduser.ADUser.from_cn("Christopher M Kyriacou")
+#user = aduser.ADUser.from_cn("Jamie Sutton")
 #print(user)
 #print(user.get_last_login())
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
