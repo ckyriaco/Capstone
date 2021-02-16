@@ -20,14 +20,14 @@
 
 ### Christopher Kyriacou ###
 
-- [ ] Work on imporving prototype (Specifically the remediation script and possibly looking into have an audit and remediation option without port scanner as an option).
+- [ ] Work on improving prototype (Specifically the remediation script and possibly looking into have an audit and remediation option without port scanner as an option).
 - [ ] Comment new code so Nathan can add to documentation.
 
 ### Nathan Chong ###
 
 - [ ] Work on adding documentation on new code (Nathan: I will be documenting ADaudit.py)
 - [ ] Assign documentation of code
-- [ ] Work on report style research assigned to you by Safee. (Safee: Nathan, look into generating text reports in python into PDF format (Pandas library + ReportLab?)
+- [ ] Work on report style research assigned to you by Safee. (Safee: Nathan, look into generating text reports in python into PDF format; Pandas library + ReportLab?)
 
 ### Jamie Sutton ### 
 
