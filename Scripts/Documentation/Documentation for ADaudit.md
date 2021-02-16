@@ -10,6 +10,7 @@ _A default domain or an temporary external domain can also be set._
 * pyadutils from pyad
 * datetime from datetime
 * simplefilter from warnings
+* re
 
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
@@ -33,13 +34,13 @@ _A default domain or an temporary external domain can also be set._
 * _dn_status_ - An array of the statuses of distinguished names
 * _dn_set_ - An array of accounts with set distinguished names
 * _dn_not_set_ - An array of accounts without set distinguished names
-* _validUsernames _ - An array of users with valid usernames
-* _invalidUsernames_ - An array of users with invalid usernames
+* _validUsernames _ - An array of valid usernames
+* _invalidUsernames_ - An array of invalid usernames
 * _usersNeedUserNameCorr_ - An array of user accounts that need to reset their usernames 
 * _servAccUserNameNeedChange_ - An array of service account users that need to reset their usernames
 * _computerNameValid_ - An array of computers with valid names
 * _computerNameInValid_ - An array of computers with invalid names
-* _computerNeedNameChange_ - An array of computers with names that must be reset
+* _computerNeedNameChange_ - An array of computers with names that must be changed
 * _pwd_exp_flag_false_ - An array of users with passwords that will never expire 
 * _userNamesToBeApproved_ - An array of users with usernames that still need to be approved 
 * _approvedUsernamesForChange_ - An array of users with changed usernames that have been approved
@@ -49,24 +50,33 @@ _A default domain or an temporary external domain can also be set._
 * _approvedServiceAccountNamesForChange_ - An array of service account users with changed usernames that have been approved 
 
 ### _init_ Constructor 
-* Initializes an ADaudit object and validates pyads connection to Active Directory by locating a user account via a passed Common Name. 
+* Initializes an ADaudit object and validates pyad's connection to Active Directory by locating a user account via a passed Common Name. 
 * With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user.
 
 ### set_CN setter method 
 * This method allows the administrator to set a new Common Name and initialize a different user. 
 * All set methods are required.
 
+### set_approvedUserNamesForChange method
+* This method sets approved usernames for change.
+
+### set_approvedComputerNamesForChange method
+* This method sets approved computer names for change.
+
+### set_approvedServiceAccountNamesForChange method
+* This method sets approved service account names for change.
+
 ### get_validUsernames method
-* This method returns the current object's list of users with valid usernames.
+* This method returns the current object's list of valid usernames.
 
 ### get_computerNeedNameChange method 
-* This method returns the current object's list of computers with names that need to be reset.
+* This method returns the current object's list of computers with names that need to be changed.
 
 ### get_servAccUserNameNeedChange method
-* This method returns the current object's list of service account users with usernames that need to be reset.
+* This method returns the current object's list of service account users with usernames that need to be changed.
 
 ### get_invalidUsernames method
-* This method returns the current object's list of users with usernames that need to be reset.
+* This method returns the current object's list of invalid usernames.
 
 ### get_pwd_exp_flag_false method 
 * This method returns the current object's list of users with passwords that do not expire.
@@ -108,10 +118,10 @@ _A default domain or an temporary external domain can also be set._
 * This method returns a list of users without a distinguished name set
 
 ### get_usersNeedUserNameCorr method 
-* This method returns a list of users who have usernames that need to be reset
+* This method returns a list of usernames who have users, computers, service accounts, etc. that need to be corrected.
 
 ### get_last_login_users method 
-* This method finds when users last logged in and can feed an array as a parameter.
+* This method returns a list of when users last logged in to their accounts.
 
 ### set_serve_manager_status method 
 * This method discovers all service accounts that do not have a manager attribute set.
@@ -156,33 +166,41 @@ _A default domain or an temporary external domain can also be set._
 * This method checks the service accounts against the proper ARA naming scheme.
 
 ### autoChangeServiceAccountName method
-* This method automatically sets the service account name to a valid name and submits the name to be approved.
+* This method creates service account name suggestions.
 
 ### changeServiceAccountNames method 
-* This method changes the service account name.
+* This method sets an approved service account name.
 
 ### findMatch method
-* This method validates an account name by matching it with a Common Name.
+* This method finds out if an account name is already in use.
 
+### autoChangeUserName method 
+* This method creates username suggestions.
 
+### changeUsernames method 
+* This method sets usernames that have just been approved.
 
+### changeComputernames method 
+* This method sets computer names that have just been approved.
 
+### force_pwd_change method 
+* This method forces a user to change their password.
 
+### autoChangeComputerName method
+* This method creates computer name suggestions.
 
+### username_change_needed_report method
+* This method generates a report on usernames that need to be changed.
 
-
-
-
-
-
-
+### distinguished_name_report method
+* This method generates a report of all distinguished name statuses and displays them for the admin.
 
 ### admin_report method
 * This method returns a report of the administrator users of each administrator type.
  
 ### get_unused_report method 
-* This method returns a report of the users and computers that have not logged in. 
-
+* This method returns a report of the users and computers that have not logged in for the past N days. 
+ 
 ### get_pwd_report method 
 * This method returns a report on the users that have not changed their password in N days.
 
