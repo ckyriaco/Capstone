@@ -20,8 +20,8 @@
 
 ### Christopher Kyriacou ###
 
-- [ ] Work on improving prototype (Specifically the remediation script and possibly looking into have an audit and remediation option without port scanner as an option).
-- [ ] Comment new code so Nathan can add to documentation.
+- [X] Work on improving prototype (Specifically the remediation script and possibly looking into have an audit and remediation option without port scanner as an option).
+- [X] Comment new code so Nathan can add to documentation.
 
 ### Nathan Chong ###
 
