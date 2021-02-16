@@ -1,6 +1,6 @@
 ## Active_Directory_Remediate.py Documentation
 
-## Below documentation is left over from Active_Directory_ARA before it was split into two scripts 
+## Below documentation is left over from Active_Directory_ARA.py before it was split into two scripts 
 ## Feel free to edit as you see fit!
 
 _This script is designed to utilize the ADquery class to audit a variety of users, computers and groups for CMMC compliance._
