@@ -2,7 +2,7 @@
 
 _Example of how the audit will check for the usernames against the ARA's naming convention, regardless of type of user (user, service account, computer)_ 
 
-_ARA Naming Conventions include:_
+ARA Naming Conventions include:
 * Human Naming
   * First initial of first name followed by the last name - if another user already has that username, include the user's middle initial; if both are taken, use the first name's first and second intitials then the last name.
   
