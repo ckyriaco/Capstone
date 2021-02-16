@@ -33,8 +33,20 @@ _Here are suggested formatting changes to the Audit Report txt._
     * Import WeasyPrint and pass string command command to create PDF 
 
 ### ReportLab
+* Open-source engine for creating PDF documents, written in Python.
+* Install modules z3c.rml, reportlab and preppy
+* Use the canvas.Canvas to create the skeleton.
+* Use drawString to add a string.
+* Use an RML Template with Preppy
+* Save the pdf file.
+* Furthur manipulation
+    * Coordinates, sizes
+    * Fonts (types and sizes)
+    * Default page size
 
 ### Sources (Panda Library and Report Lab):
 * [Creating PDF Reports with Pandas, Jinja and WeasyPrint](https://pbpython.com/pdf-reports.html)
-
+* [ReportLab PDF Library User Guide](https://www.reportlab.com/docs/reportlab-userguide.pdf)
+* [Creating PDF files using Python and reportlab](https://code-maven.com/creating-pdf-files-using-python)
+* [Automated PDF reports using ReportLab, z3c.rml and Preppy](https://www.bornageek.com/general/development/2013/06/12/automated-pdf-reports-using-z3c-rml-and-preppy.html)
 _________________________________________________________________________________________________________________________________________________________________________________
