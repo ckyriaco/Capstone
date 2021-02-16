@@ -2,7 +2,7 @@
 
 _Here are suggested formatting changes to the Audit Report txt._
 
-### Pandas Library and ReportLab
+### Pandas Library and ReportLab Generation Style
 ### Generating PDF reports from python text output using Pandas library and ReportLab
 
 ### Pandas Library
