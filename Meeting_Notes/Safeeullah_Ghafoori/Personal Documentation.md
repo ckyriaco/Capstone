@@ -1,4 +1,4 @@
-## String Template Class
+## Personal Documentation of code so far
 
 ### ADAudit.py 
 * This class lets admins query info in order to test AD instances for CMMC Level 3 compliance
