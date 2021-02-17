@@ -8,7 +8,7 @@
 
 - [ ] Everyone will look through the new changes to the code and write down their interpretation of what the code is doing. This is a macro level overview of what is going on. This is to make sure everyone is understanding what the code is doing prior to our meeting with Dr. Ingham.
 - [ ] Based on what you saw in the prototype and your research so far, document down any questions you may have about the project going forward. These questions will be addressed at our group meeting and meeting with Dr. Ingham.
-- [ ] Complete you blockchain paper by the 17th!
+- [X] Complete you blockchain paper by the 17th!
 
 
 ### Dave Fuller ###
