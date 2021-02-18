@@ -43,7 +43,6 @@ class ADaudit:
     approvedComputernamesForChange = np.array([])
     serviceAccountNamesToBeApproved = np.array([])
     approvedServiceAccountNamesForChange = np.array([])
-    approvedServiceAccountManagChange = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -217,11 +216,11 @@ class ADaudit:
             raise ValueError("The distinguished name cannot be null!")
         else:
             con = pyad.adcontainer.ADContainer.from_dn(dn)
-            notSet = []
+
             for i in con.get_children():
                 manager = i.get_attribute("manager")
                 CN = i.get_attribute("CN")
-                if manager == notSet:
+                if len(manager) == 0:
                     self.serv_man_not_set = np.append(self.serv_man_not_set, CN)
 
 
@@ -590,7 +589,6 @@ class ADaudit:
                 sam = names[1]
                 user = aduser.ADUser.from_cn(names[0])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
-                user.rename(str(sam))
                 print(user.get_attribute("samaccountname"), " has been set!")
                 self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == names[0]))
         else:
@@ -752,10 +750,14 @@ class ADaudit:
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
 #user = aduser.ADUser.from_cn("Jamie Sutton")
+#user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", True)
+#user.rename("Jamie Sutton")
 #print(user)
 #print(user.get_last_login())
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
-#pyad.adobject.ADObject.update_attribute(user, "samaccountname", "suttonJ")
+#pyad.adobject.ADObject.update_attribute(user, "samaccountname", "CLIENT")
+#print(user.get_attribute("samaccountname"))
+
 #user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", True)
 #print(user.get_user_account_control_settings())
 #ad = adcomputer.ADComputer.from_cn("DESKTOP-A67G0P2")
