@@ -7,6 +7,9 @@ import re
 import socket
 import threading
 import time
+import logging
+import numpy as np
+from pypsexec.client import Client
 from warnings import simplefilter
 
 simplefilter(action='ignore', category=FutureWarning)
@@ -18,9 +21,11 @@ class Port_Scanner:
     server_ip = ""
     server_Domain_name = ""
     computerDN = ""
+    samAccount = ""
+    computerName = ""
 
 #Initializes a Port_Scanner object that will be used to discover futher detail on port activity throughout a specified domain.
-    def __init__(self, CN, server_ip, server_Domain_name, computerDN):
+    def __init__(self, CN, server_ip, server_Domain_name, computerDN, samAccount, computerName):
         if(CN == ""):
             raise ValueError("The common name cannot be null!")
         else:
@@ -42,8 +47,19 @@ class Port_Scanner:
         else:
             self.computerDN = computerDN
 
+        if (samAccount == ""):
+            raise ValueError("The samAccount name for the user cannot be null!")
+        else:
+            self.samAccount = samAccount
 
-#This ensures that the ip address is of a valid format.
+        if (computerName == ""):
+            raise ValueError("The computer name cannot be null!")
+        else:
+            self.computerName = computerName
+
+
+
+    #This ensures that the ip address is of a valid format.
     def check_ip(self, ip):
         # Python program to validate an Ip address
 
@@ -151,6 +167,50 @@ class Port_Scanner:
             q.join()
 
             #print('Time taken:', time.time() - startTime)
+
+
+    def netstat_ban(self):
+
+        import os
+        import pytest
+        import sys
+        import time
+        import logging
+        import numpy as np
+        from pypsexec.client import Client
+        username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
+
+        c = Client(str(self.computerName), username=str(username))
+
+        c.connect()
+
+        try:
+            c.create_service()
+            stdout, stderr, rc = c.run_executable("cmd.exe", arguments="/c netstat -ban")
+            # a = c.run_executable("cmd.exe", arguments="/c netstat -ban")
+            # print(stdout)
+            stdout = stdout.decode("utf-8")
+            #print(stdout)
+            # a = stdout.split(",")
+            # for i in a:
+            # print(i)
+            # a.splt()
+            # print(stdout)
+            # str(stdout)
+            array = np.array([])
+            # x = stdout.split()
+            logger = logging.getLogger("pypsexec")
+            logger.setLevel(logging.INFO)
+            ch = logging.StreamHandler()
+            ch.setLevel(logging.INFO)
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            ch.setFormatter(formatter)
+            logger.addHandler(ch)
+            return stdout
+        finally:
+            c.remove_service()
+            c.disconnect()
+
 
 
 

@@ -123,12 +123,17 @@ def service_account_audit(CN, DN, file):
     f.close()
 
 #Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
-def port_status(CN, server_ip, file, server_name, container):
+def port_status(CN, server_ip, file, server_name, container, samAccount, computerName, file_final):
+    message = ""
     try:
-        P = ps.Port_Scanner(CN, server_ip, server_name, container)
+        P = ps.Port_Scanner(CN, server_ip, server_name, container, samAccount, computerName)
         P.port_status(file)
+        message = P.netstat_ban()
     except ValueError as Valer:
         messagebox.showwarning("An Error has occured: ", Valer)
+    f = open(file_final, "a")
+    f.write(message)
+    f.close()
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
@@ -136,6 +141,8 @@ def port_status(CN, server_ip, file, server_name, container):
 def main():
     file_final = os.getenv('FILE_FINAL')
     CN = os.getenv('AD_USER')
+    samAccount = os.getenv('SAMACCOUNT')
+    computerName = os.getenv('COMPUTER_NAME')
     containerUsers = os.getenv('CONTAINER_USERS')
     containerComputers = os.getenv('CONTAINER_COMPUTERS')
     usersObjectCategory = os.getenv('OBJECT_CATEGORY_USERS')
@@ -157,10 +164,10 @@ def main():
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')
-    port_status(CN, ip, file, server_name, containerComputers)
     get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
+    port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final)
     f = open(file, "r")
     doc = f.read()
     f.close()
