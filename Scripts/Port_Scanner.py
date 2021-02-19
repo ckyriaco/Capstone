@@ -168,7 +168,7 @@ class Port_Scanner:
 
             #print('Time taken:', time.time() - startTime)
 
-
+#This uses pypsexec module to connect to a remote computer/server, execute netstat_ban on that computer/server and collect the returned information.
     def netstat_ban(self):
 
         import os
@@ -178,6 +178,10 @@ class Port_Scanner:
         import logging
         import numpy as np
         from pypsexec.client import Client
+        #Note this sign in setup is utilizing securely cached credentials within the OS rather than risking the exposure of the password.
+        #User must be within an admin group with unrestricted privileges to use this!
+        #Computer must be joined to the domain and you must be signed in as an admin with proper privileges.
+        #The connection is encrypted.
         username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
 
         c = Client(str(self.computerName), username=str(username), encrypt=True)
@@ -187,18 +191,7 @@ class Port_Scanner:
         try:
             c.create_service()
             stdout, stderr, rc = c.run_executable("cmd.exe", arguments="/c netstat -ban")
-            # a = c.run_executable("cmd.exe", arguments="/c netstat -ban")
-            # print(stdout)
             stdout = stdout.decode("utf-8")
-            #print(stdout)
-            # a = stdout.split(",")
-            # for i in a:
-            # print(i)
-            # a.splt()
-            # print(stdout)
-            # str(stdout)
-            array = np.array([])
-            # x = stdout.split()
             logger = logging.getLogger("pypsexec")
             logger.setLevel(logging.INFO)
             ch = logging.StreamHandler()

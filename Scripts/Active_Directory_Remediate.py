@@ -36,12 +36,12 @@ def servRemediate(AD, container2, OU):
     a = AD.get_servAccUserNameNeedChange()
 
     if(a.size == 0):
-        messagebox.showwarning("All Clear", "No service accounts to remediate")
+        messagebox.showwarning("All Clear", "No service accounts to remediate!")
 
     else:
         try:
-            action = messagebox.askyesno("Username Remediation",
-                                         "Would you like to see if you would like to remediate usersnames for the incompliant service account names found?")
+            action = messagebox.askyesno("Service Account Remediation",
+                                         "Would you like to view service accounts that have usernames that need remediation?")
             # action = ""
             #while(action != 1 and action != 2):
             #action = int(input("Press 1 to view invalid serverAccounts or 2 to continue with audit"))
@@ -55,7 +55,7 @@ def servRemediate(AD, container2, OU):
                     message += i
                     message += "\n"
                 #action = int(input("Press 1 to remediate or 2 to move forward"))
-                action = messagebox.askyesno("Username Remediation", ("Would you like to remediate any of these service accounts?\n {}").format(message))
+                action = messagebox.askyesno("Service Account Remediation", ("Would you like to remediate any of these service accounts?\n {}").format(message))
                 if (action == 1):
                     AD.autoChangeServiceAccountName(array, container2, OU)
                     array3 = AD.get_serviceAccountNamesToBeApproved()
@@ -63,8 +63,8 @@ def servRemediate(AD, container2, OU):
                     for i in array3:
                         #print(i)
                         message = i
-                        action = messagebox.askyesno("Username Remediation",
-                                                     ("Would you like to remediate this user?\n {}").format(
+                        action = messagebox.askyesno("Service Account Remediation",
+                                                     ("Would you like to remediate this service account?\n {}").format(
                                                          message))
 
                         #action = int(input("Press 1 to add for remediation and 2 to skip"))
@@ -80,11 +80,11 @@ def userRemediate(AD, container1):
     a = AD.get_usersNeedUserNameCorr()
 
     if(a.size == 0):
-        messagebox.showwarning("All Clear", "No usernames to remediate")
+        messagebox.showwarning("All Clear", "No usernames to remediate!")
 
     else:
         try:
-            action = messagebox.askyesno("Username Remediation", "Would you like to see if you would like to remediate usersnames for the incompliant users found?")
+            action = messagebox.askyesno("Username Remediation", "Would you like to view users that have usernames that need remediation?")
             #action = ""
             #while(action != 1 and action != 2):
                 #action = int(input("Press 1 to view invalid userAccounts or 2 to continue with audit"))
@@ -128,7 +128,7 @@ def computerRemediate(AD, container3):
                 #if (action != 1 and action != 2):
                     #print("You must select 1 for remediate and 2 to skip!")
             action = messagebox.askyesno("Computer Remediation",
-                                         "Would you like to see if you would like to remediate computer names for the incompliant computers found?")
+                                         "Would you like to view computers with computer names that need remediation?")
             # action = ""
             if (action == 1):
                 array = AD.get_computerNeedNameChange()
@@ -149,7 +149,7 @@ def computerRemediate(AD, container3):
                         message = i
                         #action = int(input("Press 1 to add for remediation and 2 to skip"))
                         action = messagebox.askyesno("Computer Remediation",
-                                                     ("Would you like to remediate this computer?\n {}").format(
+                                                     ("Would you like to remediate {}?").format(
                                                          message))
                         if (action == 1):
                             array4 = np.append(array4, i)
@@ -215,7 +215,7 @@ def PWD_EXP_Remediate(AD):
                 message += i
                 message += "\n"
                 #answer = int(input("Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no."))
-                answer = messagebox.askyesno("Password Remediation","Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no.")
+                answer = messagebox.askyesno("Password Remediation","Would you like to set these account's passwords to expire?")
                 if(answer == 1):
                     AD.set_exp_flag()
         except ValueError as Valer:
