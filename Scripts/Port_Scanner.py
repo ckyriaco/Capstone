@@ -180,7 +180,7 @@ class Port_Scanner:
         from pypsexec.client import Client
         username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
 
-        c = Client(str(self.computerName), username=str(username))
+        c = Client(str(self.computerName), username=str(username), encrypt=True)
 
         c.connect()
 
