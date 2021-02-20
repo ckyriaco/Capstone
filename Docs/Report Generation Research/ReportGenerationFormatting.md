@@ -33,6 +33,15 @@ _Here are suggested formatting changes to the Audit Report txt._
 **Distinguished Name Report**
 * Distinguished Name Status:
 
-**Port Status**
+**Active Connections**
 
 _________________________________________________________________________________________________________________________________________________________________________________
+
+_We have several options for formatting the text file._
+
+* The Pandas library is great for manipulating large amounts of data and summarizing it into multiple text and visual representations - it supports output to CSV, Excel, HTML, JSON, and more
+* We can can utilize the Pandas library along with ReportLab to output the text file into PDF format
+  * ReportLab creates a canvas object using the data provided to it to generate a PDF document which we can customize the output of
+* Alongside ReportLab we can utilize PollyReports, which is intended to generate reports from databases using Python
+  * Able to play around with how the output will look to better improve readability 
+
