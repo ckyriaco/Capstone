@@ -10,6 +10,6 @@
 * Other string formatting techniques can introduce security vulnerabilities; if a malicious user can supply a format string, they can potentially leak secret keys and other sensitive information
 * Template strings don't allow for format specifiers - need to manually transform int number into a hex-string
 
-
+[More info](https://docs.python.org/3/library/string.html#template-strings)
 
 
