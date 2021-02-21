@@ -12,6 +12,12 @@ link: https://pypi.org/project/mdutils/#overview
 
 ​	Using a basic bash script we can insert headers and commas into the report and saving it to *.csv to be opened by MS Excel or LibreOffice Calc in an easy to read spreadsheet. 
 
+## MS Excel
+
+​	Using the `pyxll` library is another (and better) way to format an output file into a spreadsheet.
+
+Link: https://www.pyxll.com/features.html
+
 ## MS Word
 
 ​	There is a python module python-docx, that can create Word documents. 
