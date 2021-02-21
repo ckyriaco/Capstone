@@ -34,7 +34,7 @@ _A default domain or an temporary external domain can also be set._
 * _dn_status_ - An array of the statuses of distinguished names
 * _dn_set_ - An array of accounts with set distinguished names
 * _dn_not_set_ - An array of accounts without set distinguished names
-* _validUsernames _ - An array of valid usernames
+* _validUsernames_ - An array of valid usernames
 * _invalidUsernames_ - An array of invalid usernames
 * _usersNeedUserNameCorr_ - An array of user accounts that need to reset their usernames 
 * _servAccUserNameNeedChange_ - An array of service account users that need to reset their usernames
@@ -144,14 +144,18 @@ _A default domain or an temporary external domain can also be set._
 
 ### get_last_login_users method 
 * This method returns a list of when users last logged in to their accounts.
-* Has validation to ensure array parameter is not empty
+* Has validation to ensure array parameter is not empty.
 * Prints a string of users and last login info.
 
 ### set_serve_manager_status method 
 * This method discovers all service accounts that do not have a manager attribute set.
+* Has validation to ensure distinguished name parameter is not empty.
+* Updates the current object's serv_man_not_set array.
 
 ### get_last_user_login_list method 
 * This method takes in a distinguished name list and looks at the distinguished name that was last looked at. 
+* Gets a list of users that are within a container of a specific distinguished name nomenclature, are of a specific object category within that container, and have logged on before (can adjust this to find user accounts that have never been used as well).
+* The generated list is designed to be passed into get_login_past_N_days special purpose function.
 * The Object category is the group of specific users that the administrator wants to query about. 
 * The method makes sure that the user has actually logged on before. 
 
