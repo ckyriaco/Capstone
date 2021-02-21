@@ -1,4 +1,4 @@
-​														**Report Generation Styles in HTML**
+														# Report Generation Styles in HTML
 
 **Plotly/Dash**
 
@@ -14,7 +14,7 @@ Dash is a Python framework created by Plotly that is used for data analysis and 
 
 A free software library used for data analysis and data manipulation using Python, Cython and C. It is cross-platform and can be used on any OS. Numpy is required before pandas can be installed. The output is 2-dimensional, but organized, color-coded, and a good representation of the data being analyzed. It is used in various organizations, such as Finance, Advertising, Statistics, Neuroscience, etc.
 
-**_Uses\_:**
+**Uses\:**
 
 -Date/time stamps, date range and frequency conversion
 
