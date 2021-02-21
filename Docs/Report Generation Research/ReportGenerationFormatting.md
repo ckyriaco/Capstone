@@ -45,4 +45,4 @@ _We have several options for formatting the text file._
   * ReportLab creates a canvas object using the data provided to it to generate a PDF document which we can customize the output of
 * Alongside ReportLab we can utilize PollyReports, which is intended to generate reports from databases using Python
   * Able to play around with how the output will look to better improve readability 
-
+* We can utilize the built-in module mdutils to format the report into Markdown; Dave recommends this package due to the ease of coding and because ARA prefers their code documented in Markdown format
