@@ -56,72 +56,96 @@ _A default domain or an temporary external domain can also be set._
 ### set_CN setter method 
 * This method allows the administrator to set a new Common Name and initialize a different user. 
 * All set methods are required.
+* Has validation to enure the Common Name is not null.
 
 ### set_approvedUserNamesForChange method
 * This method sets approved usernames for change.
+* Updates the current object's approvedUserNamesForChange array.
 
 ### set_approvedComputerNamesForChange method
 * This method sets approved computer names for change.
+* Updates the current object's approvedComputerNamesForChange array.
 
 ### set_approvedServiceAccountNamesForChange method
 * This method sets approved service account names for change.
+* Updates the current object's approvedServiceAccountNamesForChange array.
 
 ### get_validUsernames method
 * This method returns the current object's list of valid usernames.
+* Returns a copy of the current object's validUserNames array.
 
 ### get_computerNeedNameChange method 
 * This method returns the current object's list of computers with names that need to be changed.
+* Returns a copy of the current object's computerNeedNameChange array.
 
 ### get_servAccUserNameNeedChange method
 * This method returns the current object's list of service account users with usernames that need to be changed.
+* Returns a copy of the current object's servAccUserNameNeedChange array.
 
 ### get_invalidUsernames method
 * This method returns the current object's list of invalid usernames.
+* Returns a copy of the current object's invalidUsernames array.
 
 ### get_pwd_exp_flag_false method 
 * This method returns the current object's list of users with passwords that do not expire.
+* Returns a copy of the current object's pwd_exp_flag_false array.
 
 ### get_unused_users method 
 * This method returns the current object's list of unused users.
+* Returns a copy of the current object's unusedUsers array.
 
 ### get_unused_computers method 
 * This method returns the current object's list of unused computers.
+* Returns a copy of the current object's unusedComputers array.
 
 ### get_pwdLastSetNDays method 
 * This method returns the current object's list of users that haven't set their password in N days.
+* Returns a copy of the current object's pwdLastSetNDays array.
 
 ### get_userNamesToBeApproved method
 * This method returns the current object's list of users with changed usernames that still need to be approved.
+* Returns a copy of the current object's userNamesToBeApproved array.
 
 ### get_computerNamesToBeApproved method
 * This method returns the current object's list of computers with changed names that still need to be approved.
- 
+* Returns a copy of the current object's computerNamesToBeApproved array.
+
 ### get_serviceAccountNamesToBeApproved method 
 * This method returns the current object's list of service account users with changed usernames that still need to be approved.
+* Returns a copy of the current object's serviceAccountNamesToBeApproved array.
 
 ### get_admin_list method 
 * This method returns a list of admin for every admin type.
+* Returns a copy of the current object's admin_list array.
 
 ### get_serv_man_not_set method
 * This method returns a list of service accounts without the manager field set.
+* Returns a copy of the current object's serv_man_not_set array.
 
 ### get_admin_last_logon method 
 * This method returns a list of last login information for each admin.
+* Returns a copy of the current object's admin_last_logon array.
 
 ### get_dn_status method
 * This method returns a list of users/computers and their distinguished name status.
+* Returns a copy of the current object's dn_status array.
 
 ### get_dn_set method 
 * This method returns a list of users with a distinguished name set
+* Returns a copy of the current object's dn_set array.
 
 ### get_dn_not_set method 
 * This method returns a list of users without a distinguished name set
+* Returns a copy of the current object's dn_not_set array.
 
 ### get_usersNeedUserNameCorr method 
 * This method returns a list of usernames who have users, computers, service accounts, etc. that need to be corrected.
+* Returns a copy of the current object's usersNeedUserNameCorr array.
 
 ### get_last_login_users method 
 * This method returns a list of when users last logged in to their accounts.
+* Has validation to ensure array parameter is not empty
+* Prints a string of users and last login info.
 
 ### set_serve_manager_status method 
 * This method discovers all service accounts that do not have a manager attribute set.
