@@ -224,36 +224,47 @@ _A default domain or an temporary external domain can also be set._
 
 ### autoChangeUserName method 
 * This method creates username suggestions.
+* Updates the userNamesToBeApproved array.
 
 ### changeUsernames method 
 * This method sets usernames that have just been approved.
+* Updates the usersNeedUserNameCorr array.
 
 ### changeComputernames method 
 * This method sets computer names that have just been approved.
+* Updates the computerNeedNameChange array.
 
 ### force_pwd_change method 
 * This method forces a user to change their password.
+* Updates the pwdLastSetNDays array.
 
 ### autoChangeComputerName method
 * This method creates computer name suggestions.
+* Updates the computerNamesToBeApproved array as needed.
 
 ### username_change_needed_report method
 * This method generates a report on usernames that need to be changed.
+* Returns a string of Users, Service Accounts and Computers.
 
 ### distinguished_name_report method
 * This method generates a report of all distinguished name statuses and displays them for the admin.
+* Returns a string of distinguished name statuses.
 
 ### admin_report method
 * This method returns a report of the administrator users of each administrator type.
- 
+* Returns a string of admins and last login info.
+
 ### get_unused_report method 
 * This method returns a report of the users and computers that have not logged in for the past N days. 
+* Returns a string of Unused Users, Unused User Count, Unused Computers and Unused Computer Count.
  
 ### get_pwd_report method 
 * This method returns a report on the users that have not changed their password in N days.
+* Returns a string of users with passwords unchanged past the day limit and users with passwords that don't expire.
 
 ### get_serv_man_not_set_report method 
 * This method returns a report of the service accounts that do not have a manager attribute set.
+* Returns a string of service accounts without the manager attribute set.
 
 ### toString method 
 * This method prints an overall message on information found by querying through Active Directory.
@@ -263,3 +274,6 @@ _A default domain or an temporary external domain can also be set._
     * List of Unused computers
     * Count for Unused computers
     * List of users who have not changed their passwords in N days 
+
+_________________________________________________________________________________________________________________________________________________________________________________
+### Code for testing scripts
