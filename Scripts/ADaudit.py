@@ -1,4 +1,4 @@
-#Applied Research Associates
+
 #This class is designed to allow administrators to query information that are vital for cmmc compliance audits of active directory instances.
 #Must already be joined to the active directory server's domain to use this class!
 #Can set a default domain manually using pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword").

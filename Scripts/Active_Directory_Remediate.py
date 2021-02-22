@@ -1,5 +1,5 @@
 
-#Applied Research Associates
+
 #This script utilizes the ADquery class to audit a variety of users, computers and groups for cmmc compliance
 import ADaudit as ad
 import os
@@ -243,18 +243,20 @@ def main():
     N = os.getenv('DAYS_UNUSED')
     N2 = os.getenv('DAYS_LS')
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
+    commandsArray = os.getenv('COMMAND_ARRAY').split(',')
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
     audit.logon_info(CN, containers, objectCategories, types, N, file_final)
     last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
     audit.get_admin(CN, adminArray, file_final)
     audit.service_account_audit(CN, con_serv, file_final)
     file = os.getenv('FILE_NAME')
+    file_final_port = os.getenv('COMMAND_OUTPUT')
     ip = os.getenv('SERVER_IP')
     server_name = os.getenv('SERVER_NAME')
     audit.get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
-    audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final)
+    audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_port, commandsArray)
     f = open(file, "r")
     doc = f.read()
     f.close()

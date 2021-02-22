@@ -23,9 +23,11 @@ class Port_Scanner:
     computerDN = ""
     samAccount = ""
     computerName = ""
+    commands = np.array([])
+    commandRes = np.array([])
 
 #Initializes a Port_Scanner object that will be used to discover futher detail on port activity throughout a specified domain.
-    def __init__(self, CN, server_ip, server_Domain_name, computerDN, samAccount, computerName):
+    def __init__(self, CN, server_ip, server_Domain_name, computerDN, samAccount, computerName, commands):
         if(CN == ""):
             raise ValueError("The common name cannot be null!")
         else:
@@ -57,6 +59,7 @@ class Port_Scanner:
         else:
             self.computerName = computerName
 
+        self.commands = commands
 
 
     #This ensures that the ip address is of a valid format.
@@ -168,8 +171,8 @@ class Port_Scanner:
 
             #print('Time taken:', time.time() - startTime)
 
-#This uses pypsexec module to connect to a remote computer/server, execute netstat_ban on that computer/server and collect the returned information.
-    def netstat_ban(self):
+#This uses pypsexec module to connect to a remote computer/server, execute specified commands on that computer/server and collect the returned information.
+    def command_execute(self):
 
         import os
         import pytest
@@ -182,28 +185,40 @@ class Port_Scanner:
         #User must be within an admin group with unrestricted privileges to use this!
         #Computer must be joined to the domain and you must be signed in as an admin with proper privileges.
         #The connection is encrypted.
-        username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
+        if (len(self.commands) == 0):
+            print("There are no commands to execute!")
+        else:
+            for i in self.commands:
 
-        c = Client(str(self.computerName), username=str(username), encrypt=True)
+                username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
 
-        c.connect()
+                c = Client(str(self.computerName), username=str(username), encrypt=True)
 
-        try:
-            c.create_service()
-            stdout, stderr, rc = c.run_executable("cmd.exe", arguments="/c netstat -ban")
-            stdout = stdout.decode("utf-8")
-            logger = logging.getLogger("pypsexec")
-            logger.setLevel(logging.INFO)
-            ch = logging.StreamHandler()
-            ch.setLevel(logging.INFO)
-            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-            ch.setFormatter(formatter)
-            logger.addHandler(ch)
-            return stdout
-        finally:
-            c.remove_service()
-            c.disconnect()
+                c.connect()
+                try:
+                    c.create_service()
+                    stdout, stderr, rc = c.run_executable("cmd.exe", arguments=str(i))
+                    stdout = stdout.decode("utf-8")
+                    logger = logging.getLogger("pypsexec")
+                    logger.setLevel(logging.INFO)
+                    ch = logging.StreamHandler()
+                    ch.setLevel(logging.INFO)
+                    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+                    ch.setFormatter(formatter)
+                    logger.addHandler(ch)
+                    self.commandRes = np.append(self.commandRes, stdout)
+                finally:
+                    c.remove_service()
+                    c.disconnect()
 
+    def command_report(self):
+        message = "Command Execution Output\n\n"
+        for i in self.commandRes:
+            for x in self.commands:
+                message += ("Command Result: \n {} \n {} \n").format(x, i)
+        return message
 
-
+    def toString(self):
+        for i in self.commandRes:
+            print("Command Result:\n", i, "\n")
 
