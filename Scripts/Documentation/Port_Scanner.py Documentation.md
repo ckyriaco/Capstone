@@ -48,6 +48,12 @@ _This class is designed to discover what processes are connecting to what ports 
 * For a specific target port, puts IP address of specific client and passes in port itself 
 * Utilizes daemon mode, allows for running through OS 
 
+### command_execute method
+* This method utilizes the pypsexec module to connec to a remote computer or server, execute specified commands on that computer / server, and collect the returned information into an overall message.
 
+### command_report method
+* This method builds the output message for the information collected from the command_execute method
 
+### toString method
+* This method prints an overall report based on the output message created from the command_report method
 
