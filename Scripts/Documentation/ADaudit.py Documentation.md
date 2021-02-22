@@ -161,46 +161,66 @@ _A default domain or an temporary external domain can also be set._
 
 ### get_login_past_N_days method 
 * This method finds the users within a provided list that have not logged in N days. 
+* Has validation to ensure the array parameter is not empty and and that the allowed type is either "Computer" or "User".
+* Contructs an array of the users who have not logged in N days and tracks the number of Computer types and User types as well as the number of days since the user last logged on.
 
 ### get_pwd_last_login_N_days method 
 * This method finds out when certain users (within the same distinguished name type, container and object category) have last set their password. 
 * After the method gets the specific category, it looks at the specific login. 
+* Has validation to ensure that the distinguished name, object category, number of days are not null.
+* Updates the current object's pwdLastSetNDays array.
 
 ### get_All_Admin method
 * This method retrieves all administrators of specified administrator types.
- 
+* Has validation to ensure that the Admin_Types array is not empty.
+* Updates the current object's admin_list array.
+
 ### get_All_Admin_CN method 
 * This method returns a list of the Common Names(CNs) of all admin users
+* Has validation to ensure that the Admin_Types array is not empty.
+* Returns an array with the Common Names of all admin users.
 
 ### get_admin_last_logon_info method 
 * This method returns a list of last logon times for all admin users of a given type.
+* Has validation to ensure that the Admin_Types array is not empty.
+* Updates the current object's admin_last_logon array.
 
 ### distinguished_name_set method 
 * This method checks that a distinguished name is set.
+* Has validation to ensure distinguished name parameter is not null.
+* Updates the current object's dn_set array and dn_not_set array as needed.
 
 ### check_pwd_expire method 
 * This method checks that the DONT_EXPIRE_PASSWD flag is set to false.
+* Updates the current object's pwd_exp_flag_false array as needed.
 
 ### set_exp_flag method 
 * This method sets the DONT_EXPIRE_PASSWD flag to false.
+* Updates the set_user_account_control_setting and the pwd_exp_flag_false array.
 
 ### check_username method 
 * This method checks the usernames of the users with the container, and ensures they are valid.
+* Updates the current object's validUsernames array and usersNeedUserNameCorr array as needed.
 
 ### check_computer_name method 
 * This method checks that the computer name is of a valid naming scheme for ARA standards.
+* Updates the current object's computerNameValid array and computerNeedNameChange array as needed.
 
 ### check_service_account_name method 
 * This method checks the service accounts against the proper ARA naming scheme.
+* Updates the current object's validUsernames array, invalidUsernames array and servAccUserNameNeedChange array as needed.
 
 ### autoChangeServiceAccountName method
 * This method creates service account name suggestions.
+* Updates the current object's serviceAccountNamesToBeApproved array as needed.
 
 ### changeServiceAccountNames method 
 * This method sets an approved service account name.
+* Updates the current object's servAccUserNameNeedChange array as needed.
 
 ### findMatch method
 * This method finds out if an account name is already in use.
+* Returns a boolean after comparing Common Names.
 
 ### autoChangeUserName method 
 * This method creates username suggestions.
