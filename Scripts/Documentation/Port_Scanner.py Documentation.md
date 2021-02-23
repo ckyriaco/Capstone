@@ -50,6 +50,7 @@ _This class is designed to discover what processes are connecting to what ports 
 
 ### command_execute method
 * This method utilizes the pypsexec module to connec to a remote computer or server, execute specified commands on that computer / server, and collect the returned information into an overall message.
+* Using cache credentials, which only get cached during sign in as an admin
 
 ### command_report method
 * This method builds the output message for the information collected from the command_execute method
