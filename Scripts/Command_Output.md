@@ -111,11 +111,11 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:52899    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:55564    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:54525    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:57191    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:53019    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:55685    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -195,23 +195,31 @@ Active Connections
  [DFSRs.exe]
   TCP    [::1]:53               [::]:0                 LISTENING
  [dns.exe]
-  TCP    [::1]:135              [::1]:50970            ESTABLISHED
+  TCP    [::1]:135              [::1]:51020            ESTABLISHED
   RpcSs
  [svchost.exe]
+  TCP    [::1]:445              [::1]:51031            ESTABLISHED
+ Can not obtain ownership information
   TCP    [::1]:49669            [::1]:49745            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
+ [lsass.exe]
+  TCP    [::1]:49669            [::1]:51021            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:50957            [::1]:49669            TIME_WAIT
-  TCP    [::1]:50960            [::1]:135              TIME_WAIT
-  TCP    [::1]:50963            [::1]:135              TIME_WAIT
-  TCP    [::1]:50970            [::1]:135              ESTABLISHED
-  TermService
+  TCP    [::1]:51020            [::1]:135              ESTABLISHED
+  LanmanWorkstation
  [svchost.exe]
+  TCP    [::1]:51021            [::1]:49669            ESTABLISHED
+  LanmanWorkstation
+ [svchost.exe]
+  TCP    [::1]:51023            [::1]:135              TIME_WAIT
+  TCP    [::1]:51028            [::1]:135              TIME_WAIT
+  TCP    [::1]:51031            [::1]:445              ESTABLISHED
+ Can not obtain ownership information
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]
@@ -5375,10 +5383,9 @@ Active Connections
   TCP    192.168.1.101:389      192.168.1.101:49704    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49743    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
-  TCP    192.168.1.101:389      192.168.1.120:52899    ESTABLISHED
-  TCP    192.168.1.101:445      192.168.1.120:54546    ESTABLISHED
-  TCP    192.168.1.101:445      192.168.1.120:54551    ESTABLISHED
-  TCP    192.168.1.101:3268     192.168.1.120:53019    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:55564    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:54129    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:55685    ESTABLISHED
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49743    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49747    192.168.1.101:389      ESTABLISHED
@@ -5412,15 +5419,14 @@ Active Connections
   TCP    [::]:49726             [::]:0                 LISTENING
   TCP    [::]:49750             [::]:0                 LISTENING
   TCP    [::1]:53               [::]:0                 LISTENING
-  TCP    [::1]:135              [::1]:50970            ESTABLISHED
   TCP    [::1]:49669            [::1]:49745            ESTABLISHED
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
-  TCP    [::1]:50957            [::1]:49669            TIME_WAIT
-  TCP    [::1]:50960            [::1]:135              TIME_WAIT
-  TCP    [::1]:50963            [::1]:135              TIME_WAIT
-  TCP    [::1]:50970            [::1]:135              ESTABLISHED
+  TCP    [::1]:51020            [::1]:135              TIME_WAIT
+  TCP    [::1]:51021            [::1]:49669            TIME_WAIT
+  TCP    [::1]:51023            [::1]:135              TIME_WAIT
+  TCP    [::1]:51028            [::1]:135              TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   UDP    0.0.0.0:389            *:*                    
   UDP    0.0.0.0:500            *:*                    
@@ -7958,7 +7964,6 @@ Active Connections
   UDP    [::]:3389              *:*                    
   UDP    [::]:3391              *:*                    
   UDP    [::]:4500              *:*                    
-  UDP    [::]:50014             *:*                    
   UDP    [::]:51592             *:*                    
   UDP    [::1]:53               *:*                    
   UDP    [::1]:61029            *:*                    

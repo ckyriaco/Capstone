@@ -22,8 +22,8 @@ Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 Key Admins: 
 Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
 
-Administrator Christopher M Kyriacou last logon: 2021-01-22 00:35:02
-Administrator Administrator last logon: 2021-01-22 00:15:05
+Administrator Christopher M Kyriacou, Last Logon: 2021-01-22 00:35:02, Days Since Last Logon: 32 
+Administrator Administrator, Last Logon: 2021-01-22 00:15:05, Days Since Last Logon: 32 
 
 
 Service Accounts without manager set:

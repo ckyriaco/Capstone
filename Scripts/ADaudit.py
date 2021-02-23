@@ -344,10 +344,16 @@ class ADaudit:
         else:
             admin = self.get_All_Admin_CN(Admin_Types)
             report = np.array([])
+            now = datetime.now()
+            dt = now.strftime("%Y-%m-%d %H:%M:%S")
+            currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
             for i in admin:
                 user = aduser.ADUser.from_cn(str(i))
                 logon = user.get_last_login()
-                message = ("Administrator {} last logon: {}").format(i, logon)
+                f = str(logon)
+                y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
+                diff = abs((currentDate - y).days)
+                message = ("Administrator {}, Last Logon: {}, Days Since Last Logon: {} ").format(i, logon, diff)
                 self.admin_last_logon = np.append(self.admin_last_logon, message)
 
 #Check that a dn name is set
