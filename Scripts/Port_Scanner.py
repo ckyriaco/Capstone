@@ -213,9 +213,10 @@ class Port_Scanner:
 
     def command_report(self):
         message = "Command Execution Output\n\n"
+        x = 0
         for i in self.commandRes:
-            for x in self.commands:
-                message += ("Command Result: \n {} \n {} \n").format(x, i)
+            message += ("Command Result: \n {} \n {} \n").format(self.commands[x], i)
+            x += 1
         return message
 
     def toString(self):
