@@ -1,8 +1,8 @@
 
 
-# Port Status:
+# Port Status: #
 
-#KTG.local -> IPv4: 192.168.1.101 #
+# KTG.local -> IPv4: 192.168.1.101 #
 
 ## 53 is open ##
 ## Port: 53 => service name: domain ##

@@ -142,7 +142,7 @@ class Port_Scanner:
         counter = 0
         for i in array:
             if(counter == 0):
-                message = ("\n\n# Port Status:\n\n#{} -> IPv4: {} #\n").format(self.server_Domain_name, i)
+                message = ("\n\n# Port Status: #\n\n# {} -> IPv4: {} #\n").format(self.server_Domain_name, i)
             else:
                 message = ("\n# {} -> IPv4: {} #\n").format(self.dn_hosts[counter], i)
             f = open(file, "a")

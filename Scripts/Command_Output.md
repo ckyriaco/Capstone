@@ -108,13 +108,11 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:60205    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:54351    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:61832    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:55985    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:61838    ESTABLISHED
- Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:60327    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:54479    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -208,7 +206,9 @@ Active Connections
   TCP    [::1]:51309            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
-  TCP    [::1]:51376            [::1]:135              TIME_WAIT
+  TCP    [::1]:51384            [::1]:135              TIME_WAIT
+  TCP    [::1]:51385            [::1]:49669            TIME_WAIT
+  TCP    [::1]:51397            [::1]:135              TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]
@@ -5371,10 +5371,10 @@ Active Connections
   TCP    192.168.1.101:389      192.168.1.101:49704    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49743    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
-  TCP    192.168.1.101:389      192.168.1.120:60205    ESTABLISHED
-  TCP    192.168.1.101:445      192.168.1.120:61862    ESTABLISHED
-  TCP    192.168.1.101:445      192.168.1.120:61867    ESTABLISHED
-  TCP    192.168.1.101:3268     192.168.1.120:60327    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:54351    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:56006    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:56011    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:54479    ESTABLISHED
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49743    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49747    192.168.1.101:389      ESTABLISHED
@@ -5414,8 +5414,9 @@ Active Connections
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
   TCP    [::1]:51309            [::1]:135              ESTABLISHED
-  TCP    [::1]:51376            [::1]:135              TIME_WAIT
-  TCP    [::1]:51381            [::1]:389              SYN_SENT
+  TCP    [::1]:51384            [::1]:135              TIME_WAIT
+  TCP    [::1]:51385            [::1]:49669            TIME_WAIT
+  TCP    [::1]:51397            [::1]:135              TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   UDP    0.0.0.0:389            *:*                    
   UDP    0.0.0.0:500            *:*                    
