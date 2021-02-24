@@ -677,56 +677,58 @@ class ADaudit:
 
     #Report of usersnames that need to be changed
     def username_change_needed_report(self):
-        message = "\n\nUsers that need their username changed:\n"
-        message += "Users that need to change username:\n"
+        message = "\n\n# Users that need their username changed: #\n"
+        message += "## Users that need to change username: ##\n"
         for i in self.usersNeedUserNameCorr:
-            message += ("{}, \n").format(str(i))
+            message += ("## {}, ##\n").format(str(i))
         message += "Service Accounts that need their names changed:\n"
         for i in self.servAccUserNameNeedChange:
-            message += ("{}, \n").format(str(i))
+            message += ("## {}, ##\n").format(str(i))
         message += "Computers that need their names changed:\n"
         for i in self.computerNeedNameChange:
-            message += ("{}, \n").format(str(i))
+            message += ("## {}, ##\n").format(str(i))
         return message
 
 #This generates a report of all distinguished name statuses and displays them for the admin.
     def distinguished_name_report(self):
-        message = "\n\nDistinguished Name Report:\n"
-        message += "Distinguished Name Status:\n"
+        message = "\n\n# Distinguished Name Report: #\n"
+        message += "## Distinguished Name Status: ##\n"
         for i in self.dn_status:
-            message += ("{}\n").format(str(i))
+            message += ("## {} ##\n").format(str(i))
         message += "\n"
         return message
 
 
 #Return a report of the admin users of each admin type
     def admin_report(self):
-        message = "\n\nAdmin Report:\n"
+        message = "\n\n# Admin Report: #\n"
         for i in self.admin_list:
-            message += ("{}\n").format(str(i))
+            message += ("## {} ##\n").format(str(i))
         message += "\n"
         for i in self.admin_last_logon:
-            message += ("{}\n").format(str(i))
+            message += ("## {} ##\n").format(str(i))
 
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
-        message ="\n\nUnused Users:"
+        message ="\n\n# Unused Users: #"
         for i in self.unusedUsers:
-            message += ("\n{}").format(str(i))
-        message += ("\nUnused User Count: {}").format(self.unusedUserCount)
+            message += ("\n## {} ##").format(str(i))
+        message += ("\n## Unused User Count: {} ##").format(self.unusedUserCount)
         message += "\n\nUnused Computers:"
         for i in self.unusedComputers:
-            message += ("\n{}").format(str(i))
-        message += ("\nUnused Computer Count: {}").format(self.unusedComputerCount)
+            message += ("\n## {} ##").format(str(i))
+        message += ("\n## Unused Computer Count: {} ##").format(self.unusedComputerCount)
         return message
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
-        message = "\n\nUsers with passwords unchanged past the day limit:\n"
+        message = "\n\n# Users with passwords unchanged past the day limit: #\n"
         for i in self.pwdLastSetNDays:
+            message += "## "
             message += ("{}, ").format(str(i))
+            message += " ##"
         message += "\n\nUsers with password's that don't expire:\n"
         for i in self.pwd_exp_flag_false:
             message += ("{}, ").format(str(i))
@@ -734,9 +736,11 @@ class ADaudit:
 
 #Report of the service accounts that do not have a manager attribute set.
     def get_serv_man_not_set_report(self):
-        message = "\n\nService Accounts without manager set:\n"
+        message = "\n\n# Service Accounts without manager set: #\n"
         for i in self.serv_man_not_set:
+            message += "## "
             message += ("{}, ").format(str(i))
+            message += " ##"
         return message
 
 #Print an overall message on information found by querying through Active Directory.

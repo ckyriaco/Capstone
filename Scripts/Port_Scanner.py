@@ -123,10 +123,10 @@ class Port_Scanner:
                 with print_lock:
                     #print(target)
                     #print(port, 'is open')
-                    message += ("\n{} is open\n").format(port)
+                    message += ("\n## {} is open ##\n").format(port)
                     protocolname = 'tcp'
                     #print("Port: %s => service name: %s" % (port, socket.getservbyport(port, protocolname)))
-                    message += ("Port: {} => service name: {}\n").format(port, socket.getservbyport(port, protocolname))
+                    message += ("## Port: {} => service name: {} ##\n").format(port, socket.getservbyport(port, protocolname))
                     f = open(file, "a")
                     f.write(message)
                     f.close()
@@ -142,9 +142,9 @@ class Port_Scanner:
         counter = 0
         for i in array:
             if(counter == 0):
-                message = ("\n\nPort Status:\n\n{} -> IPv4: {}\n").format(self.server_Domain_name, i)
+                message = ("\n\n# Port Status:\n\n{} -> IPv4: {} #\n").format(self.server_Domain_name, i)
             else:
-                message = ("\n{} -> IPv4: {}\n").format(self.dn_hosts[counter], i)
+                message = ("\n## {} -> IPv4: {} ##\n").format(self.dn_hosts[counter], i)
             f = open(file, "a")
             f.write(message)
             f.close()
@@ -212,10 +212,10 @@ class Port_Scanner:
                     c.disconnect()
 
     def command_report(self):
-        message = "Command Execution Output\n\n"
+        message = "# Command Execution Output #\n\n"
         x = 0
         for i in self.commandRes:
-            message += ("Command Result: \n {} \n {} \n").format(self.commands[x], i)
+            message += ("# Command Result: #\n## {} ##\n## {} ##\n").format(self.commands[x], i)
             x += 1
         return message
 

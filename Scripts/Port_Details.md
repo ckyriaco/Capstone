@@ -1,48 +1,48 @@
 
 
-Port Status:
+# Port Status:
 
-KTG.local -> IPv4: 192.168.1.101
+KTG.local -> IPv4: 192.168.1.101 #
 
-53 is open
-Port: 53 => service name: domain
+## 53 is open ##
+## Port: 53 => service name: domain ##
 
-80 is open
-Port: 80 => service name: http
+## 80 is open ##
+## Port: 80 => service name: http ##
 
-88 is open
-Port: 88 => service name: kerberos
+## 88 is open ##
+## Port: 88 => service name: kerberos ##
 
-135 is open
-Port: 135 => service name: epmap
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
-139 is open
-Port: 139 => service name: netbios-ssn
+## 139 is open ##
+## Port: 139 => service name: netbios-ssn ##
 
-389 is open
-Port: 389 => service name: ldap
+## 389 is open ##
+## Port: 389 => service name: ldap ##
 
-443 is open
-Port: 443 => service name: https
+## 443 is open ##
+## Port: 443 => service name: https ##
 
-445 is open
-Port: 445 => service name: microsoft-ds
+## 445 is open ##
+## Port: 445 => service name: microsoft-ds ##
 
-464 is open
-Port: 464 => service name: kpasswd
+## 464 is open ##
+## Port: 464 => service name: kpasswd ##
 
-CLIENT -> IPv4: 192.168.1.120
+## CLIENT -> IPv4: 192.168.1.120 ##
 
-80 is open
-Port: 80 => service name: http
+## 80 is open ##
+## Port: 80 => service name: http ##
 
-135 is open
-Port: 135 => service name: epmap
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
-139 is open
-Port: 139 => service name: netbios-ssn
+## 139 is open ##
+## Port: 139 => service name: netbios-ssn ##
 
-445 is open
-Port: 445 => service name: microsoft-ds
+## 445 is open ##
+## Port: 445 => service name: microsoft-ds ##
 
-DESKTOP-A67G0P2 -> IPv4: 192.168.0.3
+## DESKTOP-A67G0P2 -> IPv4: 192.168.0.3 ##
