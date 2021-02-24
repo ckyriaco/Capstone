@@ -142,9 +142,9 @@ class Port_Scanner:
         counter = 0
         for i in array:
             if(counter == 0):
-                message = ("\n\n# Port Status: #\n\n# {} -> IPv4: {} #\n").format(self.server_Domain_name, i)
+                message = ("\n\n# Port Status: #\n_______________________________________________________________\n\n# {} -> IPv4: {} #\n____________________________________________________________________________________").format(self.server_Domain_name, i)
             else:
-                message = ("\n# {} -> IPv4: {} #\n").format(self.dn_hosts[counter], i)
+                message = ("\n# {} -> IPv4: {} #\n______________________________________________________________________").format(self.dn_hosts[counter], i)
             f = open(file, "a")
             f.write(message)
             f.close()
@@ -212,10 +212,10 @@ class Port_Scanner:
                     c.disconnect()
 
     def command_report(self):
-        message = "# Command Execution Output #\n\n"
+        message = "# Command Execution Output #\n______________________________________________________________________________________"
         x = 0
         for i in self.commandRes:
-            message += ("# Command Result: #\n## {} ##\n## {} ##\n").format(self.commands[x], i)
+            message += ("\n\n# Command Result: #\n____________________________________________________________________________\n## {} ##\n## {} ##\n").format(self.commands[x], i)
             x += 1
         return message
 
