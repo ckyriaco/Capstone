@@ -11,4 +11,6 @@
 - [X] Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port. As much detail about the process as can be found should be reported. Install sysinternals on the remote computer if needed. Using psexec is OK. This is probably the top priority.
 
 ## Additions to functions ##
-- [ ] Add the time it's been since an admin has signed on to the reporting of the last time an admin signed on.
+- [X] Add the time it's been since an admin has signed on to the reporting of the last time an admin signed on.
+- [X] Add Markdown report generation.
+- [ ] Add imporvements to Markdown report.
