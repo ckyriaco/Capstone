@@ -100,9 +100,6 @@ Active Connections
  [dns.exe]
   TCP    192.168.1.101:53       0.0.0.0:0              LISTENING
  [dns.exe]
-  TCP    192.168.1.101:135      192.168.1.120:58546    ESTABLISHED
-  RpcSs
- [svchost.exe]
   TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
  Can not obtain ownership information
   TCP    192.168.1.101:389      192.168.1.101:49704    ESTABLISHED
@@ -111,13 +108,13 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:55849    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:60205    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:443      192.168.1.120:56420    CLOSE_WAIT
+  TCP    192.168.1.101:445      192.168.1.120:61832    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:57481    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:61838    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:55975    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:60327    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -204,8 +201,6 @@ Active Connections
  [lsass.exe]
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:49669            [::1]:51340            ESTABLISHED
- [lsass.exe]
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
@@ -213,10 +208,7 @@ Active Connections
   TCP    [::1]:51309            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
-  TCP    [::1]:51334            [::1]:135              TIME_WAIT
-  TCP    [::1]:51339            [::1]:135              TIME_WAIT
-  TCP    [::1]:51340            [::1]:49669            ESTABLISHED
- [lsass.exe]
+  TCP    [::1]:51376            [::1]:135              TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]
@@ -242,9 +234,6 @@ Active Connections
  [svchost.exe]
   UDP    0.0.0.0:51591          *:*                    
  [dns.exe]
-  UDP    0.0.0.0:51866          *:*                    
-  Dnscache
- [svchost.exe]
   UDP    0.0.0.0:62140          *:*                    
  [dns.exe]
   UDP    0.0.0.0:62141          *:*                    
@@ -5320,9 +5309,6 @@ Active Connections
  [svchost.exe]
   UDP    [::]:51592             *:*                    
  [dns.exe]
-  UDP    [::]:57422             *:*                    
-  Dnscache
- [svchost.exe]
   UDP    [::1]:53               *:*                    
  [dns.exe]
   UDP    [::1]:61029            *:*                    
@@ -5381,15 +5367,14 @@ Active Connections
   TCP    127.0.0.1:49680        127.0.0.1:389          ESTABLISHED
   TCP    127.0.0.1:49702        127.0.0.1:389          ESTABLISHED
   TCP    192.168.1.101:53       0.0.0.0:0              LISTENING
-  TCP    192.168.1.101:135      192.168.1.120:58546    ESTABLISHED
   TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
   TCP    192.168.1.101:389      192.168.1.101:49704    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49743    ESTABLISHED
   TCP    192.168.1.101:389      192.168.1.101:49747    ESTABLISHED
-  TCP    192.168.1.101:389      192.168.1.120:55849    ESTABLISHED
-  TCP    192.168.1.101:443      192.168.1.120:56420    CLOSE_WAIT
-  TCP    192.168.1.101:445      192.168.1.120:57526    ESTABLISHED
-  TCP    192.168.1.101:3268     192.168.1.120:55975    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:60205    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:61862    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:61867    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:60327    ESTABLISHED
   TCP    192.168.1.101:49704    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49743    192.168.1.101:389      ESTABLISHED
   TCP    192.168.1.101:49747    192.168.1.101:389      ESTABLISHED
@@ -5426,13 +5411,11 @@ Active Connections
   TCP    [::1]:135              [::1]:51309            ESTABLISHED
   TCP    [::1]:49669            [::1]:49745            ESTABLISHED
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
-  TCP    [::1]:49669            [::1]:51340            ESTABLISHED
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
   TCP    [::1]:51309            [::1]:135              ESTABLISHED
-  TCP    [::1]:51334            [::1]:135              TIME_WAIT
-  TCP    [::1]:51339            [::1]:135              TIME_WAIT
-  TCP    [::1]:51340            [::1]:49669            ESTABLISHED
+  TCP    [::1]:51376            [::1]:135              TIME_WAIT
+  TCP    [::1]:51381            [::1]:389              SYN_SENT
   UDP    0.0.0.0:123            *:*                    
   UDP    0.0.0.0:389            *:*                    
   UDP    0.0.0.0:500            *:*                    
@@ -5442,8 +5425,6 @@ Active Connections
   UDP    0.0.0.0:5353           *:*                    
   UDP    0.0.0.0:5355           *:*                    
   UDP    0.0.0.0:51591          *:*                    
-  UDP    0.0.0.0:56781          *:*                    
-  UDP    0.0.0.0:57422          *:*                    
   UDP    0.0.0.0:62140          *:*                    
   UDP    0.0.0.0:62141          *:*                    
   UDP    0.0.0.0:62142          *:*                    
@@ -7973,8 +7954,6 @@ Active Connections
   UDP    [::]:3391              *:*                    
   UDP    [::]:4500              *:*                    
   UDP    [::]:51592             *:*                    
-  UDP    [::]:52997             *:*                    
-  UDP    [::]:56781             *:*                    
   UDP    [::1]:53               *:*                    
   UDP    [::1]:61029            *:*                    
   UDP    [::1]:61030            *:*                    

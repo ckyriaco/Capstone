@@ -2,7 +2,7 @@
 
 # Port Status:
 
-KTG.local -> IPv4: 192.168.1.101 #
+#KTG.local -> IPv4: 192.168.1.101 #
 
 ## 53 is open ##
 ## Port: 53 => service name: domain ##
@@ -31,7 +31,7 @@ KTG.local -> IPv4: 192.168.1.101 #
 ## 464 is open ##
 ## Port: 464 => service name: kpasswd ##
 
-## CLIENT -> IPv4: 192.168.1.120 ##
+# CLIENT -> IPv4: 192.168.1.120 #
 
 ## 80 is open ##
 ## Port: 80 => service name: http ##
@@ -45,4 +45,4 @@ KTG.local -> IPv4: 192.168.1.101 #
 ## 445 is open ##
 ## Port: 445 => service name: microsoft-ds ##
 
-## DESKTOP-A67G0P2 -> IPv4: 192.168.0.3 ##
+# DESKTOP-A67G0P2 -> IPv4: 192.168.0.3 #
