@@ -35,7 +35,7 @@ def logon_info(CN, containers, objectCategories, types, N, file):
         else:
             count += 1
     doc = AD.get_unused_report()
-    AD.toString()
+    #AD.toString()
     f = open(file, "w")
     f.write(doc)
     f.close()

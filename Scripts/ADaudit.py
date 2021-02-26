@@ -695,9 +695,10 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'User':i, 'Username':str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No users need username correction."
-        message+= str(df)
+            message+= str(df)
         message += "\n\nService Accounts that need their names changed:\n"
         df = pd.DataFrame([], columns=['Service Account', 'Username'])
         if (self.servAccUserNameNeedChange.size > 0):
@@ -707,9 +708,10 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Service Account': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No service accounts need username correction."
-        message += str(df)
+            message += str(df)
         message += "\n\nComputers that need their names changed:\n"
         df = pd.DataFrame([], columns=['Computer', 'Username'])
         if (self.computerNeedNameChange.size > 0):
@@ -719,9 +721,10 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Computer': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No computers need their names changed."
-        message += str(df)
+            message += str(df)
         return message
 
 #This generates a report of all distinguished name statuses and displays them for the admin.
@@ -738,10 +741,11 @@ class ADaudit:
                 else:
                     newRow = {'Computer': x[0], 'DN Set': x[1], 'DN': '[Unknown]'}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No distinguished name audit has been conducted"
         #message += "\n"
-        message += str(df)
+            message += str(df)
         return message
 
 
@@ -762,9 +766,10 @@ class ADaudit:
                     x3 = np.append(x3, xtemp[0])
                 newRow = {'Admin Group':x[0], 'Members':x3}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No admin audit has been conducted."
-        message += str(df)
+            message += str(df)
         message += "\n"
         message += "\nAdministrator Last Logon\n\n"
         df = pd.DataFrame([], columns=['Admin Name', 'Last Logon', 'Days Since'])
@@ -774,9 +779,10 @@ class ADaudit:
                 x = i.split(",")
                 newRow = {'Admin Name':x[0],'Last Logon':x[1], 'Days Since':x[2]}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No admin last logon audit has been conducted."
-        message += str(df)
+            message += str(df)
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.
@@ -790,23 +796,25 @@ class ADaudit:
                 newRow = {'User':i, 'Days Unused':self.userDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "There are no unused users past the day limit."
-        message += str(df)
+            message += str(df)
         message += ("\n## Unused User Count: {} ##").format(self.unusedUserCount)
         message += "\n\nUnused Computers:"
         df = pd.DataFrame([], columns=['Computer', 'Days Unused'])
         counter = 0
-        print(self.unusedComputers)
+
         if(self.unusedComputers.size > 0):
             for i in self.unusedComputers:
                 #message += ("\n## {} ##").format(str(i))
                 newRow = {'Computer':i, 'Days Unused':self.computerDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
+                message += df.to_markdown(tablefmt="grid")
         else:
             df = "There are no unused computers past the day limit."
-        message += str(df)
+            message += str(df)
         message += ("\n## Unused Computer Count: {} ##").format(self.unusedComputerCount)
         return message
 
@@ -824,9 +832,10 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'User':str(i), 'Username':str(u[0])}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No passwords that are older than the day limit."
-        message += str(df)
+            message += str(df)
         message += "\n\nUsers with password's that don't expire:\n"
         df = pd.DataFrame([], columns=['User', 'Username'])
         if(self.get_pwd_exp_flag_false().size > 0):
@@ -836,9 +845,10 @@ class ADaudit:
                 u = user.get_attribute("samaccountname")
                 newRow = {'User': str(i), 'Username': str(u[0])}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No accounts are set to have passwords that don't expire."
-        message += str(df)
+            message += str(df)
         return message
 
 #Report of the service accounts that do not have a manager attribute set.
@@ -852,9 +862,10 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'Service Account':i}
                 df = df.append(newRow, ignore_index=True)
+            message += df.to_markdown(tablefmt="grid")
         else:
             df = "No service accounts without their password set."
-        message += str(df)
+            message += str(df)
         return message
 
 
