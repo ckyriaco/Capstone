@@ -134,12 +134,18 @@ def port_status(CN, server_ip, file, server_name, container, samAccount, compute
         P = ps.Port_Scanner(CN, server_ip, server_name, container, samAccount, computerName, commands)
         P.port_status(file)
         P.command_execute()
-        message = P.command_report()
+        #message = P.command_report()
+        outputs = P.get_commandRes()
     except ValueError as Valer:
         messagebox.showwarning("An Error has occured: ", Valer)
-    f = open(file_final, "w")
-    f.write(message)
-    f.close()
+    counter = 0
+    for i in file_final:
+        f = open(i, "w")
+        f.write(outputs[counter])
+        f.close()
+        rg.format_md(i)
+        counter+=1
+
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
@@ -171,11 +177,13 @@ def main():
     file = os.getenv('FILE_NAME')
     ip = os.getenv('SERVER_IP')
     file_final_port = os.getenv('COMMAND_OUTPUT')
+    file_final_port_2 = os.getenv('COMMAND_OUTPUT_2')
+    file_final_ports = np.array([file_final_port, file_final_port_2])
     server_name = os.getenv('SERVER_NAME')
     get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
-    port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_port, commandsArray)
+    port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
     pdf_audit_report = os.getenv('PDF_FILE')
     pdf_command_report = os.getenv('COMMAND_OUTPUT_PDF')
     pdf_port_status = os.getenv('FILE_NAME_PDF')

@@ -11,6 +11,10 @@ import logging
 import numpy as np
 from pypsexec.client import Client
 import pandas as pd
+import os
+import pytest
+import sys
+from pypsexec.client import Client
 from warnings import simplefilter
 
 simplefilter(action='ignore', category=FutureWarning)
@@ -62,6 +66,11 @@ class Port_Scanner:
 
         self.commands = commands
 
+    def get_commandRes(self):
+        array = np.array([])
+        for i in self.commandRes:
+            array = np.append(array, i)
+        return array
 
     #This ensures that the ip address is of a valid format.
     def check_ip(self, ip):
@@ -176,13 +185,6 @@ class Port_Scanner:
 #This uses pypsexec module to connect to a remote computer/server, execute specified commands on that computer/server and collect the returned information.
     def command_execute(self):
 
-        import os
-        import pytest
-        import sys
-        import time
-        import logging
-        import numpy as np
-        from pypsexec.client import Client
         #Note this sign in setup is utilizing securely cached credentials within the OS rather than risking the exposure of the password.
         #User must be within an admin group with unrestricted privileges to use this!
         #Computer must be joined to the domain and you must be signed in as an admin with proper privileges.

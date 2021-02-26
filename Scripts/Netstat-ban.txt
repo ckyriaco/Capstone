@@ -104,13 +104,13 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:60993    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:51066    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:53236    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:52702    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:54881    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:52707    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:54886    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:51198    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:53370    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:60979    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -190,30 +190,19 @@ Active Connections
  [DFSRs.exe]
   TCP    [::1]:53               [::]:0                 LISTENING
  [dns.exe]
-  TCP    [::1]:135              [::1]:61024            ESTABLISHED
-  RpcSs
- [svchost.exe]
-  TCP    [::1]:135              [::1]:61030            ESTABLISHED
+  TCP    [::1]:135              [::1]:61055            ESTABLISHED
   RpcSs
  [svchost.exe]
   TCP    [::1]:49669            [::1]:49745            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:49669            [::1]:61025            ESTABLISHED
- [lsass.exe]
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:61020            [::1]:135              TIME_WAIT
-  TCP    [::1]:61024            [::1]:135              ESTABLISHED
-  LanmanWorkstation
- [svchost.exe]
-  TCP    [::1]:61025            [::1]:49669            ESTABLISHED
-  LanmanWorkstation
- [svchost.exe]
-  TCP    [::1]:61030            [::1]:135              ESTABLISHED
+  TCP    [::1]:61052            [::1]:135              TIME_WAIT
+  TCP    [::1]:61055            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
   UDP    0.0.0.0:123            *:*                    

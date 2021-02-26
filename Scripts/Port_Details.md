@@ -1,93 +1,50 @@
 
-Port Scan Report
-================
-  
-**``Timestamp: 2021-02-25 10:27:43``**  
-Port Status:
-  
-**KTG.local -> IPv4: 192.168.1.101
-**  
-53 is open
-  
-Port: 53 => service name: domain
-  
 
-  
-80 is open
-  
-Port: 80 => service name: http
-  
+# Port Status: #
+_______________________________________________________________
 
-  
-88 is open
-  
-Port: 88 => service name: kerberos
-  
+# KTG.local -> IPv4: 192.168.1.101 #
+____________________________________________________________________________________
+## 53 is open ##
+## Port: 53 => service name: domain ##
 
-  
-135 is open
-  
-Port: 135 => service name: epmap
-  
+## 80 is open ##
+## Port: 80 => service name: http ##
 
-  
-139 is open
-  
-Port: 139 => service name: netbios-ssn
-  
+## 88 is open ##
+## Port: 88 => service name: kerberos ##
 
-  
-389 is open
-  
-Port: 389 => service name: ldap
-  
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
-  
-443 is open
-  
-Port: 443 => service name: https
-  
+## 139 is open ##
+## Port: 139 => service name: netbios-ssn ##
 
-  
-445 is open
-  
-Port: 445 => service name: microsoft-ds
-  
+## 389 is open ##
+## Port: 389 => service name: ldap ##
 
-  
-464 is open
-  
-Port: 464 => service name: kpasswd
-  
+## 443 is open ##
+## Port: 443 => service name: https ##
 
-  
-**CLIENT -> IPv4: 192.168.1.120
-**  
+## 445 is open ##
+## Port: 445 => service name: microsoft-ds ##
 
-  
-80 is open
-  
-Port: 80 => service name: http
-  
+## 464 is open ##
+## Port: 464 => service name: kpasswd ##
 
-  
-135 is open
-  
-Port: 135 => service name: epmap
-  
+# CLIENT -> IPv4: 192.168.1.120 #
+______________________________________________________________________
+## 80 is open ##
+## Port: 80 => service name: http ##
 
-  
-139 is open
-  
-Port: 139 => service name: netbios-ssn
-  
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
-  
-445 is open
-  
-Port: 445 => service name: microsoft-ds
-  
+## 139 is open ##
+## Port: 139 => service name: netbios-ssn ##
 
-  
-**DESKTOP-A67G0P2 -> IPv4: 192.168.0.3
-**
+## 445 is open ##
+## Port: 445 => service name: microsoft-ds ##
+
+# DESKTOP-A67G0P2 -> IPv4: 192.168.0.3 #
+______________________________________________________________________
