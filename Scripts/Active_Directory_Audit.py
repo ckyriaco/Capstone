@@ -6,6 +6,10 @@ import numpy as np
 import Port_Scanner as ps
 from tkinter import *
 from tkinter import messagebox
+import report_gen as rg
+
+from io import *
+
 
 window = Tk()
 window.eval('tk::PlaceWindow %s center' % window.winfo_toplevel())
@@ -31,6 +35,7 @@ def logon_info(CN, containers, objectCategories, types, N, file):
         else:
             count += 1
     doc = AD.get_unused_report()
+    AD.toString()
     f = open(file, "w")
     f.write(doc)
     f.close()
@@ -171,9 +176,29 @@ def main():
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
     port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_port, commandsArray)
+    pdf_audit_report = os.getenv('PDF_FILE')
+    pdf_command_report = os.getenv('COMMAND_OUTPUT_PDF')
+    pdf_port_status = os.getenv('FILE_NAME_PDF')
     f = open(file_final, "r")
     print(f.read())
+    with open(file_final, 'r') as file:
+        data = file.read()
+
+    rg.gen_pdf(pdf_audit_report, data)
     f.close()
+
+    #with open(file_final_port, 'r') as file:
+        #data = file.read()
+    #rg.gen_pdf(pdf_command_report, data)
+
+    #f.close()
+    file_p = os.getenv('FILE_NAME')
+
+    with open(file_p, 'r') as file:
+        data = file.read()
+    rg.gen_pdf(pdf_port_status, data)
+    f.close()
+
 
 if __name__ == "__main__":
     main()

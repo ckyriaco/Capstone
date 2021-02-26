@@ -12,6 +12,9 @@ import pyad.pyadutils as py
 from datetime import datetime
 from warnings import simplefilter
 import re
+import pandas as pd
+from reportlab.pdfgen import canvas
+from reportlab.rl_config import *
 
 simplefilter(action='ignore', category=FutureWarning)
 
@@ -43,6 +46,8 @@ class ADaudit:
     approvedComputernamesForChange = np.array([])
     serviceAccountNamesToBeApproved = np.array([])
     approvedServiceAccountNamesForChange = np.array([])
+    userDaysUnused = np.array([])
+    computerDaysUnused = np.array([])
 #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
@@ -277,10 +282,12 @@ class ADaudit:
                     array2 = np.append(array2, [i, diff])
                     if(type == "Computer"):
                         self.unusedComputerCount += 1
-                        self.unusedComputers = np.append(self.unusedComputers, "{} Days Unused: {}".format(i, diff))
+                        self.unusedComputers = np.append(self.unusedComputers, i)
+                        self.computerDaysUnused = np.append(self.computerDaysUnused, diff)
                     elif(type == "User"):
                         self.unusedUserCount += 1
-                        self.unusedUsers = np.append(self.unusedUsers, "{} Days Unused: {}".format(i, diff))
+                        self.unusedUsers = np.append(self.unusedUsers, i)
+                        self.userDaysUnused = np.append(self.userDaysUnused, diff)
 
 
 #Find out when all users of a specific object category, within a container under a specific distinguished name type, last set their #password.
@@ -315,9 +322,9 @@ class ADaudit:
             for i in Admin_Types:
                 user = aduser.ADUser.from_cn(i)
                 l = user.get_attribute("member")
-                addition = ("{}: ").format(i)
+                addition = ("{}| ").format(i)
                 for x in l:
-                    addition += ("{},").format(x)
+                    addition += ("{}-").format(x)
                 self.admin_list = np.append(self.admin_list, addition)
 
 #Get all the cn's of all admin users
@@ -353,7 +360,7 @@ class ADaudit:
                 f = str(logon)
                 y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
                 diff = abs((currentDate - y).days)
-                message = ("Administrator {}, Last Logon: {}, Days Since Last Logon: {} ").format(i, logon, diff)
+                message = ("{},{},{} ").format(i, logon, diff)
                 self.admin_last_logon = np.append(self.admin_last_logon, message)
 
 #Check that a dn name is set
@@ -369,7 +376,8 @@ class ADaudit:
                 c = user.get_allowed_attributes()
                 message = ""
                 if ("distinguishedName" in c):
-                    message = ("{}: Distinguished Name Set: {} | DN = {}").format(cn[0], "Yes", user.get_attribute("distinguishedName"))
+                    x = user.get_attribute("distinguishedName")
+                    message = ("{} | {} | {}").format(cn[0], "Yes", x[0])
                     self.dn_status = np.append(self.dn_status, message)
                     self.dn_set = np.append(self.dn_set, cn[0])
                 else:
@@ -679,75 +687,188 @@ class ADaudit:
     def username_change_needed_report(self):
         message = "\n\n# Users that need their username changed: #\n"
         message += "## Users that need to change username: ##\n"
-        for i in self.usersNeedUserNameCorr:
-            message += ("## {}, ##\n").format(str(i))
-        message += "Service Accounts that need their names changed:\n"
-        for i in self.servAccUserNameNeedChange:
-            message += ("## {}, ##\n").format(str(i))
-        message += "Computers that need their names changed:\n"
-        for i in self.computerNeedNameChange:
-            message += ("## {}, ##\n").format(str(i))
+        df = pd.DataFrame([], columns=['User', 'Username'])
+        if (self.usersNeedUserNameCorr.size > 0):
+            for i in self.usersNeedUserNameCorr:
+                #message += ("## {}, ##\n").format(str(i))
+                user = pyad.aduser.ADUser.from_cn(str(i))
+                sam = user.get_attribute('samaccountname')
+                newRow = {'User':i, 'Username':str(sam[0])}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No users need username correction."
+        message+= str(df)
+        message += "\n\nService Accounts that need their names changed:\n"
+        df = pd.DataFrame([], columns=['Service Account', 'Username'])
+        if (self.servAccUserNameNeedChange.size > 0):
+            for i in self.servAccUserNameNeedChange:
+                #message += ("## {}, ##\n").format(str(i))
+                user = pyad.aduser.ADUser.from_cn(str(i))
+                sam = user.get_attribute('samaccountname')
+                newRow = {'Service Account': i, 'Username': str(sam[0])}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No service accounts need username correction."
+        message += str(df)
+        message += "\n\nComputers that need their names changed:\n"
+        df = pd.DataFrame([], columns=['Computer', 'Username'])
+        if (self.computerNeedNameChange.size > 0):
+            for i in self.computerNeedNameChange:
+                #message += ("## {}, ##\n").format(str(i))
+                user = pyad.aduser.ADUser.from_cn(str(i))
+                sam = user.get_attribute('samaccountname')
+                newRow = {'Computer': i, 'Username': str(sam[0])}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No computers need their names changed."
+        message += str(df)
         return message
 
 #This generates a report of all distinguished name statuses and displays them for the admin.
     def distinguished_name_report(self):
-        message = "\n\n# Distinguished Name Report: #\n"
+        message = "\n\n# Distinguished Name Report for Computers: #\n"
         message += "## Distinguished Name Status: ##\n"
-        for i in self.dn_status:
-            message += ("## {} ##\n").format(str(i))
-        message += "\n"
+        df = pd.DataFrame([], columns=['Computer', 'DN Set', 'DN'])
+        if(self.dn_status.size > 0):
+            for i in self.dn_status:
+                #message += ("## {} ##\n").format(str(i))
+                x = i.split(" | ")
+                if(x[1] == "Yes"):
+                    newRow = {'Computer':x[0],'DN Set':x[1],'DN':x[2]}
+                else:
+                    newRow = {'Computer': x[0], 'DN Set': x[1], 'DN': '[Unknown]'}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No distinguished name audit has been conducted"
+        #message += "\n"
+        message += str(df)
         return message
 
 
 #Return a report of the admin users of each admin type
     def admin_report(self):
         message = "\n\n# Admin Report: #\n"
-        for i in self.admin_list:
-            message += ("## {} ##\n").format(str(i))
-        message += "\n"
-        for i in self.admin_last_logon:
-            message += ("## {} ##\n").format(str(i))
+        df = pd.DataFrame([], columns=['Admin Group', 'Members'])
+        if(self.admin_list.size > 0):
+            for i in self.admin_list:
+                #message += ("## {} ##\n").format(str(i))
+                x = i.split("| ")
+                x2 = x[1].split("-")
+                x3 = np.array([])
 
+                for i in x2:
+                    xtemp = i.split(",")
+                    xtemp[0] = xtemp[0].replace("CN=", "")
+                    x3 = np.append(x3, xtemp[0])
+                newRow = {'Admin Group':x[0], 'Members':x3}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No admin audit has been conducted."
+        message += str(df)
+        message += "\n"
+        message += "\nAdministrator Last Logon\n\n"
+        df = pd.DataFrame([], columns=['Admin Name', 'Last Logon', 'Days Since'])
+        if(self.admin_last_logon.size > 0):
+            for i in self.admin_last_logon:
+                #message += ("## {} ##\n").format(str(i))
+                x = i.split(",")
+                newRow = {'Admin Name':x[0],'Last Logon':x[1], 'Days Since':x[2]}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No admin last logon audit has been conducted."
+        message += str(df)
         return message
 
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
         message ="\n\n# Unused Users: #"
-        for i in self.unusedUsers:
-            message += ("\n## {} ##").format(str(i))
+        df = pd.DataFrame([], columns=['User', 'Days Unused'])
+        counter = 0
+        if(self.unusedUsers.size > 0):
+            for i in self.unusedUsers:
+                #message += ("\n## {} ##").format(str(i))
+                newRow = {'User':i, 'Days Unused':self.userDaysUnused[counter]}
+                df = df.append(newRow, ignore_index=True)
+                counter += 1
+        else:
+            df = "There are no unused users past the day limit."
+        message += str(df)
         message += ("\n## Unused User Count: {} ##").format(self.unusedUserCount)
         message += "\n\nUnused Computers:"
-        for i in self.unusedComputers:
-            message += ("\n## {} ##").format(str(i))
+        df = pd.DataFrame([], columns=['Computer', 'Days Unused'])
+        counter = 0
+        print(self.unusedComputers)
+        if(self.unusedComputers.size > 0):
+            for i in self.unusedComputers:
+                #message += ("\n## {} ##").format(str(i))
+                newRow = {'Computer':i, 'Days Unused':self.computerDaysUnused[counter]}
+                df = df.append(newRow, ignore_index=True)
+                counter += 1
+        else:
+            df = "There are no unused computers past the day limit."
+        message += str(df)
         message += ("\n## Unused Computer Count: {} ##").format(self.unusedComputerCount)
         return message
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
         message = "\n\n# Users with passwords unchanged past the day limit: #\n"
-        for i in self.pwdLastSetNDays:
-            message += "## "
-            message += ("{}, ").format(str(i))
-            message += " ##"
+
+        df = pd.DataFrame([], columns=['User', 'Username'])
+        if(self.pwdLastSetNDays.size > 0):
+            for i in self.pwdLastSetNDays:
+                user = pyad.aduser.ADUser.from_cn(str(i))
+                u = user.get_attribute("samaccountname")
+                #message += "## "
+                #message += ("{}, ").format(str(i))
+                #message += " ##"
+                newRow = {'User':str(i), 'Username':str(u[0])}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No passwords that are older than the day limit."
+        message += str(df)
         message += "\n\nUsers with password's that don't expire:\n"
-        for i in self.pwd_exp_flag_false:
-            message += ("{}, ").format(str(i))
+        df = pd.DataFrame([], columns=['User', 'Username'])
+        if(self.get_pwd_exp_flag_false().size > 0):
+            for i in self.pwd_exp_flag_false:
+                #message += ("{}, ").format(str(i))
+                user = pyad.aduser.ADUser.from_cn(str(i))
+                u = user.get_attribute("samaccountname")
+                newRow = {'User': str(i), 'Username': str(u[0])}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No accounts are set to have passwords that don't expire."
+        message += str(df)
         return message
 
 #Report of the service accounts that do not have a manager attribute set.
     def get_serv_man_not_set_report(self):
         message = "\n\n# Service Accounts without manager set: #\n"
-        for i in self.serv_man_not_set:
-            message += "## "
-            message += ("{}, ").format(str(i))
-            message += " ##"
+        df = pd.DataFrame([], columns=['Service Account'])
+        if(self.serv_man_not_set.size > 0):
+            for i in self.serv_man_not_set:
+                #message += "## "
+                #message += ("{}, ").format(str(i))
+                #message += " ##"
+                newRow = {'Service Account':i}
+                df = df.append(newRow, ignore_index=True)
+        else:
+            df = "No service accounts without their password set."
+        message += str(df)
         return message
+
 
 #Print an overall message on information found by querying through Active Directory.
     def toString(self):
+        df = pd.DataFrame([], columns=['User', 'Days Unused'])
         print("Unused Users: ")
+        counter = 0
         for i in self.unusedUsers:
-            print(i, ", ")
+            newRow = {'User': i, 'Days Unused': self.userDaysUnused[counter]}
+            df = df.append(newRow, ignore_index=True)
+            # message += str(df)
+            counter += 1
+        print(df)
         print("\nUnused User Count: ", self.unusedUserCount)
         print("\nUnused Computers: ")
         for i in self.unusedComputers:

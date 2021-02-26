@@ -10,6 +10,7 @@ import time
 import logging
 import numpy as np
 from pypsexec.client import Client
+import pandas as pd
 from warnings import simplefilter
 
 simplefilter(action='ignore', category=FutureWarning)
@@ -141,6 +142,7 @@ class Port_Scanner:
 
         counter = 0
         for i in array:
+            name = ""
             if(counter == 0):
                 message = ("\n\n# Port Status: #\n_______________________________________________________________\n\n# {} -> IPv4: {} #\n____________________________________________________________________________________").format(self.server_Domain_name, i)
             else:

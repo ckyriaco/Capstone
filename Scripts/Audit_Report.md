@@ -1,44 +1,58 @@
 
 
-# Unused Users: #
-## Administrator Days Unused: 32 ##
-## Christopher M Kyriacou Days Unused: 32 ##
+# Unused Users: #                     User  Days Unused
+0           Administrator         35.0
+1  Christopher M Kyriacou         35.0
 ## Unused User Count: 2 ##
 
-Unused Computers:
-## CLIENT Days Unused: 39 ##
-## DESKTOP-A67G0P2 Days Unused: 40 ##
+Unused Computers:          Computer  Days Unused
+0           CLIENT         42.0
+1  DESKTOP-A67G0P2         42.0
 ## Unused Computer Count: 2 ##
 
 # Users with passwords unchanged past the day limit: #
-## Administrator,  #### Christopher M Kyriacou,  #### Guest,  #### Jamie Sutton,  #### krbtgt,  ##
+                     User       Username
+0           Administrator  Administrator
+1  Christopher M Kyriacou      ckyriacou
+2                   Guest          Guest
+3            Jamie Sutton         sutjay
+4                  krbtgt         krbtgt
 
 Users with password's that don't expire:
-Jamie Sutton, 
+           User Username
+0  Jamie Sutton   sutjay
 
 # Admin Report: #
-## Domain Admins: CN=Christopher M Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local, ##
-## Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local, ##
-## Key Admins:  ##
-## Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local, ##
+         Admin Group                                    Members
+0      Domain Admins  [Christopher M Kyriacou, Administrator, ]
+1  Enterprise Admins                          [Administrator, ]
+2         Key Admins                                         []
+3      Schema Admins                          [Administrator, ]
 
-## Administrator Christopher M Kyriacou, Last Logon: 2021-01-22 00:35:02, Days Since Last Logon: 32  ##
-## Administrator Administrator, Last Logon: 2021-01-22 00:15:05, Days Since Last Logon: 32  ##
+Administrator Last Logon
 
+               Admin Name           Last Logon Days Since
+0  Christopher M Kyriacou  2021-01-22 00:35:02        35 
+1           Administrator  2021-01-22 00:15:05        35 
 
 # Service Accounts without manager set: #
-## Updates,  ##
+  Service Account
+0         Updates
 
-# Distinguished Name Report: #
+# Distinguished Name Report for Computers: #
 ## Distinguished Name Status: ##
-## CLIENT: Distinguished Name Set: Yes | DN = ['CN=CLIENT,CN=Computers,DC=KTG,DC=local'] ##
-## DESKTOP-A67G0P2: Distinguished Name Set: Yes | DN = ['CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local'] ##
-
-
+          Computer DN Set                                               DN
+0           CLIENT    Yes           CN=CLIENT,CN=Computers,DC=KTG,DC=local
+1  DESKTOP-A67G0P2    Yes  CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local
 
 # Users that need their username changed: #
 ## Users that need to change username: ##
-## Jamie Sutton, ##
+           User Username
+0  Jamie Sutton   sutjay
+
 Service Accounts that need their names changed:
+No service accounts need username correction.
+
 Computers that need their names changed:
-## CLIENT, ##
+  Computer Username
+0   CLIENT   CLIENT
