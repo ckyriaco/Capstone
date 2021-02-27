@@ -44,10 +44,10 @@ TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
 TCP    192.168.1.101:389      192.168.1.101:60979    ESTABLISHED
 TCP    192.168.1.101:389      192.168.1.101:60986    ESTABLISHED
 TCP    192.168.1.101:389      192.168.1.101:60993    ESTABLISHED
-TCP    192.168.1.101:389      192.168.1.120:65286    ESTABLISHED
-TCP    192.168.1.101:445      192.168.1.120:50653    ESTABLISHED
-TCP    192.168.1.101:445      192.168.1.120:50655    ESTABLISHED
-TCP    192.168.1.101:3268     192.168.1.120:65420    ESTABLISHED
+TCP    192.168.1.101:389      192.168.1.120:60585    ESTABLISHED
+TCP    192.168.1.101:445      192.168.1.120:62254    ESTABLISHED
+TCP    192.168.1.101:445      192.168.1.120:62256    ESTABLISHED
+TCP    192.168.1.101:3268     192.168.1.120:60719    ESTABLISHED
 TCP    192.168.1.101:60979    192.168.1.101:389      ESTABLISHED
 TCP    192.168.1.101:60986    192.168.1.101:389      ESTABLISHED
 TCP    192.168.1.101:60993    192.168.1.101:389      ESTABLISHED
@@ -81,15 +81,15 @@ TCP    [::]:49705             [::]:0                 LISTENING
 TCP    [::]:49726             [::]:0                 LISTENING
 TCP    [::]:49750             [::]:0                 LISTENING
 TCP    [::1]:53               [::]:0                 LISTENING
-TCP    [::1]:135              [::1]:64559            ESTABLISHED
+TCP    [::1]:135              [::1]:64979            ESTABLISHED
 TCP    [::1]:49669            [::1]:49745            ESTABLISHED
 TCP    [::1]:49669            [::1]:49794            ESTABLISHED
 TCP    [::1]:49745            [::1]:49669            ESTABLISHED
 TCP    [::1]:49794            [::1]:49669            ESTABLISHED
-TCP    [::1]:64542            [::1]:135              TIME_WAIT
-TCP    [::1]:64543            [::1]:49669            TIME_WAIT
-TCP    [::1]:64554            [::1]:135              TIME_WAIT
-TCP    [::1]:64559            [::1]:135              ESTABLISHED
+TCP    [::1]:64959            [::1]:135              TIME_WAIT
+TCP    [::1]:64969            [::1]:49669            TIME_WAIT
+TCP    [::1]:64974            [::1]:135              TIME_WAIT
+TCP    [::1]:64979            [::1]:135              ESTABLISHED
 UDP    0.0.0.0:123            *:*
 UDP    0.0.0.0:389            *:*
 UDP    0.0.0.0:500            *:*

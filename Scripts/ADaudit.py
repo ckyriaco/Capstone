@@ -325,6 +325,10 @@ class ADaudit:
                 addition = ("{}| ").format(i)
                 for x in l:
                     addition += ("{}-").format(x)
+                    addition = addition.replace("[", "")
+                    addition = addition.replace("]", "")
+                    addition = addition.replace("'", "")
+                    print(addition)
                 self.admin_list = np.append(self.admin_list, addition)
 
 #Get all the cn's of all admin users
@@ -759,11 +763,18 @@ class ADaudit:
                 x = i.split("| ")
                 x2 = x[1].split("-")
                 x3 = np.array([])
-
+                counter = 0
                 for i in x2:
                     xtemp = i.split(",")
                     xtemp[0] = xtemp[0].replace("CN=", "")
+                    if(counter < len(x2) - 2):
+                        xtemp[0] += " | "
+                        counter+=1
                     x3 = np.append(x3, xtemp[0])
+                x3 = str(x3)
+                x3 = x3.replace("[", "")
+                x3 = x3.replace("]", "")
+                x3 = x3.replace("'", "")
                 newRow = {'Admin Group':x[0], 'Members':x3}
                 df = df.append(newRow, ignore_index=True)
             message += df.to_markdown()

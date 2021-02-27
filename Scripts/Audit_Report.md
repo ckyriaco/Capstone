@@ -35,12 +35,12 @@
 |  0 | Jamie Sutton | sutjay     |
 
 ## Admin Report: ##
-|    | Admin Group       | Members                                       |
-|---:|:------------------|:----------------------------------------------|
-|  0 | Domain Admins     | ['Christopher M Kyriacou' 'Administrator' ''] |
-|  1 | Enterprise Admins | ['Administrator' '']                          |
-|  2 | Key Admins        | ['']                                          |
-|  3 | Schema Admins     | ['Administrator' '']                          |
+|    | Admin Group       | Members                                 |
+|---:|:------------------|:----------------------------------------|
+|  0 | Domain Admins     | Christopher M Kyriacou |  Administrator |
+|  1 | Enterprise Admins | Administrator                           |
+|  2 | Key Admins        |                                         |
+|  3 | Schema Admins     | Administrator                           |
 
 ## Administrator Last Logon ##
 
