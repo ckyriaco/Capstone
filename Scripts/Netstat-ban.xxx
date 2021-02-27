@@ -44,10 +44,10 @@ TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
 TCP    192.168.1.101:389      192.168.1.101:60979    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:389      192.168.1.101:60986    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:389      192.168.1.101:60993    ESTABLISHED  [lsass.exe]
-TCP    192.168.1.101:389      192.168.1.120:59805    ESTABLISHED  [lsass.exe]
-TCP    192.168.1.101:445      192.168.1.120:61452    ESTABLISHED
-TCP    192.168.1.101:445      192.168.1.120:61454    ESTABLISHED
-TCP    192.168.1.101:3268     192.168.1.120:59939    ESTABLISHED  [lsass.exe]
+TCP    192.168.1.101:389      192.168.1.120:65286    ESTABLISHED  [lsass.exe]
+TCP    192.168.1.101:445      192.168.1.120:50618    ESTABLISHED
+TCP    192.168.1.101:445      192.168.1.120:50620    ESTABLISHED
+TCP    192.168.1.101:3268     192.168.1.120:65420    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:60979    192.168.1.101:389      ESTABLISHED  [dns.exe]
 TCP    192.168.1.101:60986    192.168.1.101:389      ESTABLISHED  [DFSRs.exe]
 TCP    192.168.1.101:60993    192.168.1.101:389      ESTABLISHED  [DFSRs.exe]
@@ -81,21 +81,15 @@ TCP    [::]:49705             [::]:0                 LISTENING  [dns.exe]
 TCP    [::]:49726             [::]:0                 LISTENING  [svchost.exe]
 TCP    [::]:49750             [::]:0                 LISTENING  [DFSRs.exe]
 TCP    [::1]:53               [::]:0                 LISTENING  [dns.exe]
-TCP    [::1]:135              [::1]:64470            ESTABLISHED  [svchost.exe]
-TCP    [::1]:135              [::1]:64477            ESTABLISHED  [svchost.exe]
+TCP    [::1]:135              [::1]:64559            ESTABLISHED  [svchost.exe]
 TCP    [::1]:49669            [::1]:49745            ESTABLISHED  [lsass.exe]
 TCP    [::1]:49669            [::1]:49794            ESTABLISHED  [lsass.exe]
-TCP    [::1]:49669            [::1]:64471            ESTABLISHED  [lsass.exe]
-TCP    [::1]:49669            [::1]:64476            ESTABLISHED  [lsass.exe]
 TCP    [::1]:49745            [::1]:49669            ESTABLISHED  [DFSRs.exe]
 TCP    [::1]:49794            [::1]:49669            ESTABLISHED  [lsass.exe]
-TCP    [::1]:64459            [::1]:135              TIME_WAIT
-TCP    [::1]:64462            [::1]:135              TIME_WAIT
-TCP    [::1]:64470            [::1]:135              ESTABLISHED  [svchost.exe]
-TCP    [::1]:64471            [::1]:49669            ESTABLISHED  [svchost.exe]
-TCP    [::1]:64475            [::1]:135              TIME_WAIT
-TCP    [::1]:64476            [::1]:49669            ESTABLISHED  [lsass.exe]
-TCP    [::1]:64477            [::1]:135              ESTABLISHED  [svchost.exe]
+TCP    [::1]:64542            [::1]:135              TIME_WAIT
+TCP    [::1]:64543            [::1]:49669            TIME_WAIT
+TCP    [::1]:64554            [::1]:135              TIME_WAIT
+TCP    [::1]:64559            [::1]:135              ESTABLISHED  [svchost.exe]
 UDP    0.0.0.0:123            *:*  [svchost.exe]
 UDP    0.0.0.0:389            *:*  [lsass.exe]
 UDP    0.0.0.0:500            *:*  [svchost.exe]

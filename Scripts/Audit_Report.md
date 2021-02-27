@@ -1,6 +1,6 @@
 
 
-# Unused Users: #
+## Unused Users: ##
 
 |    | User                   |   Days Unused |
 |---:|:-----------------------|--------------:|
@@ -10,7 +10,7 @@
 
 
 
-Unused Computers:
+## Unused Computers: ##
 
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
@@ -18,7 +18,7 @@ Unused Computers:
 |  1 | DESKTOP-A67G0P2 |            43 |
 ## Unused Computer Count: 2 ##
 
-# Users with passwords unchanged past the day limit: #
+## Users with passwords unchanged past the day limit: ##
 
 |    | User                   | Username      |
 |---:|:-----------------------|:--------------|
@@ -28,13 +28,13 @@ Unused Computers:
 |  3 | Jamie Sutton           | sutjay        |
 |  4 | krbtgt                 | krbtgt        |
 
-Users with password's that don't expire:
+## Users with password's that don't expire: ##
 
 |    | User         | Username   |
 |---:|:-------------|:-----------|
 |  0 | Jamie Sutton | sutjay     |
 
-# Admin Report: #
+## Admin Report: ##
 |    | Admin Group       | Members                                       |
 |---:|:------------------|:----------------------------------------------|
 |  0 | Domain Admins     | ['Christopher M Kyriacou' 'Administrator' ''] |
@@ -42,39 +42,37 @@ Users with password's that don't expire:
 |  2 | Key Admins        | ['']                                          |
 |  3 | Schema Admins     | ['Administrator' '']                          |
 
-Administrator Last Logon
+## Administrator Last Logon ##
 
 |    | Admin Name             | Last Logon          |   Days Since |
 |---:|:-----------------------|:--------------------|-------------:|
 |  0 | Christopher M Kyriacou | 2021-01-22 00:35:02 |          36  |
 |  1 | Administrator          | 2021-01-22 00:15:05 |          36  |
 
-# Service Accounts without manager set: #
+## Service Accounts without manager set: ##
 
 |    | Service Account   |
 |---:|:------------------|
 |  0 | Updates           |
 
-# Distinguished Name Report for Computers: #
 ## Distinguished Name Status: ##
 |    | Computer        | DN Set   | DN                                              |
 |---:|:----------------|:---------|:------------------------------------------------|
 |  0 | CLIENT          | Yes      | CN=CLIENT,CN=Computers,DC=KTG,DC=local          |
 |  1 | DESKTOP-A67G0P2 | Yes      | CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local |
 
-# Users that need their username changed: #
 ## Users that need to change username: ##
 
 |    | User         | Username   |
 |---:|:-------------|:-----------|
 |  0 | Jamie Sutton | sutjay     |
 
-# Service Accounts that need their names changed: #
+## Service Accounts that need their names changed: ##
 
-No service accounts need username correction.
+No service accounts need username correction. 
 
 
-# Computers that need their names changed: #
+## Computers that need their names changed: ##
 
 |    | Computer   | Username   |
 |---:|:-----------|:-----------|
