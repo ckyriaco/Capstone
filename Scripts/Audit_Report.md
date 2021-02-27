@@ -1,31 +1,17 @@
 
 
-<<<<<<< HEAD
 # Unused Users: #
 
-=======
-Unused Users: 
-+----+------------------------+---------------+
->>>>>>> fa7adf3b5454af0f311fb945af710b96a42db10b
 |    | User                   |   Days Unused |
 |---:|:-----------------------|--------------:|
 |  0 | Administrator          |            36 |
 |  1 | Christopher M Kyriacou |            36 |
 ## Unused User Count: 2 ##
 
-<<<<<<< HEAD
 
 
 Unused Computers:
 
-=======
-Unused Computers:
-+----+------------+---------------+
-|    | Computer   |   Days Unused |
-+====+============+===============+
-|  0 | CLIENT     |            42 |
-+----+------------+---------------++----+-----------------+---------------+
->>>>>>> fa7adf3b5454af0f311fb945af710b96a42db10b
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
 |  0 | CLIENT          |            43 |
@@ -91,11 +77,5 @@ No service accounts need username correction.
 # Computers that need their names changed: #
 
 |    | Computer   | Username   |
-<<<<<<< HEAD
 |---:|:-----------|:-----------|
 |  0 | CLIENT     | CLIENT     |
-=======
-+====+============+============+
-|  0 | CLIENT     | CLIENT     |
-+----+------------+------------+
->>>>>>> fa7adf3b5454af0f311fb945af710b96a42db10b
