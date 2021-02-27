@@ -2,7 +2,7 @@
 Command Execution Output
 ========================
   
-**``Timestamp: 2021-02-27 16:04:00``**  
+**``Timestamp: 2021-02-27 16:14:51``**  
 **Active Connections**  
 
 |Protocol|Local Address|Foreign Address|State|Owner|
@@ -52,10 +52,10 @@ Command Execution Output
 |TCP|192.168.1.101:389|192.168.1.101:60979|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:389|192.168.1.101:60986|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:389|192.168.1.101:60993|ESTABLISHED|[lsass.exe]|
-|TCP|192.168.1.101:389|192.168.1.120:60585|ESTABLISHED|[lsass.exe]|
-|TCP|192.168.1.101:445|192.168.1.120:62227|ESTABLISHED|text4|
-|TCP|192.168.1.101:445|192.168.1.120:62228|ESTABLISHED|text4|
-|TCP|192.168.1.101:3268|192.168.1.120:60719|ESTABLISHED|[lsass.exe]|
+|TCP|192.168.1.101:389|192.168.1.120:59498|ESTABLISHED|[lsass.exe]|
+|TCP|192.168.1.101:445|192.168.1.120:61037|ESTABLISHED|text4|
+|TCP|192.168.1.101:445|192.168.1.120:61138|ESTABLISHED|text4|
+|TCP|192.168.1.101:3268|192.168.1.120:59630|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:60979|192.168.1.101:389|ESTABLISHED|[dns.exe]|
 |TCP|192.168.1.101:60986|192.168.1.101:389|ESTABLISHED|[DFSRs.exe]|
 |TCP|192.168.1.101:60993|192.168.1.101:389|ESTABLISHED|[DFSRs.exe]|
@@ -89,15 +89,14 @@ Command Execution Output
 |TCP|[::]:49726|[::]:0|LISTENING|[svchost.exe]|
 |TCP|[::]:49750|[::]:0|LISTENING|[DFSRs.exe]|
 |TCP|[::1]:53|[::]:0|LISTENING|[dns.exe]|
-|TCP|[::1]:135|[::1]:64979|ESTABLISHED|[svchost.exe]|
+|TCP|[::1]:135|[::1]:65029|ESTABLISHED|[svchost.exe]|
 |TCP|[::1]:49669|[::1]:49745|ESTABLISHED|[lsass.exe]|
 |TCP|[::1]:49669|[::1]:49794|ESTABLISHED|[lsass.exe]|
 |TCP|[::1]:49745|[::1]:49669|ESTABLISHED|[DFSRs.exe]|
 |TCP|[::1]:49794|[::1]:49669|ESTABLISHED|[lsass.exe]|
-|TCP|[::1]:64959|[::1]:135|TIME_WAIT|text4|
-|TCP|[::1]:64969|[::1]:49669|TIME_WAIT|text4|
-|TCP|[::1]:64974|[::1]:135|TIME_WAIT|text4|
-|TCP|[::1]:64979|[::1]:135|ESTABLISHED|[svchost.exe]|
+|TCP|[::1]:65019|[::1]:49669|TIME_WAIT|text4|
+|TCP|[::1]:65026|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:65029|[::1]:135|ESTABLISHED|[svchost.exe]|
 |UDP|0.0.0.0:123|*:*|[svchost.exe]|text4|
 |UDP|0.0.0.0:389|*:*|[lsass.exe]|text4|
 |UDP|0.0.0.0:500|*:*|[svchost.exe]|text4|

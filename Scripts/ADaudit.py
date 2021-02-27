@@ -768,7 +768,7 @@ class ADaudit:
                     xtemp = i.split(",")
                     xtemp[0] = xtemp[0].replace("CN=", "")
                     if(counter < len(x2) - 2):
-                        xtemp[0] += " | "
+                        xtemp[0] += ", "
                         counter+=1
                     x3 = np.append(x3, xtemp[0])
                 x3 = str(x3)
