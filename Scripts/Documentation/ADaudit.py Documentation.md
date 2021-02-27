@@ -11,6 +11,9 @@ _A default domain or an temporary external domain can also be set._
 * datetime from datetime
 * simplefilter from warnings
 * re
+* pandas 
+* canvas from reportlab
+* reportlab
 
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
@@ -48,6 +51,8 @@ _A default domain or an temporary external domain can also be set._
 * _approvedComputernamesForChange_ - An array of computers with changed names that have been approved
 * _serviceAccountNamesToBeApproved_ - An array of service account users with usernames that still need to be approved
 * _approvedServiceAccountNamesForChange_ - An array of service account users with changed usernames that have been approved 
+* _userDaysUnused_ - An array of days user accounts have been left unused
+* _computerDaysUnused_ - An array of days computer accounts have been left unused
 
 ### _init_ Constructor 
 * Initializes an ADaudit object and validates pyad's connection to Active Directory by locating a user account via a passed Common Name. 
@@ -163,6 +168,13 @@ _A default domain or an temporary external domain can also be set._
 * This method finds the users within a provided list that have not logged in N days. 
 * Has validation to ensure the array parameter is not empty and and that the allowed type is either "Computer" or "User".
 * Contructs an array of the users who have not logged in N days and tracks the number of Computer types and User types as well as the number of days since the user last logged on.
+* Updates the current object's 
+    * unusedComputerCount, 
+    * unusedComputers, 
+    * computerDaysUnused, 
+    * unusedUserCount, 
+    * unusedUsers, and 
+    * userDaysUnused arrays as needed.
 
 ### get_pwd_last_login_N_days method 
 * This method finds out when certain users (within the same distinguished name type, container and object category) have last set their password. 
@@ -256,7 +268,7 @@ _A default domain or an temporary external domain can also be set._
 
 ### get_unused_report method 
 * This method returns a report of the users and computers that have not logged in for the past N days. 
-* Returns a string of Unused Users, Unused User Count, Unused Computers and Unused Computer Count.
+* Returns a string of Unused Users, Unused User Count the number of days each user account was left unused, Unused Computers Unused Computer Count and the number of days each computer account was left unused.
  
 ### get_pwd_report method 
 * This method returns a report on the users that have not changed their password in N days.
