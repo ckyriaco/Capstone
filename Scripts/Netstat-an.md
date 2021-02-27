@@ -2,7 +2,7 @@
 Command Execution Output
 ========================
   
-**``Timestamp: 2021-02-26 16:08:20``**  
+**``Timestamp: 2021-02-27 14:17:32``**  
 **Active Connections**  
 
 |Protocol|Local Address|Foreign Address|State|Owner|
@@ -52,10 +52,10 @@ Command Execution Output
 |TCP|192.168.1.101:389|192.168.1.101:60979|ESTABLISHED|text4|
 |TCP|192.168.1.101:389|192.168.1.101:60986|ESTABLISHED|text4|
 |TCP|192.168.1.101:389|192.168.1.101:60993|ESTABLISHED|text4|
-|TCP|192.168.1.101:389|192.168.1.120:52421|ESTABLISHED|text4|
-|TCP|192.168.1.101:445|192.168.1.120:54081|ESTABLISHED|text4|
-|TCP|192.168.1.101:445|192.168.1.120:54083|ESTABLISHED|text4|
-|TCP|192.168.1.101:3268|192.168.1.120:52549|ESTABLISHED|text4|
+|TCP|192.168.1.101:389|192.168.1.120:59482|ESTABLISHED|text4|
+|TCP|192.168.1.101:445|192.168.1.120:61143|ESTABLISHED|text4|
+|TCP|192.168.1.101:445|192.168.1.120:61148|ESTABLISHED|text4|
+|TCP|192.168.1.101:3268|192.168.1.120:59614|ESTABLISHED|text4|
 |TCP|192.168.1.101:60979|192.168.1.101:389|ESTABLISHED|text4|
 |TCP|192.168.1.101:60986|192.168.1.101:389|ESTABLISHED|text4|
 |TCP|192.168.1.101:60993|192.168.1.101:389|ESTABLISHED|text4|
@@ -89,13 +89,15 @@ Command Execution Output
 |TCP|[::]:49726|[::]:0|LISTENING|text4|
 |TCP|[::]:49750|[::]:0|LISTENING|text4|
 |TCP|[::1]:53|[::]:0|LISTENING|text4|
-|TCP|[::1]:135|[::1]:61282|ESTABLISHED|text4|
+|TCP|[::1]:135|[::1]:64451|ESTABLISHED|text4|
 |TCP|[::1]:49669|[::1]:49745|ESTABLISHED|text4|
 |TCP|[::1]:49669|[::1]:49794|ESTABLISHED|text4|
 |TCP|[::1]:49745|[::1]:49669|ESTABLISHED|text4|
 |TCP|[::1]:49794|[::1]:49669|ESTABLISHED|text4|
-|TCP|[::1]:61277|[::1]:135|TIME_WAIT|text4|
-|TCP|[::1]:61282|[::1]:135|ESTABLISHED|text4|
+|TCP|[::1]:64433|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64438|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64439|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64451|[::1]:135|ESTABLISHED|text4|
 |UDP|0.0.0.0:123|*:*|text3|text4|
 |UDP|0.0.0.0:389|*:*|text3|text4|
 |UDP|0.0.0.0:500|*:*|text3|text4|
@@ -104,7 +106,7 @@ Command Execution Output
 |UDP|0.0.0.0:4500|*:*|text3|text4|
 |UDP|0.0.0.0:5353|*:*|text3|text4|
 |UDP|0.0.0.0:5355|*:*|text3|text4|
-|UDP|0.0.0.0:60515|*:*|text3|text4|
+|UDP|0.0.0.0:57089|*:*|text3|text4|
 |UDP|0.0.0.0:62140|*:*|text3|text4|
 |UDP|0.0.0.0:62141|*:*|text3|text4|
 |UDP|0.0.0.0:62142|*:*|text3|text4|
@@ -2634,7 +2636,7 @@ Command Execution Output
 |UDP|[::]:3389|*:*|text3|text4|
 |UDP|[::]:3391|*:*|text3|text4|
 |UDP|[::]:4500|*:*|text3|text4|
-|UDP|[::]:60516|*:*|text3|text4|
+|UDP|[::]:57090|*:*|text3|text4|
 |UDP|[::1]:53|*:*|text3|text4|
 |UDP|[::1]:61029|*:*|text3|text4|
 |UDP|[::1]:61030|*:*|text3|text4|

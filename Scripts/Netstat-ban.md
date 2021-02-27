@@ -2,7 +2,7 @@
 Command Execution Output
 ========================
   
-**``Timestamp: 2021-02-26 16:08:20``**  
+**``Timestamp: 2021-02-27 14:17:32``**  
 **Active Connections**  
 
 |Protocol|Local Address|Foreign Address|State|Owner|
@@ -52,9 +52,10 @@ Command Execution Output
 |TCP|192.168.1.101:389|192.168.1.101:60979|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:389|192.168.1.101:60986|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:389|192.168.1.101:60993|ESTABLISHED|[lsass.exe]|
-|TCP|192.168.1.101:389|192.168.1.120:52421|ESTABLISHED|[lsass.exe]|
-|TCP|192.168.1.101:445|192.168.1.120:54062|ESTABLISHED|text4|
-|TCP|192.168.1.101:3268|192.168.1.120:52549|ESTABLISHED|[lsass.exe]|
+|TCP|192.168.1.101:389|192.168.1.120:59482|ESTABLISHED|[lsass.exe]|
+|TCP|192.168.1.101:445|192.168.1.120:61118|ESTABLISHED|text4|
+|TCP|192.168.1.101:445|192.168.1.120:61123|ESTABLISHED|text4|
+|TCP|192.168.1.101:3268|192.168.1.120:59614|ESTABLISHED|[lsass.exe]|
 |TCP|192.168.1.101:60979|192.168.1.101:389|ESTABLISHED|[dns.exe]|
 |TCP|192.168.1.101:60986|192.168.1.101:389|ESTABLISHED|[DFSRs.exe]|
 |TCP|192.168.1.101:60993|192.168.1.101:389|ESTABLISHED|[DFSRs.exe]|
@@ -88,13 +89,15 @@ Command Execution Output
 |TCP|[::]:49726|[::]:0|LISTENING|[svchost.exe]|
 |TCP|[::]:49750|[::]:0|LISTENING|[DFSRs.exe]|
 |TCP|[::1]:53|[::]:0|LISTENING|[dns.exe]|
-|TCP|[::1]:135|[::1]:61282|ESTABLISHED|[svchost.exe]|
+|TCP|[::1]:135|[::1]:64451|ESTABLISHED|[svchost.exe]|
 |TCP|[::1]:49669|[::1]:49745|ESTABLISHED|[lsass.exe]|
 |TCP|[::1]:49669|[::1]:49794|ESTABLISHED|[lsass.exe]|
 |TCP|[::1]:49745|[::1]:49669|ESTABLISHED|[DFSRs.exe]|
 |TCP|[::1]:49794|[::1]:49669|ESTABLISHED|[lsass.exe]|
-|TCP|[::1]:61277|[::1]:135|TIME_WAIT|text4|
-|TCP|[::1]:61282|[::1]:135|ESTABLISHED|[svchost.exe]|
+|TCP|[::1]:64433|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64438|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64439|[::1]:135|TIME_WAIT|text4|
+|TCP|[::1]:64451|[::1]:135|ESTABLISHED|[svchost.exe]|
 |UDP|0.0.0.0:123|*:*|[svchost.exe]|text4|
 |UDP|0.0.0.0:389|*:*|[lsass.exe]|text4|
 |UDP|0.0.0.0:500|*:*|[svchost.exe]|text4|
@@ -103,7 +106,7 @@ Command Execution Output
 |UDP|0.0.0.0:4500|*:*|[svchost.exe]|text4|
 |UDP|0.0.0.0:5353|*:*|[svchost.exe]|text4|
 |UDP|0.0.0.0:5355|*:*|[svchost.exe]|text4|
-|UDP|0.0.0.0:60515|*:*|[dns.exe]|text4|
+|UDP|0.0.0.0:57089|*:*|[dns.exe]|text4|
 |UDP|0.0.0.0:62140|*:*|[dns.exe]|text4|
 |UDP|0.0.0.0:62141|*:*|[dns.exe]|text4|
 |UDP|0.0.0.0:62142|*:*|[dns.exe]|text4|
@@ -2633,7 +2636,7 @@ Command Execution Output
 |UDP|[::]:3389|*:*|[svchost.exe]|text4|
 |UDP|[::]:3391|*:*|[svchost.exe]|text4|
 |UDP|[::]:4500|*:*|[svchost.exe]|text4|
-|UDP|[::]:60516|*:*|[dns.exe]|text4|
+|UDP|[::]:57090|*:*|[dns.exe]|text4|
 |UDP|[::1]:53|*:*|[dns.exe]|text4|
 |UDP|[::1]:61029|*:*|[svchost.exe]|text4|
 |UDP|[::1]:61030|*:*|[svchost.exe]|text4|

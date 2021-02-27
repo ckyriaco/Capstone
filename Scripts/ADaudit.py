@@ -686,7 +686,7 @@ class ADaudit:
     #Report of usersnames that need to be changed
     def username_change_needed_report(self):
         message = "\n\n# Users that need their username changed: #\n"
-        message += "## Users that need to change username: ##\n"
+        message += "## Users that need to change username: ##\n\n"
         df = pd.DataFrame([], columns=['User', 'Username'])
         if (self.usersNeedUserNameCorr.size > 0):
             for i in self.usersNeedUserNameCorr:
@@ -695,11 +695,11 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'User':i, 'Username':str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No users need username correction."
             message+= str(df)
-        message += "\n\nService Accounts that need their names changed:\n"
+        message += "\n\n# Service Accounts that need their names changed: #\n"
         df = pd.DataFrame([], columns=['Service Account', 'Username'])
         if (self.servAccUserNameNeedChange.size > 0):
             for i in self.servAccUserNameNeedChange:
@@ -708,11 +708,11 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Service Account': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
-            df = "No service accounts need username correction."
+            df = "\nNo service accounts need username correction.\n"
             message += str(df)
-        message += "\n\nComputers that need their names changed:\n"
+        message += "\n\n# Computers that need their names changed: #\n\n"
         df = pd.DataFrame([], columns=['Computer', 'Username'])
         if (self.computerNeedNameChange.size > 0):
             for i in self.computerNeedNameChange:
@@ -721,7 +721,7 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Computer': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No computers need their names changed."
             message += str(df)
@@ -741,7 +741,7 @@ class ADaudit:
                 else:
                     newRow = {'Computer': x[0], 'DN Set': x[1], 'DN': '[Unknown]'}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No distinguished name audit has been conducted"
         #message += "\n"
@@ -766,7 +766,7 @@ class ADaudit:
                     x3 = np.append(x3, xtemp[0])
                 newRow = {'Admin Group':x[0], 'Members':x3}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No admin audit has been conducted."
             message += str(df)
@@ -779,7 +779,7 @@ class ADaudit:
                 x = i.split(",")
                 newRow = {'Admin Name':x[0],'Last Logon':x[1], 'Days Since':x[2]}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No admin last logon audit has been conducted."
             message += str(df)
@@ -787,7 +787,7 @@ class ADaudit:
 
 #Return a report of the users and computers that have not logged in the last N days.
     def get_unused_report(self):
-        message ="\n\n# Unused Users: #"
+        message ="\n\n# Unused Users: #\n\n"
         df = pd.DataFrame([], columns=['User', 'Days Unused'])
         counter = 0
         if(self.unusedUsers.size > 0):
@@ -796,12 +796,12 @@ class ADaudit:
                 newRow = {'User':i, 'Days Unused':self.userDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "There are no unused users past the day limit."
             message += str(df)
-        message += ("\n## Unused User Count: {} ##").format(self.unusedUserCount)
-        message += "\n\nUnused Computers:"
+        message += ("\n## Unused User Count: {} ##\n\n").format(self.unusedUserCount)
+        message += "\n\nUnused Computers:\n\n"
         df = pd.DataFrame([], columns=['Computer', 'Days Unused'])
         counter = 0
 
@@ -811,7 +811,7 @@ class ADaudit:
                 newRow = {'Computer':i, 'Days Unused':self.computerDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
-                message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "There are no unused computers past the day limit."
             message += str(df)
@@ -820,7 +820,7 @@ class ADaudit:
 
 #Return a report on the users that have not changed their password in N days.
     def get_pwd_report(self):
-        message = "\n\n# Users with passwords unchanged past the day limit: #\n"
+        message = "\n\n# Users with passwords unchanged past the day limit: #\n\n"
 
         df = pd.DataFrame([], columns=['User', 'Username'])
         if(self.pwdLastSetNDays.size > 0):
@@ -832,11 +832,11 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'User':str(i), 'Username':str(u[0])}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No passwords that are older than the day limit."
             message += str(df)
-        message += "\n\nUsers with password's that don't expire:\n"
+        message += "\n\nUsers with password's that don't expire:\n\n"
         df = pd.DataFrame([], columns=['User', 'Username'])
         if(self.get_pwd_exp_flag_false().size > 0):
             for i in self.pwd_exp_flag_false:
@@ -845,7 +845,7 @@ class ADaudit:
                 u = user.get_attribute("samaccountname")
                 newRow = {'User': str(i), 'Username': str(u[0])}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
             df = "No accounts are set to have passwords that don't expire."
             message += str(df)
@@ -853,7 +853,7 @@ class ADaudit:
 
 #Report of the service accounts that do not have a manager attribute set.
     def get_serv_man_not_set_report(self):
-        message = "\n\n# Service Accounts without manager set: #\n"
+        message = "\n\n# Service Accounts without manager set: #\n\n"
         df = pd.DataFrame([], columns=['Service Account'])
         if(self.serv_man_not_set.size > 0):
             for i in self.serv_man_not_set:
@@ -862,9 +862,9 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'Service Account':i}
                 df = df.append(newRow, ignore_index=True)
-            message += df.to_markdown(tablefmt="grid")
+            message += df.to_markdown()
         else:
-            df = "No service accounts without their password set."
+            df = "No service accounts without their password set.\n"
             message += str(df)
         return message
 
