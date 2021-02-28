@@ -7,6 +7,7 @@ import Port_Scanner as ps
 from tkinter import *
 from tkinter import messagebox
 import report_gen as rg
+import datetime
 
 from io import *
 
@@ -17,7 +18,7 @@ window.withdraw()
 
 #Use ADaudit class to audit active directory for users that have not logged on in N days.
 
-def logon_info(CN, containers, objectCategories, types, N, file):
+def logon_info(CN, containers, objectCategories, types, N, file, doc):
     AD = ""
     try:
         AD = ad.ADaudit(CN)
@@ -34,7 +35,8 @@ def logon_info(CN, containers, objectCategories, types, N, file):
             messagebox.showwarning("An Error has occurred: ", Valer)
         else:
             count += 1
-    doc = AD.get_unused_report()
+
+    doc = ("{}\n{}").format(doc, AD.get_unused_report())
     #AD.toString()
     f = open(file, "w")
     f.write(doc)
@@ -170,7 +172,9 @@ def main():
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
     commandsArray = os.getenv('COMMAND_ARRAY').split(',')
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
-    logon_info(CN, containers, objectCategories, types, N, file_final)
+    server_name = os.getenv('SERVER_NAME')
+    doc = ("# Audit Report for {} #\n\n ## Conducted By {} on {:%Y-%m-%d %H:%M:%S} ##\n").format(server_name, CN, datetime.datetime.now())
+    logon_info(CN, containers, objectCategories, types, N, file_final, doc)
     last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
     get_admin(CN, adminArray, file_final)
     service_account_audit(CN, con_serv, file_final)
@@ -179,7 +183,6 @@ def main():
     file_final_port = os.getenv('COMMAND_OUTPUT')
     file_final_port_2 = os.getenv('COMMAND_OUTPUT_2')
     file_final_ports = np.array([file_final_port, file_final_port_2])
-    server_name = os.getenv('SERVER_NAME')
     get_dn_status(CN, container3, file_final)
     OU = os.getenv("OU_SERV")
     check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
