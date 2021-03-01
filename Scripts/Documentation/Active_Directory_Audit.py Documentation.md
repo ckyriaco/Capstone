@@ -12,6 +12,9 @@ _This script is designed to utilize the ADquery class to audit a variety of user
 * port scanner
 * tkinter
 * tkinter messagebox
+* report_gen
+* datetime
+* io
 
 ### Initialize window 
 

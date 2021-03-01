@@ -16,6 +16,10 @@ _This class is designed to discover what processes are connecting to what ports 
 * _server_ip_ - the IP address of the server
 * _server_Domain_name_ - the domain name of the server
 * _computerDN_ - distinguished name for the computer container 
+* _samAccount_ - the samAccount name for the user 
+* _computerName_ - the name of the computer
+* _commands_ - array of commands
+* _commandRes_ - array of command results
 
 ### Constructor 
 * Initializes a Port_Scanner object which will be used to discover further detail on port activity throughout a specified domain.
@@ -23,6 +27,9 @@ _This class is designed to discover what processes are connecting to what ports 
 * Validates that the IP address is in IPv4 format
 * Validates that the given domain name is not null
 * Validates that the distinguished name for the computer container isn't null
+
+### get_commandRes method
+* This method returns an array of command responses.
 
 ### check_ip method 
 * This method validates the given IP address is in proper format.

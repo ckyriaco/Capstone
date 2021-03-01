@@ -11,6 +11,9 @@
   - Imports OS variables to plug into arrays based on variable types
 - imports numpy
 - tkinter is Python's standard GUI
+- Active_Directory_Audit
+
+### Initialize window
 
 ### check-usernames method
 
