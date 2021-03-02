@@ -1,6 +1,6 @@
 # Audit Report for KTG.local #
 
- ## Conducted By Christopher M Kyriacou on 2021-02-28 15:45:23 ##
+ ## Conducted By Christopher M Kyriacou on 2021-03-02 16:29:05 ##
 
 
 
@@ -8,8 +8,8 @@
 
 |    | User                   |   Days Unused |
 |---:|:-----------------------|--------------:|
-|  0 | Administrator          |            37 |
-|  1 | Christopher M Kyriacou |            37 |
+|  0 | Administrator          |            39 |
+|  1 | Christopher M Kyriacou |            39 |
 ## Unused User Count: 2 ##
 
 
@@ -18,8 +18,8 @@
 
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
-|  0 | CLIENT          |            44 |
-|  1 | DESKTOP-A67G0P2 |            44 |
+|  0 | CLIENT          |            46 |
+|  1 | DESKTOP-A67G0P2 |            46 |
 ## Unused Computer Count: 2 ##
 
 ## Users with passwords unchanged past the day limit: ##
@@ -50,8 +50,8 @@
 
 |    | Admin Name             | Last Logon          |   Days Since |
 |---:|:-----------------------|:--------------------|-------------:|
-|  0 | Christopher M Kyriacou | 2021-01-22 00:35:02 |          37  |
-|  1 | Administrator          | 2021-01-22 00:15:05 |          37  |
+|  0 | Christopher M Kyriacou | 2021-01-22 00:35:02 |          39  |
+|  1 | Administrator          | 2021-01-22 00:15:05 |          39  |
 
 ## Service Accounts without manager set: ##
 

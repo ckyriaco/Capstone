@@ -145,7 +145,7 @@ def port_status(CN, server_ip, file, server_name, container, samAccount, compute
         f = open(i, "w")
         f.write(outputs[counter])
         f.close()
-        rg.format_md(i)
+        rg.make_markdown(i)
         counter+=1
 
 
