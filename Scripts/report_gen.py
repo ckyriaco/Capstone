@@ -107,6 +107,10 @@ def make_markdown(filename):
     for line in f:
         x = line.split()
         if(list.size == 5):
+            if(len(x) == 5 or len(x) == 4 and x[3] == "[Microsoft.ActiveDirectory.WebServices.exe]"):
+                x[3] = "[Microsoft.ActiveDirectory\n.WebServices.exe]"
+            if (len(x) == 5 and x[4] == "[Microsoft.ActiveDirectory.WebServices.exe]"):
+                x[4] = "[Microsoft.ActiveDirectory\n.WebServices.exe]"
             if(len(x) == 5):
                 newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: x[3], list[4]: x[4]}
             elif (len(x) == 4):
@@ -121,6 +125,8 @@ def make_markdown(filename):
                 newLine = "N/A"
         elif(list.size == 4):
             if (len(x) == 4):
+                if (x[3] == "[Microsoft.ActiveDirectory.WebServices.exe]"):
+                    x[3] = "[Microsoft.ActiveDirectory\n.WebServices.exe]"
                 newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: x[3]}
             elif (len(x) == 3):
                 newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: 'N/A'}

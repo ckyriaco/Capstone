@@ -104,13 +104,13 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:54086    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:49819    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:65094    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:51529    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:50428    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:51534    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:50430    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:49965    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:65238    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:54073    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -190,43 +190,25 @@ Active Connections
  [DFSRs.exe]
   TCP    [::1]:53               [::]:0                 LISTENING
  [dns.exe]
-  TCP    [::1]:135              [::1]:54757            ESTABLISHED
+  TCP    [::1]:135              [::1]:54791            ESTABLISHED
   RpcSs
  [svchost.exe]
-  TCP    [::1]:135              [::1]:54761            ESTABLISHED
+  TCP    [::1]:135              [::1]:54817            ESTABLISHED
   RpcSs
  [svchost.exe]
-  TCP    [::1]:445              [::1]:54763            ESTABLISHED
- Can not obtain ownership information
   TCP    [::1]:49669            [::1]:49745            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
- [lsass.exe]
-  TCP    [::1]:49669            [::1]:54749            ESTABLISHED
- [lsass.exe]
-  TCP    [::1]:49669            [::1]:54762            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:54740            [::1]:135              TIME_WAIT
-  TCP    [::1]:54743            [::1]:135              TIME_WAIT
-  TCP    [::1]:54748            [::1]:135              TIME_WAIT
-  TCP    [::1]:54749            [::1]:49669            ESTABLISHED
- [lsass.exe]
-  TCP    [::1]:54750            [::1]:135              TIME_WAIT
-  TCP    [::1]:54757            [::1]:135              ESTABLISHED
+  TCP    [::1]:54791            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
-  TCP    [::1]:54761            [::1]:135              ESTABLISHED
-  LanmanWorkstation
- [svchost.exe]
-  TCP    [::1]:54762            [::1]:49669            ESTABLISHED
-  LanmanWorkstation
- [svchost.exe]
-  TCP    [::1]:54763            [::1]:445              ESTABLISHED
- Can not obtain ownership information
+  TCP    [::1]:54817            [::1]:135              ESTABLISHED
+ [DFSRs.exe]
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]
