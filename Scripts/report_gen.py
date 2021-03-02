@@ -90,10 +90,8 @@ def make_markdown(filename):
     f.close()
     f = open(filename.replace(".txt", ".xxx"), 'r')
     list = np.delete(list, np.where(list == "Address"))
-    listmd = []
-    for i in list:
-        listmd.append(i)
-    print(list)
+    if(filename == "Netstat-ban.txt"):
+        list = np.append(list, "Owner")
     if(list.size == 0):
         raise ValueError("No Headers Found!")
     elif(list.size == 5):
@@ -166,8 +164,10 @@ def make_markdown(filename):
     timestamp = ("## Timestamp: {:%Y-%m-%d %H:%M:%S} ##").format(time)
     df = str(df)
     doc = ("{}\n\n{}\n\n{}").format(title, timestamp, df)
-    f.write(doc.center(50))
+    f.write(doc)
     f.close()
+
+make_markdown("Netstat-ban.txt")
 
 
 
