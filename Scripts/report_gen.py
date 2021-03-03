@@ -116,9 +116,18 @@ def make_markdown(filename):
             elif (len(x) == 4):
                 if (x[3] == "[Microsoft.ActiveDirectory.WebServices.exe]"):
                     x[3] = "[Microsoft.ActiveDirectory\n.WebServices.exe]"
-                newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: x[3], list[4]: 'N/A'}
+                temp = x[3]
+                if (temp[0] == "[" and temp[len(temp) - 1] == "]"):
+                    newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: 'N/A', list[4]: x[3]}
+                else:
+                    newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: x[3], list[4]: 'N/A'}
             elif (len(x) == 3):
-                newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: 'N/A', list[4]: 'N/A'}
+                temp = x[2].split()
+                print(temp)
+                if(temp[0] == "[" and temp[len(temp) - 1] == "]"):
+                    newLine = {list[0]: x[0], list[1]: x[1], list[2]: 'N/A', list[3]: x[2], list[4]: 'N/A'}
+                else:
+                    newLine = {list[0]: x[0], list[1]: x[1], list[2]: x[2], list[3]: 'N/A', list[4]: 'N/A'}
             elif (len(x) == 2):
                 newLine = {list[0]: x[0], list[1]: x[1], list[2]: 'N/A', list[3]: 'N/A', list[4]: 'N/A'}
             elif (len(x) == 1):
@@ -175,7 +184,7 @@ def make_markdown(filename):
     f.write(doc)
     f.close()
 
-make_markdown("Netstat-ban.txt")
+
 
 
 
