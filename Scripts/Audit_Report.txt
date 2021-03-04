@@ -1,91 +1,70 @@
 
 
-Unused Users:
-Administrator Days Unused: 20
-Christopher Kyriacou Days Unused: 20
-Unused User Count: 2
+# Unused Users: #|    | User                   |   Days Unused |
+|---:|:-----------------------|--------------:|
+|  0 | Administrator          |            36 |
+|  1 | Christopher M Kyriacou |            36 |
+## Unused User Count: 2 ##
 
-Unused Computers:
-CLIENT Days Unused: 27
-DESKTOP-A67G0P2 Days Unused: 28
-Unused Computer Count: 2
+Unused Computers:|    | Computer   |   Days Unused |
+|---:|:-----------|--------------:|
+|  0 | CLIENT     |            43 ||    | Computer        |   Days Unused |
+|---:|:----------------|--------------:|
+|  0 | CLIENT          |            43 |
+|  1 | DESKTOP-A67G0P2 |            43 |
+## Unused Computer Count: 2 ##
 
-Users with passwords unchanged past the day limit:
-Administrator, Christopher Kyriacou, Guest, Jamie Sutton, krbtgt, 
+# Users with passwords unchanged past the day limit: #
+|    | User                   | Username      |
+|---:|:-----------------------|:--------------|
+|  0 | Administrator          | Administrator |
+|  1 | Christopher M Kyriacou | ckyriacou     |
+|  2 | Guest                  | Guest         |
+|  3 | Jamie Sutton           | sutjay        |
+|  4 | krbtgt                 | krbtgt        |
 
 Users with password's that don't expire:
-Administrator, Guest, Jamie Sutton, 
+|    | User         | Username   |
+|---:|:-------------|:-----------|
+|  0 | Jamie Sutton | sutjay     |
 
-Admin Report:
-Domain Admins: CN=Christopher Kyriacou,CN=Users,DC=KTG,DC=local,CN=Administrator,CN=Users,DC=KTG,DC=local,
-Enterprise Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
-Key Admins: 
-Schema Admins: CN=Administrator,CN=Users,DC=KTG,DC=local,
+# Admin Report: #
+|    | Admin Group       | Members                                       |
+|---:|:------------------|:----------------------------------------------|
+|  0 | Domain Admins     | ['Christopher M Kyriacou' 'Administrator' ''] |
+|  1 | Enterprise Admins | ['Administrator' '']                          |
+|  2 | Key Admins        | ['']                                          |
+|  3 | Schema Admins     | ['Administrator' '']                          |
 
-Administrator Christopher Kyriacou last logon: 2021-01-22 00:35:02
-Administrator Administrator last logon: 2021-01-22 00:15:05
+Administrator Last Logon
 
+|    | Admin Name             | Last Logon          |   Days Since |
+|---:|:-----------------------|:--------------------|-------------:|
+|  0 | Christopher M Kyriacou | 2021-01-22 00:35:02 |          36  |
+|  1 | Administrator          | 2021-01-22 00:15:05 |          36  |
 
-Service Accounts without manager set:
-Updates, 
+# Service Accounts without manager set: #
+|    | Service Account   |
+|---:|:------------------|
+|  0 | Updates           |
 
-Distinguished Name Report:
-Distinguished Name Status:
-CLIENT: Distinguished Name Set: Yes | DN = ['CN=CLIENT,CN=Computers,DC=KTG,DC=local']
-DESKTOP-A67G0P2: Distinguished Name Set: Yes | DN = ['CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local']
+# Distinguished Name Report for Computers: #
+## Distinguished Name Status: ##
+|    | Computer        | DN Set   | DN                                              |
+|---:|:----------------|:---------|:------------------------------------------------|
+|  0 | CLIENT          | Yes      | CN=CLIENT,CN=Computers,DC=KTG,DC=local          |
+|  1 | DESKTOP-A67G0P2 | Yes      | CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local |
 
+# Users that need their username changed: #
+## Users that need to change username: ##
+|    | User         | Username   |
+|---:|:-------------|:-----------|
+|  0 | Jamie Sutton | sutjay     |
 
-
-Users that need their username changed:
-Users that need to change username:
-Jamie Sutton, 
 Service Accounts that need their names changed:
+No service accounts need username correction.
+
 Computers that need their names changed:
-
-
-Port Status:
-
-KTG.local -> IPv4: 192.168.1.101
-
-53 is open
-Port: 53 => service name: domain
-
-80 is open
-Port: 80 => service name: http
-
-88 is open
-Port: 88 => service name: kerberos
-
-135 is open
-Port: 135 => service name: epmap
-
-139 is open
-Port: 139 => service name: netbios-ssn
-
-389 is open
-Port: 389 => service name: ldap
-
-443 is open
-Port: 443 => service name: https
-
-445 is open
-Port: 445 => service name: microsoft-ds
-
-464 is open
-Port: 464 => service name: kpasswd
-
-CLIENT -> IPv4: 192.168.1.120
-
-80 is open
-Port: 80 => service name: http
-
-135 is open
-Port: 135 => service name: epmap
-
-139 is open
-Port: 139 => service name: netbios-ssn
-
-445 is open
-Port: 445 => service name: microsoft-ds
-
-DESKTOP-A67G0P2 -> IPv4: 192.168.0.3
+|    | Computer   | Username   |
+|---:|:-----------|:-----------|
+|  0 | CLIENT     | CLIENT     |

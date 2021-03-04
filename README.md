@@ -30,7 +30,7 @@ ________________________________________________________________________________
 
 ### **Main Goal:**
 
-The goal of this project is to create an auditing system that allows authorized security admin, at the Applied Research Associates (ARA), 
+The goal of this project is to create an auditing system that allows authorized security admin 
 to audit their active directory servers for CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
 that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
 
@@ -38,7 +38,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
 3. Produce a list of users who have not changed their password in N days.
-4. Produce a list of users in a given AD section (i.e., restrict.ara.com) who have administrative privileges
+4. Produce a list of users in a given AD section (i.e., restrict.xxx.com) who have administrative privileges
 5. For service accounts, ensure that the “manager” field is filled out.  A question is how to identify service accounts.  There is a naming convention, but we do not know if it is followed (another audit requirement).
 6. For all accounts, the “password expire” flag is set.  More specifically, which accounts do not have this set?
 7. Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port.  As much detail about the process as can be found should be reported.  Install sysinternals on the remote computer if needed.  Using psexec is OK.  This is probably the top priority.
@@ -68,8 +68,9 @@ ________________________________________________________________________________
 ***- Used a system of virtual machines orchestrated in Oracle VirtualBox***
 1. Created both a Windows Enterprise Server 2019 and Windows 10 Pro instance.
 2. Once both instances were up and running, The Windows 10 Pro instance was used to join the Active Directory Domain (A .local Domain was used for this prototype).
-3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class, the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) procedural script, and the [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. All the results of each audit type were designed to be stored in a text file named [Audit_Report.txt](Scripts/Audit_Report.txt) for future use by the Domain Admin.
+3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class, the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) procedural script, and the [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/). The [Port_Scanner.py](Scripts/Port_Scanner.py) class was specifically used to test the ability to run port scans on the socket level using [socket](https://docs.python.org/3/library/socket.html) and [threading](https://docs.python.org/3/library/threading.html). It was also used to run [netstat](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) -ban and [netstat](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) -an to with [pypsexec 0.2.0](https://pypi.org/project/pypsexec/).
+4. All the results of each audit type were designed to be stored in a markdown file named [Audit_Report.md](Scripts/Audit_Report.md) for future use by the Domain Admin.
+5. The results of the port scan of all active computers, connect to the domain controller, at the socket level are in [Port_Details.md](Scripts/Port_Details.md), and the output of the netstat commands executed on the server are in [Command_Output.md](Scripts/Command_Output.md).
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
@@ -77,7 +78,7 @@ ________________________________________________________________________________
 
 ![](Photos_Gifs/PC_to_AD.png)
 
-![Prototype](Photos_Gifs/pyad_proof_of_concept_8.gif)
+![Prototype](Photos_Gifs/prototype_2.gif)
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
