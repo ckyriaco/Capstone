@@ -74,13 +74,22 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### ***Executable Prototype***
+### ***Executable Prototype*** ###
 
 ![](Photos_Gifs/PC_to_AD.png)
 
+#### Active Directory Audit and Netstat scan ####
+
 ![Prototype](Photos_Gifs/prototype_3.gif)
 
-- This prototype displays a full Active Directory Audit and a series of netstat commands that are being executed on the Active Directory Server from a remote host. 
+- This prototype displays a full Active Directory audit and a series of netstat commands that are being executed on the Active Directory Server from a remote host.
+
+#### Active Directory Audit and Remediation ####
+
+![Prototype](Photos_Gifs/remediation_prototype_3.gif)
+
+- This prototype displays a full Active Directory audit and remediation.
+
 _________________________________________________________________________________________________________________________________________________________________________________
 
 # Capstone Team Members #
