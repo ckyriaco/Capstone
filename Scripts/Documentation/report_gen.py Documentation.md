@@ -30,6 +30,6 @@ _This class is designed to generate an audit report in PDF format._
 * This method creates a formatted report with empty data.
 
 ### make_markdown method
-* This method 
+* This method writes the markdown report from active directory.
 
 
