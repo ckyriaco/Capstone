@@ -50,7 +50,7 @@ _This class utilizes pandas 1.2.3, mdutils 1.3.0, and reportlab 3.5.62 to clean 
 * Reads raw text file 
 * Takes any netstat commands 
 * Gathers info 
-* Look at headings 
+* Observes report headings 
 * Creates dataframe based on how many columns (up to 5)
 * Has validation to alert user if no headers are detected 
 * Creates needed markdown files 
