@@ -216,7 +216,7 @@ def PWD_EXP_Remediate(AD):
                 message += i
                 message += "\n"
                 #answer = int(input("Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no."))
-                answer = messagebox.askyesno("Password Remediation","Would you like to set all incompliant account's passwords to expire?")
+                answer = messagebox.askyesno("Password Remediation","Would you like to set all incompliant account's passwords to expire flag to true?")
                 if(answer == 1):
                     AD.set_exp_flag()
         except ValueError as Valer:
@@ -262,7 +262,7 @@ def main():
     AD = audit.get_dn_status(container3, file_final, AD)
     OU = os.getenv("OU_SERV")
     AD = check_usernames(containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final, AD)
-    audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
+    #audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
     AD = last_set_pwd(containers2, objectCategories2, N2, file_final, AD)
     f = open(file_final, "r")
     print(f.read())

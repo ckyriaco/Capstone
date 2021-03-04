@@ -104,13 +104,13 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:54086    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:64964    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:62233    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:50241    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:63873    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:50246    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:63875    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:65049    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:62366    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:54073    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -204,7 +204,8 @@ Active Connections
   TCP    [::1]:54791            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
-  TCP    [::1]:56518            [::1]:49669            TIME_WAIT
+  TCP    [::1]:56569            [::1]:135              TIME_WAIT
+  TCP    [::1]:56570            [::1]:49669            TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]

@@ -44,10 +44,10 @@ TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
 TCP    192.168.1.101:389      192.168.1.101:54073    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:389      192.168.1.101:54079    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:389      192.168.1.101:54086    ESTABLISHED  [lsass.exe]
-TCP    192.168.1.101:389      192.168.1.120:64964    ESTABLISHED  [lsass.exe]
-TCP    192.168.1.101:445      192.168.1.120:50241    ESTABLISHED
-TCP    192.168.1.101:445      192.168.1.120:50246    ESTABLISHED
-TCP    192.168.1.101:3268     192.168.1.120:65049    ESTABLISHED  [lsass.exe]
+TCP    192.168.1.101:389      192.168.1.120:62233    ESTABLISHED  [lsass.exe]
+TCP    192.168.1.101:445      192.168.1.120:63873    ESTABLISHED
+TCP    192.168.1.101:445      192.168.1.120:63875    ESTABLISHED
+TCP    192.168.1.101:3268     192.168.1.120:62366    ESTABLISHED  [lsass.exe]
 TCP    192.168.1.101:54073    192.168.1.101:389      ESTABLISHED  [dns.exe]
 TCP    192.168.1.101:54079    192.168.1.101:389      ESTABLISHED  [DFSRs.exe]
 TCP    192.168.1.101:54086    192.168.1.101:389      ESTABLISHED  [DFSRs.exe]
@@ -87,7 +87,8 @@ TCP    [::1]:49669            [::1]:49794            ESTABLISHED  [lsass.exe]
 TCP    [::1]:49745            [::1]:49669            ESTABLISHED  [DFSRs.exe]
 TCP    [::1]:49794            [::1]:49669            ESTABLISHED  [lsass.exe]
 TCP    [::1]:54791            [::1]:135              ESTABLISHED  [svchost.exe]
-TCP    [::1]:56518            [::1]:49669            TIME_WAIT
+TCP    [::1]:56569            [::1]:135              TIME_WAIT
+TCP    [::1]:56570            [::1]:49669            TIME_WAIT
 UDP    0.0.0.0:123            *:*  [svchost.exe]
 UDP    0.0.0.0:389            *:*  [lsass.exe]
 UDP    0.0.0.0:500            *:*  [svchost.exe]
