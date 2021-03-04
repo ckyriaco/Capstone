@@ -1,6 +1,6 @@
 # Audit Report for KTG.local #
 
- ## Conducted By Christopher M Kyriacou on 2021-03-03 00:35:53 ##
+ ## Conducted By Christopher M Kyriacou on 2021-03-03 19:56:12 ##
 
 
 
@@ -19,24 +19,8 @@
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
 |  0 | CLIENT          |            47 |
-|  1 | DESKTOP-A67G0P2 |            47 |
+|  1 | DESKTOP-A67G0P2 |            48 |
 ## Unused Computer Count: 2 ##
-
-## Users with passwords unchanged past the day limit: ##
-
-|    | User                   | Username      |
-|---:|:-----------------------|:--------------|
-|  0 | Administrator          | Administrator |
-|  1 | Christopher M Kyriacou | ckyriacou     |
-|  2 | Guest                  | Guest         |
-|  3 | Jamie Sutton           | sutjay        |
-|  4 | krbtgt                 | krbtgt        |
-
-## Users with password's that don't expire: ##
-
-|    | User         | Username   |
-|---:|:-------------|:-----------|
-|  0 | Jamie Sutton | sutjay     |
 
 ## Admin Report: ##
 |    | Admin Group       | Members                                |
@@ -81,3 +65,19 @@ No service accounts need username correction.
 |    | Computer   | Username   |
 |---:|:-----------|:-----------|
 |  0 | CLIENT     | CLIENT     |
+
+## Users with passwords unchanged past the day limit: ##
+
+|    | User                   | Username      |
+|---:|:-----------------------|:--------------|
+|  0 | Administrator          | Administrator |
+|  1 | Christopher M Kyriacou | ckyriacou     |
+|  2 | Guest                  | Guest         |
+|  3 | Jamie Sutton           | sutjay        |
+|  4 | krbtgt                 | krbtgt        |
+
+## Users with password's that don't expire: ##
+
+|    | User         | Username   |
+|---:|:-------------|:-----------|
+|  0 | Jamie Sutton | sutjay     |

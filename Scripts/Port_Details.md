@@ -14,11 +14,11 @@ ________________________________________________________________________________
 ## 88 is open ##
 ## Port: 88 => service name: kerberos ##
 
-## 135 is open ##
-## Port: 135 => service name: epmap ##
-
 ## 139 is open ##
 ## Port: 139 => service name: netbios-ssn ##
+
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
 ## 389 is open ##
 ## Port: 389 => service name: ldap ##

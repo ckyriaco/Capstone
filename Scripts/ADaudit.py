@@ -48,7 +48,19 @@ class ADaudit:
     approvedServiceAccountNamesForChange = np.array([])
     userDaysUnused = np.array([])
     computerDaysUnused = np.array([])
-#This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
+    df_user_username = ""
+    df_serv_username = ""
+    df_computer_username = ""
+    df_dn_status = ""
+    df_admin_list = ""
+    df_admin_last_logon = ""
+    df_unusedUsers = ""
+    df_unusedComputers = ""
+    df_pwdLastSetNDays = ""
+    df_pwd_exp_flag_false = ""
+    df_serv_man_not_set = ""
+
+    #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
     def __init__(self, CN):
         if(CN != ""):
@@ -699,9 +711,11 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'User':i, 'Username':str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            self.df_user_username = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No users need username correction."
+            self.df_user_username = "N/A"
             message+= str(df)
         message += "\n\n## Service Accounts that need their names changed: ##\n"
         df = pd.DataFrame([], columns=['Service Account', 'Username'])
@@ -712,9 +726,11 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Service Account': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            self.df_serv_username = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "\nNo service accounts need username correction. \n"
+            self.df_serv_username = "N/A"
             message += str(df)
         message += "\n\n## Computers that need their names changed: ##\n\n"
         df = pd.DataFrame([], columns=['Computer', 'Username'])
@@ -725,9 +741,11 @@ class ADaudit:
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Computer': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
+            self.df_computer_username = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No computers need their names changed."
+            self.df_computer_username = "N/A"
             message += str(df)
         return message
 
@@ -745,10 +763,11 @@ class ADaudit:
                 else:
                     newRow = {'Computer': x[0], 'DN Set': x[1], 'DN': '[Unknown]'}
                 df = df.append(newRow, ignore_index=True)
+            self.df_dn_status = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No distinguished name audit has been conducted"
-        #message += "\n"
+            self.df_dn_status = "N/A"
             message += str(df)
         return message
 
@@ -777,9 +796,11 @@ class ADaudit:
                 x3 = x3.replace("'", "")
                 newRow = {'Admin Group':x[0], 'Members':x3}
                 df = df.append(newRow, ignore_index=True)
+            self.df_admin_list = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No admin audit has been conducted."
+            self.df_admin_list = "N/A"
             message += str(df)
         message += "\n"
         message += "\n## Administrator Last Logon ##\n\n"
@@ -790,9 +811,11 @@ class ADaudit:
                 x = i.split(",")
                 newRow = {'Admin Name':x[0],'Last Logon':x[1], 'Days Since':x[2]}
                 df = df.append(newRow, ignore_index=True)
+            self.df_admin_last_logon = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No admin last logon audit has been conducted."
+            self.df_admin_last_logon = "N/A"
             message += str(df)
         return message
 
@@ -807,9 +830,11 @@ class ADaudit:
                 newRow = {'User':i, 'Days Unused':self.userDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
+            self.df_unusedUsers = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "There are no unused users past the day limit."
+            self.df_unusedUsers = "N/A"
             message += str(df)
         message += ("\n## Unused User Count: {} ##\n\n").format(self.unusedUserCount)
         message += "\n\n## Unused Computers: ##\n\n"
@@ -822,9 +847,11 @@ class ADaudit:
                 newRow = {'Computer':i, 'Days Unused':self.computerDaysUnused[counter]}
                 df = df.append(newRow, ignore_index=True)
                 counter += 1
+            self.df_unusedComputers = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "There are no unused computers past the day limit."
+            self.df_unusedComputers = "N/A"
             message += str(df)
         message += ("\n## Unused Computer Count: {} ##").format(self.unusedComputerCount)
         return message
@@ -843,22 +870,26 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'User':str(i), 'Username':str(u[0])}
                 df = df.append(newRow, ignore_index=True)
+            self.df_pwdLastSetNDays = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No passwords that are older than the day limit."
+            self.df_pwdLastSetNDays = "N/A"
             message += str(df)
         message += "\n\n## Users with password's that don't expire: ##\n\n"
         df = pd.DataFrame([], columns=['User', 'Username'])
-        if(self.get_pwd_exp_flag_false().size > 0):
+        if(self.pwd_exp_flag_false.size > 0):
             for i in self.pwd_exp_flag_false:
                 #message += ("{}, ").format(str(i))
                 user = pyad.aduser.ADUser.from_cn(str(i))
                 u = user.get_attribute("samaccountname")
                 newRow = {'User': str(i), 'Username': str(u[0])}
                 df = df.append(newRow, ignore_index=True)
+            self.df_pwd_exp_flag_false = df.to_csv(index=False)
             message += df.to_markdown()
         else:
             df = "No accounts are set to have passwords that don't expire."
+            self.df_pwd_exp_flag_false = "N/A"
             message += str(df)
         return message
 
@@ -873,14 +904,50 @@ class ADaudit:
                 #message += " ##"
                 newRow = {'Service Account':i}
                 df = df.append(newRow, ignore_index=True)
+            self.df_serv_man_not_set = df.to_csv(index=False)
             message += df.to_markdown()
             message += "\n\n"
         else:
             df = "No service accounts without their password set.\n\n"
+            self.df_serv_man_not_set = "N/A"
             message += str(df)
         return message
 
-
+    def report_to_csv(self):
+        info = "Users with invalid Usernames:\n"
+        info += str(self.df_user_username)
+        info += "\n"
+        info += "Service Accounts with invalid Usernames:\n"
+        info += str(self.df_serv_username)
+        info += "\n"
+        info += "Computers with invalid Usernames:\n"
+        info += str(self.df_computer_username)
+        info += "\n"
+        info += "Distinguished Name set?:\n"
+        info += str(self.df_dn_status)
+        info += "\n"
+        info += "Admin List:\n"
+        info += str(self.df_admin_list)
+        info += "\n"
+        info += "Admin Last Logon:\n"
+        info += str(self.df_admin_last_logon)
+        info += "\n"
+        info += "Unused Users:\n"
+        info += str(self.df_unusedUsers)
+        info += "\n"
+        info += "Unused Computers:\n"
+        info += str(self.df_unusedComputers)
+        info += "\n"
+        info += "Users with passwords past the day limit:\n"
+        info += str(self.df_pwdLastSetNDays)
+        info += "\n"
+        info += "Users with password flag set to false:\n"
+        info += str(self.df_pwd_exp_flag_false)
+        info += "\n"
+        info += "Service Accounts without a manager:\n"
+        info += str(self.df_serv_man_not_set)
+        info += "\n"
+        return info
 #Print an overall message on information found by querying through Active Directory.
     def toString(self):
         df = pd.DataFrame([], columns=['User', 'Days Unused'])

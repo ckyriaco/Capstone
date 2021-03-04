@@ -6,6 +6,7 @@ import os
 import numpy as np
 from tkinter import *
 from tkinter import messagebox
+import datetime
 import Active_Directory_Audit as audit
 
 window = Tk()
@@ -15,14 +16,12 @@ window.withdraw()
 
 #Uses ADaudit to check the usernames of different types against the ARA naming scheme rules
 
-def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
-    AD = ""
+def check_usernames(container1, container2, container3, OU2, objCat, file, AD):
     try:
-        AD = ad.ADaudit(CN)
-        audit.userAudit(AD, container1, container2, container3, OU2, objCat)
-        userRemediate(AD, container1)
-        servRemediate(AD, container2, OU2)
-        computerRemediate(AD, container3)
+        AD = audit.userAudit(AD, container1, container2, container3, OU2, objCat)
+        AD = userRemediate(AD, container1)
+        AD = servRemediate(AD, container2, OU2)
+        AD = computerRemediate(AD, container3)
     except ValueError as Valer:
         messagebox.showwarning("An Error has occured: ", Valer)
 
@@ -30,6 +29,7 @@ def check_usernames(CN, container1, container2, container3, OU2, objCat, file):
     f = open(file, "a")
     f.write(doc)
     f.close()
+    return AD
 
 #Calls ADaudit and remediates service account usernames if requested.
 def servRemediate(AD, container2, OU):
@@ -74,6 +74,7 @@ def servRemediate(AD, container2, OU):
                     AD.changeServiceAccountNames()
         except ValueError as Valer:
             messagebox.showwarning("An Error has occurred", Valer)
+    return AD
 
 #Use ADaudit to remediate invalid usernames
 def userRemediate(AD, container1):
@@ -112,6 +113,7 @@ def userRemediate(AD, container1):
                     AD.changeUsernames()
         except ValueError as Valer:
             messagebox.showwarning("An error has occurred", Valer)
+    return AD
 
 #Uses ADaudit to remediate invalid computer names.
 def computerRemediate(AD, container3):
@@ -157,22 +159,19 @@ def computerRemediate(AD, container3):
                     AD.changeComputernames()
         except ValueError as Valer:
             messagebox.showwarning("An error has occurred", Valer)
+    return AD
 
 #This checks to see that the passwords have been reset at the N required days and that the passwords do expire for all users.
-def last_set_pwd(CN, containers, objectCategories, N, file):
-    AD = ""
-    try:
-        AD = ad.ADaudit(CN)
-    except ValueError as Valer:
-        messagebox.showwarning("An Error has occured: ", Valer)
+def last_set_pwd(containers, objectCategories, N, file, AD):
+
     count = 0
     N = int(N)
     for i in containers:
         try:
             AD.get_pwd_last_login_N_days(i, objectCategories[count], N)
             AD.check_pwd_expire(i, objectCategories[count])
-            Force_Password_Change(AD)
-            PWD_EXP_Remediate(AD)
+            AD = PWD_EXP_Remediate(AD)
+            AD = Force_Password_Change(AD)
         except ValueError as Valer:
             messagebox.showwarning("An Error has occurred: ", Valer)
         else:
@@ -181,6 +180,7 @@ def last_set_pwd(CN, containers, objectCategories, N, file):
     f = open(file, "a")
     f.write(doc)
     f.close()
+    return AD
 
 #Forces a password change for users that have not changed their password in N days.
 def Force_Password_Change(AD):
@@ -200,6 +200,7 @@ def Force_Password_Change(AD):
                     AD.force_pwd_change()
         except ValueError as Valer:
             messagebox.showwarning("An Error has occurred ", Valer)
+    return AD
 
 #Uses ADaudit to remediate accounts that have passwords that do not expire.
 def PWD_EXP_Remediate(AD):
@@ -215,12 +216,12 @@ def PWD_EXP_Remediate(AD):
                 message += i
                 message += "\n"
                 #answer = int(input("Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no."))
-                answer = messagebox.askyesno("Password Remediation","Would you like to set these account's passwords to expire?")
+                answer = messagebox.askyesno("Password Remediation","Would you like to set all incompliant account's passwords to expire?")
                 if(answer == 1):
                     AD.set_exp_flag()
         except ValueError as Valer:
             messagebox.showwarning("An Error has occured", Valer)
-
+    return AD
 
 
 #Main method that takes in os variables from a bash file and passess them into the appropriate functions to audit Active Directory instance within the current admin user's domain
@@ -228,6 +229,7 @@ def PWD_EXP_Remediate(AD):
 def main():
     file_final = os.getenv('FILE_FINAL')
     CN = os.getenv('AD_USER')
+    AD = ad.ADaudit(CN)
     samAccount = os.getenv('SAMACCOUNT')
     computerName = os.getenv('COMPUTER_NAME')
     containerUsers = os.getenv('CONTAINER_USERS')
@@ -247,24 +249,34 @@ def main():
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
     server_name = os.getenv('SERVER_NAME')
     doc = ("# Audit Report for {} #\n\n ## Conducted By {} on {:%Y-%m-%d %H:%M:%S} ##\n").format(server_name, CN, datetime.datetime.now())
-    audit.logon_info(CN, containers, objectCategories, types, N, file_final, doc)
-    last_set_pwd(CN, containers2, objectCategories2, N2, file_final)
-    audit.get_admin(CN, adminArray, file_final)
-    audit.service_account_audit(CN, con_serv, file_final)
+    AD = audit.logon_info(containers, objectCategories, types, N, file_final, doc, AD)
+
+    AD = audit.get_admin(adminArray, file_final, AD)
+    AD = audit.service_account_audit(con_serv, file_final, AD)
     file = os.getenv('FILE_NAME')
     file_final_port = os.getenv('COMMAND_OUTPUT')
     file_final_port_2 = os.getenv('COMMAND_OUTPUT_2')
     file_final_ports = np.array([file_final_port, file_final_port_2])
     ip = os.getenv('SERVER_IP')
 
-    audit.get_dn_status(CN, container3, file_final)
+    AD = audit.get_dn_status(container3, file_final, AD)
     OU = os.getenv("OU_SERV")
-    check_usernames(CN, containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final)
+    AD = check_usernames(containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final, AD)
     audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
-
+    AD = last_set_pwd(containers2, objectCategories2, N2, file_final, AD)
     f = open(file_final, "r")
     print(f.read())
     f.close()
+    answer = audit.create_csv()
+    if (answer == 1):
+        csv_file = os.getenv('CSV_AUDIT')
+        csv = AD.report_to_csv()
+        f = open(csv_file, "w")
+        f.write(csv)
+        f.close()
+        f = open(csv_file, "r")
+        print(f.read())
+        f.close()
 
 if __name__ == "__main__":
     main()
