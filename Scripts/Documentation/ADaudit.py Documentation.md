@@ -1,6 +1,7 @@
 ## ADaudit.py Documentation
 
 _This class is designed to allow administrators to query information to test Active Directory instances for CMMC compliance._
+_This class utilizes the pyad 0.6.0 package package to audit and/or remediate an Active Directory instance for the incompliances meantioned in the functionality list above. For generating an audit report, pandas 1.2.3 is utilize to display all contents in a dataframe and/or in .csv format._
 _The administrator must already be joined to the Active Directory server's domain to use this class._
 _A default domain or an temporary external domain can also be set._
 
