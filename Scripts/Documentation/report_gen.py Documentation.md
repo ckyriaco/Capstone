@@ -21,19 +21,23 @@ _This class utilizes pandas 1.2.3, mdutils 1.3.0, and reportlab 3.5.62 to clean 
 ### Initialize simplefilter
 
 ### gen_pdf method
-* This method resets the message, gives the report a file name, builds a report with a template, and fills the report with data.
+* This method: 
+    * Resets the message 
+    * Gives the report a file name
+    * Builds a report with a template 
+    * Fills the report with data.
 
 ### format_text method 
 * This method creates a formatted Command Output report with needed headers and empty data.
-* Headers included:
+* Headers included in report:
     * TCP
     * UDP
 
 ### format_md method
-* This method creates a formatted Command Execution Output report with needed headers empty data.
-formatted markdown file 
-* Compatible with netstat ban commands
-* Headers included:
+* This method creates a formatted Command Execution Output report with needed headers and empty data.
+* Creates a formatted markdown file 
+* Is compatible with netstat ban commands
+* Headers included in report:
     * Protocol 
     * Local Address
     * Foreign Address
