@@ -106,9 +106,9 @@ ________________________________________________________________________________
 ![](Photos_Gifs/Alpha_Team_4.PNG)
 
 ## Roles ##
-### - Team Leader | Lead Developer: Chris Kyriacou ###
-### - Deputy Team Leader | Developer: Safeeullah Ghafoori ###
-### - Researcher | Developer | Documentation Specialist: Nathan Chong, Jamie Sutton, Dave Fuller ###
+### - Team Leader | Lead Software Developer: Chris Kyriacou ###
+### - Deputy Team Leader | Report Formatting: Safeeullah Ghafoori ###
+### - Researcher | Documentation Specialist: Nathan Chong, Jamie Sutton, Dave Fuller ###
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
