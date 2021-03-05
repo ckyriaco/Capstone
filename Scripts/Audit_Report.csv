@@ -22,17 +22,17 @@ Schema Admins,Administrator
 
 Admin Last Logon:
 Admin Name,Last Logon,Days Since
-Christopher M Kyriacou,2021-01-22 00:35:02,41 
-Administrator,2021-01-22 00:15:05,41 
+Christopher M Kyriacou,2021-01-22 00:35:02,42 
+Administrator,2021-01-22 00:15:05,42 
 
 Unused Users:
 User,Days Unused
-Administrator,41.0
-Christopher M Kyriacou,41.0
+Administrator,42.0
+Christopher M Kyriacou,42.0
 
 Unused Computers:
 Computer,Days Unused
-CLIENT,48.0
+CLIENT,49.0
 DESKTOP-A67G0P2,49.0
 
 Users with passwords past the day limit:

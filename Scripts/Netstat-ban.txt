@@ -104,13 +104,13 @@ Active Connections
  [lsass.exe]
   TCP    192.168.1.101:389      192.168.1.101:54086    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:62233    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:56094    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:63873    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:54474    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:63875    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:57721    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:62366    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:56219    ESTABLISHED
  [lsass.exe]
   TCP    192.168.1.101:54073    192.168.1.101:389      ESTABLISHED
  [dns.exe]
@@ -197,15 +197,18 @@ Active Connections
  [lsass.exe]
   TCP    [::1]:49669            [::1]:49794            ESTABLISHED
  [lsass.exe]
+  TCP    [::1]:49669            [::1]:50682            ESTABLISHED
+ [lsass.exe]
   TCP    [::1]:49745            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   TCP    [::1]:49794            [::1]:49669            ESTABLISHED
  [lsass.exe]
+  TCP    [::1]:50681            [::1]:135              TIME_WAIT
+  TCP    [::1]:50682            [::1]:49669            ESTABLISHED
+ [lsass.exe]
   TCP    [::1]:54791            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
-  TCP    [::1]:56569            [::1]:135              TIME_WAIT
-  TCP    [::1]:56570            [::1]:49669            TIME_WAIT
   UDP    0.0.0.0:123            *:*                    
   W32Time
  [svchost.exe]
@@ -5229,7 +5232,7 @@ Active Connections
  [dns.exe]
   UDP    0.0.0.0:64639          *:*                    
  [dns.exe]
-  UDP    0.0.0.0:65480          *:*                    
+  UDP    0.0.0.0:64641          *:*                    
  [dns.exe]
   UDP    127.0.0.1:53           *:*                    
  [dns.exe]
@@ -5306,7 +5309,7 @@ Active Connections
   UDP    [::]:4500              *:*                    
   IKEEXT
  [svchost.exe]
-  UDP    [::]:65481             *:*                    
+  UDP    [::]:64642             *:*                    
  [dns.exe]
   UDP    [::1]:53               *:*                    
  [dns.exe]

@@ -73,7 +73,7 @@ def format_md(file_name):
     mdFile.create_md_file()
     textfile.close()
 
-def make_markdown(filename):
+def make_markdown(filename, add_row):
     formattext(filename)
     f = open(filename, 'r')
     list = []
@@ -90,7 +90,7 @@ def make_markdown(filename):
     f.close()
     f = open(filename.replace(".txt", ".xxx"), 'r')
     list = np.delete(list, np.where(list == "Address"))
-    if(filename == "Netstat-ban.txt"):
+    if(filename == add_row or add_row in filename):
         list = np.append(list, "Owner")
     if(list.size == 0):
         raise ValueError("No Headers Found!")

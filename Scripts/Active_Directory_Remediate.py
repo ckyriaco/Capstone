@@ -258,11 +258,11 @@ def main():
     file_final_port_2 = os.getenv('COMMAND_OUTPUT_2')
     file_final_ports = np.array([file_final_port, file_final_port_2])
     ip = os.getenv('SERVER_IP')
-
+    file_xtr_row = os.getenv('FILE_ADD_ROW')
     AD = audit.get_dn_status(container3, file_final, AD)
     OU = os.getenv("OU_SERV")
     AD = check_usernames(containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final, AD)
-    #audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
+    #audit.port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray, file_xtr_row)
     AD = last_set_pwd(containers2, objectCategories2, N2, file_final, AD)
     f = open(file_final, "r")
     print(f.read())

@@ -120,7 +120,7 @@ def service_account_audit(DN, file, AD):
     return AD
 
 #Uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
-def port_status(CN, server_ip, file, server_name, container, samAccount, computerName, file_final, commands):
+def port_status(CN, server_ip, file, server_name, container, samAccount, computerName, file_final, commands, add_row):
     message = ""
     try:
         P = ps.Port_Scanner(CN, server_ip, server_name, container, samAccount, computerName, commands)
@@ -132,11 +132,15 @@ def port_status(CN, server_ip, file, server_name, container, samAccount, compute
         messagebox.showwarning("An Error has occured: ", Valer)
     counter = 0
     for i in file_final:
-        f = open(i, "w")
-        f.write(outputs[counter])
-        f.close()
-        rg.make_markdown(i)
-        counter+=1
+        try:
+            f = open(i, "w")
+            f.write(outputs[counter])
+            f.close()
+            rg.make_markdown(i, add_row)
+        except ValueError as Valer:
+            print("Error has occurred: ", Valer)
+        else:
+            counter+=1
 
 def create_csv():
     answer = messagebox.askyesno("CSV File", "Would you like to generate a csv file?")
@@ -178,8 +182,9 @@ def main():
     file_final_ports = np.array([file_final_port, file_final_port_2])
     AD = get_dn_status(container3, file_final, AD)
     OU = os.getenv("OU_SERV")
+    file_xtr_row = os.getenv('FILE_ADD_ROW')
     AD = check_usernames(containerUsers, con_serv, containerComputers, OU, usersObjectCategory, file_final, AD)
-    port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray)
+    port_status(CN, ip, file, server_name, containerComputers, samAccount, computerName, file_final_ports, commandsArray, file_xtr_row)
     pdf_audit_report = os.getenv('PDF_FILE')
     pdf_command_report = os.getenv('COMMAND_OUTPUT_PDF')
     pdf_port_status = os.getenv('FILE_NAME_PDF')
