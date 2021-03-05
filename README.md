@@ -108,7 +108,8 @@ ________________________________________________________________________________
 ## Roles ##
 ### - Team Leader | Lead Software Developer: Chris Kyriacou ###
 ### - Deputy Team Leader: Safeeullah Ghafoori ###
-### - Researcher | Documentation Specialist: Nathan Chong, Jamie Sutton, Dave Fuller ###
+### - Documentation Specialist: Nathan Chong ###
+### - Researcher(s): Jamie Sutton, Dave Fuller ###
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
