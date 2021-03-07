@@ -2,4 +2,4 @@
 
 # Whole Team #
 
-- [] Look at code functionality and see if there is anything you believe that needs improvement.
+-[X] Look at code functionality and see if there is anything you believe that needs improvement.
