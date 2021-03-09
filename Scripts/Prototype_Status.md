@@ -13,4 +13,4 @@
 ## Additions to functions ##
 - [X] Add the time it's been since an admin has signed on to the reporting of the last time an admin signed on.
 - [X] Add Markdown report generation.
-- [ ] Add imporvements to Markdown report.
+- [X] Add imporvements to Markdown report.
