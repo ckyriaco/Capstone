@@ -1,6 +1,6 @@
 # Safeeullah "Safee" Ghafoori
 ## Deputy Team Leader
-![](Photos_Gifs/Saffee_Ghafoori.PNG)
+![](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Saffee_Ghafoori.PNG)
 
 Hello! My name is Safee and I'm an IT professional who will receive his Bachelor of Science in Information Technology with a concentration in Database Technology & Programming this Spring. I transferred from Northern Virginia Community College in 2017, and was formerly the IT Help Desk Intern at the International Association of Chiefs of Police from Fall 2019 until Spring of 2020. 
 
