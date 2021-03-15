@@ -1,4 +1,4 @@
-
+![](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Christopher_Kyriacou.PNG)
 
 # Christopher Kyriacou #
 ## Team Leader ##
