@@ -34,7 +34,7 @@ The goal of this project is to create an auditing system that allows authorized 
 to audit their active directory servers for CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
 that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
 
-***Functionality list to reach our main goal:***
+***Base functionality list to reach our main goal:***
 1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
 3. Produce a list of users who have not changed their password in N days.
@@ -43,6 +43,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 6. For all accounts, the “password expire” flag is set.  More specifically, which accounts do not have this set?
 7. Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port.  As much detail about the process as can be found should be reported.  Install sysinternals on the remote computer if needed.  Using psexec is OK.  This is probably the top priority.
 
+Link to updated status of functionality: [Updated Functionality/Progress](Scripts/Prototype_Status.md)
 _________________________________________________________________________________________________________________________________________________________________________________
 
 ### **Audit Process (Proposed End-Goal)**
