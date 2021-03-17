@@ -1,4 +1,6 @@
-#This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain. 
+#This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain.
+#This class is also designed to allow you to use psexec to run commands on the designated server's command prompt. This is mainly used to run nestat commands, but can be used to run any command.
+#Bennefits of psexec is that it is not disruptive to other users like an ssh. It briefly connects in using a temporary encrypted tunnel to the server.
 from queue import Queue
 import numpy as np
 from pyad import *
@@ -193,13 +195,13 @@ class Port_Scanner:
             print("There are no commands to execute!")
         else:
             for i in self.commands:
-
                 username = ("{}@{}").format(self.samAccount, self.server_Domain_name)
 
                 c = Client(str(self.computerName), username=str(username), encrypt=True)
 
                 c.connect()
                 try:
+
                     c.create_service()
                     stdout, stderr, rc = c.run_executable("cmd.exe", arguments=str(i))
                     stdout = stdout.decode("utf-8")
@@ -215,6 +217,7 @@ class Port_Scanner:
                     c.remove_service()
                     c.disconnect()
 
+#This is the report of commands that have been executed in raw format.
     def command_report(self):
         message = "# Command Execution Output #\n______________________________________________________________________________________"
         x = 0
@@ -223,6 +226,7 @@ class Port_Scanner:
             x += 1
         return message
 
+#Generic toString method that shows all command results.
     def toString(self):
         for i in self.commandRes:
             print("Command Result:\n", i, "\n")
