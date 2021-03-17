@@ -1,9 +1,9 @@
 ## Port_Scanner.py Documentation
 
-_This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain._
-_This class is also designed to allow you to use psexec to run commands on the designated server's command prompt. This is mainly used to run nestat commands, but can be used to run any command._
-_Bennefits of psexec is that it is not disruptive to other users like an ssh. It briefly connects in using a temporary encrypted tunnel to the server._
-_This class utilizes socket and threading to discover what processes are running on a socket level on an Active Directory instance, and pypsexec 0.2.0 to execute commands on an Active Directory instance's command prompt from a remote host._
+_This class is designed to discover what processes are connecting to what ports on the domain server itself and the computers connected to the domain._       
+_This class is also designed to allow you to use psexec to run commands on the designated server's command prompt. This is mainly used to run nestat commands, but can be used to run any command._        
+_Bennefits of psexec is that it is not disruptive to other users like an ssh. It briefly connects in using a temporary encrypted tunnel to the server._        
+_This class utilizes socket and threading to discover what processes are running on a socket level on an Active Directory instance, and pypsexec 0.2.0 to execute commands on an Active Directory instance's command prompt from a remote host._        
 
 ### Import
 * Import Queue, numpy, pyad / pyadutils, re (Regular Expressions package), socket, threading, time, simplefilter
