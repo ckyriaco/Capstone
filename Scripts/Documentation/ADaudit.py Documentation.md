@@ -1,6 +1,13 @@
 ## ADaudit.py Documentation
 
 _This class is designed to allow administrators to query information to test Active Directory instances for CMMC compliance._
+_Must already be joined to the active directory server's domain to use this class!_
+_Can set a default domain manually using_
+pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword").
+_Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Operating Systems on the end-unit is more secure._
+_Can connect to a specific other domain temporarilty instead of the default using_ 
+user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))
+_Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested._
 _This class utilizes the pyad 0.6.0 package package to audit and/or remediate an Active Directory instance for the incompliances meantioned in the functionality list above. For generating an audit report, pandas 1.2.3 is utilize to display all contents in a dataframe and/or in .csv format._
 _The administrator must already be joined to the Active Directory server's domain to use this class._
 _A default domain or an temporary external domain can also be set._
@@ -278,6 +285,9 @@ _A default domain or an temporary external domain can also be set._
 ### get_serv_man_not_set_report method 
 * This method returns a report of the service accounts that do not have a manager attribute set.
 * Returns a string of service accounts without the manager attribute set.
+
+### report_to_csv method
+* This method generates a full report in csv format.
 
 ### toString method 
 * This method prints an overall message on information found by querying through Active Directory.
