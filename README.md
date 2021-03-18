@@ -81,14 +81,44 @@ ________________________________________________________________________________
 3. Within the Windows 10 Pro instance, the [ADaudit.py](Scripts/ADaudit.py) class, the [Port_Scanner.py](Scripts/Port_Scanner.py) class, the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) procedural script, and the [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py) procedural script was used to test the ability to audit Active Directory Servers with the [pyad 0.6.0 package](https://pypi.org/project/pyad/). The [Port_Scanner.py](Scripts/Port_Scanner.py) class was specifically used to test the ability to run port scans on the socket level using [socket](https://docs.python.org/3/library/socket.html) and [threading](https://docs.python.org/3/library/threading.html). It was also used to run [netstat](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) -ban and [netstat](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) -an to with [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) on the Active Directory Server from a remote host.
 4. All the results of each audit type were designed to be stored in a markdown file named [Audit_Report.md](Scripts/Audit_Report.md) for future use by the Domain Admin.
 5. The results of the port scan of all active computers, connect to the domain controller, at the socket level are in [Port_Details.md](Scripts/Port_Details.md), and the output of the netstat commands executed on the server are in [Command_Output.md](Scripts/Command_Output.md).
+_________________________________________________________________________________________________________________________________________________________________________________
 
+### ***Installation Instructions*** ###
+
+1. Prior to installation:
+   - Ensure that you Windows 7, 8 or 10 installed
+   - The domain controller of interest is a Windows Server instance.
+   - Ensure that your Windows Server instance has 
+   - You have a minimum of python 3 installed on your windows instance.
+   - Ensure that you have installed the [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/) packages installed as a starting point.
+   - Look at all packages imported into the implementation scripts described in the previous section (other than the classes being exported from this github repository), and make sure that all package requirements are met.
+   - Install git bash on you windows instance if you are planning to use bash files to pass os variables.
+   - You have access to an admin account joined to the domain controller of interest. All installation should be done on the account with admin privileges.
+   * It is recommended that you use an IDE that supports python and bash scripts. Use either pip or pip3 to install necessary packages.
+2. Once the previous step is satisfied, Follow the installation instructions on the [pyad](https://pypi.org/project/pyad/) PyPi documentation.
+3. Once the latest version of pyad is installed, test the connection to your server by:
+   - Opening a new python script
+   - importing pyad as shown: from pyad import *
+   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): user = aduser.ADUser.from_cn("your common name")
+   - Write a line to print the user as shown: print(user)
+   * It is imperative that this step is successful before moving forward.
+4. Follow the installation instructions on the [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) PyPi documentation.
+   - Note, the instructions indicate Windows blocks the SMB port 445 by default, but the prototype described previously was able to use psexec without physically opening the port. If your domain controller does do a strict block of SMB port 445, there are instructions on how to open this port in the documentation stated above.
+5. In the Scripts section, locate the [ADaudit.py](Scripts/ADaudit.py), [Port_Scanner.py](Scripts/Port_Scanner.py), [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py), [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py), and the [report_gen.py](Scripts/report_gen.py) and export them from github and then import them into you ide or python environment of choice. 
+   - Make sure they are all within the same folder. 
+6. If you are planning to use bash files to import os variables, look through the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and use it as a guide to locate distinguished names that identify the appropriate location of desired user, computer and service account folders. Also ensure pass the common name of the admin accessing the information as well as the names of the appropriate txt files to be generated into md and pdf files. files that will be generated based on your preferences.
+7. An example of bash file will be added shortly at this step.
+8. If you decide to pass in the infomation from the script, you will need to change the methods that import the os variable to the bash script to the actual values of the variables or have them pull from another specified area.
+9. Once you have ensured all passed information is accurate, you should be ready to execute.
+
+### Note: At this time, we are still in the prototyping phase, so there may be changes made frequently. ###
 _________________________________________________________________________________________________________________________________________________________________________________
 
 ### ***Executable Prototype*** ###
 
 ![](Photos_Gifs/PC_to_AD.png)
 
-#### Active Directory Audit and Netstat scan ####
+#### ***Active Directory Audit and Netstat scan*** ####
 
 ![Prototype](Photos_Gifs/prototype_3.gif)
 
