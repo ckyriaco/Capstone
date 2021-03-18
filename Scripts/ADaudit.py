@@ -5,7 +5,7 @@
 #Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Operating Systems on the end-unit is more secure.
 #Can connect to a specific other domain temporarilty instead of the default using user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))
 #Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested. 
-
+#pyad requires pywin32 to be installed and for you to be running on a windows instance.
 
 from pyad import *
 import numpy as np
