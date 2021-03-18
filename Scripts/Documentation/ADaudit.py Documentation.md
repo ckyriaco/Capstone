@@ -12,7 +12,8 @@ _Can connect to a specific other domain temporarilty instead of the default usin
 _Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested._        
 _This class utilizes the pyad 0.6.0 package package to audit and/or remediate an Active Directory instance for the incompliances meantioned in the functionality list above.      For generating an audit report, pandas 1.2.3 is utilize to display all contents in a dataframe and/or in .csv format._        
 _The administrator must already be joined to the Active Directory server's domain to use this class._         
-_A default domain or an temporary external domain can also be set._       
+_A default domain or an temporary external domain can also be set._  
+_pyad requires pywin32 to be installed and for you to be running on a Windows instance._     
 
 ### Import 
 * pyad 
