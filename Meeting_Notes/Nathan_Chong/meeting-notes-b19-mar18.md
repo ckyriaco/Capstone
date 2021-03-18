@@ -37,7 +37,7 @@ transcript
 ADexplorer       
 installed       
 he could disappear     
-due to DOD audit      
+due to         
 everything turns into money      
 hes not sure how much time is saved but     
 six months ago      
@@ -62,8 +62,8 @@ how ara sets up service accounts
 service accounts are tricky     
 **meeting end 4:03 pm**        
 
-**meeting start 4:14 pm**
-ara is getting dod audit !!      
+**meeting start 4:14 pm**         
+       
 ara estimates      
 it seemed like dr ingham understood last time we met      
 but that was not the case         
