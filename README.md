@@ -88,7 +88,7 @@ ________________________________________________________________________________
 1. Prior to installation:
    - Ensure that you Windows 7, 8 or 10 installed
    - The domain controller of interest is a Windows Server instance.
-   - Ensure that your Windows Server instance has 
+   - Ensure that your Windows Server instance has netstat capabilities.
    - You have a minimum of python 3 installed on your windows instance.
    - Ensure that you have installed the [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/) packages installed as a starting point.
    - Look at all packages imported into the implementation scripts described in the previous section (other than the classes being exported from this github repository), and make sure that all package requirements are met.
