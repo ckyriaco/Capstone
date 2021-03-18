@@ -86,7 +86,7 @@ ________________________________________________________________________________
 ### ***Installation Instructions*** ###
 
 1. Prior to installation:
-   - Ensure that you Windows 7, 8 or 10 installed
+   - Ensure that you use Windows 7, 8 or 10 installed
    - The domain controller of interest is a Windows Server instance.
    - Ensure that your Windows Server instance has netstat capabilities.
    - You have a minimum of python 3 installed on your windows instance.
