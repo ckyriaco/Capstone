@@ -120,35 +120,44 @@ ________________________________________________________________________________
 ***If you are just using the audit script:***
 
 encrypt:
+
     gpg -c filename.sh
     rm filename.sh
 
 decrypt:
+
     gpg --output filename.sh -d filename.sh.gpg 
 
 remove:
+
     rm filename.sh
     
 ***If you also want to use remediation:***
 
 encrypt_audit:
+
     gpg -c filename.sh
     rm filename.sh
 
 decrypt_audit:
+
     gpg --output filename.sh -d filename.sh.gpg 
 
 remove_audit:
+
     rm filename.sh
 
 encrypt_remediate:
+
     gpg -c filename.sh
     rm filename.sh
 
 decrypt_remediate:
+
     gpg --output filename.sh -d filename.sh.gpg 
 
 remove_remediate:
+
     rm filename.sh
   
 4. Once you have your makefile set up, call each of the above functions by simply typing the following: make functionName
@@ -159,7 +168,7 @@ remove_remediate:
 
 1. Navigate to the folder that your scripts and Makefile is located
 2. Execute the command: make encrypt (For if you only are using an audit script) or make encrypt_audit/make encrypt_remediate (If you have a remediation script as well)
-  - This will create and encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
+  - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
   - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: ./filename.sh, and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
 4. Repeat step 3 whenever you would like to execute the script.    
