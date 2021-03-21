@@ -70,8 +70,6 @@ Active Connections
  [svchost.exe]
   TCP    0.0.0.0:49694          0.0.0.0:0              LISTENING
  Can not obtain ownership information
-  TCP    0.0.0.0:49695          0.0.0.0:0              LISTENING
- [tssdis.exe]
   TCP    0.0.0.0:49704          0.0.0.0:0              LISTENING
  [dns.exe]
   TCP    0.0.0.0:58225          0.0.0.0:0              LISTENING
@@ -85,42 +83,38 @@ Active Connections
  [lsass.exe]
   TCP    127.0.0.1:389          127.0.0.1:49679        ESTABLISHED
  [lsass.exe]
-  TCP    127.0.0.1:389          127.0.0.1:49701        ESTABLISHED
+  TCP    127.0.0.1:389          127.0.0.1:50088        ESTABLISHED
  [lsass.exe]
   TCP    127.0.0.1:49677        127.0.0.1:389          ESTABLISHED
  [ismserv.exe]
   TCP    127.0.0.1:49679        127.0.0.1:389          ESTABLISHED
  [ismserv.exe]
-  TCP    127.0.0.1:49701        127.0.0.1:389          ESTABLISHED
+  TCP    127.0.0.1:50088        127.0.0.1:389          ESTABLISHED
  [dns.exe]
   TCP    192.168.1.101:53       0.0.0.0:0              LISTENING
  [dns.exe]
   TCP    192.168.1.101:139      0.0.0.0:0              LISTENING
  Can not obtain ownership information
-  TCP    192.168.1.101:389      192.168.1.101:49703    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.101:50077    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.101:58242    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.101:50084    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.101:58246    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.101:50090    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:50240    ESTABLISHED
+  TCP    192.168.1.101:389      192.168.1.120:60588    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:389      192.168.1.120:53809    ESTABLISHED
- [lsass.exe]
-  TCP    192.168.1.101:445      192.168.1.120:54489    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:50882    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:445      192.168.1.120:55435    ESTABLISHED
+  TCP    192.168.1.101:445      192.168.1.120:62218    ESTABLISHED
  Can not obtain ownership information
-  TCP    192.168.1.101:3268     192.168.1.120:50362    ESTABLISHED
+  TCP    192.168.1.101:3268     192.168.1.120:60716    ESTABLISHED
  [lsass.exe]
-  TCP    192.168.1.101:3268     192.168.1.120:53932    ESTABLISHED
- [lsass.exe]
-  TCP    192.168.1.101:49703    192.168.1.101:389      ESTABLISHED
+  TCP    192.168.1.101:50077    192.168.1.101:389      ESTABLISHED
+ [DFSRs.exe]
+  TCP    192.168.1.101:50084    192.168.1.101:389      ESTABLISHED
+ [DFSRs.exe]
+  TCP    192.168.1.101:50090    192.168.1.101:389      ESTABLISHED
  [dns.exe]
-  TCP    192.168.1.101:58242    192.168.1.101:389      ESTABLISHED
- [DFSRs.exe]
-  TCP    192.168.1.101:58246    192.168.1.101:389      ESTABLISHED
- [DFSRs.exe]
   TCP    [::]:80                [::]:0                 LISTENING
  Can not obtain ownership information
   TCP    [::]:88                [::]:0                 LISTENING
@@ -181,8 +175,6 @@ Active Connections
  [svchost.exe]
   TCP    [::]:49694             [::]:0                 LISTENING
  Can not obtain ownership information
-  TCP    [::]:49695             [::]:0                 LISTENING
- [tssdis.exe]
   TCP    [::]:49704             [::]:0                 LISTENING
  [dns.exe]
   TCP    [::]:58225             [::]:0                 LISTENING
@@ -192,28 +184,20 @@ Active Connections
  [DFSRs.exe]
   TCP    [::1]:53               [::]:0                 LISTENING
  [dns.exe]
-  TCP    [::1]:135              [::1]:49668            ESTABLISHED
+  TCP    [::1]:135              [::1]:49700            ESTABLISHED
   RpcSs
- [svchost.exe]
-  TCP    [::1]:135              [::1]:49696            ESTABLISHED
-  RpcSs
- [svchost.exe]
-  TCP    [::1]:49668            [::1]:135              ESTABLISHED
-  TermService
  [svchost.exe]
   TCP    [::1]:49669            [::1]:57203            ESTABLISHED
  [lsass.exe]
   TCP    [::1]:49669            [::1]:58244            ESTABLISHED
  [lsass.exe]
-  TCP    [::1]:49695            [::1]:58212            ESTABLISHED
- [tssdis.exe]
-  TCP    [::1]:49696            [::1]:135              ESTABLISHED
- [tssdis.exe]
-  TCP    [::1]:57203            [::1]:49669            ESTABLISHED
- [lsass.exe]
-  TCP    [::1]:58212            [::1]:49695            ESTABLISHED
+  TCP    [::1]:49700            [::1]:135              ESTABLISHED
   TermService
  [svchost.exe]
+  TCP    [::1]:50140            [::1]:135              TIME_WAIT
+  TCP    [::1]:50141            [::1]:49669            TIME_WAIT
+  TCP    [::1]:57203            [::1]:49669            ESTABLISHED
+ [lsass.exe]
   TCP    [::1]:58244            [::1]:49669            ESTABLISHED
  [DFSRs.exe]
   UDP    0.0.0.0:123            *:*                    
@@ -239,8 +223,6 @@ Active Connections
   UDP    0.0.0.0:5355           *:*                    
   Dnscache
  [svchost.exe]
-  UDP    0.0.0.0:54758          *:*                    
- [dns.exe]
   UDP    0.0.0.0:54761          *:*                    
  [dns.exe]
   UDP    0.0.0.0:54762          *:*                    
@@ -5241,15 +5223,24 @@ Active Connections
  [dns.exe]
   UDP    0.0.0.0:57260          *:*                    
  [dns.exe]
+  UDP    0.0.0.0:59902          *:*                    
+ [dns.exe]
   UDP    127.0.0.1:53           *:*                    
  [dns.exe]
   UDP    127.0.0.1:49622        *:*                    
  [lsass.exe]
   UDP    127.0.0.1:50023        *:*                    
  [dns.exe]
+  UDP    127.0.0.1:50923        *:*                    
+  NlaSvc
+ [svchost.exe]
   UDP    127.0.0.1:51899        *:*                    
   TSGateway
  [svchost.exe]
+  UDP    127.0.0.1:52143        *:*                    
+ [ServerManager.exe]
+  UDP    127.0.0.1:52144        *:*                    
+ [mmc.exe]
   UDP    127.0.0.1:52984        *:*                    
  [DFSRs.exe]
   UDP    127.0.0.1:54760        *:*                    
@@ -5262,6 +5253,11 @@ Active Connections
   UDP    127.0.0.1:61103        *:*                    
   SessionEnv
  [svchost.exe]
+  UDP    127.0.0.1:61737        *:*                    
+  TermServLicensing
+ [svchost.exe]
+  UDP    127.0.0.1:62443        *:*                    
+ [spoolsv.exe]
   UDP    192.168.1.101:53       *:*                    
  [dns.exe]
   UDP    192.168.1.101:67       *:*                    
@@ -5308,7 +5304,7 @@ Active Connections
   UDP    [::]:4500              *:*                    
   IKEEXT
  [svchost.exe]
-  UDP    [::]:54759             *:*                    
+  UDP    [::]:59903             *:*                    
  [dns.exe]
   UDP    [::1]:53               *:*                    
  [dns.exe]

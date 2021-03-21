@@ -5,20 +5,20 @@ _______________________________________________________________
 
 # KTG.local -> IPv4: 192.168.1.101 #
 ____________________________________________________________________________________
-## 80 is open ##
-## Port: 80 => service name: http ##
-
 ## 53 is open ##
 ## Port: 53 => service name: domain ##
+
+## 80 is open ##
+## Port: 80 => service name: http ##
 
 ## 88 is open ##
 ## Port: 88 => service name: kerberos ##
 
-## 135 is open ##
-## Port: 135 => service name: epmap ##
-
 ## 139 is open ##
 ## Port: 139 => service name: netbios-ssn ##
+
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
 ## 389 is open ##
 ## Port: 389 => service name: ldap ##
@@ -37,11 +37,11 @@ ______________________________________________________________________
 ## 80 is open ##
 ## Port: 80 => service name: http ##
 
-## 135 is open ##
-## Port: 135 => service name: epmap ##
-
 ## 139 is open ##
 ## Port: 139 => service name: netbios-ssn ##
+
+## 135 is open ##
+## Port: 135 => service name: epmap ##
 
 ## 445 is open ##
 ## Port: 445 => service name: microsoft-ds ##
