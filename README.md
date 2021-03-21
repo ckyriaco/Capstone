@@ -122,52 +122,52 @@ ________________________________________________________________________________
 encrypt:
     
     encrypt:
-        gpg -c filename.sh
-        rm filename.sh
+            gpg -c filename.sh
+            rm filename.sh
 
 decrypt:
     
     decrypt:
-        gpg --output filename.sh -d filename.sh.gpg 
+            gpg --output filename.sh -d filename.sh.gpg 
 
 remove:
     
     remove:
-        rm filename.sh
+           rm filename.sh
     
 ***If you also want to use remediation:***
 
 encrypt_audit:
 
     encrypt_audit:
-        gpg -c filename.sh
-        rm filename.sh
+                  gpg -c filename.sh
+                  rm filename.sh
 
 decrypt_audit:
     
     decrypt_audit:
-        gpg --output filename.sh -d filename.sh.gpg 
+                  gpg --output filename.sh -d filename.sh.gpg 
 
 remove_audit:
     
     remove_audit:
-        rm filename.sh
+                 rm filename.sh
 
 encrypt_remediate:
     
     encrypt_remediate:
-        gpg -c filename.sh
-        rm filename.sh
+                      gpg -c filename.sh
+                      rm filename.sh
 
 decrypt_remediate:
     
     decrypt_remediate:
-        gpg --output filename.sh -d filename.sh.gpg 
+                      gpg --output filename.sh -d filename.sh.gpg 
 
 remove_remediate:
     
     remove_remediate:
-        rm filename.sh
+                     rm filename.sh
   
 4. Once you have your makefile set up, call each of the above functions by simply typing the following: make functionName
 - Example: make encrypt
