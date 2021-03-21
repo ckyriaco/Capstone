@@ -182,6 +182,10 @@ remove_remediate:
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: ./filename.sh, and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
 4. Repeat step 3 whenever you would like to execute the script.    
 
+***Visual Example***
+
+![](Photos_Gifs/encryption_execution_prototype.gif)
+
 ### Note: At this time, we are still in the prototyping phase, so there may be changes made frequently. ###
 _________________________________________________________________________________________________________________________________________________________________________________
 
