@@ -1,16 +1,15 @@
 # Audit Report for KTG.local #
 
- ## Conducted By Christopher M Kyriacou on 2021-03-17 16:56:36 ##
+ ## Conducted By Christopher M Kyriacou on 2021-03-20 20:51:45 ##
 
 
 
 ## Unused Users: ##
 
-|    | User                   |   Days Unused |
-|---:|:-----------------------|--------------:|
-|  0 | Administrator          |             7 |
-|  1 | Christopher M Kyriacou |             7 |
-## Unused User Count: 2 ##
+|    | User          |   Days Unused |
+|---:|:--------------|--------------:|
+|  0 | Administrator |            10 |
+## Unused User Count: 1 ##
 
 
 
@@ -18,9 +17,26 @@
 
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
-|  0 | CLIENT          |            61 |
-|  1 | DESKTOP-A67G0P2 |            62 |
+|  0 | CLIENT          |            64 |
+|  1 | DESKTOP-A67G0P2 |            65 |
 ## Unused Computer Count: 2 ##
+
+## Users with passwords unchanged past the day limit: ##
+
+|    | User                   | Username      |
+|---:|:-----------------------|:--------------|
+|  0 | Administrator          | Administrator |
+|  1 | Christopher M Kyriacou | ckyriacou     |
+|  2 | Guest                  | Guest         |
+|  3 | Jamie Sutton           | sutjay        |
+|  4 | krbtgt                 | krbtgt        |
+|  5 | Updates                | Corp-Updates  |
+
+## Users with password's that don't expire: ##
+
+|    | User         | Username   |
+|---:|:-------------|:-----------|
+|  0 | Jamie Sutton | sutjay     |
 
 ## Admin Report: ##
 |    | Admin Group       | Members                                |
@@ -34,8 +50,8 @@
 
 |    | Admin Name             | Last Logon          |   Days Since |
 |---:|:-----------------------|:--------------------|-------------:|
-|  0 | Christopher M Kyriacou | 2021-03-10 13:47:57 |           7  |
-|  1 | Administrator          | 2021-03-10 13:51:20 |           7  |
+|  0 | Christopher M Kyriacou | 2021-03-20 20:43:07 |           0  |
+|  1 | Administrator          | 2021-03-10 13:51:20 |          10  |
 
 ## Service Accounts without manager set: ##
 
@@ -65,19 +81,3 @@ No service accounts need username correction.
 |    | Computer   | Username   |
 |---:|:-----------|:-----------|
 |  0 | CLIENT     | CLIENT     |
-
-## Users with passwords unchanged past the day limit: ##
-
-|    | User                   | Username      |
-|---:|:-----------------------|:--------------|
-|  0 | Administrator          | Administrator |
-|  1 | Christopher M Kyriacou | ckyriacou     |
-|  2 | Guest                  | Guest         |
-|  3 | Jamie Sutton           | sutjay        |
-|  4 | krbtgt                 | krbtgt        |
-
-## Users with password's that don't expire: ##
-
-|    | User         | Username   |
-|---:|:-------------|:-----------|
-|  0 | Jamie Sutton | sutjay     |

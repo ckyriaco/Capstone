@@ -66,6 +66,7 @@ def check_usernames(container1, container2, container3, OU2, objCat, file, AD):
     f.close()
     return AD
 
+#This checks to see if user, service account, and computer samaccount names/usernames are compliant.
 def userAudit(AD, container1, container2, container3, OU2, objCat):
     AD.check_username(container1, objCat)
     AD.check_service_account_name(container2, OU2)
@@ -142,6 +143,7 @@ def port_status(CN, server_ip, file, server_name, container, samAccount, compute
         else:
             counter+=1
 
+#This returns if a user would like to make a csv file or not.
 def create_csv():
     answer = messagebox.askyesno("CSV File", "Would you like to generate a csv file?")
     return answer
@@ -159,16 +161,17 @@ def main():
     usersObjectCategory = os.getenv('OBJECT_CATEGORY_USERS')
     computersObjectCategory = os.getenv('OBJECT_CATEGORY_COMPUTERS')
     containers = np.array([containerUsers, containerComputers])
-    containers2 = np.array([containerUsers])
     container3 = np.array([containerComputers])
+    servObjectCategory = os.getenv('OBJECT_CATEGORY_SERVICE_ACCOUNT')
     objectCategories = np.array([usersObjectCategory, computersObjectCategory])
-    objectCategories2 = np.array([usersObjectCategory])
+    objectCategories2 = np.array([usersObjectCategory, servObjectCategory])
     types = np.array(["User", "Computer"])
     N = os.getenv('DAYS_UNUSED')
     N2 = os.getenv('DAYS_LS')
     adminArray = os.getenv('ADMIN_ARRAY').split(',')
     commandsArray = os.getenv('COMMAND_ARRAY').split(',')
     con_serv = os.getenv('CONTAINER_SERVICE_ACCOUNT')
+    containers2 = np.array([containerUsers, con_serv])
     server_name = os.getenv('SERVER_NAME')
     doc = ("# Audit Report for {} #\n\n ## Conducted By {} on {:%Y-%m-%d %H:%M:%S} ##\n").format(server_name, CN, datetime.datetime.now())
     AD = logon_info(containers, objectCategories, types, N, file_final, doc, AD)

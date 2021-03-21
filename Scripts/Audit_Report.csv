@@ -22,18 +22,17 @@ Schema Admins,Administrator
 
 Admin Last Logon:
 Admin Name,Last Logon,Days Since
-Christopher M Kyriacou,2021-03-10 13:47:57,7 
-Administrator,2021-03-10 13:51:20,7 
+Christopher M Kyriacou,2021-03-20 20:43:07,0 
+Administrator,2021-03-10 13:51:20,10 
 
 Unused Users:
 User,Days Unused
-Administrator,7.0
-Christopher M Kyriacou,7.0
+Administrator,10.0
 
 Unused Computers:
 Computer,Days Unused
-CLIENT,61.0
-DESKTOP-A67G0P2,62.0
+CLIENT,64.0
+DESKTOP-A67G0P2,65.0
 
 Users with passwords past the day limit:
 User,Username
@@ -42,6 +41,7 @@ Christopher M Kyriacou,ckyriacou
 Guest,Guest
 Jamie Sutton,sutjay
 krbtgt,krbtgt
+Updates,Corp-Updates
 
 Users with password flag set to false:
 User,Username
