@@ -42,6 +42,8 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 4. Save overhead hours and cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
 5. Level up to stage 3 once a successful implementation is acheived. 
 
+![](Photos_Gifs/Audit_Time_Comparison.PNG)
+
 ***Base functionality list to reach our main goal:***
 1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
@@ -65,7 +67,6 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________________________________________________________________________________________________________
 ### **Schedule** ###
-
 
 ![](Photos_Gifs/IT_493_Schedule.PNG)
 
