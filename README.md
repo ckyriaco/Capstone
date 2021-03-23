@@ -113,9 +113,9 @@ ________________________________________________________________________________
 10. Now you should be ready to execute.
 
 ### Optional Encryption for bash file with location paths/dn and credentials for Active Directory (Need Git Bash for this step): ###
-1. Install make by follwoing the instructions provided by the [gitBash_Windows](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058) documentation under make.
+1. Install make by following the instructions provided by the [gitBash_Windows](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058) documentation under the section named 'make'.
 2. Once the make zip file is extracted properly to your git bash instance, create a file called Makefile in the folder you have your scripts in. ***Note: The name must be Makefile.***
-3. Add the following to your Makfile script:
+3. Add the following to your Makfile script to properly make use of GNU Privacy Guard (Free RFC 4880 spec OpenPGP equivalent):
 
 ***If you are just using the audit script:***
 
