@@ -28,11 +28,19 @@ CMMC Levels 4 & 5: Build off CMMC Level 3 and include controls from a range of f
 For a more in depth look at CMMC and it's levels of certification, visit [CMMC_Research.md](Docs/CMMC_Research.md)
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### **Main Goal:**
+### **Main Goal:** ###
 
 The goal of this project is to create an auditing system that allows authorized security admin 
-to audit their active directory servers for CMMC compliance. This process should be easily automated by being initiated as a task within any automation pipeline
+to audit their active directory servers for CMMC compliance daily. This process should be easily automated by being initiated as a task within any automation pipeline
 that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
+
+***Case for change:***
+
+1. The client's current system is at CMMC stage 2 through manual audit and remediation.
+2. Current auditing takes 2 or more days and remediation takes a variable amount of time.
+3. Will make it possible to audit (and remediation if requested) in minutes on thousands of employee accounts.
+4. Save overhead hours and cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
+5. Level up to stage 3 once a successful implementation is acheived. 
 
 ***Base functionality list to reach our main goal:***
 1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
