@@ -25,7 +25,7 @@ CMMC Levels 4 & 5: Build off CMMC Level 3 and include controls from a range of f
 - CIS CSC 7.1
 - Unattributed “CMMC” references that are not attributed to existing frameworks.
 
-For a more in depth look at CMMC and it's levels of certification, visit [CMMC_Research.md](Docs/CMMC_Research.md)
+For a more in depth look at CMMC and it's levels of certification, visit [CMMC_Research.md](Docs/Certification_Research/CMMC_Research.md)
 _________________________________________________________________________________________________________________________________________________________________________________
 
 ### **Main Goal:** ###
