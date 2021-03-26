@@ -1,15 +1,16 @@
 # Audit Report for KTG.local #
 
- ## Conducted By Christopher M Kyriacou on 2021-03-20 20:51:45 ##
+ ## Conducted By Christopher M Kyriacou on 2021-03-26 18:50:05 ##
 
 
 
 ## Unused Users: ##
 
-|    | User          |   Days Unused |
-|---:|:--------------|--------------:|
-|  0 | Administrator |            10 |
-## Unused User Count: 1 ##
+|    | User                   |   Days Unused |
+|---:|:-----------------------|--------------:|
+|  0 | Administrator          |            16 |
+|  1 | Christopher M Kyriacou |             5 |
+## Unused User Count: 2 ##
 
 
 
@@ -17,26 +18,9 @@
 
 |    | Computer        |   Days Unused |
 |---:|:----------------|--------------:|
-|  0 | CLIENT          |            64 |
-|  1 | DESKTOP-A67G0P2 |            65 |
+|  0 | CLIENT          |            70 |
+|  1 | DESKTOP-A67G0P2 |            71 |
 ## Unused Computer Count: 2 ##
-
-## Users with passwords unchanged past the day limit: ##
-
-|    | User                   | Username      |
-|---:|:-----------------------|:--------------|
-|  0 | Administrator          | Administrator |
-|  1 | Christopher M Kyriacou | ckyriacou     |
-|  2 | Guest                  | Guest         |
-|  3 | Jamie Sutton           | sutjay        |
-|  4 | krbtgt                 | krbtgt        |
-|  5 | Updates                | Corp-Updates  |
-
-## Users with password's that don't expire: ##
-
-|    | User         | Username   |
-|---:|:-------------|:-----------|
-|  0 | Jamie Sutton | sutjay     |
 
 ## Admin Report: ##
 |    | Admin Group       | Members                                |
@@ -50,14 +34,15 @@
 
 |    | Admin Name             | Last Logon          |   Days Since |
 |---:|:-----------------------|:--------------------|-------------:|
-|  0 | Christopher M Kyriacou | 2021-03-20 20:43:07 |           0  |
-|  1 | Administrator          | 2021-03-10 13:51:20 |          10  |
+|  0 | Christopher M Kyriacou | 2021-03-20 20:43:07 |           5  |
+|  1 | Administrator          | 2021-03-10 13:51:20 |          16  |
 
 ## Service Accounts without manager set: ##
 
 |    | Service Account   |
 |---:|:------------------|
-|  0 | Updates           |
+|  0 | Account Patcher   |
+|  1 | Updates           |
 
 ## Distinguished Name Status: ##
 |    | Computer        | DN Set   | DN                                              |
@@ -67,17 +52,40 @@
 
 ## Users that need to change username: ##
 
-|    | User         | Username   |
-|---:|:-------------|:-----------|
-|  0 | Jamie Sutton | sutjay     |
+|    | User                           | Username    |
+|---:|:-------------------------------|:------------|
+|  0 | Dave Linux-Man Fuller          | dave        |
+|  1 | Jamie Sutton                   | sutjay      |
+|  2 | Nathan Sir-Documentation Chong | chongDoc    |
+|  3 | Saffee Deputy Ghafoori         | SafeeGhafoo |
 
 ## Service Accounts that need their names changed: ##
-
-No service accounts need username correction. 
-
+|    | Service Account   | Username          |
+|---:|:------------------|:------------------|
+|  0 | Account Patcher   | AccountPatcher317 |
 
 ## Computers that need their names changed: ##
 
 |    | Computer   | Username   |
 |---:|:-----------|:-----------|
 |  0 | CLIENT     | CLIENT     |
+
+## Users with passwords unchanged past the day limit: ##
+
+|    | User                   | Username      |
+|---:|:-----------------------|:--------------|
+|  0 | Administrator          | Administrator |
+|  1 | Christopher M Kyriacou | ckyriacou     |
+|  2 | Guest                  | Guest         |
+|  3 | Jamie Sutton           | sutjay        |
+|  4 | krbtgt                 | krbtgt        |
+
+## Users with password's that don't expire: ##
+
+|    | User                           | Username    |
+|---:|:-------------------------------|:------------|
+|  0 | Dave Linux-Man Fuller          | dave        |
+|  1 | Jamie Sutton                   | sutjay      |
+|  2 | Nathan Sir-Documentation Chong | chongDoc    |
+|  3 | Saffee Deputy Ghafoori         | SafeeGhafoo |
+![](Username_Report.PNG)

@@ -8,26 +8,26 @@ ________________________________________________________________________________
 ## 53 is open ##
 ## Port: 53 => service name: domain ##
 
-## 80 is open ##
-## Port: 80 => service name: http ##
-
 ## 88 is open ##
 ## Port: 88 => service name: kerberos ##
 
-## 139 is open ##
-## Port: 139 => service name: netbios-ssn ##
+## 80 is open ##
+## Port: 80 => service name: http ##
 
 ## 135 is open ##
 ## Port: 135 => service name: epmap ##
 
+## 139 is open ##
+## Port: 139 => service name: netbios-ssn ##
+
 ## 389 is open ##
 ## Port: 389 => service name: ldap ##
 
-## 445 is open ##
-## Port: 445 => service name: microsoft-ds ##
-
 ## 443 is open ##
 ## Port: 443 => service name: https ##
+
+## 445 is open ##
+## Port: 445 => service name: microsoft-ds ##
 
 ## 464 is open ##
 ## Port: 464 => service name: kpasswd ##

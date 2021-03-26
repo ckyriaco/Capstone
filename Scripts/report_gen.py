@@ -12,6 +12,7 @@ from mdutils import Html
 import numpy as np
 import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
 import csv
 
 
@@ -184,10 +185,40 @@ def make_markdown(filename, add_row):
     f.write(doc)
     f.close()
 
+def bar_graph(file, image, labels, values, y, title):
+    x = np.arange(len(labels))
+    width = 0.35
+
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x-width/2, values, label="Quantity")
+
+    ax.set_ylabel(str(y))
+    ax.set_title(str(title))
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.legend()
+
+
+
+    def autolabel(rects,):
+        for rect in rects:
+            height = rect.get_height()
+            ax.annotate('{}'.format(height),
+                        xy=(rect.get_x() + rect.get_width() / 2, height),
+                        xytext=(0, 3),
+                        textcoords="offset points",
+                        ha='center', va='bottom')
 
 
 
 
+    autolabel(rects1)
+    fig.tight_layout()
+    plt.savefig(str(image))
+    f = open(file.replace(".txt", ".md"), "a")
+    f.write(("\n![]({})").format(str(image)))
+    f.close()
+    #plt.show()
 
 
 

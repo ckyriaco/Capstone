@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 import datetime
 import Active_Directory_Audit as audit
+import report_gen as rg
 
 window = Tk()
 window.eval('tk::PlaceWindow %s center' % window.winfo_toplevel())
@@ -216,9 +217,9 @@ def PWD_EXP_Remediate(AD):
                 message += i
                 message += "\n"
                 #answer = int(input("Would you like to set these account's passwords to expire? Press 1 for yes and 2 for no."))
-                answer = messagebox.askyesno("Password Remediation","Would you like to set all incompliant account's passwords to expire flag to true?")
-                if(answer == 1):
-                    AD.set_exp_flag()
+            answer = messagebox.askyesno("Password Remediation",("{}Would you like to set all incompliant account's passwords to expire flag to true?").format(message))
+            if(answer == 1):
+                AD.set_exp_flag()
         except ValueError as Valer:
             messagebox.showwarning("An Error has occured", Valer)
     return AD
@@ -267,6 +268,14 @@ def main():
     f = open(file_final, "r")
     print(f.read())
     f.close()
+    f = open(file_final, "r")
+    print(f.read())
+    f.close()
+    labels = np.array(["User Names", "Computer Names", "Service Account Names"])
+    values = np.array([int(AD.usernameInvalidCount), int(AD.computerNameInvalidCount), int(AD.servAccNameInvalidCount)])
+    y = "Invalid Count"
+    title = "Invalid names"
+    image = os.getenv('USERNAME_IMAGE')
     answer = audit.create_csv()
     if (answer == 1):
         csv_file = os.getenv('CSV_AUDIT')
@@ -277,6 +286,7 @@ def main():
         f = open(csv_file, "r")
         print(f.read())
         f.close()
+    rg.bar_graph(file_final, image, labels, values, y, title)
 
 if __name__ == "__main__":
     main()

@@ -61,6 +61,10 @@ class ADaudit:
     df_pwdLastSetNDays = ""
     df_pwd_exp_flag_false = ""
     df_serv_man_not_set = ""
+    servAccNameInvalidCount = 0
+    computerNameInvalidCount = 0
+    usernameInvalidCount = 0
+
 
     #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
@@ -469,6 +473,7 @@ class ADaudit:
                 else:
                     self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
                     self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
+        self.usernameInvalidCount = len(self.usersNeedUserNameCorr)
 
 #This checks that the computer name is of a valid naming scheme for ARA standards
     def check_computer_name(self, container):
@@ -497,6 +502,8 @@ class ADaudit:
             else:
                 self.computerNameInValid = np.append(self.computerNameInValid, sam[0])
                 self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
+        self.computerNameInvalidCount = len(self.computerNeedNameChange)
+
 
 #This checks the service accounts against the proper ARA naming scheme
     def check_service_account_name(self, container, OU):
@@ -513,6 +520,7 @@ class ADaudit:
             else:
                 self.invalidUsernames = np.append(self.invalidUsernames, sam[0])
                 self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
+        self.servAccNameInvalidCount = len(self.servAccUserNameNeedChange)
 
 #Creates recommended usernames for service accounts
     def autoChangeServiceAccountName(self, invalid, container, OU):
