@@ -44,5 +44,8 @@ _This script is designed to utilize the ADquery class to audit a variety of user
 ### port_status method
 * This method uses the Port_Scanner class to identify all processes running on all active ports on the domain server and the computers joined to it.
 
+### create_csv method 
+* This method returns a message indicating if the user wishes to generate a csv file.
+
 ### main method
 * The main method takes in os variables from a bash file and passes them into the appropriate functions to audit an Active Directory instance within the current admin user's domain.

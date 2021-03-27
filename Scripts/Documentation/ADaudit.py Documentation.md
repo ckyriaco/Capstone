@@ -25,6 +25,7 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * pandas 
 * canvas from reportlab
 * reportlab
+* StringID from io
 
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
@@ -41,7 +42,7 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * _unusedUserCount_ - A count of the unused users
 * _unusedUsers_ - An array of the unused users
 * _unusedComputers_ - An array of the unused computers
-* _pwdLastSetDays_ - An array of users who haven't set their password in N days
+* _pwdLastSetNDays_ - An array of users who haven't set their password in N days
 * _admin list_ - An array of the admin for every admin type
 * _serv man not set_ - An array of service accounts without the manager field set
 * _admin_last_logon_ - An array of dates when admins last logged on
@@ -64,6 +65,17 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * _approvedServiceAccountNamesForChange_ - An array of service account users with changed usernames that have been approved 
 * _userDaysUnused_ - An array of days user accounts have been left unused
 * _computerDaysUnused_ - An array of days computer accounts have been left unused
+* _df user username_ - User's username in Data Frame 
+* _df serv username_ - Server's username in Data Frame
+* _df computer username_ - Computer's username in Data Frame
+* _df dn status_ - Distinguished name status in Data Frame
+* _df admin list_ - List of administrators in Data Frame
+* _df last logon_ - List of last login information in Data Frame
+* _df unused users_ - List of usused user accounts in Data Frame
+* _df unused computers_ - List of usused computers in Data Frame 
+* _df pwdLastSetNDays_ - List of users who haven't set their password in N days in Data Frame 
+* _df pwd exp flag false_ - List of user with passwords that don't expire in Data Frame
+* _df serv man not set_ - List of service accounts without the manager field set in Data Frame
 
 ### _init_ Constructor 
 * Initializes an ADaudit object and validates pyad's connection to Active Directory by locating a user account via a passed Common Name. 
