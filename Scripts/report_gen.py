@@ -216,7 +216,7 @@ def bar_graph(file, image, labels, values, y, title):
     fig.tight_layout()
     plt.savefig(str(image))
     f = open(file.replace(".txt", ".md"), "a")
-    f.write(("\n![]({})").format(str(image)))
+    f.write(("\n\n![]({})").format(str(image)))
     f.close()
     #plt.show()
 

@@ -27,17 +27,17 @@ Schema Admins,Administrator
 
 Admin Last Logon:
 Admin Name,Last Logon,Days Since
-Christopher M Kyriacou,2021-03-20 20:43:07,5 
-Administrator,2021-03-10 13:51:20,16 
+Christopher M Kyriacou,2021-03-20 20:43:07,6 
+Administrator,2021-03-10 13:51:20,17 
 
 Unused Users:
 User,Days Unused
-Administrator,16.0
-Christopher M Kyriacou,5.0
+Administrator,17.0
+Christopher M Kyriacou,6.0
 
 Unused Computers:
 Computer,Days Unused
-CLIENT,70.0
+CLIENT,71.0
 DESKTOP-A67G0P2,71.0
 
 Users with passwords past the day limit:
@@ -47,6 +47,7 @@ Christopher M Kyriacou,ckyriacou
 Guest,Guest
 Jamie Sutton,sutjay
 krbtgt,krbtgt
+Updates,Corp-Updates
 
 Users with password flag set to false:
 User,Username
@@ -54,6 +55,7 @@ Dave Linux-Man Fuller,dave
 Jamie Sutton,sutjay
 Nathan Sir-Documentation Chong,chongDoc
 Saffee Deputy Ghafoori,SafeeGhafoo
+Account Patcher,AccountPatcher317
 
 Service Accounts without a manager:
 Service Account

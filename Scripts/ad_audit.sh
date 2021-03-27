@@ -25,6 +25,7 @@ export CSV_AUDIT='Audit_Report.csv'
 export COMPUTER_NAME='WIN-PNHM2JDCCEV'
 export SAMACCOUNT='ckyriacou'
 export SERVER_NAME='KTG.local'
+export USERNAME_IMAGE='Username_Report.PNG'
 export DAYS_UNUSED=2
 export DAYS_LS=2
 exec python Active_Directory_Audit.py
