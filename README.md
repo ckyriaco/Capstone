@@ -221,7 +221,7 @@ ________________________________________________________________________________
 
 ### ***Example Output*** ###
 
-- For a markdown version of the output of an active directory audit using [ADaudit.py](Scripts/ADaudit.py), look at [Audit_Report.md](Scripts/audit_report.md).
+- For a markdown version of the output of an active directory audit using [ADaudit.py](Scripts/ADaudit.py), look at [Audit_Report.md](Scripts/Audit_Report.md).
 - For a markdown version of the output of an active directory audit using [Port_Scanner.py](Scripts/Port_Scanner.py), look at [Netsat-ban.md](Scripts/Netstat-ban.md), [Netstat-an](Scripts/Netstat-an.md) and [Port_Details.md](Scripts/Port_Details.md).
 ________________________________________________________________________________________________________________________________________________________________________________
 
