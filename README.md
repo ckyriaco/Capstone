@@ -58,7 +58,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 Link to updated status of functionality: [Updated Functionality/Progress](Scripts/Prototype_Status.md)
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### **Audit Process (Proposed End-Goal)**
+### **Audit Process (Proposed End-Goal)**###
 
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural Python script, then executes the Python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
@@ -82,7 +82,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________________________________________________
 
 
-### **Mock Setup for Prototype/Proof of Concept**
+### **Mock Setup for Prototype/Proof of Concept**###
 
 ![](Diagrams/Prototype_process_diagram.png)
 
@@ -124,11 +124,12 @@ ________________________________________________________________________________
 10. Now you should be ready to execute.
 
 ### Optional Encryption for bash file with location paths/dn and credentials for Active Directory (Need Git Bash for this step): ###
+***Installation:***
 1. Install make by following the instructions provided by the [gitBash_Windows](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058) documentation under the section named 'make'.
 2. Once the make zip file is extracted properly to your git bash instance, create a file called Makefile in the folder you have your scripts in. ***Note: The name must be Makefile.***
 3. Add the following to your Makfile script to properly make use of GNU Privacy Guard (Free RFC 4880 spec OpenPGP equivalent):
 
-***If you are just using the audit script:***
+****If you are just using the audit script:****
 
 encrypt:
     
@@ -146,7 +147,7 @@ remove:
     remove:
            rm filename.sh
     
-***If you also want to use remediation:***
+****If you also want to use remediation:****
 
 encrypt_audit:
 
@@ -210,13 +211,19 @@ ________________________________________________________________________________
 
 - This prototype displays a full Active Directory audit and a series of netstat commands that are being executed on the Active Directory Server from a remote host.
 
-#### Active Directory Audit and Remediation ####
+#### ***Active Directory Audit and Remediation*** ####
 
 ![Prototype](Photos_Gifs/remediation_prototype_3.gif)
 
 - This prototype displays a full Active Directory audit and remediation.
 
-_________________________________________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________________________________________________________
+
+### ***Example Output*** ###
+
+- For a markdown version of the output of an active directory audit using [ADaudit.py](Scripts/ADaudit.py), look at [Audit_Report.md](Scripts/audit_report.md).
+- For a markdown version of the output of an active directory audit using [Port_Scanner.py](Scripts/Port_Scanner.py), look at [Netsat-ban.md](Scripts/Netstat-ban.md), [Netstat-an](Scripts/Netstat-an.md) and [Port_Details.md](Scripts/Port_Details.md).
+________________________________________________________________________________________________________________________________________________________________________________
 
 # Capstone Team Members #
 
