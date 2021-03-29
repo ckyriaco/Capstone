@@ -225,6 +225,18 @@ ________________________________________________________________________________
 - For a markdown version of the output of an active directory audit using [Port_Scanner.py](Scripts/Port_Scanner.py), look at [Netsat-ban.md](Scripts/Netstat-ban.md), [Netstat-an](Scripts/Netstat-an.md) and [Port_Details.md](Scripts/Port_Details.md).
 ________________________________________________________________________________________________________________________________________________________________________________
 
+### ***Maintenance*** ###
+
+***Note: This is only suggested practices. Steps may vary depending on your system setup***
+
+1. Prior to use, ensure that all software being used to run the audit, as well as any software that may adversaly affect the security of the host running the audit, are up to date.
+2. Check to see that your version of Python is at it's latest version. Depricated versions of coding languages may have unwanted vulnerabilities.
+3. If your Python version is out of date, initiate an updated. Otherwise, you are finished and you don't need to continue to the next steps.
+4. Once the newest version of Python is installed, verify that all packages being used are up to date as well. There are rare cases where a pip re-installation may be necessary using the newest pip version (pip3, pip4, etc.).
+5. Read through the documentation of the newest Python version and the newest version of all packages being used to familiarize yourself with any changes to the package.
+6. Walk through all the required code to ensure that all depricated syntax usage, method calls, and package imports are all corrected to be used within the bounds of the latest Python version.
+7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforseen errors are still occuring, re-visit the Python library of the pyton version and/or package to help resolve you issue(s) and/or reach out the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
+________________________________________________________________________________________________________________________________________________________________________________
 # Capstone Team Members #
 
 ![](Photos_Gifs/Alpha_Team_4.PNG)
