@@ -97,24 +97,24 @@ ________________________________________________________________________________
 ### ***Installation Instructions*** ###
 
 1. Prior to installation:
-   - Ensure that you use Windows 7, 8 or 10 installed
-   - The domain controller of interest is a Windows Server instance.
+   - Ensure that you have a working installation of Windows 7, 8 or 10.
+   - Ensure that the domain controller of interest is a Windows Server instance.
    - Ensure that your Windows Server instance has netstat capabilities.
-   - You have a minimum of python 3 installed on your windows instance.
+   - Ensure that you have a minimum of Python 3 installed on your Windows instance.
    - Ensure that you have installed the [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/) packages as a starting point.
    - Look at all packages imported into the implementation scripts described in the previous section (other than the classes being exported from this github repository), and make sure that all package requirements are met.
    - Install git bash on you windows instance if you are planning to use bash files to pass os variables.
    - You have access to an admin account joined to the domain controller of interest. All installation should be done on the account with admin privileges.
    * It is recommended that you use an IDE that supports python and bash scripts. Use either pip or pip3 to install necessary packages.
-2. Once the previous step is satisfied, Follow the installation instructions on the [pyad](https://pypi.org/project/pyad/) PyPi documentation.
+2. Once the previous step is satisfied, follow the installation instructions on the [pyad](https://pypi.org/project/pyad/) PyPi documentation.
 3. Once the latest version of pyad is installed, test the connection to your server by:
    - Opening a new python script
-   - importing pyad as shown: from pyad import *
+   - Importing pyad as shown: from pyad import *
    - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): user = aduser.ADUser.from_cn("your common name")
    - Write a line to print the user as shown: print(user)
-   * It is imperative that this step is successful before moving forward.
+   * **_It is imperative that this step is successful before moving forward._**
 4. Follow the installation instructions on the [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) PyPi documentation.
-   - Note, the instructions indicate Windows blocks the SMB port 445 by default, but the prototype described previously was able to use psexec without physically opening the port. If your domain controller does do a strict block of SMB port 445, there are instructions on how to open this port in the documentation stated above.
+   - Note: The instructions indicate Windows blocks the SMB port 445 by default, but the prototype described previously was able to use psexec without physically opening the port. If your domain controller does do a strict block of SMB port 445, there are instructions on how to open this port in the documentation stated above.
 5. In the Scripts section, locate the [ADaudit.py](Scripts/ADaudit.py), [Port_Scanner.py](Scripts/Port_Scanner.py), [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py), [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py), and the [report_gen.py](Scripts/report_gen.py) and export them from github and then import them into you ide or python environment of choice. 
    - Make sure they are all within the same folder. 
 6. If you are planning to use bash files to import os variables, look through the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and use it as a guide to locate distinguished names that identify the appropriate location of desired user, computer and service account folders. Also ensure pass the common name of the admin accessing the information as well as the names of the appropriate txt files to be generated into md and pdf files. files that will be generated based on your preferences.
@@ -187,8 +187,8 @@ remove_remediate:
 
 ***Recommended Usage of Makefile***
 
-1. Navigate to the folder that your scripts and Makefile is located
-2. Execute the command: make encrypt (For if you only are using an audit script) or make encrypt_audit/make encrypt_remediate (If you have a remediation script as well)
+1. Navigate to the folder where your scripts and Makefile is located
+2. Execute the command: 'make encrypt' (For if you only are using an audit script) or 'make encrypt_audit'/'make encrypt_remediate' (If you have a remediation script as well)
   - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
   - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: ./filename.sh, and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
@@ -229,12 +229,12 @@ ________________________________________________________________________________
 
 ***Note: These are only suggested practices. Steps may vary depending on your system setup***
 
-1. Prior to use, ensure that all software being used to run the audit, as well as any software that may adversaly affect the security of the host running the audit, are up to date.
+1. Prior to use, ensure that all software being used to run the audit, as well as any software that may adversely affect the security of the host running the audit, are up to date.
 2. Check to see that your version of Python is at it's latest version. Depreciated versions of coding languages may have unwanted vulnerabilities.
 3. If your Python version is out of date, update it to the latest version. Otherwise, you are finished and you don't need to continue to the next steps.
 4. Once the newest version of Python is installed, verify that all packages being used are up to date as well. There are rare cases where a pip re-installation may be necessary using the newest pip version (pip3, pip4, etc.).
 5. Read through the documentation of the newest Python version and the newest version of all packages being used to familiarize yourself with any changes to the package.
-6. Walk through all the required code to ensure that all depricated syntax usage, method calls, and package imports are all corrected to be run using the latest Python version.
+6. Walk through all the required code to ensure that all depreciated syntax usage, method calls, and package imports are all corrected to be run using the latest Python version.
 7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforseen errors are still occuring, re-visit the Python library of the pyton version and/or package to help resolve any issue(s) and/or reach out to the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
 ________________________________________________________________________________________________________________________________________________________________________________
 # Capstone Team Members #
