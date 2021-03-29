@@ -103,15 +103,15 @@ ________________________________________________________________________________
    - Ensure that you have a minimum of Python 3 installed on your Windows instance.
    - Ensure that you have installed the [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/) packages as a starting point.
    - Look at all packages imported into the implementation scripts described in the previous section (other than the classes being exported from this github repository), and make sure that all package requirements are met.
-   - Install git bash on you windows instance if you are planning to use bash files to pass os variables.
+   - Install git bash on your Windows instance if you are planning to use bash files to pass os variables.
    - You have access to an admin account joined to the domain controller of interest. All installation should be done on the account with admin privileges.
    * It is recommended that you use an IDE that supports python and bash scripts. Use either pip or pip3 to install necessary packages.
 2. Once the previous step is satisfied, follow the installation instructions on the [pyad](https://pypi.org/project/pyad/) PyPi documentation.
 3. Once the latest version of pyad is installed, test the connection to your server by:
    - Opening a new python script
-   - Importing pyad as shown: from pyad import *
-   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): user = aduser.ADUser.from_cn("your common name")
-   - Write a line to print the user as shown: print(user)
+   - Importing pyad as shown: 'from pyad import *'
+   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): 'user = aduser.ADUser.from_cn'("your common name")
+   - Write a line to print the user as shown: 'print(user)'
    * **_It is imperative that this step is successful before moving forward._**
 4. Follow the installation instructions on the [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) PyPi documentation.
    - Note: The instructions indicate Windows blocks the SMB port 445 by default, but the prototype described previously was able to use psexec without physically opening the port. If your domain controller does do a strict block of SMB port 445, there are instructions on how to open this port in the documentation stated above.
@@ -120,7 +120,7 @@ ________________________________________________________________________________
 6. If you are planning to use bash files to import os variables, look through the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and use it as a guide to locate distinguished names that identify the appropriate location of desired user, computer and service account folders. Also ensure pass the common name of the admin accessing the information as well as the names of the appropriate txt files to be generated into md and pdf files. files that will be generated based on your preferences.
 7. Use the [bash_script_example_audit.txt](Scripts/bash_script_example_audit.txt) and the [bash_script_example_remediate.txt](Scripts/bash_script_example_remediate.txt) as templates to make bash scripts for passing information to the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py) procedural scripts.
 8. If you decide to pass in the infomation from the script, you will need to change the methods that import the os variable to the bash script to the actual values of the variables or have them pull from another specified area.
-9. Once you have ensured all passed information is accurate, make your bash script(s) executable by using chmod +x name_of_bash_script.
+9. Once you have ensured all passed information is accurate, make your bash script(s) executable by using 'chmod +x name_of_bash_script'.
 10. Now you should be ready to execute.
 
 ### Optional Encryption for bash file with location paths/dn and credentials for Active Directory (Need Git Bash for this step): ###
@@ -181,8 +181,8 @@ remove_remediate:
     remove_remediate:
                      rm filename.sh
   
-4. Once you have your makefile set up, call each of the above functions by simply typing the following: make functionName
-- Example: make encrypt
+4. Once you have your makefile set up, call each of the above functions by simply typing the following: 'make functionName'
+- Example: 'make encrypt'
   - This will encrypt your file using pgp which will prompt you for a password for the file and then delete the plaintext file.
 
 ***Recommended Usage of Makefile***
@@ -191,7 +191,7 @@ remove_remediate:
 2. Execute the command: 'make encrypt' (For if you only are using an audit script) or 'make encrypt_audit'/'make encrypt_remediate' (If you have a remediation script as well)
   - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
   - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
-3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: ./filename.sh, and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
+3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: './filename.sh', and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
 4. Repeat step 3 whenever you would like to execute the script.    
 
 ***Visual Example***
@@ -231,11 +231,11 @@ ________________________________________________________________________________
 
 1. Prior to use, ensure that all software being used to run the audit, as well as any software that may adversely affect the security of the host running the audit, are up to date.
 2. Check to see that your version of Python is at it's latest version. Depreciated versions of coding languages may have unwanted vulnerabilities.
-3. If your Python version is out of date, update it to the latest version. Otherwise, you are finished and you don't need to continue to the next steps.
+3. If your Python version is out of date, update it to the latest version. Otherwise, you are finished and you don't need to continue to the following steps.
 4. Once the newest version of Python is installed, verify that all packages being used are up to date as well. There are rare cases where a pip re-installation may be necessary using the newest pip version (pip3, pip4, etc.).
 5. Read through the documentation of the newest Python version and the newest version of all packages being used to familiarize yourself with any changes to the package.
 6. Walk through all the required code to ensure that all depreciated syntax usage, method calls, and package imports are all corrected to be run using the latest Python version.
-7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforseen errors are still occuring, re-visit the Python library of the pyton version and/or package to help resolve any issue(s) and/or reach out to the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
+7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforeseen errors are still occuring, re-visit the Python library of the Python version and/or package to help resolve any issue(s) and/or reach out to the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
 ________________________________________________________________________________________________________________________________________________________________________________
 # Capstone Team Members #
 
