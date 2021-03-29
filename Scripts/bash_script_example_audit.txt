@@ -1,29 +1,53 @@
 #!/bin/bash/
 
 
-
+#This is the array that contains the admin types that will be used for the audit.
 export ADMIN_ARRAY='Domain Admins,Enterprise Admins,Key Admins,Schema Admins'
+#This array is the array of commands that will be executed on the windows server, from a remote host, for looking at port activity.
 export COMMAND_ARRAY='/c netstat -ban,/c netstat -an'
+#Output file of raw netstat-ban data prior to formatting for the final markdown file.
 export COMMAND_OUTPUT='Netstat-ban.txt'
+#Output file of raw netstat-an data prior to formatting for the final markdown file.
 export COMMAND_OUTPUT_2='Netstat-an.txt'
+#Output of file for demo of pdf file generation.
 export COMMAND_OUTPUT_PDF='Command_Output.pdf'
+#The admin User that is executing this file. Looking up this admin user at initial startup also ensures that the connection to AD is functioning properly.
 export AD_USER='Christopher M Kyriacou'
+#Disinguished name for the container used to find the users folder.
 export CONTAINER_USERS='CN=Users, DC=KTG, DC=local'
+#Distinguished name of object category used to select only user accounts within the user folder (not groups, etc.)
 export OBJECT_CATEGORY_USERS='CN=Person,CN=Schema,CN=Configuration,DC=KTG,DC=local'
+#Distinguished name used to locate the computer folder.
 export Container_COMPUTERS='CN=Computers, DC=KTG, DC=local'
+#Distinguished name of the object category that uniquely identifies only computers within the computer folder.
 export OBJECT_CATEGORY_COMPUTERS='CN=Computer,CN=Schema,CN=Configuration,DC=KTG,DC=local'
+#Distinguished name for the container that is used to locate the service account folder and also find all service accounts
 export CONTAINER_SERVICE_ACCOUNT='CN=Managed Service Accounts, DC=KTG, DC=local'
+#IP of the server on the network
 export SERVER_IP='192.168.1.101'
+#File name of the markdown version of the socket level port scan.
 export FILE_NAME='Port_Details.md'
+#File name of the PDF version of the socket level port scan.
 export FILE_NAME_PDF='Port_Details.pdf'
+#File name of the markdwon version of the audit report of users, computers and service accounts.
 export FILE_FINAL='Audit_Report.md'
+#File name for the pdf version of the audit report of users, computers and service accounts.
 export PDF_FILE='Audit_Report.pdf'
+#The OU for the service account that is passed in to the audit script to check and see if service accounts username contain it in the appropriate spot.
 export OU_SERV='Corp'
+#T
 export FILE_ADD_ROW='Netstat-ban.txt'
+#CSV version of the audit report of users, computers and service accounts.
 export CSV_AUDIT='Audit_Report.csv'
+#Computer name of active directory server.
 export COMPUTER_NAME='WIN-PNHM2JDCCEV'
+#Username of the admin's cached credentials that will be used to authenticate securely through WIN32/64
 export SAMACCOUNT='ckyriacou'
+#Name of the domain controller
 export SERVER_NAME='KTG.local'
+#Optional max days unused to be incompliant
 export DAYS_UNUSED=2
+#Optional max days without password being reset.
 export DAYS_LS=2
+#Indicating the execution of the proper python script.
 exec python Active_Directory_Audit.py
