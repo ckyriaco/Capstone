@@ -58,7 +58,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 Link to updated status of functionality: [Updated Functionality/Progress](Scripts/Prototype_Status.md)
 _________________________________________________________________________________________________________________________________________________________________________________
 
-### **Audit Process (Proposed End-Goal)**###
+### **Audit Process (Proposed End-Goal)** ###
 
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural Python script, then executes the Python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
@@ -82,7 +82,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________________________________________________
 
 
-### **Mock Setup for Prototype/Proof of Concept**###
+### **Mock Setup for Prototype/Proof of Concept** ###
 
 ![](Diagrams/Prototype_process_diagram.png)
 
