@@ -35,7 +35,7 @@ export FILE_FINAL='Audit_Report.md'
 export PDF_FILE='Audit_Report.pdf'
 #The OU for the service account that is passed in to the audit script to check and see if service accounts username contain it in the appropriate spot.
 export OU_SERV='Corp'
-#T
+#This is used to indicate a markdown file with the maximum amount of rows that the markdown generation allows for the use of netstat-ban or other netstat functions with a similar amount of rows.
 export FILE_ADD_ROW='Netstat-ban.txt'
 #CSV version of the audit report of users, computers and service accounts.
 export CSV_AUDIT='Audit_Report.csv'
