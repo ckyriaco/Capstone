@@ -235,7 +235,7 @@ ________________________________________________________________________________
 4. Once the newest version of Python is installed, verify that all packages being used are up to date as well. There are rare cases where a pip re-installation may be necessary using the newest pip version (pip3, pip4, etc.).
 5. Read through the documentation of the newest Python version and the newest version of all packages being used to familiarize yourself with any changes to the package.
 6. Walk through all the required code to ensure that all depricated syntax usage, method calls, and package imports are all corrected to be run using the latest Python version.
-7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforseen errors are still occuring, re-visit the Python library of the pyton version and/or package to help resolve any issue(s) and/or reach out the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
+7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforseen errors are still occuring, re-visit the Python library of the pyton version and/or package to help resolve any issue(s) and/or reach out to the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
 ________________________________________________________________________________________________________________________________________________________________________________
 # Capstone Team Members #
 
