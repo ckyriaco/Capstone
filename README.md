@@ -227,7 +227,7 @@ ________________________________________________________________________________
 
 ### ***Maintenance*** ###
 
-***Note: This is only suggested practices. Steps may vary depending on your system setup***
+***Note: These are only suggested practices. Steps may vary depending on your system setup***
 
 1. Prior to use, ensure that all software being used to run the audit, as well as any software that may adversaly affect the security of the host running the audit, are up to date.
 2. Check to see that your version of Python is at it's latest version. Depreciated versions of coding languages may have unwanted vulnerabilities.
