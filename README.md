@@ -40,7 +40,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 2. Current auditing takes 2 or more days and remediation takes a variable amount of time.
 3. Our solution will make it possible to audit (and remediate if requested) in minutes on thousands of employee accounts.
 4. Our solution will save overhead hours and reduce the cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
-5. The client's current system will be at CMMC Stage 3 once a successful implementation is achieved. 
+5. The client's system will be at CMMC Stage 3 once a successful implementation is achieved. 
 
 ***Time to Audit (Estimated)***
 
@@ -50,7 +50,7 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 1. Use AD to identify computers, verify that the computer has a distinct name, the name follows the convention, and it requires the user to log in.
 2. List the users and computers in AD who have not logged in in N days.
 3. Produce a list of users who have not changed their password in N days.
-4. Produce a list of users in a given AD section (i.e., restrict.xxx.com) who have administrative privileges
+4. Produce a list of users in a given AD section (i.e., restrict.xxx.com) who have administrative privileges.
 5. For service accounts, ensure that the “manager” field is filled out.  A question is how to identify service accounts.  There is a naming convention, but we do not know if it is followed (another audit requirement).
 6. For all accounts, the “password expire” flag is set.  More specifically, which accounts do not have this set?
 7. Write a script that uses Windows Sysinternals tool(s) on a remote system to monitor for what process is communicating with a given IP and/or port.  As much detail about the process as can be found should be reported.  Install sysinternals on the remote computer if needed.  Using psexec is OK.  This is probably the top priority.
@@ -63,8 +63,8 @@ ________________________________________________________________________________
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural Python script, then executes the Python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
 3. The Python script attempts to retrieve all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. If the audit succeeds, it will be indicated if the Domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an Admin to take a look into the error. 
-
+4. If the audit succeeds, it will be indicated if the domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an admin to take a look into the error. 
+***Audit Process Diagram***
 ![](Diagrams/Desired_Process_HD.PNG)
 
 ________________________________________________________________________________________________________________________________________________________________________________
@@ -127,7 +127,7 @@ ________________________________________________________________________________
 ***Installation:***
 1. Install make by following the instructions provided by the [gitBash_Windows](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058) documentation under the section named 'make'.
 2. Once the make zip file is extracted properly to your git bash instance, create a file called Makefile in the folder you have your scripts in. ***Note: The name must be Makefile.***
-3. Add the following to your Makfile script to properly make use of GNU Privacy Guard (Free RFC 4880 spec OpenPGP equivalent):
+3. Add the following to your Makefile script to properly make use of GNU Privacy Guard (Free RFC 4880 spec OpenPGP equivalent):
 
 ****If you are just using the audit script:****
 
@@ -188,7 +188,7 @@ remove_remediate:
 ***Recommended Usage of Makefile***
 
 1. Navigate to the folder where your scripts and Makefile is located
-2. Execute the command: 'make encrypt' (For if you only are using an audit script) or 'make encrypt_audit'/'make encrypt_remediate' (If you have a remediation script as well)
+2. Execute the command: 'make encrypt' (only if you are using an audit script) or 'make encrypt_audit'/'make encrypt_remediate' (if you have a remediation script as well)
     - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
     - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: './filename.sh', and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
