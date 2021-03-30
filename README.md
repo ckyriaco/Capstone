@@ -36,11 +36,11 @@ that ARA prefers. A framework for how to create additional audit fuctionality wi
 
 ***Case for change:***
 
-1. The client's current system is at CMMC stage 2 through manual audit and remediation.
+1. The client's current system is CMMC Stage 2 compliant and auditing/remediation are conducted manually.
 2. Current auditing takes 2 or more days and remediation takes a variable amount of time.
 3. Our solution will make it possible to audit (and remediate if requested) in minutes on thousands of employee accounts.
 4. Our solution will save overhead hours and reduce the cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
-5. The client's system will be at CMMC Stage 3 once a successful implementation is achieved. 
+5. The client's system will be CMMC Stage 3 compliant once a successful implementation is achieved. 
 
 ***Time to Audit (Estimated)***
 
