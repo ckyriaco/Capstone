@@ -36,5 +36,5 @@ choose to either encrpyt or decrypt menu
 ask for file name     
 ask for passcode      
 max 2 minutes for our part      
-     
-**meeting end pm**
+
+**meeting end 3:00pm**
