@@ -31,16 +31,16 @@ ________________________________________________________________________________
 ### **Main Goal:** ###
 
 The goal of this project is to create an auditing system that allows authorized security admin 
-to audit their active directory servers for CMMC compliance daily. This process should be easily automated by being initiated as a task within any automation pipeline
+to audit their Active Directory servers for CMMC compliance daily. This process should be easily automated by being initiated as a task within any automation pipeline
 that ARA prefers. A framework for how to create additional audit fuctionality with pyad will be constructed as well.
 
 ***Case for change:***
 
 1. The client's current system is at CMMC stage 2 through manual audit and remediation.
 2. Current auditing takes 2 or more days and remediation takes a variable amount of time.
-3. Will make it possible to audit (and remediation if requested) in minutes on thousands of employee accounts.
-4. Save overhead hours and cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
-5. Level up to stage 3 once a successful implementation is acheived. 
+3. Our solution will make it possible to audit (and remediate if requested) in minutes on thousands of employee accounts.
+4. Our solution will save overhead hours and reduce the cost needed for auditing (from days of work monthly to minutes of work daily for auditing).
+5. The client's current system will be at CMMC Stage 3 once a successful implementation is achieved. 
 
 ***Time to Audit (Estimated)***
 
@@ -75,7 +75,7 @@ ________________________________________________________________________________
 ________________________________________________________________________________________________________________________________________________________________________________
 ### **Classes** ###
 
-1. [ADaudit.py](Scripts/ADaudit.py): This class utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/) package to audit and/or remediate an Active Directory instance for the incompliances meantioned in the functionality list above. For generating an audit report, [pandas 1.2.3](https://pandas.pydata.org/) is utilize to display all contents in a dataframe and/or in .csv format.
+1. [ADaudit.py](Scripts/ADaudit.py): This class utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/) package to audit and/or remediate an Active Directory instance for the incompliances mentioned in the functionality list above. For generating an audit report, [pandas 1.2.3](https://pandas.pydata.org/) is utilize to display all contents in a dataframe and/or in .csv format.
 2. [Port_Scanner.py](Scripts/Port_Scanner.py): This class utilizes [socket](https://docs.python.org/3/library/socket.html) and [threading](https://docs.python.org/3/library/threading.html) to discover what processes are running on a socket level on an Active Directory instance, and [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) to execute commands on an Active Directory instance's command prompt from a remote host.
 3. [report_gen.py](Scripts/report_gen.py): This class utilizes [pandas 1.2.3](https://pandas.pydata.org/), [mdutils 1.3.0](https://pypi.org/project/mdutils/), and [reportlab 3.5.62](https://pypi.org/project/reportlab/) to clean and output results as either a markdown file or a PDF.
 
@@ -182,15 +182,15 @@ remove_remediate:
                      rm filename.sh
   
 4. Once you have your makefile set up, call each of the above functions by simply typing the following: 'make functionName'
-- Example: 'make encrypt'
-  - This will encrypt your file using pgp which will prompt you for a password for the file and then delete the plaintext file.
+    - Example: 'make encrypt'
+    - This will encrypt your file using pgp which will prompt you for a password for the file and then delete the plaintext file.
 
 ***Recommended Usage of Makefile***
 
 1. Navigate to the folder where your scripts and Makefile is located
 2. Execute the command: 'make encrypt' (For if you only are using an audit script) or 'make encrypt_audit'/'make encrypt_remediate' (If you have a remediation script as well)
-  - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
-  - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
+    - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
+    - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 'make decrypt' or 'make decrypt_audit' and 'make decrypt_remediate', execute the decrypted script as follows: './filename.sh', and execute 'make remove' or 'make remove_audit' and 'make remove_remediate'. 
 4. Repeat step 3 whenever you would like to execute the script.    
 
