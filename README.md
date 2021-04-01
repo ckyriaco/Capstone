@@ -63,7 +63,8 @@ ________________________________________________________________________________
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural Python script, then executes the Python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
 3. The Python script attempts to retrieve all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. If the audit succeeds, it will be indicated if the domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an admin to take a look into the error.               
+4. If the audit succeeds, it will be indicated if the domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an admin to take a look into the error.              
+
 ***Audit Process Diagram***
 ![](Diagrams/Desired_Process_HD.PNG)
 
@@ -111,7 +112,8 @@ ________________________________________________________________________________
    - Opening a new python script
    - Importing pyad as shown: 
         >from pyad import *
-   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN):      >user = aduser.ADUser.from_cn("your common name")
+   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN:      
+        >user = aduser.ADUser.from_cn("your common name")
    - Write a line to print the user as shown: 
         >print(user)
    * **_It is imperative that this step is successful before moving forward._**
@@ -193,26 +195,28 @@ remove_remediate:
 
 1. Navigate to the folder where your scripts and Makefile is located
 2. Execute the command: 
-    >make encrypt (only if you are using an audit script) 
-    or 
+    >make encrypt 
+(only if you are using an audit script) 
+or 
     >make encrypt_audit
-    >make encrypt_remediate (if you have a remediation script as well)
+    >make encrypt_remediate 
+(if you have a remediation script as well)
     - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
     - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 
->make decrypt
+    >make decrypt
 or
->make decrypt_audit 
+    >make decrypt_audit 
 and 
->make decrypt_remediate, 
+    >make decrypt_remediate, 
 execute the decrypted script as follows: 
->./filename.sh 
+    >./filename.sh 
 and execute 
->make remove 
+    >make remove 
 or 
->make remove_audit 
+    >make remove_audit 
 and 
->make remove_remediate 
+    >make remove_remediate 
 4. Repeat step 3 whenever you would like to execute the script.    
 
 ***Visual Example***
