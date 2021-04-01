@@ -194,30 +194,12 @@ remove_remediate:
 ***Recommended Usage of Makefile***
 
 1. Navigate to the folder where your scripts and Makefile is located
-2. Execute the command: 
-    make encrypt 
-only if you are using an audit script
-or 
-    make encrypt_audit
-
-    make encrypt_remediate 
-if you have a remediation script as well
+2. Execute the command: make encrypt only if you are using an audit script or make encrypt_audit/make encrypt_remediate if you have a remediation script as well.
     - This will create an encrypted gpg file named after your file, that is password protected, and remove the unencrypted bash file.
     - The password acts as a secret key, and if you were to send this gpg file to someone else, the only way to decrypt it is with that secret key.
 3. Whenever an authorized admin wants to execute an audit or remediation, they simply need to execute 
-                 make decrypt
-or
-                 make decrypt_audit 
-and 
-                 make decrypt_remediate, 
-execute the decrypted script as follows: 
-    >./filename.sh 
-and execute 
-    >make remove 
-or 
-    >make remove_audit 
-and 
-    >make remove_remediate 
+make decrypt or make decrypt_audit and make decrypt_remediate, execute the decrypted script as follows: ./filename.sh and execute make remove or make remove_audit 
+and make remove_remediate 
 4. Repeat step 3 whenever you would like to execute the script.    
 
 ***Visual Example***
