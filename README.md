@@ -63,7 +63,7 @@ ________________________________________________________________________________
 1. Automation environment of choice initiates a bash script to pass credentials and variables, requried by the procedural Python script, then executes the Python script.
 2. Domain Admin User establishes connection with an Active Directory Domain Controller.(Must be on end-unit that is joined with the Active Directory Server Domain of interest)
 3. The Python script attempts to retrieve all information requested using the customized class that utilizes the [pyad 0.6.0 package](https://pypi.org/project/pyad/).
-4. If the audit succeeds, it will be indicated if the domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an admin to take a look into the error. 
+4. If the audit succeeds, it will be indicated if the domain(s) are compliant or not. If it is unsuccessful because of an error, a restart will be triggered up to 3 times before indicating a ticket for an admin to take a look into the error.               
 ***Audit Process Diagram***
 ![](Diagrams/Desired_Process_HD.PNG)
 
@@ -111,7 +111,7 @@ ________________________________________________________________________________
    - Opening a new python script
    - Importing pyad as shown: 
         >from pyad import *
-   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): >user = aduser.ADUser.from_cn("your common name")
+   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN):      >user = aduser.ADUser.from_cn("your common name")
    - Write a line to print the user as shown: 
         >print(user)
    * **_It is imperative that this step is successful before moving forward._**
@@ -122,7 +122,8 @@ ________________________________________________________________________________
 6. If you are planning to use bash files to import os variables, look through the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and use it as a guide to locate distinguished names that identify the appropriate location of desired user, computer and service account folders. Also ensure pass the common name of the admin accessing the information as well as the names of the appropriate txt files to be generated into md and pdf files. files that will be generated based on your preferences.
 7. Use the [bash_script_example_audit.txt](Scripts/bash_script_example_audit.txt) and the [bash_script_example_remediate.txt](Scripts/bash_script_example_remediate.txt) as templates to make bash scripts for passing information to the [Active_Directory_Audit.py](Scripts/Active_Directory_Audit.py) and [Active_Directory_Remediate.py](Scripts/Active_Directory_Remediate.py) procedural scripts.
 8. If you decide to pass in the infomation from the script, you will need to change the methods that import the os variable to the bash script to the actual values of the variables or have them pull from another specified area.
-9. Once you have ensured all passed information is accurate, make your bash script(s) executable by using >chmod +x name_of_bash_script.
+9. Once you have ensured all passed information is accurate, make your bash script(s) executable by using       
+    >chmod +x name_of_bash_script.
 10. Now you should be ready to execute.
 
 ### Optional Encryption for bash file with location paths/dn and credentials for Active Directory (Need Git Bash for this step): ###
