@@ -112,7 +112,7 @@ ________________________________________________________________________________
    - Opening a new python script
    - Importing pyad as shown: ``` from pyad import *```
    - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN: ```user = aduser.ADUser.from_cn("your common name")```
-   - Write a line to print the user as shown: print(user)
+   - Write a line to print the user as shown: ```print(user)```
    * **_It is imperative that this step is successful before moving forward._**
 4. Follow the installation instructions on the [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) PyPi documentation.
    - Note: The instructions indicate Windows blocks the SMB port 445 by default, but the prototype described previously was able to use psexec without physically opening the port. If your domain controller does do a strict block of SMB port 445, there are instructions on how to open this port in the documentation stated above.
