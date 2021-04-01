@@ -215,9 +215,9 @@ and execute
 
     make remove 
 or 
-    >make remove_audit 
+    make remove_audit 
 and 
-    >make remove_remediate 
+    make remove_remediate 
 4. Repeat step 3 whenever you would like to execute the script.    
 
 ***Visual Example***
