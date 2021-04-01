@@ -195,7 +195,7 @@ remove_remediate:
 
 1. Navigate to the folder where your scripts and Makefile is located
 2. Execute the command: 
-    >make encrypt 
+    >make encrypt           
 (only if you are using an audit script)
 or 
     
