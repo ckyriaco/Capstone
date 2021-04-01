@@ -111,7 +111,7 @@ ________________________________________________________________________________
    - Opening a new python script
    - Importing pyad as shown: 
         >from pyad import *
-   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): 'user = aduser.ADUser.from_cn'("your common name")
+   - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN): >user = aduser.ADUser.from_cn("your common name")
    - Write a line to print the user as shown: 
         >print(user)
    * **_It is imperative that this step is successful before moving forward._**
