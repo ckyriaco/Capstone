@@ -188,8 +188,7 @@ remove_remediate:
   
 4. Once you have your makefile set up, call each of the above functions by simply typing the following: 'make functionName'
     - Example: 
-    
-        make encrypt
+        >make encrypt
     - This will encrypt your file using pgp which will prompt you for a password for the file and then delete the plaintext file.
 
 ***Recommended Usage of Makefile***
