@@ -2,9 +2,7 @@
 
 _This class is designed to allow administrators to query information to test Active Directory instances for CMMC compliance._       
 _Must already be joined to the active directory server's domain to use this class!_       
-_Can set a default domain manually using_        
->pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword").  
->     
+_Can set a default domain manually using_```pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword")```.       
 _Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Operating Systems on the end-unit is more secure._        
 _Can connect to a specific other domain temporarilty instead of the default using_           
 >user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))     
