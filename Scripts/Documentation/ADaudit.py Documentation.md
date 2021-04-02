@@ -4,9 +4,7 @@ _This class is designed to allow administrators to query information to test Act
 _Must already be joined to the active directory server's domain to use this class!_       
 _Can set a default domain manually using_```pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword")```.       
 _Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Operating Systems on the end-unit is more secure._        
-_Can connect to a specific other domain temporarilty instead of the default using_           
->user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))     
->     
+_Can connect to a specific other domain temporarilty instead of the default using_```user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))```          
 _Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested._        
 _This class utilizes the pyad 0.6.0 package package to audit and/or remediate an Active Directory instance for the incompliances meantioned in the functionality list above.      For generating an audit report, pandas 1.2.3 is utilize to display all contents in a dataframe and/or in .csv format._        
 _The administrator must already be joined to the Active Directory server's domain to use this class._         
