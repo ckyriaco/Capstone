@@ -75,6 +75,14 @@ class ADaudit:
         else:
             raise ValueError("The Common Name cannot be null!")
 
+#This allows an admin to change the default domain by passing in the full computer name of the server, a valid admin username and a valid password
+    def set_domain(self, server, user, pwd):
+        pyad.set_defaults(ldap_server=str(server), username=str(user), password=str(pwd))
+
+#This allows an admin to query a specific user from a specified server domain by passing in the common name and the full computer name of the server.
+    def query_any_user(self, server, cn):
+        user = aduser.ADUser.from_cn(cn, options=dict(ldap_server=str(server)))
+
 #Allows you to set a new cn and initialize a different user.
     def set_CN(self, CN):
         if (CN != ""):
@@ -648,6 +656,7 @@ class ADaudit:
         else:
             print("No names to be changed!")
 
+#This forces all incompliant users to change at next logon.
     def force_pwd_change(self):
         if(self.pwdLastSetNDays.size > 0):
             for i in self.pwdLastSetNDays:
@@ -708,6 +717,7 @@ class ADaudit:
             else:
                 raise ValueError("The name is too long!")
 
+#The following functions generate reports on findings. These are in place of a traditional large toString method.
 
     #Report of usersnames that need to be changed
     def username_change_needed_report(self):
@@ -959,25 +969,7 @@ class ADaudit:
         info += str(self.df_serv_man_not_set)
         info += "\n"
         return info
-#Print an overall message on information found by querying through Active Directory.
-    def toString(self):
-        df = pd.DataFrame([], columns=['User', 'Days Unused'])
-        print("Unused Users: ")
-        counter = 0
-        for i in self.unusedUsers:
-            newRow = {'User': i, 'Days Unused': self.userDaysUnused[counter]}
-            df = df.append(newRow, ignore_index=True)
-            # message += str(df)
-            counter += 1
-        print(df)
-        print("\nUnused User Count: ", self.unusedUserCount)
-        print("\nUnused Computers: ")
-        for i in self.unusedComputers:
-            print(i, ", ")
-        print("\nUnused Computer Count: ", self.unusedComputerCount)
-        print("\nPWD Unchanged Past Day Limit: ")
-        for i in self.unusedComputers:
-            print(("{}, ").format(str(i)))
+
 
 # ------------------------------------------------End of Class ADaudit ---------------------------------------------------------------------------------------------
 #obj = adobject.ADObject.from_cn("Christopher Kyriacou")
@@ -989,6 +981,10 @@ class ADaudit:
 #admin = aduser.ADUser.from_cn("Christopher Kyriacou")
 #pyad.adobject.ADObject.update_attribute(user, "samaccountname", "CLIENT")
 #print(user.get_attribute("samaccountname"))
+#AD = ADaudit("Christopher M Kyriacou")
+#AD.set_domain("WIN-PNHM2JDCCEV.KTG.local", "ckyriacou", "Greekboy117")
+#AD.set_domain_with_cn("WIN-PNHM2JDCCEV.KTG.local")
+
 
 #user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", True)
 #print(user.get_user_account_control_settings())

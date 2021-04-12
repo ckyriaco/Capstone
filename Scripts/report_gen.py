@@ -20,7 +20,7 @@ import csv
 
 simplefilter(action='ignore', category=FutureWarning)
 
-
+#This generates a pdf file of the results of an audit
 def gen_pdf(file_name, message):
     message = message.replace("#", "")
     pdf_file = file_name
@@ -47,7 +47,7 @@ def formattext(file_name):
 	tempfile.close()
 	textfile.close()
 
-
+#This functions formats netstat output into organized text prior to the creation of a well formatted markdown file.
 def format_md(file_name):
     formattext(file_name)
     mdFile = MdUtils(file_name=file_name.replace(".txt", ""), title='Command Execution Output')
@@ -74,6 +74,7 @@ def format_md(file_name):
     mdFile.create_md_file()
     textfile.close()
 
+#This function creates a markdown file in the form of a large dataframe for netstat commands.
 def make_markdown(filename, add_row):
     formattext(filename)
     f = open(filename, 'r')
@@ -185,6 +186,7 @@ def make_markdown(filename, add_row):
     f.write(doc)
     f.close()
 
+#This function uses matplotlib to create bar graphs of results
 def bar_graph(file, image, labels, values, y, title):
     x = np.arange(len(labels))
     width = 0.35
