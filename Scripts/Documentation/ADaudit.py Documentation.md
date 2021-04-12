@@ -21,7 +21,7 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * pandas 
 * canvas from reportlab
 * reportlab
-* StringID from io
+* StringIO from io
 
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
@@ -72,10 +72,24 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * _df pwdLastSetNDays_ - List of users who haven't set their password in N days in Data Frame 
 * _df pwd exp flag false_ - List of user with passwords that don't expire in Data Frame
 * _df serv man not set_ - List of service accounts without the manager field set in Data Frame
+* _servAccNameInvalidCount_ - A count of service account with invalid names
+* _computerNameInvalidCount_ - A count of computers with invalid names
+* _usernameInvalidCount_ - A count of users with invalid names
 
 ### _init_ Constructor 
 * Initializes an ADaudit object and validates pyad's connection to Active Directory by locating a user account via a passed Common Name. 
 * With this setup pyad checks the OS and makes sure you are already joined to the domain as a valid administrator user.
+
+### set_domain method 
+* This method allows an admin to change the default domain by passing in: 
+    * the full computer name of the server
+    * a valid admin user name
+    * a valid password
+
+### query_any_user method 
+* This method allows an admin to query a specific user from a specified server by passing in:
+    * the common name of the server
+    * the full computer name of the server
 
 ### set_CN setter method 
 * This method allows the administrator to set a new Common Name and initialize a different user. 
@@ -266,7 +280,7 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 * Updates the computerNeedNameChange array.
 
 ### force_pwd_change method 
-* This method forces a user to change their password.
+* This method forces all incompliant users to change their passwords at next login.
 * Updates the pwdLastSetNDays array.
 
 ### autoChangeComputerName method
@@ -276,38 +290,35 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 ### username_change_needed_report method
 * This method generates a report on usernames that need to be changed.
 * Returns a string of Users, Service Accounts and Computers.
+* This method and other report methods are replacing a traditional large toString method.
 
 ### distinguished_name_report method
 * This method generates a report of all distinguished name statuses and displays them for the admin.
 * Returns a string of distinguished name statuses.
+* This method and other report methods are replacing a traditional large toString method.
 
 ### admin_report method
 * This method returns a report of the administrator users of each administrator type.
 * Returns a string of admins and last login info.
+* This method and other report methods are replacing a traditional large toString method.
 
 ### get_unused_report method 
 * This method returns a report of the users and computers that have not logged in for the past N days. 
 * Returns a string of Unused Users, Unused User Count the number of days each user account was left unused, Unused Computers Unused Computer Count and the number of days each computer account was left unused.
+* This method and other report methods are replacing a traditional large toString method.
  
 ### get_pwd_report method 
 * This method returns a report on the users that have not changed their password in N days.
 * Returns a string of users with passwords unchanged past the day limit and users with passwords that don't expire.
+* This method and other report methods are replacing a traditional large toString method.
 
 ### get_serv_man_not_set_report method 
 * This method returns a report of the service accounts that do not have a manager attribute set.
 * Returns a string of service accounts without the manager attribute set.
+* This method and other report methods are replacing a traditional large toString method.
 
 ### report_to_csv method
 * This method generates a full report in csv format.
-
-### toString method 
-* This method prints an overall message on information found by querying through Active Directory.
-* The toString method prints out the following info:  
-    * List of Unused users
-    * Count for Unused users
-    * List of Unused computers
-    * Count for Unused computers
-    * List of users who have not changed their passwords in N days 
-
+* This method and other report methods are replacing a traditional large toString method.
 _________________________________________________________________________________________________________________________________________________________________________________
 ### Code for testing scripts
