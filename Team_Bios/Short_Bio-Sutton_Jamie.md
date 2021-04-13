@@ -1,4 +1,4 @@
-![img](file:///C:/Users/Jamie/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg)
+![](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Jamie_Sutton.PNG)
 
  
 
