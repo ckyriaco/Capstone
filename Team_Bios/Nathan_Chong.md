@@ -1,4 +1,4 @@
-<img src="https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Nathan_Chong.PNG" width="400">
+<img src="https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Nathan_Chong.PNG" width="300">
 
 # Nathan Chong
 ## Documentation Specialist
