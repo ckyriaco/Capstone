@@ -1,4 +1,4 @@
-![](https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Christopher_Kyriacou.PNG)
+<img src="https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Christopher_Kyriacou.PNG" width="300">
 
 # Christopher Kyriacou #
 ## Team Leader ##
