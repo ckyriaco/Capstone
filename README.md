@@ -237,6 +237,15 @@ ________________________________________________________________________________
 5. Read through the documentation of the newest Python version and the newest version of all packages being used to familiarize yourself with any changes to the package.
 6. Walk through all the required code to ensure that all depreciated syntax usage, method calls, and package imports are all corrected to be run using the latest Python version.
 7. Once you've made corrections, try running the script and repeat step 6 as many times as necessary until the code functions properly. If any unforeseen errors are still occuring, re-visit the Python library of the Python version and/or package to help resolve any issue(s) and/or reach out to the package maintainers for assistance (Generally can be done through their Github page, personal website, etc.).
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+### ***Next Steps*** ###
+
+#### Continued Maintenance ####
+
+#### Auditing and remediation for CMMC Levels 4 and 5 ####
+
 ________________________________________________________________________________________________________________________________________________________________________________
 # Capstone Team Members #
 
