@@ -1,4 +1,4 @@
-<img src="https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Jamie_Sutton.PNG" width="300">
+<img src="https://github.com/ckyriaco/Capstone/blob/main/Photos_Gifs/Jamie_Sutton_Bio_Photo.PNG" width="300">
 
  # Jamie Sutton #
  ## Researcher ##
