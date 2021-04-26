@@ -4,8 +4,8 @@
 
 ### Import
 
-- ADaudit class
-  - Allows functions from ADaudit class to be used
+- ADaudit2 class
+  - Allows functions from ADaudit2 class to be used
 - OS (Operating System)
   - Allows OS to gather variables from bash script
   - Imports OS variables to plug into arrays based on variable types
