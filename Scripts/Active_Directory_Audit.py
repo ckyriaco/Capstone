@@ -125,7 +125,7 @@ def port_status(CN, server_ip, file, server_name, container, samAccount, compute
     message = ""
     try:
         P = ps.Port_Scanner(CN, server_ip, server_name, container, samAccount, computerName, commands)
-        P.port_status(file)
+        #P.port_status(file)
         P.command_execute()
         #message = P.command_report()
         outputs = P.get_commandRes()
@@ -153,7 +153,8 @@ def create_csv():
 def main():
     file_final = os.getenv('FILE_FINAL')
     CN = os.getenv('AD_USER')
-    AD = ad.ADaudit(CN)
+    DN = os.getenv('AD_USER_DN')
+    AD = ad.ADaudit(CN, DN)
     samAccount = os.getenv('SAMACCOUNT')
     computerName = os.getenv('COMPUTER_NAME')
     containerUsers = os.getenv('CONTAINER_USERS')

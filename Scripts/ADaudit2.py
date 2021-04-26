@@ -4,7 +4,7 @@
 #Can set a default domain manually using pyad.set_defaults(ldap_server="dc1.domain.com", username="service_account", password="mypassword").
 #Setting the default domain manually is not recommended due to the fact that joining the domain and authenticating through Windows Operating Systems on the end-unit is more secure.
 #Can connect to a specific other domain temporarilty instead of the default using user = aduser.ADUser.from_cn("myuser", options=dict(ldap_server="dc1.domain.com"))
-#Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested. 
+#Reusable functions for the previous two notes can be formed to support mass iteration through various domains if requrested.
 #pyad requires pywin32 to be installed and for you to be running on a windows instance.
 
 from pyad import *
@@ -22,7 +22,6 @@ simplefilter(action='ignore', category=FutureWarning)
 
 class ADaudit:
     CN = ""
-    DN = ""
     user = ""
     unusedComputerCount = 0
     unusedUserCount = 0
@@ -65,7 +64,10 @@ class ADaudit:
     servAccNameInvalidCount = 0
     computerNameInvalidCount = 0
     usernameInvalidCount = 0
-
+    pwd_exp_flag_false_dn = np.array([])
+    computerNeedNameChangeNames = np.array([])
+    usersNeedUserNameCorrNames = np.array([])
+    servAccUserNameNeedChangeNames = np.array([])
 
     #This constructor initialzes an ADquery object and validates pyad's connection to AD by locating a user account by a passed common name.
 #Will add extra validation to this constructor for final product.
@@ -73,7 +75,7 @@ class ADaudit:
         if(CN != ""):
             self.CN = CN
             self.user = aduser.ADUser.from_cn(CN)
-            self.DN = DN
+            self.user = aduser.ADUser.from_dn(DN)
         else:
             raise ValueError("The Common Name cannot be null!")
 
@@ -269,16 +271,18 @@ class ADaudit:
             array = np.array([])
             for obj in con.get_children():
                 c = obj.get_attribute("CN")
+                dn = obj.get_attribute("distinguishedName")
                 d = obj.get_attribute("objectCategory")
                 c = str(c[0])
                 d = str(d[0])
                 if (d == objCat):
-                    array = np.append(array, c)
+                    array = np.append(array, dn[0])
             array2 = np.array([])
             for i in array:
 
-                u = aduser.ADUser.from_cn(i)
+                u = aduser.ADUser.from_dn(i)
                 e = u.get_attribute("CN")
+                d = u.get_attribute("distinguishedName")
                 e = str(e[0])
 
                 b = u.get_allowed_attributes()
@@ -287,7 +291,7 @@ class ADaudit:
                     g = v[0]
                     if (v[0] > 0):
                         str(i)
-                        array2 = np.append(array2, e)
+                        array2 = np.append(array2, d[0])
             return array2
 
 #Find the users, within a provided list, that have not logged on in N days.
@@ -301,7 +305,8 @@ class ADaudit:
             currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
             array2 = np.array([])
             for i in array:
-                x = aduser.ADUser.from_cn(i)
+                x = aduser.ADUser.from_dn(i)
+                cn = x.get_attribute("CN")
                 z = x.get_last_login()
                 z = str(z)
                 y = datetime.strptime(z, "%Y-%m-%d %H:%M:%S")
@@ -310,11 +315,11 @@ class ADaudit:
                     array2 = np.append(array2, [i, diff])
                     if(type == "Computer"):
                         self.unusedComputerCount += 1
-                        self.unusedComputers = np.append(self.unusedComputers, i)
+                        self.unusedComputers = np.append(self.unusedComputers, cn[0])
                         self.computerDaysUnused = np.append(self.computerDaysUnused, diff)
                     elif(type == "User"):
                         self.unusedUserCount += 1
-                        self.unusedUsers = np.append(self.unusedUsers, i)
+                        self.unusedUsers = np.append(self.unusedUsers, cn[0])
                         self.userDaysUnused = np.append(self.userDaysUnused, diff)
 
 
@@ -330,17 +335,20 @@ class ADaudit:
                 dt = now.strftime("%Y-%m-%d %H:%M:%S")
                 currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
                 c = obj.get_attribute("CN")
+                dn = obj.get_attribute("distinguishedName")
+                dn = str(dn[0])
                 d = obj.get_attribute("objectCategory")
                 c = str(c[0])
                 d = str(d[0])
-                e = aduser.ADUser.from_cn(c)
+                e = aduser.ADUser.from_dn(dn)
                 if (d == objectCategory):
                     f = e.get_password_last_set()
                     f = str(f)
                     y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
                     diff = abs((currentDate - y).days)
+                    input = c + "-" + dn
                     if (diff >= N):
-                        self.pwdLastSetNDays = np.append(self.pwdLastSetNDays, c)
+                        self.pwdLastSetNDays = np.append(self.pwdLastSetNDays, input)
 
 #Retrieve all admin of specified admin types
     def get_All_Admin(self, Admin_Types):
@@ -360,7 +368,7 @@ class ADaudit:
                 self.admin_list = np.append(self.admin_list, addition)
 
 #Get all the cn's of all admin users
-    def get_All_Admin_CN(self, Admin_Types):
+    def get_All_Admin_DN(self, Admin_Types):
         array = np.array([])
         if (len(Admin_Types) == 0):
             raise ValueError("The Admin_Types array cannot be empty!")
@@ -371,9 +379,9 @@ class ADaudit:
                 l = user.get_attribute("member")
                 for x in l:
                     c = aduser.ADUser.from_dn(x)
-                    c = c.get_attribute("CN")
+                    c = c.get_attribute("distinguishedName")
                     if (c[0] not in array):
-                        array = np.append(array, c)
+                        array = np.append(array, c[0])
         return array
 
 #Get the last logon time for all admin of the given types.
@@ -381,18 +389,19 @@ class ADaudit:
         if(len(Admin_Types) == 0):
             raise ValueError("The admin types cannot be null!")
         else:
-            admin = self.get_All_Admin_CN(Admin_Types)
+            admin = self.get_All_Admin_DN(Admin_Types)
             report = np.array([])
             now = datetime.now()
             dt = now.strftime("%Y-%m-%d %H:%M:%S")
             currentDate = datetime.strptime(dt, "%Y-%m-%d %H:%M:%S")
             for i in admin:
-                user = aduser.ADUser.from_cn(str(i))
+                user = aduser.ADUser.from_dn(str(i))
+                cn = user.get_attribute("CN")
                 logon = user.get_last_login()
                 f = str(logon)
                 y = datetime.strptime(f, "%Y-%m-%d %H:%M:%S")
                 diff = abs((currentDate - y).days)
-                message = ("{},{},{} ").format(i, logon, diff)
+                message = ("{},{},{} ").format(cn, logon, diff)
                 self.admin_last_logon = np.append(self.admin_last_logon, message)
 
 #Check that a dn name is set
@@ -403,8 +412,9 @@ class ADaudit:
             con = adcontainer.ADContainer.from_dn(dn)
             for i in con.get_children():
                 cn = i.get_attribute("CN")
+                dn = i.get_attribute("distinguishedName")
                 print(cn[0])
-                user = aduser.ADUser.from_cn(cn[0])
+                user = aduser.ADUser.from_dn(dn[0])
                 c = user.get_allowed_attributes()
                 message = ""
                 if ("distinguishedName" in c):
@@ -422,7 +432,8 @@ class ADaudit:
         container = adcontainer.ADContainer.from_dn(con)
         for i in container.get_children():
             cn = i.get_attribute("CN")
-            user = aduser.ADUser.from_cn(cn[0])
+            dn = i.get_attribute("distinguishedName")
+            user = aduser.ADUser.from_dn(dn[0])
             a = user.get_attribute("objectCategory")
             if (a[0] == cat):
                 account_control = user.get_user_account_control_settings()
@@ -430,26 +441,34 @@ class ADaudit:
                 c = "'DONT_EXPIRE_PASSWD': False"
                 d = c in message
                 if (d == False):
-                    self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, cn[0])
+                    input = str(cn[0]) + "-" + str(dn[0])
+                    self.pwd_exp_flag_false = np.append(self.pwd_exp_flag_false, input)
+
 
 #Sets the don't expire password flag to false
     def set_exp_flag(self):
         for i in self.pwd_exp_flag_false:
-            user = aduser.ADUser.from_cn(i)
+            split = i.split("-")
+            dn = str(split[1])
+            user = aduser.ADUser.from_dn(dn)
+            n = dn.split(",")
+            n = n[0].split("=")
+            n = n[1]
             user.set_user_account_control_setting("DONT_EXPIRE_PASSWD", False)
             print("New password policy successfully set.")
             self.pwd_exp_flag_false = np.delete(self.pwd_exp_flag_false, np.where(self.pwd_exp_flag_false == i))
-
 
 #This checks the usernames of the users with the container, and ensures they are valid
     def check_username(self, container, objCategory):
         con = adcontainer.ADContainer.from_dn(container)
         for i in con.get_children():
             cn = i.get_attribute("CN")
-            user = aduser.ADUser.from_cn(cn[0])
+            dn = i.get_attribute("distinguishedName")
+            samAccount = i.get_attribute("samaccountname")
+            user = aduser.ADUser.from_dn(dn[0])
             objCat = user.get_attribute("objectCategory")
             objCat = objCat[0]
-            samAccount = user.get_attribute("samaccountname")
+            #samAccount = user.get_attribute("samaccountname")
             names = cn[0].split(" ")
             if(objCat == objCategory):
                 if(len(names) == 3):
@@ -481,8 +500,10 @@ class ADaudit:
 
 
                 else:
+                    input = cn[0] + "-" + dn[0]
                     self.invalidUsernames = np.append(self.invalidUsernames, samAccount)
-                    self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, cn[0])
+                    self.usersNeedUserNameCorr = np.append(self.usersNeedUserNameCorr, input)
+                    self.usersNeedUserNameCorrNames = np.append(self.usersNeedUserNameCorrNames, dn[0])
         self.usernameInvalidCount = len(self.usersNeedUserNameCorr)
 
 #This checks that the computer name is of a valid naming scheme for ARA standards
@@ -491,7 +512,8 @@ class ADaudit:
         sam = ""
         for i in con.get_children():
             cn = i.get_attribute("cn")
-            user = aduser.ADUser.from_cn(cn[0])
+            dn = i.get_attribute("distinguishedName")
+            user = aduser.ADUser.from_dn(dn[0])
             sam = user.get_attribute("samaccountname")
 
 
@@ -510,8 +532,10 @@ class ADaudit:
                 self.computerNameValid = np.append(self.computerNameValid, sam[0])
 
             else:
+                input = cn[0] + "_" + dn[0]
                 self.computerNameInValid = np.append(self.computerNameInValid, sam[0])
-                self.computerNeedNameChange = np.append(self.computerNeedNameChange, cn[0])
+                self.computerNeedNameChange = np.append(self.computerNeedNameChange, input)
+                self.computerNeedNameChangeNames = np.np.append(self.computerNeedNameChangeNames, dn[0])
         self.computerNameInvalidCount = len(self.computerNeedNameChange)
 
 
@@ -519,43 +543,61 @@ class ADaudit:
     def check_service_account_name(self, container, OU):
 
         regex = OU + "+-+[a-zA-Z]"
+        regex2 = "[a-zA-Z]+-+" + OU + "+-+[a-zA-Z]"
         con = adcontainer.ADContainer.from_dn(container)
         for i in con.get_children():
             cn = i.get_attribute("CN")
-            user = aduser.ADUser.from_cn(cn[0])
+            dn = i.get_attribute("distinguishedName")
+            user = aduser.ADUser.from_dn(dn[0])
             sam = user.get_attribute("samaccountname")
-            if (re.search(regex, sam[0])):
+            if (re.search(regex, sam[0]) or re.search(regex2, sam[0])):
                 self.validUsernames = np.append(self.invalidUsernames, sam[0])
 
             else:
+                input = cn[0] + "-" + dn[0]
                 self.invalidUsernames = np.append(self.invalidUsernames, sam[0])
-                self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, cn[0])
+                self.servAccUserNameNeedChange = np.append(self.servAccUserNameNeedChange, input)
+                self.servAccUserNameNeedChangeNames = np.append(self.servAccUserNameNeedChangeNames, dn[0])
         self.servAccNameInvalidCount = len(self.servAccUserNameNeedChange)
 
 #Creates recommended usernames for service accounts
     def autoChangeServiceAccountName(self, invalid, container, OU):
         con = adcontainer.ADContainer.from_dn(container)
         newSam = ""
+        counter = 0
         for i in invalid:
-            user = aduser.ADUser.from_cn(i)
+            x = i.split("-")
+            user = aduser.ADUser.from_dn(x[1])
             sam = user.get_attribute("samaccountname")
             newSam += str(OU) + "-" + str(sam[0])
             valid = self.findMatch(newSam, container)
             if(valid == True):
                 input = i + "_" + newSam
                 self.serviceAccountNamesToBeApproved = np.append(self.serviceAccountNamesToBeApproved, input)
+            else:
+                print("Invalid User!")
+            counter = counter + 1
 
 #Sets approved names for service accounts
     def changeServiceAccountNames(self):
         if(len(self.approvedServiceAccountNamesForChange) > 0):
             for i in self.approvedServiceAccountNamesForChange:
+                print(i)
                 names = i.split("_")
+                names2 = names[0].split("-")
+                x = names2[1].split(",")
+                x = x[0].split("=")
+                x = str(x[1])
                 sam = names[1]
-                user = aduser.ADUser.from_cn(names[0])
+                print(sam)
+                print(names2[1])
+                user = aduser.ADUser.from_dn(names2[1])
+                print(user)
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
                 print(user.get_attribute("samaccountname"), " has been set!")
                 user.rename(str(sam))
-                self.servAccUserNameNeedChange = np.delete(self.servAccUserNameNeedChange, np.where(self.servAccUserNameNeedChange == names[0]))
+                self.servAccUserNameNeedChange = np.delete(self.servAccUserNameNeedChange, np.where(self.servAccUserNameNeedChange == i))
+
         else:
             print("No names to be changed!")
 
@@ -564,8 +606,8 @@ class ADaudit:
         con = adcontainer.ADContainer.from_dn(container)
         valid = True
         for i in con.get_children():
-            cn = i.get_attribute("CN")
-            user = aduser.ADUser.from_cn(cn[0])
+            dn = i.get_attribute("distinguishedName")
+            user = aduser.ADUser.from_dn(dn[0])
             sam = user.get_attribute("samaccountname")
             sam = sam[0]
             if (sam == samAccount):
@@ -579,8 +621,10 @@ class ADaudit:
         con = adcontainer.ADContainer.from_dn(container)
         array = np.array([])
         newsam = ""
+        counter = 0
         for i in invalid:
-            names = i.split(" ")
+            x = i.split("-")
+            names = x[0].split(" ")
             if (len(names) == 3):
                 fname = names[0].lower()
                 mname = names[1].lower()
@@ -628,7 +672,7 @@ class ADaudit:
                     array = np.append(array, input)
                 else:
                     array = np.append(array, input)
-
+            counter = counter + 1
         self.userNamesToBeApproved = array
 
 #Sets newly approved usernames
@@ -636,11 +680,12 @@ class ADaudit:
         if(self.approvedUsernamesForChange.size > 0):
             for i in self.approvedUsernamesForChange:
                 names = i.split("-")
-                sam = names[1]
-                user = aduser.ADUser.from_cn(names[0])
+                sam = names[2]
+                user = aduser.ADUser.from_dn(names[1])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", str(sam))
                 print(user.get_attribute("samaccountname"), " has been set!")
-                self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == names[0]))
+                self.usersNeedUserNameCorr = np.delete(self.usersNeedUserNameCorr, np.where(self.get_usersNeedUserNameCorr() == i))
+
         else:
             print("No names to be changed!")
 
@@ -649,12 +694,13 @@ class ADaudit:
         if(self.approvedComputernamesForChange.size > 0):
             for i in self.approvedComputernamesForChange:
                 names = i.split("_")
-                newName = names[1]
-                user = aduser.ADUser.from_cn(names[0])
+                newName = names[2]
+                user = aduser.ADUser.from_dn(names[1])
                 pyad.adobject.ADObject.update_attribute(user, "samaccountname", newName)
                 print(user.get_attribute("samaccountname"), " has been set!")
                 user.rename(newName)
                 self.computerNeedNameChange = np.delete(self.computerNeedNameChange, np.where(self.computerNeedNameChange == names[0]))
+
         else:
             print("No names to be changed!")
 
@@ -662,9 +708,10 @@ class ADaudit:
     def force_pwd_change(self):
         if(self.pwdLastSetNDays.size > 0):
             for i in self.pwdLastSetNDays:
-                user = aduser.ADUser.from_cn(i)
+                split = i.split("-")
+                user = aduser.ADUser.from_dn(str(split[1]))
                 user.force_pwd_change_on_login()
-                print("The Password change has been forced for ", i, "\n")
+                print("The Password change has been forced for ", str(split[0]), "\n")
                 self.pwdLastSetNDays = np.delete(self.pwdLastSetNDays, np.where(self.pwdLastSetNDays == i))
 
 
@@ -674,8 +721,9 @@ class ADaudit:
         newName = ""
         input = ""
         for i in invalid:
-            computer = adcomputer.ADComputer.from_cn(i)
-            name = i.split("-")
+            x = i.split("_")
+            computer = adcomputer.ADComputer.from_dn(i[1])
+            name = x[0].split("-")
             desc = computer.get_attribute("description")
             desc = desc[0]
             if(len(name) == 2):
@@ -726,12 +774,18 @@ class ADaudit:
         message = ""
         message += "\n\n## Users that need to change username: ##\n\n"
         df = pd.DataFrame([], columns=['User', 'Username'])
+        counter = 0
         if (self.usersNeedUserNameCorr.size > 0):
             for i in self.usersNeedUserNameCorr:
+                print(i)
+                x = i.split("-")
+                dn = str(x[1])
+                print(dn)
+                cn = str(x[0])
                 #message += ("## {}, ##\n").format(str(i))
-                user = pyad.aduser.ADUser.from_cn(str(i))
+                user = pyad.aduser.ADUser.from_dn(dn)
                 sam = user.get_attribute('samaccountname')
-                newRow = {'User':i, 'Username':str(sam[0])}
+                newRow = {'User':str(cn), 'Username':str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
             self.df_user_username = df.to_csv(index=False)
             message += df.to_markdown()
@@ -741,12 +795,18 @@ class ADaudit:
             message+= str(df)
         message += "\n\n## Service Accounts that need their names changed: ##\n"
         df = pd.DataFrame([], columns=['Service Account', 'Username'])
+        counter = 0
         if (self.servAccUserNameNeedChange.size > 0):
             for i in self.servAccUserNameNeedChange:
+                x = i.split("-")
+                print(i)
+                dn = str(x[1])
+                cn = str(x[0])
+                print(dn)
                 #message += ("## {}, ##\n").format(str(i))
-                user = pyad.aduser.ADUser.from_cn(str(i))
+                user = pyad.aduser.ADUser.from_dn(str(dn))
                 sam = user.get_attribute('samaccountname')
-                newRow = {'Service Account': i, 'Username': str(sam[0])}
+                newRow = {'Service Account': cn, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
             self.df_serv_username = df.to_csv(index=False)
             message += df.to_markdown()
@@ -756,10 +816,11 @@ class ADaudit:
             message += str(df)
         message += "\n\n## Computers that need their names changed: ##\n\n"
         df = pd.DataFrame([], columns=['Computer', 'Username'])
+        counter = 0
         if (self.computerNeedNameChange.size > 0):
             for i in self.computerNeedNameChange:
                 #message += ("## {}, ##\n").format(str(i))
-                user = pyad.aduser.ADUser.from_cn(str(i))
+                user = pyad.aduser.ADUser.from_dn(str(self.computerNeedNameChangeNames[counter]))
                 sam = user.get_attribute('samaccountname')
                 newRow = {'Computer': i, 'Username': str(sam[0])}
                 df = df.append(newRow, ignore_index=True)
@@ -885,12 +946,14 @@ class ADaudit:
         df = pd.DataFrame([], columns=['User', 'Username'])
         if(self.pwdLastSetNDays.size > 0):
             for i in self.pwdLastSetNDays:
-                user = pyad.aduser.ADUser.from_cn(str(i))
+                print(i)
+                x = i.split("-")
+                user = pyad.aduser.ADUser.from_dn(str(x[1]))
                 u = user.get_attribute("samaccountname")
                 #message += "## "
                 #message += ("{}, ").format(str(i))
                 #message += " ##"
-                newRow = {'User':str(i), 'Username':str(u[0])}
+                newRow = {'User':str(x[0]), 'Username':str(u[0])}
                 df = df.append(newRow, ignore_index=True)
             self.df_pwdLastSetNDays = df.to_csv(index=False)
             message += df.to_markdown()
@@ -903,9 +966,10 @@ class ADaudit:
         if(self.pwd_exp_flag_false.size > 0):
             for i in self.pwd_exp_flag_false:
                 #message += ("{}, ").format(str(i))
-                user = pyad.aduser.ADUser.from_cn(str(i))
+                split = i.split("-")
+                user = pyad.aduser.ADUser.from_dn(str(split[1]))
                 u = user.get_attribute("samaccountname")
-                newRow = {'User': str(i), 'Username': str(u[0])}
+                newRow = {'User': str(split[0]), 'Username': str(u[0])}
                 df = df.append(newRow, ignore_index=True)
             self.df_pwd_exp_flag_false = df.to_csv(index=False)
             message += df.to_markdown()

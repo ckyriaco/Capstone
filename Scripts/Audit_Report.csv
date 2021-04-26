@@ -1,21 +1,14 @@
 Users with invalid Usernames:
-User,Username
-Dave Linux-Man Fuller,dave
-Jamie Sutton,sutjay
-Nathan Sir-Documentation Chong,chongDoc
-Saffee Deputy Ghafoori,SafeeGhafoo
-
+N/A
 Service Accounts with invalid Usernames:
 Service Account,Username
 Account Patcher,AccountPatcher317
 
 Computers with invalid Usernames:
-Computer,Username
-CLIENT,CLIENT
-
+N/A
 Distinguished Name set?:
 Computer,DN Set,DN
-CLIENT,Yes,"CN=CLIENT,CN=Computers,DC=KTG,DC=local"
+client-lap,Yes,"CN=client-lap,CN=Computers,DC=KTG,DC=local"
 DESKTOP-A67G0P2,Yes,"CN=DESKTOP-A67G0P2,CN=Computers,DC=KTG,DC=local"
 
 Admin List:
@@ -27,36 +20,39 @@ Schema Admins,Administrator
 
 Admin Last Logon:
 Admin Name,Last Logon,Days Since
-Christopher M Kyriacou,2021-04-01 14:28:59,6 
-Administrator,2021-03-10 13:51:20,28 
+['Christopher M Kyriacou'],2021-04-25 19:16:26,0 
+['Administrator'],2021-03-10 13:51:20,46 
 
 Unused Users:
 User,Days Unused
-Administrator,28.0
-Christopher M Kyriacou,6.0
+Administrator,46.0
 
 Unused Computers:
 Computer,Days Unused
-CLIENT,82.0
-DESKTOP-A67G0P2,82.0
+client-lap,100.0
+DESKTOP-A67G0P2,101.0
 
 Users with passwords past the day limit:
 User,Username
 Administrator,Administrator
+bobby bob,bbob
 Christopher M Kyriacou,ckyriacou
-Dave Linux-Man Fuller,dave
+Dave LinuxMan Fuller,dfuller
 Guest,Guest
-Jamie Sutton,sutjay
+Jamie Sutton,jsutton
+Jason Borne,jborne
 krbtgt,krbtgt
-Nathan Sir-Documentation Chong,chongDoc
-Saffee Deputy Ghafoori,SafeeGhafoo
+Nathan SirDocumentation Chong,nchong
+Saffee Deputy Ghafoori,sghafoori
 
 Users with password flag set to false:
 User,Username
-Dave Linux-Man Fuller,dave
-Jamie Sutton,sutjay
-Nathan Sir-Documentation Chong,chongDoc
-Saffee Deputy Ghafoori,SafeeGhafoo
+bobby bob,bbob
+Christopher M Kyriacou,ckyriacou
+Dave LinuxMan Fuller,dfuller
+Jamie Sutton,jsutton
+Nathan SirDocumentation Chong,nchong
+Saffee Deputy Ghafoori,sghafoori
 
 Service Accounts without a manager:
 Service Account

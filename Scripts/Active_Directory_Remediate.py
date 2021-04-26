@@ -1,6 +1,6 @@
 
 #This script utilizes the ADquery class to audit a variety of users, computers and groups for cmmc compliance
-import ADaudit as ad
+import ADaudit2 as ad
 import os
 import numpy as np
 from tkinter import *
@@ -229,7 +229,8 @@ def PWD_EXP_Remediate(AD):
 def main():
     file_final = os.getenv('FILE_FINAL')
     CN = os.getenv('AD_USER')
-    AD = ad.ADaudit(CN)
+    DN = os.getenv('AD_USER_DN')
+    AD = ad.ADaudit(CN, DN)
     samAccount = os.getenv('SAMACCOUNT')
     computerName = os.getenv('COMPUTER_NAME')
     containerUsers = os.getenv('CONTAINER_USERS')
