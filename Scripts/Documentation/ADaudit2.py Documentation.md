@@ -1,4 +1,4 @@
-## ADaudit.py Documentation
+## ADaudit2.py Documentation
 
 _This class is designed to allow administrators to query information to test Active Directory instances for CMMC compliance._       
 _Must already be joined to the active directory server's domain to use this class!_       
@@ -32,7 +32,6 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 **Variables created:**
 * _CN_ - The Common Name identifier
     * **CN, or Common Name** is a variable that tracks user and pyad connection to Active Directory and helps the administrator make sure that the connection is actually happening.   
-* _DN_ - The Distinguished Name
 * _user_ - The user object.  
     * A user profile is retrieved using Common Name.  
 * _unusedComputerCount_ - A count of the unused computers
