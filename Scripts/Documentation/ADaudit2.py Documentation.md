@@ -26,7 +26,7 @@ _pyad requires pywin32 to be installed and for you to be running on a Windows in
 ### Initialize simplefilter
 * This filter is set to catch warnings to allow code to continue.
 
-### Class ADaudit created 
+### Class ADaudit2 created 
 * Tracks the number of unused computers and the unused user count. 
 
 **Variables created:**
