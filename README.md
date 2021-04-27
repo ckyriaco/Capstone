@@ -243,6 +243,10 @@ ________________________________________________________________________________
 ### ***Next Steps*** ###
 
 #### Continued Maintenance ####
+* In terms of operations and maintenance, ARA will be at CMMC Level 3, and they may consider qualifying for CMMC Level 4.                                                              
+* Certain security measures associated with higher levels of compliance (such as regularly logging out users/forcing passord changes) may break/interrupt business operations but ensures that any adversaries that are logged in to the system are logged out.                                            
+* Consider what other systems would benefit from automation and to degree (semi automatic or automatic operation).                                            
+* Consider what other aspects of ARA's systems need remediation.                                                           
 
 #### Auditing and remediation for CMMC Levels 4 and 5 ####
 
