@@ -262,7 +262,34 @@ ________________________________________________________________________________
 ### - Researcher(s): Jamie Sutton, Dave Fuller ###
 
 ________________________________________________________________________________________________________________________________________________________________________________
+# Meeting Documentation 
 
+|Date|Purpose|Attendees|Agenda|Actions|Next Meetings| 
+| :---: | :---: | :---: | :---: | :---: | :---: |
+|01/07|**ARA Meeting 1**|Alpha Team 4, Dr. Ingham, Chris Prather|Discussed change in capstone project to Active Directory CMMC compliance|Research Powershell and AD, utilizing Python with Pyad and how it can navigate with AD|01/12 (Team), 01/21 (ARA)|
+|01/12|Team Meeting 1|Alpha Team 4|Discussed research on CMMC, AD and auditing using python|Continue performing research|01/19|
+|01/19|Team Meeting 2|Alpha Team 4|Continued discussion on research on CMMC, AD and auditing using python|Continue performing research, prepare for next ARA meeting|01/21|
+|01/21|**ARA Meeting 2**|Alpha Team 4, Dr. Ingham, Chris Prather|Discussion on project solution requirements|Research into psExec Library, as well as documentation styles|01/22 (Team), 02/04 (ARA)|
+|01/22|Team Meeting 3 (Coding session)|Alpha Team 4|Work on coding and initial documentation as a group|Rundown of current code in progress, created and uploaded initial code documentation on GitHub|01/26|
+|01/26|Team Meeting 4|Alpha Team 4| | |02/02|
+|02/02|Team Meeting 5|Alpha Team 4|Continue working on code, discuss weekly task assignments|Discussion of progress of code and documentation, converting personal documentation into Markdown format|02/04 (ARA)|
+|02/04|**ARA Meeting 3**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|clarified project requirements and concerns|02/09 (Team), 02/18 (ARA)|
+|02/09|Team Meeting 6|Alpha Team 4|Continued discussion on code and research into AD vulnerabilities|Continue performing research and complete weekly task|01/19|
+|02/16|Team Meeting 7|Alpha Team 4|Discussion on progress of project and weekly task|Work on blockchain paper assignment|02/18 (ARA), 02/23 (Team)|
+|02/18|**ARA Meeting 4**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|Discussion of progress of scripts, discussion on how ARA currently performs remediation|02/23 (Team), 03/18 (ARA)|
+|02/23|Team Meeting 8|Alpha Team 4|Discussion on progress of code, and weekly task|Discussed how to format documentation of code to meet ARA standards, worked on changed business process presentation|03/02 (Team)|
+|03/02|Team Meeting 9|Alpha Team 4|Discussion on progress of project| |03/04|
+|03/04|Team Meeting 10|Safee, Nathan, Chris|High-level overview of scripts|Discussion of how script works and requirements, worked on documentation|03/09 (Team)|
+|03/09|Team Meeting 11|Alpha Team 4|Discussion on progress of project|Waiting on rescheduled meeting with ARA, discussed quantification of solution, work on IT Solution presentation|03/16 (Team)|
+|03/16|Team Meeting 12|Alpha Team 4|Discussion on progress of project|Discussion of progress of scripts, discussion on how ARA currently performs remediation, work on quantum computing presentation|03/18 (ARA), 03/30 (Team)|
+|03/18|**ARA Meeting 5**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|discussed Dr. Ingham's progress in implementing script on his laptop, worked on further documentation|03/30 (Team), 04/01 (ARA)|
+|03/30|Team Meeting 13|Alpha Team 4|Discussion on progress of project|Discussed encryption and decryption process for script, discussed solution sustainment and next steps for solution|04/01 (ARA), 04/06 (Team)|
+|04/01|**ARA Meeting 6**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|Discussion of progress of scripts, discussion on how ARA currently performs remediation|03/18 (ARA), 03/30 (Team)|
+|04/06|Team Meeting 14|Alpha Team 4|Practice dry run|performed a practice dry run, took notes on areas needing improvement, worked on quantification analysis and testing/)&M plan assignments|04/16 (ARA), 03/30 (Team)|
+|04/16|**ARA Meeting 7**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|discussed Dr. Ingham's progress in implementing our script, troubleshooting AD issues|04/20 (Team), 04/29 (ARA)|
+|04/20|Team Meeting 15|Chris, Dave, Jamie, Nathan|Practice dry run|performed a practice dry run, took notes on areas needing improvement|04/27 (Team), 04/29 (ARA)|
+|04/27|Team Meeting 16|Alpha Team 4|Final meeting before presentation|touched base on final presentation and project notebook requirements|04/29 (ARA)|
+________________________________________________________________________________________________________________________________________________________________________________
 ## Special Thank You To: ##
 
 ### - Chris Prather ([Applied Research Associates, Inc.](https://www.ara.com/)) ###
