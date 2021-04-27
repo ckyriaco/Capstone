@@ -271,8 +271,7 @@ ________________________________________________________________________________
 |01/19|Team Meeting 2|Alpha Team 4|Continued discussion on research on CMMC, AD and auditing using python|Continue performing research, prepare for next ARA meeting|01/21 (ARA)|
 |01/21|**ARA Meeting 2**|Alpha Team 4, Dr. Ingham, Chris Prather|Discussion on project solution requirements|Research into psExec Library, as well as documentation styles|01/22 (Team), 02/04 (ARA)|
 |01/22|Team Meeting 3 (Coding session)|Alpha Team 4|Work on coding and initial documentation as a group|Rundown of current code in progress, created and uploaded initial code documentation on GitHub|01/26 (Team)|
-|01/26|Team Meeting 4|Alpha Team 4|Come up with quantification questions for Dr. Ingham|Edit slides for presentation and
-study CMMC guidelines|02/02 (Team)|
+|01/26|Team Meeting 4|Alpha Team 4|Come up with quantification questions for Dr. Ingham|Edit slides for presentation and study CMMC guidelines|02/02 (Team)|
 |02/02|Team Meeting 5|Alpha Team 4|Continue working on code, discuss weekly task assignments|Discussion of progress of code and documentation, converting personal documentation into Markdown format|02/04 (ARA)|
 |02/04|**ARA Meeting 3**|Alpha Team 4, Dr. Ingham|Discussion on progress of project|clarified project requirements and concerns|02/09 (Team), 02/18 (ARA)|
 |02/09|Team Meeting 6|Alpha Team 4|Continued discussion on code and research into AD vulnerabilities|Continue performing research and complete weekly task|02/16 (Team)|
