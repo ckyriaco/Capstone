@@ -74,7 +74,7 @@ class ADaudit:
     def __init__(self, CN, DN):
         if(CN != ""):
             self.CN = CN
-            self.user = aduser.ADUser.from_cn(CN)
+            #self.user = aduser.ADUser.from_cn(CN)
             self.user = aduser.ADUser.from_dn(DN)
         else:
             raise ValueError("The Common Name cannot be null!")

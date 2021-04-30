@@ -1,5 +1,11 @@
 Users with invalid Usernames:
-N/A
+User,Username
+Dave LinuxMan Fuller,motordave
+Jamie Sutton,jamsut1
+Jason Borne,jasonbornobo
+Nathan SirDocumentation Chong,nathandocchong
+Saffee Deputy Ghafoori,sghafooie
+
 Service Accounts with invalid Usernames:
 Service Account,Username
 Account Patcher,AccountPatcher317
@@ -20,39 +26,40 @@ Schema Admins,Administrator
 
 Admin Last Logon:
 Admin Name,Last Logon,Days Since
-['Christopher M Kyriacou'],2021-04-25 19:16:26,0 
-['Administrator'],2021-03-10 13:51:20,46 
+Christopher M Kyriacou,2021-04-25 19:16:26,2 
+Administrator,2021-03-10 13:51:20,48 
 
 Unused Users:
 User,Days Unused
-Administrator,46.0
+Administrator,48.0
+Christopher M Kyriacou,2.0
 
 Unused Computers:
 Computer,Days Unused
-client-lap,100.0
-DESKTOP-A67G0P2,101.0
+client-lap,103.0
+DESKTOP-A67G0P2,103.0
 
 Users with passwords past the day limit:
 User,Username
 Administrator,Administrator
 bobby bob,bbob
 Christopher M Kyriacou,ckyriacou
-Dave LinuxMan Fuller,dfuller
+Dave LinuxMan Fuller,motordave
 Guest,Guest
-Jamie Sutton,jsutton
-Jason Borne,jborne
+Jamie Sutton,jamsut1
+Jason Borne,jasonbornobo
 krbtgt,krbtgt
-Nathan SirDocumentation Chong,nchong
-Saffee Deputy Ghafoori,sghafoori
+Nathan SirDocumentation Chong,nathandocchong
+Saffee Deputy Ghafoori,sghafooie
 
 Users with password flag set to false:
 User,Username
 bobby bob,bbob
 Christopher M Kyriacou,ckyriacou
-Dave LinuxMan Fuller,dfuller
-Jamie Sutton,jsutton
-Nathan SirDocumentation Chong,nchong
-Saffee Deputy Ghafoori,sghafoori
+Dave LinuxMan Fuller,motordave
+Jamie Sutton,jamsut1
+Nathan SirDocumentation Chong,nathandocchong
+Saffee Deputy Ghafoori,sghafooie
 
 Service Accounts without a manager:
 Service Account

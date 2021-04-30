@@ -1,6 +1,6 @@
 
 #This script utilizes the ADquery class to audit a variety of users, computers and groups for cmmc compliance
-import ADaudit2 as ad
+import ADaudit as ad
 import os
 import numpy as np
 from tkinter import *
