@@ -1,5 +1,5 @@
 # Capstone 
-## - All Copyrights and Ownership are the sole rights of George Mason University and the Student that worked to develop the deliverables.
+### - All Copyrights and Ownership are the sole rights of George Mason University and the Student that worked to develop the deliverables. Each student possess sole copyright and ownership of the work he/she contributed to the creation of the deliverables described below. 
 ## **[Active Directory](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) Auditing for Cybersecurity Maturity Model Certification [(CMMC)](https://cybersecurity.att.com/blogs/security-essentials/what-is-cmmc-compliance) Compliance** ##
 
 _________________________________________________________________________________________________________________________________________________________________________________
