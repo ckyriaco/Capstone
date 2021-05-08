@@ -97,11 +97,13 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________________________________________________________________________________
 
 ### ***Installation Instructions*** ###
-
+## Note: If using the DN based version, follow all the instructions and use [ADaudit2.py](Scripts/ADaudit2.py) instead of ADaudit.py ##
 1. Prior to installation:
    - Ensure that you have a working installation of Windows 7, 8 or 10.
    - Ensure that the domain controller of interest is a Windows Server instance.
    - Ensure that your Windows Server instance has netstat capabilities.
+   - Ensure that your Windows Server is using proper nomenclature for all properties
+      - Note: Common Name and Distinguished name should be unique throughout an entire domain. This includes forests that act as a domain. Also, distinguished names should be kept to their automatically appropriated form. Distinguished names are created based on the properties of the account created and are not meant to be created manually. Manual creation of distinguished names can lead to syntax and ambiguity errors that should not occur if the admin is following proper MS server hygiene.
    - Ensure that you have a minimum of Python 3 installed on your Windows instance.
    - Ensure that you have installed the [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/) packages as a starting point.
    - Look at all packages imported into the implementation scripts described in the previous section (other than the classes being exported from this github repository), and make sure that all package requirements are met.
@@ -113,6 +115,7 @@ ________________________________________________________________________________
    - Opening a new python script
    - Importing pyad as shown: ``` from pyad import *```
    - Writing a line to access a user from their common name as shown (It's recommended you use your admin CN: ```user = aduser.ADUser.from_cn("your common name")```
+   - If using a ADaudit2.py, which is distinguished name based, try using: ```user = aduser.ADUser.from_dn("your distinguished name")```
    - Write a line to print the user as shown: ```print(user)```
    * **_It is imperative that this step is successful before moving forward._**
 4. Follow the installation instructions on the [pypsexec 0.2.0](https://pypi.org/project/pypsexec/) PyPi documentation.
